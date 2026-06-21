@@ -2,13 +2,48 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
     <title>Document</title>
 </head>
 
 <body>
+    <div id="loader" data-transition="radial-reveal">
+        <div class="loader-content">
+            <div class="loader-number" id="loader-number">0%</div>
+        </div>
+    </div>
+    <header class="site-header">
+        <div class="logo-target">상호.</div>
+    </header>
 
+    <div id="wrap" class="anim-1">
+        <section class="hero">
+            <div class="intro-titles">
+                <h1 class="title">관찰은 집요하게</h1>
+                <h1 class="title">구현은 정교하게</h1>
+                <h1 class="title">경험은 자연스럽게</h1>
+            </div>
+        </section>
+
+        <section class="c-main--content">
+            <div class="c-main--txt">
+                <p class="c-main--txt__title">웹퍼블리셔,<br>박상호</p>
+                <p class="c-main--txt__text">
+                    사용자의 흐름을 읽고,<br>
+                    화면의 구조를 설계하며,<br>
+                    세밀한 인터랙션을 구현하고,<br>
+                    더 나은 경험을 고민합니다.
+                </p>
+            </div>
+        </section>
+    </div>
+    <script src="./assets/js/main.js"></script>
 </body>
 
 </html>

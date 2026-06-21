@@ -1,0 +1,568 @@
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    background-color: #000;
+}
+
+body.is-loading {
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+}
+
+body.is-loading #wrap {
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ==============================
+   Transition Box
+============================== */
+
+#transition-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+
+    width: 100%;
+    height: 100%;
+
+    background: #f8f5ef;
+
+    transform: translateY(100%);
+    transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+#transition-box.slide-up {
+    transform: translateY(0);
+}
+
+#transition-box.slide-out {
+    transform: translateY(-100%);
+}
+
+/* ==============================
+   Loader
+============================== */
+
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background-color: #fff4df;
+
+    transition:
+        opacity 0.8s ease-out,
+        visibility 0.8s ease-out;
+}
+
+#loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    width: 300px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.loader-bg-fill {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+
+    width: 100%;
+    height: 0%;
+
+    background: #111;
+
+    pointer-events: none;
+
+    transition: height .12s cubic-bezier(.1, .8, .2, 1);
+}
+
+.loader-number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+
+    transform: translate(-50%, -50%);
+
+    font-size: clamp(20px, 10vw, 60px);
+    font-weight: 300;
+    color: #fff;
+
+    mix-blend-mode: difference;
+}
+
+/* ==============================
+   Wrap
+============================== */
+
+#wrap {
+    position: relative;
+    z-index: 2;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 1s ease-out,
+        visibility 1s ease-out;
+}
+
+#wrap.is-loaded {
+    z-index: 10000;
+
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ==============================
+   Header / Logo
+============================== */
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10001;
+
+    width: 100%;
+    height: 72px;
+
+    pointer-events: none;
+}
+
+.logo-target {
+    position: absolute;
+    top: 24px;
+    left: 32px;
+
+    font-size: 18px;
+    font-weight: 900;
+    color: #fff;
+
+    opacity: 0;
+}
+
+/* ==============================
+   Hero Intro
+============================== */
+
+.hero {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background: #000;
+}
+
+.intro-titles {
+    overflow: hidden;
+}
+
+.title {
+    color: #fff;
+    font-size: clamp(12px, 1.5vw, 20px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.07em;
+
+    transform-origin: left top;
+
+    white-space: nowrap;
+}
+
+.intro-titles .title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    margin: 0;
+
+    transform: translate(-50%, -50%);
+
+    opacity: 0;
+
+    text-align: center;
+    white-space: normal;
+}
+
+/* ==============================
+   Main Content
+============================== */
+
+.main-content {
+    padding: 120px 40px 200px;
+}
+
+.main-content p {
+    margin: 0;
+    font-size: clamp(48px, 6vw, 120px);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.05em;
+}
+
+.c-main--content {
+    height: 100vh;
+    padding: 60px 30px;
+
+    .c-main--txt {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        height: 100%;
+        color: #fff;
+
+        .c-main--txt__eyebrow {
+            font-size: clamp(26px, 3vw, 40px);
+            text-align: left;
+        }
+
+        .c-main--txt__title {
+            white-space: nowrap;
+            font-size: clamp(48px, 16vw, 100px);
+            font-weight: 900;
+            text-align: left;
+            line-height: 1.2;
+            margin: 10px 0px 30px;
+        }
+
+        .c-main--txt__text {
+            font-size: clamp(30px, 3.2vw, 80px);
+            text-align: right;
+            line-height: 1.2;
+            margin-left: auto;
+            font-weight: 900;
+        }
+    }
+}
+
+/* ==============================
+   Container Title
+============================== */
+
+.c-container__title {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+
+    font-size: 80px;
+    font-weight: 900;
+    line-height: 1.2;
+    color: #fff;
+
+    mix-blend-mode: difference;
+}
+
+/* ==============================
+   Animation 1: Staggered Text Reveal
+============================== */
+
+.anim-1 .title-word {
+    display: inline-flex;
+    overflow: hidden;
+}
+
+.anim-1 .title-word span {
+    display: inline-block;
+
+    transform: translateY(110%) skewY(10deg) scale(1.1);
+
+    opacity: 0;
+    filter: blur(10px);
+
+    transition:
+        transform 0.9s cubic-bezier(0.19, 1, 0.22, 1),
+        filter 0.9s cubic-bezier(0.19, 1, 0.22, 1),
+        opacity 0s;
+}
+
+#wrap.anim-1.is-loaded .title-word span {
+    transform: translateY(0) skewY(0) scale(1);
+
+    opacity: 1;
+    filter: blur(0);
+}
+
+/* ==============================
+   Animation 2: Scale & Blur
+============================== */
+
+#wrap.anim-2 {
+    transform: scale(1.15);
+    filter: blur(15px);
+
+    transition:
+        opacity 1.2s ease-out,
+        visibility 1.2s ease-out,
+        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 1.2s ease-out;
+}
+
+#wrap.anim-2.is-loaded {
+    transform: scale(1);
+    filter: blur(0);
+}
+
+/* ==============================
+   Animation 3: Infinite Marquee
+============================== */
+
+.anim-3 .marquee-container {
+    display: block;
+
+    width: 100%;
+
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.anim-3 .marquee-track {
+    display: inline-block;
+
+    opacity: 0;
+    transform: translateY(30px);
+
+    animation: marquee 10s linear infinite;
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#wrap.anim-3.is-loaded .marquee-track {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.anim-3 .marquee-track span {
+    padding-right: 30px;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ==============================
+   Animation 4: 3D Flip Reveal
+============================== */
+
+.anim-4 .perspective-container {
+    perspective: 1000px;
+}
+
+.anim-4 .flip-word {
+    display: inline-block;
+}
+
+.anim-4 .flip-word span {
+    display: inline-block;
+
+    transform: rotateX(90deg);
+    transform-origin: center bottom;
+
+    opacity: 0;
+
+    transition:
+        transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        opacity 0.8s ease;
+}
+
+#wrap.anim-4.is-loaded .flip-word span {
+    transform: rotateX(0);
+    opacity: 1;
+}
+
+#wrap.anim-4.is-loaded .flip-word:nth-child(1) span {
+    transition-delay: 0.1s;
+}
+
+#wrap.anim-4.is-loaded .flip-word:nth-child(2) span {
+    transition-delay: 0.2s;
+}
+
+#wrap.anim-4.is-loaded .flip-word:nth-child(3) span {
+    transition-delay: 0.3s;
+}
+
+#wrap.anim-4.is-loaded .flip-word:nth-child(4) span {
+    transition-delay: 0.4s;
+}
+
+#wrap.anim-4.is-loaded .flip-word:nth-child(5) span {
+    transition-delay: 0.5s;
+}
+
+/* ==============================
+   Loader Transition: Radial Reveal
+============================== */
+
+#loader[data-transition="radial-reveal"] {
+    clip-path: circle(150% at 50% 50%);
+
+    transition: clip-path 1.2s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+#loader[data-transition="radial-reveal"].hidden {
+    opacity: 1 !important;
+    visibility: visible !important;
+
+    clip-path: circle(0% at 50% 50%);
+}
+
+/* ==============================
+   Loader Transition: Multi Column
+============================== */
+
+.loader-col-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    display: flex;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+}
+
+.loader-col {
+    flex: 1;
+
+    height: 100%;
+
+    background-color: #000;
+
+    transform: translateY(0);
+    transition: transform 0.9s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+.loader-col.slide-up {
+    transform: translateY(-100%);
+}
+
+#loader[data-transition="multi-column"] {
+    background-color: transparent !important;
+
+    transition: visibility 1.2s;
+}
+
+#loader[data-transition="multi-column"] .loader-content {
+    z-index: 10;
+
+    transition: opacity 0.4s ease;
+}
+
+#loader[data-transition="multi-column"].hidden .loader-content {
+    opacity: 0;
+}
+
+/* ==============================
+   Loader Transition: Liquid Wipe
+============================== */
+
+#loader[data-transition="liquid-wipe"] {
+    background-color: transparent !important;
+
+    transition: visibility 1.4s;
+}
+
+#loader[data-transition="liquid-wipe"] .loader-content {
+    z-index: 10;
+
+    transition: opacity 0.4s ease;
+}
+
+#loader[data-transition="liquid-wipe"].hidden .loader-content {
+    opacity: 0;
+}
+
+.liquid-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+}
+
+.liquid-path {
+    fill: #000;
+
+    transition: d 1.3s cubic-bezier(0.76, 0, 0.24, 1);
+
+    d: path("M 0,0 L 100,0 L 100,100 Q 50,100 0,100 Z");
+}
+
+#loader[data-transition="liquid-wipe"].hidden .liquid-path {
+    d: path("M 0,0 L 100,0 L 100,0 Q 50,-40 0,0 Z");
+}
+
+/* ==============================
+   Loader Transition: Zoom Warp
+============================== */
+
+#loader[data-transition="zoom-warp"] {
+    transition:
+        opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+        visibility 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#loader[data-transition="zoom-warp"] .loader-number {
+    transition:
+        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+        opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 1s ease;
+}
+
+#loader[data-transition="zoom-warp"].hidden .loader-number {
+    transform: translate(-50%, -50%) scale(15);
+
+    opacity: 0;
+    filter: blur(15px);
+}
