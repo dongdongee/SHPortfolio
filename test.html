@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GSAP 4 Split Reveal Smooth</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            width: 100%;
+            background: #050505;
+        }
+
+        body {
+            width: 100%;
+            font-family: "Pretendard", "Noto Sans KR", sans-serif;
+            background: #050505;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .intro {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background: #050505;
+        }
+
+        .content {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.94);
+        }
+
+        .content-inner {
+            max-width: 760px;
+            padding: 0 24px;
+        }
+
+        .content h1 {
+            font-size: clamp(42px, 8vw, 112px);
+            font-weight: 800;
+            line-height: 0.95;
+            letter-spacing: -0.06em;
+        }
+
+        .content p {
+            margin-top: 28px;
+            font-size: clamp(15px, 1.6vw, 20px);
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        .split-wrap {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+        }
+
+        .panel {
+            position: absolute;
+            width: 50vw;
+            height: 50vh;
+            background: #050505;
+            will-change: transform;
+            overflow: hidden;
+        }
+
+        .panel::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at var(--x) var(--y),
+                    rgba(255, 255, 255, 0.34),
+                    rgba(255, 255, 255, 0.12) 14%,
+                    rgba(255, 255, 255, 0.035) 30%,
+                    transparent 52%);
+            opacity: 0.8;
+            animation: pulse 2.4s ease-in-out infinite;
+        }
+
+        .panel.top-left {
+            left: 0;
+            top: 0;
+            --x: 100%;
+            --y: 100%;
+        }
+
+        .panel.top-right {
+            right: 0;
+            top: 0;
+            --x: 0%;
+            --y: 100%;
+        }
+
+        .panel.bottom-left {
+            left: 0;
+            bottom: 0;
+            --x: 100%;
+            --y: 0%;
+        }
+
+        .panel.bottom-right {
+            right: 0;
+            bottom: 0;
+            --x: 0%;
+            --y: 0%;
+        }
+
+        .light-door {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 2;
+            width: 12vw;
+            height: 12vw;
+            min-width: 120px;
+            min-height: 120px;
+            border-radius: 999px;
+            transform: translate(-50%, -50%) scale(0.2);
+            background: radial-gradient(circle,
+                    rgba(255, 255, 255, 0.95) 0%,
+                    rgba(255, 255, 255, 0.42) 24%,
+                    rgba(255, 255, 255, 0.12) 48%,
+                    transparent 72%);
+            filter: blur(8px);
+            opacity: 0.8;
+            pointer-events: none;
+        }
+
+        .light-core {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 5;
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            box-shadow:
+                0 0 24px rgba(255, 255, 255, 1),
+                0 0 80px rgba(255, 255, 255, 0.7),
+                0 0 180px rgba(255, 255, 255, 0.4);
+            pointer-events: none;
+        }
+
+        .cross-line {
+            position: absolute;
+            z-index: 4;
+            background: rgba(255, 255, 255, 0.16);
+            pointer-events: none;
+        }
+
+        .cross-line.vertical {
+            left: 50%;
+            top: 0;
+            width: 1px;
+            height: 100%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 28px rgba(255, 255, 255, 0.55);
+        }
+
+        .cross-line.horizontal {
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 1px;
+            transform: translateY(-50%);
+            box-shadow: 0 0 28px rgba(255, 255, 255, 0.55);
+        }
+
+        .scroll-guide {
+            position: absolute;
+            left: 50%;
+            bottom: 36px;
+            z-index: 6;
+            transform: translateX(-50%);
+            font-size: 12px;
+            letter-spacing: 0.18em;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .next-section {
+            min-height: 100vh;
+            padding: 120px 8vw;
+            background: #fff;
+            color: #111;
+        }
+
+        .next-section h2 {
+            font-size: clamp(36px, 6vw, 84px);
+            letter-spacing: -0.06em;
+        }
+
+        .next-section p {
+            max-width: 640px;
+            margin-top: 24px;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="intro">
+        <div class="content">
+            <div class="content-inner">
+                <h1>틈에서<br>시작되는 화면</h1>
+                <p>
+                    스크롤의 진행도에 맞춰 닫혀 있던 네 개의 면이 천천히 열리고,
+                    중앙의 콘텐츠가 빛 안에서 드러납니다.
+                </p>
+            </div>
+        </div>
+
+        <div class="light-door"></div>
+
+        <div class="split-wrap">
+            <div class="panel top-left"></div>
+            <div class="panel top-right"></div>
+            <div class="panel bottom-left"></div>
+            <div class="panel bottom-right"></div>
+        </div>
+
+        <div class="cross-line vertical"></div>
+        <div class="cross-line horizontal"></div>
+        <div class="light-core"></div>
+
+        <div class="scroll-guide">SCROLL</div>
+    </section>
+
+    <section class="next-section">
+        <h2>다음 콘텐츠 영역</h2>
+        <p>
+            첫 화면의 문이 열린 뒤 자연스럽게 이어지는 일반 콘텐츠 영역입니다.
+            실제 포트폴리오에서는 프로젝트 소개나 메인 네비게이션을 배치하면 좋습니다.
+        </p>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        const lenis = new Lenis({
+            duration: 1.25,
+            smoothWheel: true,
+            wheelMultiplier: 1,
+            touchMultiplier: 1.5,
+            infinite: false
+        });
+
+        lenis.on("scroll", ScrollTrigger.update);
+
+        gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+        });
+
+        gsap.ticker.lagSmoothing(0);
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".intro",
+                start: "top top",
+                end: "+=160%",
+                scrub: 1,
+                pin: true,
+                anticipatePin: 1
+            }
+        });
+
+        tl
+            .to(".light-core", {
+                scale: 4,
+                opacity: 1,
+                duration: 0.25,
+                ease: "none"
+            }, 0)
+
+            .to(".light-door", {
+                scale: 6,
+                opacity: 1,
+                filter: "blur(22px)",
+                duration: 0.7,
+                ease: "none"
+            }, 0)
+
+            .to(".top-left", {
+                xPercent: -105,
+                yPercent: -105,
+                duration: 1,
+                ease: "none"
+            }, 0.12)
+
+            .to(".top-right", {
+                xPercent: 105,
+                yPercent: -105,
+                duration: 1,
+                ease: "none"
+            }, 0.12)
+
+            .to(".bottom-left", {
+                xPercent: -105,
+                yPercent: 105,
+                duration: 1,
+                ease: "none"
+            }, 0.12)
+
+            .to(".bottom-right", {
+                xPercent: 105,
+                yPercent: 105,
+                duration: 1,
+                ease: "none"
+            }, 0.12)
+
+            .to(".cross-line", {
+                opacity: 0,
+                duration: 0.45,
+                ease: "none"
+            }, 0.25)
+
+            .to(".scroll-guide", {
+                opacity: 0,
+                y: 12,
+                duration: 0.35,
+                ease: "none"
+            }, 0.1)
+
+            .to(".content", {
+                opacity: 1,
+                scale: 1,
+                duration: 0.45,
+                ease: "none"
+            }, 0.55)
+
+            .to(".light-core", {
+                opacity: 0,
+                duration: 0.35,
+                ease: "none"
+            }, 0.65)
+
+            .to(".light-door", {
+                opacity: 0.18,
+                duration: 0.35,
+                ease: "none"
+            }, 0.75);
+    </script>
+
+</body>
+
+</html>
