@@ -1,35 +1,214 @@
+/****************************************/
+/* CSS Guide */
+/****************************************/
+
+/*
+    기본 방향
+
+    1. 값만 유동적으로 변하는 것은 clamp() 사용
+       - font-size
+       - section padding
+       - 큰 gap
+       - layout padding
+
+    2. 레이아웃 자체가 바뀌는 경우만 media query 사용
+       - grid column 변경
+       - flex-direction 변경
+       - header nav → mobile menu
+       - position 구조 변경
+
+    3. 작은 간격은 --spacing 기준으로 계산
+       - button padding
+       - card padding
+       - icon size
+       - component gap
+
+    4. 큰 레이아웃 여백은 별도 layout token 사용
+       - --layout-x
+       - --section-y
+       - --content-gap
+*/
+
+/****************************************/
+/* Design Tokens */
+/****************************************/
+
 :root {
     /* Font Family */
     --font-ko: 'Pretendard', sans-serif;
     --font-en: 'Montserrat', sans-serif;
 
-    /* Font Weight */
+    /****************************************/
+    /* Color */
+    /****************************************/
+
+    --white: #ffffff;
+    --black: #000000;
+
+    --gray-50: #f8f9fa;
+    --gray-100: #f1f3f5;
+    --gray-200: #e9ecef;
+    --gray-300: #dee2e6;
+    --gray-400: #ced4da;
+    --gray-500: #adb5bd;
+    --gray-600: #868e96;
+    --gray-700: #495057;
+    --gray-800: #343a40;
+    --gray-900: #212529;
+    --gray-950: #121212;
+
+    --primary: #2563eb;
+    --primary-light: #60a5fa;
+    --primary-dark: #1d4ed8;
+
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --info: #0ea5e9;
+
+    --bg-primary: var(--white);
+    --bg-secondary: var(--gray-50);
+    --bg-dark: var(--gray-950);
+
+    --surface: var(--white);
+    --surface-hover: var(--gray-50);
+    --surface-active: var(--gray-100);
+
+    --border-light: var(--gray-200);
+    --border: var(--gray-300);
+    --border-dark: var(--gray-500);
+
+    --text-primary: var(--gray-950);
+    --text-secondary: var(--gray-700);
+    --text-tertiary: var(--gray-600);
+    --text-disabled: var(--gray-500);
+    --text-inverse: var(--white);
+
+    /****************************************/
+    /* Font */
+    /****************************************/
+
+    --font-ko: "Pretendard", "Noto Sans KR", sans-serif;
+    --font-en: "Inter", "Poppins", sans-serif;
+
     --fw-r: 400;
     --fw-m: 500;
     --fw-sb: 600;
     --fw-b: 700;
     --fw-eb: 800;
+    --fw-black: 900;
 
-    /* Line Height */
-    --lh-none: 1;
-    --lh-tight: 1.25;
-    --lh-normal: 1.5;
-    --lh-loose: 1.75;
+    /****************************************/
+    /* Font Size */
+    /****************************************/
 
-    /* Letter Spacing */
-    --ls-tight: -0.04em;
-    --ls-normal: 0;
+    --text-xs: 0.75rem;
+    /* 12px */
+    --text-sm: 0.875rem;
+    /* 14px */
+    --text-base: 1rem;
+    /* 16px */
+    --text-md: 1.125rem;
+    /* 18px */
+    --text-lg: 1.25rem;
+    /* 20px */
+    --text-xl: 1.5rem;
+    /* 24px */
 
-    /* Color */
-    --white: #fff;
-    --black: #000;
-    --gray-100: #f8f9fa;
-    --gray-200: #e9ecef;
-    --gray-300: #dee2e6;
-    --gray-400: #adb5bd;
-    --gray-500: #6c757d;
-    --gray-600: #495057;
-    --gray-700: #343a40;
-    --gray-800: #212529;
-    --gray-900: #121212;
+    --title-sm: clamp(1.5rem, 3vw, 2rem);
+    /* 24 ~ 32 */
+    --title-md: clamp(2rem, 4vw, 3rem);
+    /* 32 ~ 48 */
+    --title-lg: clamp(2.5rem, 6vw, 5rem);
+    /* 40 ~ 80 */
+    --title-xl: clamp(3rem, 8vw, 7.5rem);
+    /* 48 ~ 120 */
+
+    /****************************************/
+    /* Spacing */
+    /****************************************/
+
+    /*
+        --spacing = 4px 기준
+        calc(var(--spacing) * 4) = 16px
+        calc(var(--spacing) * 6) = 24px
+        calc(var(--spacing) * 10) = 40px
+    */
+
+    --spacing: 0.25rem;
+
+    /****************************************/
+    /* Layout Spacing */
+    /****************************************/
+
+    --layout-x: clamp(20px, 5vw, 80px);
+    --section-y: clamp(64px, 10vw, 160px);
+    --content-gap: clamp(24px, 5vw, 96px);
+    --card-gap: clamp(16px, 2vw, 32px);
+    --header-y: clamp(12px, 1.2vw, 20px);
+
+    /****************************************/
+    /* Container */
+    /****************************************/
+
+    --container-sm: 720px;
+    --container-md: 960px;
+    --container-lg: 1200px;
+    --container-xl: 1440px;
+
+    /****************************************/
+    /* Radius */
+    /****************************************/
+
+    --radius-xs: 4px;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-full: 9999px;
+
+    /****************************************/
+    /* Shadow */
+    /****************************************/
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.16);
+    --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.2);
+
+    /****************************************/
+    /* Transition */
+    /****************************************/
+
+    --transition-fast: 0.2s ease;
+    --transition: 0.3s ease;
+    --transition-slow: 0.5s ease;
+
+    /****************************************/
+    /* Z-index */
+    /****************************************/
+
+    --z-base: 1;
+    --z-header: 100;
+    --z-sticky: 300;
+    --z-overlay: 900;
+    --z-modal: 1000;
+    --z-toast: 1100;
+}
+
+
+
+.blind {
+    position: absolute;
+    z-index: -10;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    font-size: inherit;
+    line-height: inherit;
+    word-break: break-all;
+    clip: rect(0, 0, 0, 0);
+    clip-path: polygon(0 0, 0 0, 0 0);
+    white-space: nowrap;
+    transform: scale(.01);
 }
