@@ -10,31 +10,16 @@ body.is-loading #wrap {
 }
 
 /* ==============================
-   Transition Box
+   Header
 ============================== */
 
-#transition-box {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10000;
 
-    width: 100%;
-    height: 100%;
 
-    background: #f8f5ef;
+/* ==============================
+   Header
+============================== */
 
-    transform: translateY(100%);
-    transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1);
-}
 
-#transition-box.slide-up {
-    transform: translateY(0);
-}
-
-#transition-box.slide-out {
-    transform: translateY(-100%);
-}
 
 /* ==============================
    Loader
@@ -233,7 +218,7 @@ body.is-loading #wrap {
         align-items: flex-start;
         justify-content: space-between;
         height: 100%;
-        color: #fff;
+        color: #000;
 
         .c-main--txt__eyebrow {
             font-size: clamp(26px, 3vw, 40px);
@@ -242,7 +227,7 @@ body.is-loading #wrap {
 
         .c-main--txt__title {
             white-space: nowrap;
-            font-size: clamp(48px, 16vw, 100px);
+            font-size: clamp(48px, 16vw, 160px);
             font-weight: 900;
             text-align: left;
             line-height: 1.2;

@@ -85,20 +85,12 @@ class PageLoader {
         if (typeof gsap === 'undefined') return;
 
         const titles = document.querySelectorAll('.title');
-        const logo = document.querySelector('.logo-target');
         const mainContent = document.querySelector('.main-content');
         const hero = document.querySelector('.hero');
 
         if (!titles.length) return;
 
         const tl = gsap.timeline();
-
-        gsap.set(
-            [logo, mainContent],
-            {
-                opacity: 0
-            }
-        );
 
         titles.forEach((title) => {
             tl.fromTo(
@@ -138,15 +130,6 @@ class PageLoader {
                 }
             },
             '-=.15'
-        ).to(
-            [logo, mainContent],
-            {
-                opacity: 1,
-                duration: 0.8,
-                stagger: 0.08,
-                ease: 'power2.out'
-            },
-            '-=0.8'
         );
     }
 
