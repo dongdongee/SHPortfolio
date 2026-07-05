@@ -13,7 +13,35 @@ body.is-loading #wrap {
    Header
 ============================== */
 
+.p-header__box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: calc(var(--spacing) * 5) calc(var(--spacing) * 7.5);
 
+    .p-header__logo {
+        font-size: var(--text-md);
+        font-weight: var(--fw-black);
+        font-family: var(--font-en);
+    }
+
+    .p-header__gnb {
+        ul {
+            display: flex;
+            flex-direction: row;
+            column-gap: calc(var(--spacing) * 5);
+            align-items: center;
+
+            li {
+                a {
+                    font-size: var(--text-sm);
+                    font-weight: var(--fw-sb);
+                    font-family: var(--font-en);
+                }
+            }
+        }
+    }
+}
 
 /* ==============================
    Header
