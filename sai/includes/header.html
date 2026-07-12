@@ -1,20 +1,24 @@
 <header class="sai-header">
     <div class="sai-header__inner">
         <h1 class="sai-header__logo">
-            <a href="/sai/">SAI Workspace</a>
+            <img src="/assets/svg/ico_logo.svg" />
+            <a href="/sai/">SAI<br>
+                <span>AI Workspace</span></a>
         </h1>
         <div class="sai-header__util">
-            <div class="sai-header__theme">
-                <button class="sai-header__theme-button sai-header__theme-button--light">
-                    <span class="blind">라이트 모드</span>
-                    <img src="/assets/svg/ico_theme_white.svg" alt="">
+            <div class="sai-header__theme" data-theme="dark">
+
+                <button class="sai__theme-button is-active" type="button" data-value="light">
+                    <span class="sai__theme-button-ico"></span>
+                    <span>Light Mode</span>
                 </button>
 
-                <button class="sai-header__theme-button sai-header__theme-button--dark">
-                    <span class="blind">다크 모드</span>
-                    <img src="/assets/svg/ico_theme_black.svg" alt="">
+                <button class="sai__theme-button" type="button" data-value="dark">
+                    <span class="sai__theme-button-ico"></span>
+                    <span>Dark Mode</span>
                 </button>
             </div>
+
 
             <div class="sai-header__token">
                 <div class="sai-header__token-status"></div>

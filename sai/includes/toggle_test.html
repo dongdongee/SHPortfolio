@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluid Slide Toggle</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            min-height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f6fa;
+            font-family: Arial, sans-serif;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        .slide-toggle {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            width: 240px;
+            height: 58px;
+            padding: 4px;
+            border: 0;
+            border-radius: 999px;
+            background: #e2e5ed;
+            cursor: pointer;
+            isolation: isolate;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .slide-toggle__label {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8e94a3;
+            font-size: 14px;
+            font-weight: 700;
+            transition: color 0.3s ease;
+            pointer-events: none;
+        }
+
+        .slide-toggle__label.is-active {
+            color: #ffffff;
+        }
+
+        .slide-toggle__indicator {
+            position: absolute;
+            z-index: 1;
+            top: 4px;
+            left: 4px;
+            width: calc(50% - 4px);
+            height: calc(100% - 8px);
+            pointer-events: none;
+            filter: drop-shadow(0 5px 10px rgba(28, 50, 110, 0.18));
+        }
+
+        .slide-toggle__indicator path {
+            fill: #315efb;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .slide-toggle__label {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button type="button" class="slide-toggle" role="switch" aria-checked="false" aria-label="슬라이드 보기 전환">
+        <span class="slide-toggle__label is-active">
+            BEFORE
+        </span>
+
+        <span class="slide-toggle__label">
+            AFTER
+        </span>
+
+        <svg class="slide-toggle__indicator" viewBox="0 0 116 50" preserveAspectRatio="none" aria-hidden="true">
+            <path d="
+                    M25 0
+                    H91
+                    C104.807 0 116 11.193 116 25
+                    C116 38.807 104.807 50 91 50
+                    H25
+                    C11.193 50 0 38.807 0 25
+                    C0 11.193 11.193 0 25 0
+                    Z
+                " />
+        </svg>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MorphSVGPlugin.min.js"></script>
+
+    <script>
+        gsap.registerPlugin(MorphSVGPlugin);
+
+        class FluidToggle {
+            constructor(element) {
+                this.element = element;
+                this.indicator = element.querySelector(
+                    ".slide-toggle__indicator"
+                );
+                this.path = this.indicator.querySelector("path");
+                this.labels = [
+                    ...element.querySelectorAll(
+                        ".slide-toggle__label"
+                    )
+                ];
+
+                this.activeIndex = 0;
+                this.isAnimating = false;
+
+                this.paths = {
+                    default: `
+                        M25 0
+                        H91
+                        C104.807 0 116 11.193 116 25
+                        C116 38.807 104.807 50 91 50
+                        H25
+                        C11.193 50 0 38.807 0 25
+                        C0 11.193 11.193 0 25 0
+                        Z
+                    `,
+
+                    moveRight: `
+                        M25 0
+                        H82
+                        C96 0 116 9 116 25
+                        C116 41 96 50 82 50
+                        H31
+                        C15 50 0 39 0 25
+                        C0 11 15 0 25 0
+                        Z
+                    `,
+
+                    moveLeft: `
+                        M34 0
+                        H91
+                        C101 0 116 11 116 25
+                        C116 39 101 50 85 50
+                        H34
+                        C20 50 0 41 0 25
+                        C0 9 20 0 34 0
+                        Z
+                    `
+                };
+
+                this.bindEvents();
+            }
+
+            bindEvents() {
+                this.element.addEventListener("click", () => {
+                    this.toggle();
+                });
+
+                this.element.addEventListener(
+                    "keydown",
+                    (event) => {
+                        if (event.key === "ArrowLeft") {
+                            event.preventDefault();
+                            this.moveTo(0);
+                        }
+
+                        if (event.key === "ArrowRight") {
+                            event.preventDefault();
+                            this.moveTo(1);
+                        }
+                    }
+                );
+            }
+
+            toggle() {
+                const nextIndex =
+                    this.activeIndex === 0 ? 1 : 0;
+
+                this.moveTo(nextIndex);
+            }
+
+            moveTo(nextIndex) {
+                if (
+                    this.isAnimating ||
+                    nextIndex === this.activeIndex
+                ) {
+                    return;
+                }
+
+                const movingRight = nextIndex === 1;
+                const targetX = movingRight ? "100%" : "0%";
+
+                this.isAnimating = true;
+
+                const timeline = gsap.timeline({
+                    defaults: {
+                        overwrite: true
+                    },
+
+                    onComplete: () => {
+                        this.activeIndex = nextIndex;
+                        this.isAnimating = false;
+                        this.updateState();
+                    }
+                });
+
+                timeline
+                    .to(
+                        this.path,
+                        {
+                            duration: 0.18,
+                            morphSVG: movingRight
+                                ? this.paths.moveRight
+                                : this.paths.moveLeft,
+                            ease: "power2.in"
+                        },
+                        0
+                    )
+                    .to(
+                        this.indicator,
+                        {
+                            duration: 0.5,
+                            x: targetX,
+                            ease: "power3.inOut"
+                        },
+                        0
+                    )
+                    .to(
+                        this.path,
+                        {
+                            duration: 0.28,
+                            morphSVG: this.paths.default,
+                            ease: "power3.out"
+                        },
+                        0.22
+                    );
+
+                this.activeIndex = nextIndex;
+                this.updateState();
+            }
+
+            updateState() {
+                this.labels.forEach((label, index) => {
+                    label.classList.toggle(
+                        "is-active",
+                        index === this.activeIndex
+                    );
+                });
+
+                this.element.setAttribute(
+                    "aria-checked",
+                    String(this.activeIndex === 1)
+                );
+            }
+        }
+
+        document
+            .querySelectorAll(".slide-toggle")
+            .forEach((element) => {
+                new FluidToggle(element);
+            });
+    </script>
+
+</body>
+
+</html>

@@ -21,11 +21,26 @@ body {
         line-height: 1;
 
         .sai-header__logo {
-            font-size: clamp(12px, 1vw, 20px);
-            color: var(--white);
-            font-family: var(--font-en);
-            font-weight: var(--fw-md);
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+
+            img {
+                width: clamp(12px, 2vw, 60px);
+                height: auto;
+                flex-shrink: 0;
+            }
+
+            a {
+                line-height: 1.1;
+                font-size: clamp(12px, 1vw, 20px);
+                color: var(--white);
+                font-family: var(--font-en);
+                font-weight: var(--fw-md);
+            }
         }
+
+
 
         .sai-header__util {
             display: flex;
@@ -33,17 +48,38 @@ body {
             .sai-header__theme {
                 display: flex;
                 flex-direction: row;
-                column-gap: calc(var(--spacing) * 2);
-                color: #fff;
+                background-color: var(--gray-800);
+                border: 1px solid var(--gray-700);
+                gap: calc(var(--spacing)*5);
+                padding: 0 calc(var(--spacing)*4);
 
                 .sai-header__theme-button {
-                    width: calc(var(--spacing) * 10);
-                    height: calc(var(--spacing) * 10);
-                    box-shadow: 0px 2px 10px rgba(255, 255, 255, 0.5);
-                    border-radius: var(--radius-full);
                     display: flex;
+                    flex-direction: column;
+                    min-width: calc(var(--spacing) * 15);
+                    height: calc(var(--spacing) * 10);
+                    border-radius: var(--radius-xs);
                     align-items: center;
                     justify-content: center;
+                    row-gap: calc(var(--spacing));
+                    color: rgba(255, 255, 255, 1);
+
+                    svg {
+                        color: currentColor;
+                    }
+
+                    &.is-active {
+                        color: var(--active);
+                    }
+
+                    span {
+                        color: #fff;
+                        font-size: clamp(10px, 1vw, 12px);
+                        ;
+                        font-weight: var(--fw-r);
+                        font-family: var(--font-en);
+                    }
+
                 }
 
                 .sai-header__theme-button--light {}
@@ -53,8 +89,12 @@ body {
     }
 }
 
-
-
-/****************************************/
-/* // 헤더 영역 */
-/****************************************/
+.sai__theme-button-ico {
+    display: block;
+    width: 24px;
+    height: 24px;
+    color: red;
+    background: currentColor;
+    mask: url('/assets/svg/ico_theme_light.svg') no-repeat center;
+    -webkit-mask: url('/assets/svg/ico_theme_light.svg') no-repeat center;
+}
