@@ -1,3 +1,15 @@
+html {
+    scrollbar-width: none;
+}
+
+body {
+    -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
 body.is-loading {
     overflow: hidden;
     width: 100%;
@@ -7,6 +19,30 @@ body.is-loading {
 body.is-loading #wrap {
     height: 100vh;
     overflow: hidden;
+}
+
+
+.c-main--content {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.c-main--txt__title,
+.c-main--txt__text {
+    perspective: 800px;
+}
+
+.c-main--txt__title .line,
+.c-main--txt__text .line {
+    display: block;
+    overflow: hidden;
+}
+
+.c-main--txt__title .char,
+.c-main--txt__text .char {
+    display: inline-block;
+    backface-visibility: hidden;
+    will-change: transform, opacity, filter;
 }
 
 /* ==============================

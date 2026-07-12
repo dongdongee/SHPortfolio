@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SHPortfolio</title>
+
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+
+    <style>
+        /* ==============================
+   Inline Reset / Common
+============================== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Pretendard, "Noto Sans KR", Arial, sans-serif;
+            background: #fff;
+            color: #111;
+        }
+
+        h1,
+        p {
+            margin: 0;
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Main stagger initial state */
+        .c-main--content {
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        .c-main--txt__title .line,
+        .c-main--txt__text .line {
+            display: block;
+            overflow: hidden;
+        }
+
+        .c-main--txt__title .char,
+        .c-main--txt__text .char {
+            display: inline-block;
+            will-change: transform, opacity, filter;
+            backface-visibility: hidden;
+        }
+
+        .c-main--txt__title,
+        .c-main--txt__text {
+            perspective: 800px;
+        }
+
+        /* SplitType가 공백을 유지하도록 처리 */
+        .c-main--txt__title .whitespace,
+        .c-main--txt__text .whitespace {
+            display: inline-block;
+        }
+
+
+        body.is-loading {
+            overflow: hidden;
+            width: 100%;
+            height: 100vh;
+        }
+
+        body.is-loading #wrap {
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* ==============================
+   Header
+============================== */
+
+        .p-header__box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: calc(var(--spacing) * 5) calc(var(--spacing) * 7.5);
+
+            .p-header__logo {
+                font-size: var(--text-md);
+                font-weight: var(--fw-black);
+                font-family: var(--font-en);
+            }
+
+            .p-header__gnb {
+                ul {
+                    display: flex;
+                    flex-direction: row;
+                    column-gap: calc(var(--spacing) * 5);
+                    align-items: center;
+
+                    li {
+                        a {
+                            font-size: var(--text-sm);
+                            font-weight: var(--fw-sb);
+                            font-family: var(--font-en);
+                        }
+                    }
+                }
+            }
+        }
+
+        /* ==============================
+   Header
+============================== */
+
+
+
+        /* ==============================
+   Loader
+============================== */
+
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 100%;
+            height: 100%;
+
+            overflow: hidden;
+
+            background-color: #fff4df;
+
+            transition:
+                opacity 0.8s ease-out,
+                visibility 0.8s ease-out;
+        }
+
+        #loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            width: 300px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .loader-bg-fill {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 1;
+
+            width: 100%;
+            height: 0%;
+
+            background: #111;
+
+            pointer-events: none;
+
+            transition: height .12s cubic-bezier(.1, .8, .2, 1);
+        }
+
+        .loader-number {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            z-index: 10;
+
+            transform: translate(-50%, -50%);
+
+            font-size: clamp(20px, 10vw, 60px);
+            font-weight: 300;
+            color: #fff;
+
+            mix-blend-mode: difference;
+        }
+
+        /* ==============================
+   Wrap
+============================== */
+
+        #wrap {
+            position: relative;
+            z-index: 2;
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition:
+                opacity 1s ease-out,
+                visibility 1s ease-out;
+        }
+
+        #wrap.is-loaded {
+            z-index: 10000;
+
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ==============================
+   Header / Logo
+============================== */
+
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10001;
+
+            width: 100%;
+            height: 72px;
+
+            pointer-events: none;
+        }
+
+        .logo-target {
+            position: absolute;
+            top: 24px;
+            left: 32px;
+
+            font-size: 18px;
+            font-weight: 900;
+            color: #fff;
+
+            opacity: 0;
+        }
+
+        /* ==============================
+   Hero Intro
+============================== */
+
+        .hero {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 5;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .intro-titles {
+            overflow: hidden;
+        }
+
+        .title {
+            color: #000;
+            font-size: clamp(12px, 1.5vw, 20px);
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.07em;
+
+            transform-origin: left top;
+
+            white-space: nowrap;
+        }
+
+        .intro-titles .title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            margin: 0;
+
+            transform: translate(-50%, -50%);
+
+            opacity: 0;
+
+            text-align: center;
+            white-space: normal;
+        }
+
+        /* ==============================
+   Main Content
+============================== */
+
+        .main-content {
+            padding: 120px 40px 200px;
+        }
+
+        .main-content p {
+            margin: 0;
+            font-size: clamp(48px, 6vw, 120px);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.05em;
+        }
+
+        .c-main--content {
+            height: 100vh;
+            padding: 60px 30px;
+
+            .c-main--txt {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: space-between;
+                height: 100%;
+                color: #000;
+
+                .c-main--txt__eyebrow {
+                    font-size: clamp(26px, 3vw, 40px);
+                    text-align: left;
+                }
+
+                .c-main--txt__title {
+                    white-space: nowrap;
+                    font-size: clamp(48px, 16vw, 160px);
+                    font-weight: 900;
+                    text-align: left;
+                    line-height: 1.2;
+                    margin: 10px 0px 30px;
+                }
+
+                .c-main--txt__text {
+                    font-size: clamp(30px, 3.2vw, 80px);
+                    text-align: right;
+                    line-height: 1.2;
+                    margin-left: auto;
+                    font-weight: 900;
+                }
+            }
+        }
+
+        /* ==============================
+   Container Title
+============================== */
+
+        .c-container__title {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+
+            font-size: 80px;
+            font-weight: 900;
+            line-height: 1.2;
+            color: #fff;
+
+            mix-blend-mode: difference;
+        }
+
+        /* ==============================
+   Animation 1: Staggered Text Reveal
+============================== */
+
+        .anim-1 .title-word {
+            display: inline-flex;
+            overflow: hidden;
+        }
+
+        .anim-1 .title-word span {
+            display: inline-block;
+
+            transform: translateY(110%) skewY(10deg) scale(1.1);
+
+            opacity: 0;
+            filter: blur(10px);
+
+            transition:
+                transform 0.9s cubic-bezier(0.19, 1, 0.22, 1),
+                filter 0.9s cubic-bezier(0.19, 1, 0.22, 1),
+                opacity 0s;
+        }
+
+        #wrap.anim-1.is-loaded .title-word span {
+            transform: translateY(0) skewY(0) scale(1);
+
+            opacity: 1;
+            filter: blur(0);
+        }
+
+        /* ==============================
+   Animation 2: Scale & Blur
+============================== */
+
+        #wrap.anim-2 {
+            transform: scale(1.15);
+            filter: blur(15px);
+
+            transition:
+                opacity 1.2s ease-out,
+                visibility 1.2s ease-out,
+                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 1.2s ease-out;
+        }
+
+        #wrap.anim-2.is-loaded {
+            transform: scale(1);
+            filter: blur(0);
+        }
+
+        /* ==============================
+   Animation 3: Infinite Marquee
+============================== */
+
+        .anim-3 .marquee-container {
+            display: block;
+
+            width: 100%;
+
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .anim-3 .marquee-track {
+            display: inline-block;
+
+            opacity: 0;
+            transform: translateY(30px);
+
+            animation: marquee 10s linear infinite;
+
+            transition:
+                opacity 1.2s ease,
+                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        #wrap.anim-3.is-loaded .marquee-track {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .anim-3 .marquee-track span {
+            padding-right: 30px;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ==============================
+   Animation 4: 3D Flip Reveal
+============================== */
+
+        .anim-4 .perspective-container {
+            perspective: 1000px;
+        }
+
+        .anim-4 .flip-word {
+            display: inline-block;
+        }
+
+        .anim-4 .flip-word span {
+            display: inline-block;
+
+            transform: rotateX(90deg);
+            transform-origin: center bottom;
+
+            opacity: 0;
+
+            transition:
+                transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                opacity 0.8s ease;
+        }
+
+        #wrap.anim-4.is-loaded .flip-word span {
+            transform: rotateX(0);
+            opacity: 1;
+        }
+
+        #wrap.anim-4.is-loaded .flip-word:nth-child(1) span {
+            transition-delay: 0.1s;
+        }
+
+        #wrap.anim-4.is-loaded .flip-word:nth-child(2) span {
+            transition-delay: 0.2s;
+        }
+
+        #wrap.anim-4.is-loaded .flip-word:nth-child(3) span {
+            transition-delay: 0.3s;
+        }
+
+        #wrap.anim-4.is-loaded .flip-word:nth-child(4) span {
+            transition-delay: 0.4s;
+        }
+
+        #wrap.anim-4.is-loaded .flip-word:nth-child(5) span {
+            transition-delay: 0.5s;
+        }
+
+        /* ==============================
+   Loader Transition: Radial Reveal
+============================== */
+
+        #loader[data-transition="radial-reveal"] {
+            clip-path: circle(150% at 50% 50%);
+
+            transition: clip-path 1.2s cubic-bezier(0.85, 0, 0.15, 1);
+        }
+
+        #loader[data-transition="radial-reveal"].hidden {
+            opacity: 1 !important;
+            visibility: visible !important;
+
+            clip-path: circle(0% at 50% 50%);
+        }
+
+        /* ==============================
+   Loader Transition: Multi Column
+============================== */
+
+        .loader-col-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+
+            display: flex;
+
+            width: 100%;
+            height: 100%;
+
+            pointer-events: none;
+        }
+
+        .loader-col {
+            flex: 1;
+
+            height: 100%;
+
+            background-color: #000;
+
+            transform: translateY(0);
+            transition: transform 0.9s cubic-bezier(0.85, 0, 0.15, 1);
+        }
+
+        .loader-col.slide-up {
+            transform: translateY(-100%);
+        }
+
+        #loader[data-transition="multi-column"] {
+            background-color: transparent !important;
+
+            transition: visibility 1.2s;
+        }
+
+        #loader[data-transition="multi-column"] .loader-content {
+            z-index: 10;
+
+            transition: opacity 0.4s ease;
+        }
+
+        #loader[data-transition="multi-column"].hidden .loader-content {
+            opacity: 0;
+        }
+
+        /* ==============================
+   Loader Transition: Liquid Wipe
+============================== */
+
+        #loader[data-transition="liquid-wipe"] {
+            background-color: transparent !important;
+
+            transition: visibility 1.4s;
+        }
+
+        #loader[data-transition="liquid-wipe"] .loader-content {
+            z-index: 10;
+
+            transition: opacity 0.4s ease;
+        }
+
+        #loader[data-transition="liquid-wipe"].hidden .loader-content {
+            opacity: 0;
+        }
+
+        .liquid-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+
+            width: 100%;
+            height: 100%;
+
+            pointer-events: none;
+        }
+
+        .liquid-path {
+            fill: #000;
+
+            transition: d 1.3s cubic-bezier(0.76, 0, 0.24, 1);
+
+            d: path("M 0,0 L 100,0 L 100,100 Q 50,100 0,100 Z");
+        }
+
+        #loader[data-transition="liquid-wipe"].hidden .liquid-path {
+            d: path("M 0,0 L 100,0 L 100,0 Q 50,-40 0,0 Z");
+        }
+
+        /* ==============================
+   Loader Transition: Zoom Warp
+============================== */
+
+        #loader[data-transition="zoom-warp"] {
+            transition:
+                opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        #loader[data-transition="zoom-warp"] .loader-number {
+            transition:
+                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 1s ease;
+        }
+
+        #loader[data-transition="zoom-warp"].hidden .loader-number {
+            transform: translate(-50%, -50%) scale(15);
+
+            opacity: 0;
+            filter: blur(15px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loader" data-transition="radial-reveal">
+        <div class="loader-content">
+            <div class="loader-number" id="loader-number">0%</div>
+        </div>
+    </div>
+
+    <div id="wrap" class="anim-1">
+        <header class="p-header__box">
+            <a href="#" class="p-header__logo">SHPortfolio</a>
+
+            <nav class="p-header__gnb" aria-label="주요 메뉴">
+                <ul>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">WORK</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <div class="intro-titles">
+                <h1 class="title">관찰은 집요하게</h1>
+                <h1 class="title">구현은 정교하게</h1>
+                <h1 class="title">경험은 자연스럽게</h1>
+            </div>
+        </section>
+
+        <section class="c-main--content">
+            <div class="c-main--txt">
+                <p class="c-main--txt__title">웹퍼블리셔,<br>박상호</p>
+
+                <p class="c-main--txt__text">
+                    사용자의 흐름을 읽고,<br>
+                    화면의 구조를 설계하며,<br>
+                    세밀한 인터랙션을 구현하고,<br>
+                    더 나은 경험을 고민합니다.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        class PageLoader {
+            constructor() {
+                this.progress = 0;
+                this.duration = 3000;
+                this.startTime = null;
+                this.mainSplit = null;
+
+                this.loader = document.getElementById('loader');
+                this.loaderNumber = document.getElementById('loader-number');
+                this.wrap = document.getElementById('wrap');
+
+                if (this.loader) {
+                    this.bgFill = document.createElement('div');
+                    this.bgFill.className = 'loader-bg-fill';
+                    this.loader.appendChild(this.bgFill);
+                }
+
+                document.body.classList.add('is-loading');
+
+                this.init();
+            }
+
+            init() {
+                requestAnimationFrame(this.updateProgress);
+            }
+
+            customEasing(x) {
+                const base = x < 0.5
+                    ? 4 * x * x * x
+                    : 1 - Math.pow(-2 * x + 2, 3) / 2;
+
+                const hesitation = Math.sin(x * Math.PI * 6) * 0.04;
+
+                return Math.max(0, Math.min(base - hesitation, 1));
+            }
+
+            updateProgress = (timestamp) => {
+                if (!this.startTime) {
+                    this.startTime = timestamp;
+                }
+
+                const elapsedTime = timestamp - this.startTime;
+                const timeProgress = Math.min(elapsedTime / this.duration, 1);
+                const easedProgress = this.customEasing(timeProgress);
+                const newPercent = Math.floor(easedProgress * 100);
+
+                if (newPercent > this.progress) {
+                    this.progress = Math.min(newPercent, 100);
+                    this.updateDOM();
+                }
+
+                if (timeProgress >= 1) {
+                    this.progress = 100;
+                    this.updateDOM();
+                    this.finishLoading();
+                    return;
+                }
+
+                requestAnimationFrame(this.updateProgress);
+            };
+
+            updateDOM() {
+                if (this.loaderNumber) {
+                    this.loaderNumber.textContent = `${this.progress}%`;
+                    this.loaderNumber.style.transition = 'none';
+                    this.loaderNumber.style.transform = 'translate(-50%, -50%) scale(1)';
+                    this.loaderNumber.style.opacity = '1';
+                    this.loaderNumber.style.filter = 'blur(0)';
+                }
+
+                if (this.bgFill) {
+                    this.bgFill.style.height = `${this.progress}%`;
+                }
+            }
+
+            initHeroIntroOut() {
+                if (typeof gsap === 'undefined') {
+                    this.showMainContentWithoutAnimation();
+                    return;
+                }
+
+                const titles = gsap.utils.toArray('.title');
+                const hero = document.querySelector('.hero');
+
+                if (!titles.length) {
+                    this.initMainContent();
+                    return;
+                }
+
+                const tl = gsap.timeline();
+
+                titles.forEach((title) => {
+                    tl.fromTo(
+                        title,
+                        {
+                            yPercent: 100,
+                            opacity: 0
+                        },
+                        {
+                            yPercent: 0,
+                            opacity: 1,
+                            duration: 0.6,
+                            ease: 'power3.out'
+                        }
+                    ).to(
+                        title,
+                        {
+                            yPercent: -120,
+                            opacity: 0,
+                            duration: 0.55,
+                            ease: 'power2.inOut'
+                        },
+                        '+=0.25'
+                    );
+                });
+
+                tl.to(
+                    hero,
+                    {
+                        opacity: 0,
+                        duration: 0.8,
+                        ease: 'power2.out',
+                        onComplete: () => {
+                            if (hero) {
+                                hero.style.display = 'none';
+                            }
+
+                            this.initMainContent();
+                        }
+                    },
+                    '-=0.15'
+                );
+            }
+
+            initMainContent() {
+                const mainContent = document.querySelector('.c-main--content');
+                const title = document.querySelector('.c-main--txt__title');
+                const text = document.querySelector('.c-main--txt__text');
+
+                if (!mainContent || !title || !text) return;
+
+                if (
+                    typeof gsap === 'undefined' ||
+                    typeof SplitType === 'undefined'
+                ) {
+                    this.showMainContentWithoutAnimation();
+                    return;
+                }
+
+                if (mainContent.dataset.animated === 'true') return;
+                mainContent.dataset.animated = 'true';
+
+                const titleSplit = new SplitType(title, {
+                    types: 'lines, chars',
+                    tagName: 'span'
+                });
+
+                const textSplit = new SplitType(text, {
+                    types: 'lines, chars',
+                    tagName: 'span'
+                });
+
+                this.mainSplit = [titleSplit, textSplit];
+
+                gsap.set(mainContent, {
+                    autoAlpha: 1
+                });
+
+                /*
+                 * Leonid Kostetskyi 스타일 참고:
+                 * 모든 글자가 동일한 위치에서 일렬로 등장하지 않고,
+                 * 글자마다 서로 다른 Y값·회전·블러를 가진 상태에서
+                 * 자연스럽게 제자리로 정렬된다.
+                 */
+                gsap.set(titleSplit.chars, {
+                    yPercent: () => gsap.utils.random(90, 170),
+                    rotation: () => gsap.utils.random(-10, 10),
+                    scaleY: () => gsap.utils.random(1.05, 1.25),
+                    opacity: 0,
+                    filter: 'blur(10px)',
+                    transformOrigin: '50% 100%'
+                });
+
+                gsap.set(textSplit.chars, {
+                    yPercent: () => gsap.utils.random(65, 125),
+                    rotation: () => gsap.utils.random(-5, 5),
+                    opacity: 0,
+                    filter: 'blur(7px)',
+                    transformOrigin: '50% 100%'
+                });
+
+                const tl = gsap.timeline({
+                    defaults: {
+                        overwrite: 'auto'
+                    }
+                });
+
+                tl.to(titleSplit.chars, {
+                    yPercent: 0,
+                    rotation: 0,
+                    scaleY: 1,
+                    opacity: 1,
+                    filter: 'blur(0px)',
+                    duration: 1.05,
+                    stagger: {
+                        each: 0.045,
+                        from: 'random'
+                    },
+                    ease: 'expo.out'
+                });
+
+                tl.to(
+                    textSplit.chars,
+                    {
+                        yPercent: 0,
+                        rotation: 0,
+                        opacity: 1,
+                        filter: 'blur(0px)',
+                        duration: 0.85,
+                        stagger: {
+                            each: 0.014,
+                            from: 'random'
+                        },
+                        ease: 'power4.out'
+                    },
+                    '-=0.55'
+                );
+            }
+
+            showMainContentWithoutAnimation() {
+                const mainContent = document.querySelector('.c-main--content');
+
+                if (mainContent) {
+                    mainContent.style.visibility = 'visible';
+                    mainContent.style.opacity = '1';
+                }
+            }
+
+            finishLoading() {
+                if (this.loaderNumber) {
+                    this.loaderNumber.style.transition =
+                        'opacity .6s cubic-bezier(.25,1,.5,1), ' +
+                        'transform .6s cubic-bezier(.25,1,.5,1), ' +
+                        'filter .6s ease';
+
+                    this.loaderNumber.style.opacity = '0';
+                    this.loaderNumber.style.transform =
+                        'translate(-50%, -50%) scale(.9)';
+                    this.loaderNumber.style.filter = 'blur(10px)';
+                }
+
+                setTimeout(() => {
+                    if (this.wrap) {
+                        this.wrap.classList.add('is-loaded');
+
+                        setTimeout(() => {
+                            this.initHeroIntroOut();
+                        }, 300);
+                    }
+
+                    setTimeout(() => {
+                        if (!this.loader) return;
+
+                        if (this.loader.hasAttribute('data-transition')) {
+                            this.loader.classList.add('hidden');
+                        } else {
+                            this.loader.style.transition = 'opacity .8s ease-out';
+                            this.loader.style.opacity = '0';
+                        }
+
+                        setTimeout(() => {
+                            this.loader.style.display = 'none';
+                            document.body.classList.remove('is-loading');
+                        }, 1300);
+                    }, 1500);
+                }, 600);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            new PageLoader();
+        });
+    </script>
+</body>
+
+</html>
