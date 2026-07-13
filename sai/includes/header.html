@@ -2,20 +2,24 @@
     <div class="sai-header__inner">
         <h1 class="sai-header__logo">
             <img src="/assets/svg/ico_logo.svg" />
-            <a href="/sai/">SAI<br>
-                <span>AI Workspace</span></a>
+            <a href="/sai/">SAI Workspace</span></a>
         </h1>
         <div class="sai-header__util">
             <div class="sai-header__theme" data-theme="dark">
 
-                <button class="sai__theme-button is-active" type="button" data-value="light">
-                    <span class="sai__theme-button-ico"></span>
-                    <span>Light Mode</span>
+                <div class="sai-header__credit">
+                    <span class="sai-header__credit-icon" aria-hidden="true"></span>
+                    <span class="sai-header__credit-value">12,480</span>
+                </div>
+
+                <button class="sai-header__button sai-header__button-light is-active" type="button" data-value="light">
+                    <span class="sai-header__button-ico"></span>
+                    <span class="sai-header__button-text">Light Mode</span>
                 </button>
 
-                <button class="sai__theme-button" type="button" data-value="dark">
-                    <span class="sai__theme-button-ico"></span>
-                    <span>Dark Mode</span>
+                <button class="sai-header__button sai-header__button-dark" type="button" data-value="dark">
+                    <span class="sai-header__button-ico"></span>
+                    <span class="sai-header__button-text">Dark Mode</span>
                 </button>
             </div>
 
@@ -25,8 +29,9 @@
                 <div class="sai-header__token-counter"></div>
             </div>
 
-            <button class="sai-header__setting">
-                ...
+            <button class="sai-header__button sai-header__button-setting">
+                <span class="sai-header__button-ico"></span>
+                <span class="sai-header__button-text">settings</span>
             </button>
 
         </div>
