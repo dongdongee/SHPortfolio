@@ -1,6 +1,15 @@
+#wrap {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
 /****************************************/
 /* 헤더 영역 */
 /****************************************/
+
+
 
 .sai-header {
     .sai-header__inner {
@@ -32,179 +41,259 @@
             }
         }
 
-
-
         .sai-header__util {
             display: flex;
+            align-items: center;
 
             .sai-header__theme {
                 display: flex;
                 flex-direction: row;
 
+                .sai-header__theme-button--light {
+                    .sai__theme-button-ico {
+                        display: block;
+                        width: 24px;
+                        height: 24px;
+                        background: currentColor;
+                        mask: url('/assets/svg/ico_theme_light.svg') no-repeat center;
+                        -webkit-mask: url('/assets/svg/ico_theme_light.svg') no-repeat center;
+                        mask-size: cover;
+                        -webkit-mask-size: cover;
+                    }
+                }
+
+
+                .sai-header__theme-button--dark {
+                    .sai__theme-button-ico {
+                        display: block;
+                        width: 20px;
+                        height: 20px;
+                        background: currentColor;
+                        mask: url('/assets/svg/ico_theme_dark.svg') no-repeat center;
+                        -webkit-mask: url('/assets/svg/ico_theme_dark.svg') no-repeat center;
+                        mask-size: cover;
+                        -webkit-mask-size: cover;
+                    }
+                }
+
+
+                .sai-header__setting {
+                    .sai__setting-button-ico {}
+                }
+
+
                 .sai-header__theme-button {
+                    transition:
+                        color 0.2s ease,
+                        background-color 0.2s ease,
+                        transform 0.2s ease;
+                }
+
+                .sai-header__theme-button:hover {
+                    color: #A1A1AA;
+                    background: rgba(255, 255, 255, 0.05);
+                }
+
+                .sai-header__theme-button.is-active {
+                    color: #A1A1AA;
+                    background: var(--surface-active);
+                    box-shadow:
+                        inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+                        0 4px 12px rgba(0, 0, 0, 0.18);
+                }
+
+
+                .sai-header__button {
                     display: flex;
                     flex-direction: column;
-                    min-width: calc(var(--spacing) * 15);
-                    height: calc(var(--spacing) * 10);
-                    border-radius: var(--radius-xs);
                     align-items: center;
                     justify-content: center;
-                    row-gap: calc(var(--spacing));
-                    color: rgba(255, 255, 255, 1);
+                    row-gap: calc(var(--spacing)*1.5);
+                    color: var(--text-secondary);
+                    padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+                    border-radius: var(--radius-sm);
+                    margin-left: calc(var(--spacing)*2.5);
 
-                    svg {
-                        color: currentColor;
+                    &:hover {
+                        background-color: var(--surface-hover);
                     }
 
                     &.is-active {
                         color: var(--active);
+                        background-color: var(--surface-active);
                     }
 
-                    span {}
+                    &.sai-header__button-light {
+                        .sai-header__button-ico {
+                            font-size: clamp(10px, 1vw, 12px);
+                            font-weight: var(--fw-r);
+                            font-family: var(--font-en);
+                            display: block;
+                            width: 24px;
+                            height: 24px;
+                            background: currentColor;
+                            mask: url('/assets/svg/ico_theme_light.svg') no-repeat center;
+                            -webkit-mask: url('/assets/svg/ico_theme_light.svg') no-repeat center;
+                            mask-size: cover;
+                            -webkit-mask-size: cover;
+                        }
+                    }
 
+                    &.sai-header__button-dark {
+                        .sai-header__button-ico {
+                            font-size: clamp(10px, 1vw, 12px);
+                            font-weight: var(--fw-r);
+                            font-family: var(--font-en);
+                            display: block;
+                            width: 24px;
+                            height: 24px;
+                            background: currentColor;
+                            mask: url('/assets/svg/ico_theme_dark.svg') no-repeat center;
+                            -webkit-mask: url('/assets/svg/ico_theme_dark.svg') no-repeat center;
+                            mask-size: cover;
+                            -webkit-mask-size: cover;
+                        }
+                    }
+
+                    &.sai-header__button-setting {
+                        .sai-header__button-ico {
+                            font-size: clamp(10px, 1vw, 12px);
+                            font-weight: var(--fw-r);
+                            font-family: var(--font-en);
+                            display: block;
+                            width: 24px;
+                            height: 24px;
+                            background: currentColor;
+                            mask: url('/assets/svg/ico_setting.svg') no-repeat center;
+                            -webkit-mask: url('/assets/svg/ico_setting.svg') no-repeat center;
+                            mask-size: cover;
+                            -webkit-mask-size: cover;
+                        }
+                    }
+
+                    .sai-header__button-text {
+                        font-size: clamp(10px, 1vw, 12px);
+                        font-weight: var(--fw-r);
+                        font-family: var(--font-en);
+                    }
+
+                    &.sai-header__button-user {
+                        padding: 0;
+                        width: 48px;
+                        height: 48px;
+                        border-radius: var(--radius-full);
+                        overflow: hidden;
+                        margin-left: calc(var(--spacing) * 5);
+
+                        .sai-header__button-ico {
+                            width: 48px;
+                            height: 48px;
+                            font-size: clamp(16px, 1.2vw, 14px);
+                            font-weight: var(--fw-r);
+                            font-family: var(--font-en);
+                            color: var(--white);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            background: var(--surface-active);
+                            color: var(--text-primary);
+                            font-size: clamp(16px, 1.2vw, 18px);
+                            font-weight: var(--fw-sb);
+                            font-family: var(--font-en);
+                        }
+                    }
                 }
 
-                .sai-header__theme-button--light {}
+
+
+                .sai-header__credit {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: var(--spacing);
+                    padding-right: calc(var(--spacing)*10);
+                    pointer-events: none;
+
+                    .sai-header__credit-status {
+                        display: flex;
+                        flex-direction: row;
+                        gap: calc(var(--spacing)*2);
+                        align-items: center;
+                        justify-content: center;
+
+
+                        .sai-header__credit-ico {
+                            width: 8px;
+                            height: 8px;
+                            border-radius: 50%;
+                            background: #8b5cf6;
+                            animation: tokenPulse 2.4s ease-in-out infinite;
+                        }
+
+                        .sai-header__credit-progress {
+                            font-size: clamp(10px, 1vw, 10px);
+                            font-weight: var(--fw-r);
+                            font-family: var(--font-en);
+                        }
+                    }
+
+                    .sai-header__credit-value {
+                        font-size: clamp(10px, 1.4vw, 16px);
+                        font-weight: var(--fw-md);
+                        font-family: var(--font-en);
+                        color: var(--text-primary);
+                    }
+                }
+
+                @keyframes tokenPulse {
+
+                    0%,
+                    100% {
+                        background: #8b5cf6;
+                        transform: scale(1);
+                        box-shadow:
+                            0 0 4px rgba(139, 92, 246, .4),
+                            0 0 10px rgba(139, 92, 246, .25);
+                    }
+
+                    50% {
+                        background: #b794ff;
+                        transform: scale(1.15);
+                        box-shadow:
+                            0 0 8px rgba(183, 148, 255, .8),
+                            0 0 20px rgba(183, 148, 255, .55);
+                    }
+                }
             }
         }
 
     }
 }
 
-.sai-header__theme-button {
-    color: #fff;
-}
-
-
-
-
-
-
-.sai-header__theme-button--light {
-    .sai__theme-button-ico {
-        display: block;
-        width: 24px;
-        height: 24px;
-        background: currentColor;
-        mask: url('/assets/svg/ico_theme_light.svg') no-repeat center;
-        -webkit-mask: url('/assets/svg/ico_theme_light.svg') no-repeat center;
-        mask-size: cover;
-        -webkit-mask-size: cover;
-    }
-}
-
-
-.sai-header__theme-button--dark {
-    .sai__theme-button-ico {
-        display: block;
-        width: 20px;
-        height: 20px;
-        background: currentColor;
-        mask: url('/assets/svg/ico_theme_dark.svg') no-repeat center;
-        -webkit-mask: url('/assets/svg/ico_theme_dark.svg') no-repeat center;
-        mask-size: cover;
-        -webkit-mask-size: cover;
-    }
-}
-
-
-.sai-header__setting {
-    .sai__setting-button-ico {}
-}
-
-
-.sai-header__theme-button {
-    transition:
-        color 0.2s ease,
-        background-color 0.2s ease,
-        transform 0.2s ease;
-}
-
-.sai-header__theme-button:hover {
-    color: #A1A1AA;
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.sai-header__theme-button.is-active {
-    color: #A1A1AA;
-    background: var(--surface-active);
-    box-shadow:
-        inset 0 0 0 1px rgba(255, 255, 255, 0.06),
-        0 4px 12px rgba(0, 0, 0, 0.18);
-}
-
-
-.sai-header__button {
+.sai-main {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    row-gap: calc(var(--spacing)*1.5);
-    color: var(--text-secondary);
-    padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
-    border-radius: var(--radius-sm);
-    margin-left: calc(var(--spacing)*2.5);
+    flex: 1;
+    min-height: 0;
+}
 
-    &:hover {
-        background-color: var(--surface-hover);
-    }
+.sai-main>[data-include] {
+    display: flex;
+    width: clamp(200px, 18vw, 280px);
+    flex-shrink: 0;
+    padding: calc(var(--spacing)*5) calc(var(--spacing)*5);
+    border-right: 1px solid var(--border);
 
-    &.is-active {
-        color: var(--active);
-        background-color: var(--surface-active);
-    }
+    aside {
+        width: 100%;
 
-    &.sai-header__button-light {
-        .sai-header__button-ico {
-            font-size: clamp(10px, 1vw, 12px);
-            font-weight: var(--fw-r);
-            font-family: var(--font-en);
-            display: block;
-            width: 24px;
-            height: 24px;
-            background: currentColor;
-            mask: url('/assets/svg/ico_theme_light.svg') no-repeat center;
-            -webkit-mask: url('/assets/svg/ico_theme_light.svg') no-repeat center;
-            mask-size: cover;
-            -webkit-mask-size: cover;
+        .sai-aside__mmain {
+            width: 100%;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            padding: calc(var(--spacing)*1) calc(var(--spacing)*2);
+            border-radius: var(--radius-sm);
         }
-    }
 
-    &.sai-header__button-dark {
-        .sai-header__button-ico {
-            font-size: clamp(10px, 1vw, 12px);
-            font-weight: var(--fw-r);
-            font-family: var(--font-en);
-            display: block;
-            width: 24px;
-            height: 24px;
-            background: currentColor;
-            mask: url('/assets/svg/ico_theme_dark.svg') no-repeat center;
-            -webkit-mask: url('/assets/svg/ico_theme_dark.svg') no-repeat center;
-            mask-size: cover;
-            -webkit-mask-size: cover;
-        }
-    }
-
-    &.sai-header__button-setting {
-        .sai-header__button-ico {
-            font-size: clamp(10px, 1vw, 12px);
-            font-weight: var(--fw-r);
-            font-family: var(--font-en);
-            display: block;
-            width: 24px;
-            height: 24px;
-            background: currentColor;
-            mask: url('/assets/svg/ico_setting.svg') no-repeat center;
-            -webkit-mask: url('/assets/svg/ico_setting.svg') no-repeat center;
-            mask-size: cover;
-            -webkit-mask-size: cover;
-        }
-    }
-
-    .sai-header__button-text {
-        font-size: clamp(10px, 1vw, 12px);
-        font-weight: var(--fw-r);
-        font-family: var(--font-en);
     }
 }

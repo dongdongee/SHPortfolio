@@ -16,15 +16,19 @@
 </head>
 
 <body>
-    <div data-include="./includes/header.html"></div>
+    <div id="wrap">
+        <div data-include="./includes/header.html"></div>
 
-    <main id="main" class="sai-main">
-        <section class="sai-workspace">
-            <!-- 메인 UI -->
-        </section>
-    </main>
+        <main id="main" class="sai-main">
 
-    <div data-include="./includes/footer.html"></div>
+            <div data-include="./includes/aside.html"></div>
+            <section class="sai-workspace">
+                <!-- 메인 UI -->
+            </section>
+        </main>
+
+        <div data-include="./includes/footer.html"></div>
+    </div>
 
     <script defer src="/assets/js/include.js"></script>
     <script defer src="/assets/js/common.js"></script>
