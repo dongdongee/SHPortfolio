@@ -291,7 +291,7 @@
             width: 100%;
             color: var(--text-secondary);
             border: 1px solid var(--border);
-            padding: calc(var(--spacing)*1) calc(var(--spacing)*2);
+            padding: calc(var(--spacing)*2.5) calc(var(--spacing)*2);
             border-radius: var(--radius-sm);
         }
 
