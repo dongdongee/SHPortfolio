@@ -181,7 +181,7 @@ html[data-theme="dark"] {
     /* Background */
     /****************************************/
 
-    --bg-primary: #0b0b0f;
+    --bg-primary: #fff;
     --bg-secondary: #111113;
 
     /****************************************/
@@ -196,11 +196,11 @@ html[data-theme="dark"] {
     /* Text */
     /****************************************/
 
-    --text-primary: #fafafa;
+    --text-primary: #09090b;
     --text-secondary: #a1a1aa;
     --text-tertiary: #71717a;
     --text-disabled: #52525b;
-    --text-inverse: #09090b;
+    --text-inverse: #fafafa;
 
     /****************************************/
     /* Border */
