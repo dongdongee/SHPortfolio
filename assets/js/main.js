@@ -223,7 +223,7 @@ class PageLoader {
 
         this.bgFill = null;
 
-        this.createBackgroundFill();
+        // this.createBackgroundFill();
 
         /**
          * JS가 실행된 직후 스크롤 잠금
@@ -234,28 +234,24 @@ class PageLoader {
     /**
      * 로더의 배경 채움 요소 생성
      */
-    createBackgroundFill() {
-        if (!this.loader) {
-            return;
-        }
+    // createBackgroundFill() {
+    //     if (!this.loader) {
+    //         return;
+    //     }
+    //     const existingFill = this.loader.querySelector(
+    //         '.loader-bg-fill'
+    //     );
 
-        /**
-         * 이미 생성된 요소가 있다면 중복 생성하지 않는다.
-         */
-        const existingFill = this.loader.querySelector(
-            '.loader-bg-fill'
-        );
+    //     if (existingFill) {
+    //         this.bgFill = existingFill;
+    //         return;
+    //     }
 
-        if (existingFill) {
-            this.bgFill = existingFill;
-            return;
-        }
+    //     this.bgFill = document.createElement('div');
+    //     this.bgFill.className = 'loader-bg-fill';
 
-        this.bgFill = document.createElement('div');
-        this.bgFill.className = 'loader-bg-fill';
-
-        this.loader.appendChild(this.bgFill);
-    }
+    //     this.loader.appendChild(this.bgFill);
+    // }
 
     /**
      * 로딩 진행률 애니메이션 시작
