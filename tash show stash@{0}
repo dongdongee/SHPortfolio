@@ -1,0 +1,20 @@
+ assets/svg/ico_analytics.svg  |   1 [32m+[m
+ assets/svg/ico_chat.svg       |   1 [32m+[m
+ assets/svg/ico_component.svg  |   3 [32m+[m
+ assets/svg/ico_documents.svg  |   3 [32m+[m
+ assets/svg/ico_favorites.svg  |   1 [32m+[m
+ assets/svg/ico_overview.svg   |   1 [32m+[m
+ assets/svg/ico_prompt.svg     |   1 [32m+[m
+ assets/svg/ico_token.svg      |   3 [32m+[m
+ assets/svg/image.svg          |   3 [32m+[m
+ assets/svg/note.svg           |   3 [32m+[m
+ sai/assets/css/content.css    |  19 [32m++[m[31m-[m
+ sai/assets/js/main.js         |  28 [32m++[m[31m---[m
+ sai/assets/js/theme.js        |  91 [32m++++++++++++++[m
+ sai/assets/js/toggle-group.js |  75 [32m+++++++++++[m
+ sai/assets/js/toggle.js       |  55 [32m++++++++[m
+ sai/includes/aside.html       | 116 [32m++++++++++++++++[m[31m-[m
+ sai/includes/header.html      |   8 [32m+[m[31m-[m
+ sai/includes/toggle_test.html | 285 [31m------------------------------------------[m
+ sai/index.html                |   3 [32m+[m
+ 19 files changed, 387 insertions(+), 313 deletions(-)

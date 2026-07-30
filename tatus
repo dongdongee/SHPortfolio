@@ -1,0 +1,12 @@
+[33mdcacd58[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{0}: reset: moving to HEAD
+[33mdcacd58[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{1}: commit: rr
+[33mb7efe81[m HEAD@{2}: commit: 작업중
+[33me13384f[m HEAD@{3}: commit: 작업중
+[33mba2b01c[m HEAD@{4}: commit: SAI 최신화
+[33m1a7c7fe[m HEAD@{5}: pull --ff --recurse-submodules --progress origin: Fast-forward
+[33mac552d7[m HEAD@{6}: pull --ff --recurse-submodules --progress origin: Fast-forward
+[33mf8ce8af[m HEAD@{7}: commit: Sai 작업 중
+[33m00401f6[m HEAD@{8}: commit: SAI 작업중
+[33m19f8e6d[m HEAD@{9}: pull --ff --recurse-submodules --progress origin: Fast-forward
+[33m710d3c0[m HEAD@{10}: commit: 파일트리 작성중
+[33mf9f3707[m HEAD@{11}: clone: from https://github.com/dongdongee/SHPortfolio.git
