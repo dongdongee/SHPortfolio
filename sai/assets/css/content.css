@@ -290,9 +290,24 @@
         .sai-aside__mmain {
             width: 100%;
             color: var(--text-secondary);
-            border: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
             padding: calc(var(--spacing)*2.5) calc(var(--spacing)*2);
-            border-radius: var(--radius-sm);
+
+            span {
+                font-size: 18px;
+                font-weight: var(--fw-xs);
+                font-family: var(--font-en);
+            }
+        }
+
+        ul {
+            li {
+                padding: calc(var(--spacing)*2.5) calc(var(--spacing)*5);
+            }
+
+            &+button {
+                margin-top: calc(var(--spacing)*5);
+            }
         }
 
     }
