@@ -3,86 +3,97 @@
 
     class Theme {
         constructor() {
-            this.elRoot = document.documentElement;
-            this.elToggle =
-                document.querySelector('.js-theme-toggle');
+            this.storageKey = 'sai-theme';
+            this.defaultTheme = 'dark';
 
-            this.handleToggleChange =
-                this.handleToggleChange.bind(this);
+            this.elRoot = document.documentElement;
+
+            this.handleClick =
+                this.handleClick.bind(this);
 
             this.init();
         }
 
         init() {
-            if (!this.elToggle) return;
-
             const savedTheme =
-                localStorage.getItem('sai-theme');
+                localStorage.getItem(this.storageKey);
 
             const initialTheme =
                 savedTheme ||
                 this.elRoot.dataset.theme ||
-                'dark';
+                this.defaultTheme;
 
+            /*
+             * 헤더가 아직 include되지 않았더라도
+             * html 테마 속성은 먼저 적용한다.
+             */
             this.applyTheme(initialTheme);
 
-            this.elToggle.addEventListener(
-                'sai:toggle-change',
-                this.handleToggleChange,
+            /*
+             * 동적으로 삽입되는 테마 버튼도 감지한다.
+             */
+            document.addEventListener(
+                'click',
+                this.handleClick,
             );
         }
 
-        handleToggleChange(event) {
-            const { isActive } = event.detail;
+        handleClick(event) {
+            const elButton =
+                event.target.closest('.js-theme-button');
+
+            if (!elButton) return;
 
             const theme =
-                isActive ? 'light' : 'dark';
+                elButton.dataset.themeValue;
+
+            if (!this.isValidTheme(theme)) return;
 
             this.applyTheme(theme);
         }
 
         applyTheme(theme) {
-            this.elRoot.dataset.theme = theme;
+            const nextTheme =
+                this.isValidTheme(theme)
+                    ? theme
+                    : this.defaultTheme;
+
+            this.elRoot.dataset.theme = nextTheme;
 
             localStorage.setItem(
-                'sai-theme',
-                theme,
+                this.storageKey,
+                nextTheme,
             );
 
-            this.updateButton(theme);
+            this.updateButtons(nextTheme);
         }
 
-        updateButton(theme) {
-            const isLight = theme === 'light';
-
-            this.elToggle.classList.toggle(
-                'is-active',
-                isLight,
-            );
-
-            this.elToggle.setAttribute(
-                'aria-pressed',
-                String(isLight),
-            );
-
-            const elText =
-                this.elToggle.querySelector(
-                    '.js-theme-text',
+        updateButtons(currentTheme) {
+            const elButtons =
+                document.querySelectorAll(
+                    '.js-theme-button',
                 );
 
-            if (elText) {
-                elText.textContent =
-                    isLight
-                        ? 'Dark Mode'
-                        : 'Light Mode';
-            }
+            elButtons.forEach((elButton) => {
+                const targetTheme =
+                    elButton.dataset.themeValue;
 
-            const nextTheme =
-                isLight ? 'dark' : 'light';
+                elButton.hidden =
+                    targetTheme === currentTheme;
+            });
+        }
 
-            this.elToggle.setAttribute(
-                'aria-label',
-                `${nextTheme} mode로 전환`,
+        isValidTheme(theme) {
+            return (
+                theme === 'light' ||
+                theme === 'dark'
+            );
+        }
+
+        destroy() {
+            document.removeEventListener(
+                'click',
+                this.handleClick,
             );
         }
     }

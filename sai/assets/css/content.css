@@ -290,11 +290,12 @@
         .sai-aside__mmain {
             width: 100%;
             color: var(--text-secondary);
+            text-align: left;
             border-bottom: 1px solid var(--border);
             padding: calc(var(--spacing)*2.5) calc(var(--spacing)*2);
 
             span {
-                font-size: 18px;
+                font-size: 16px;
                 font-weight: var(--fw-xs);
                 font-family: var(--font-en);
             }
