@@ -22,17 +22,46 @@
 
             <div data-include="./includes/aside.html"></div>
             <section class="sai-workspace">
-                <!-- 메인 UI -->
+                <div class="sai-dashboard-kpi__chart js-kpi-chart" data-chart-values="[18,24,21,30,27,36,42]"
+                    data-chart-color="#8b5cf6"></div>
+                <div class="sai-dashboard-kpi__chart js-kpi-chart" data-chart-values="[18,24,21,30,27,36,42]"
+                    data-chart-color="#8b5cf6"></div>
+                <div class="sai-dashboard-kpi__chart js-kpi-chart" data-chart-values="[18,24,21,30,27,36,42]"
+                    data-chart-color="#8b5cf6"></div>
+                <div class="sai-dashboard-kpi__chart js-kpi-chart" data-chart-values="[18,24,21,30,27,36,42]"
+                    data-chart-color="#8b5cf6"></div>
+                <div class="sai-chart-card">
+                    <div class="sai-chart-card__header">
+                        <div>
+                            <h2 class="sai-chart-card__title">AI Usage Summary</h2>
+                            <p class="sai-chart-card__description">
+                                Usage metrics over the selected period
+                            </p>
+                        </div>
+
+                        <select class="sai-chart-card__period js-ai-usage-period" aria-label="조회 기간 선택">
+                            <option value="7">Last 7 days</option>
+                            <option value="14">Last 14 days</option>
+                            <option value="30">Last 30 days</option>
+                        </select>
+                    </div>
+
+                    <div class="sai-chart-card__chart js-ai-usage-chart" role="img"
+                        aria-label="날짜별 AI 메시지, 토큰, 비용 사용량 차트"></div>
+                </div>
             </section>
         </main>
 
         <div data-include="./includes/footer.html"></div>
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/6.1.0/echarts.min.js"
+        integrity="sha512-Uyq/AgtqFM4vT+unIGTDr4wMJDTUK9O5w2PXMQeBCSR8koqHpVz+qBmcQ+9Oeo5H+EmvT4pp/5QrsqhIbyjHTQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script defer src="/assets/js/include.js"></script>
     <script defer src="/assets/js/common.js"></script>
     <script defer src="/sai/assets/js/theme.js"></script>
     <script defer src="/sai/assets/js/toggle-group.js"></script>
+    <script defer src="/sai/assets/js/chart.js"></script>
     <script defer src="/sai/assets/js/toggle.js"></script>
     <script defer src="/sai/assets/js/main.js"></script>
 </body>
