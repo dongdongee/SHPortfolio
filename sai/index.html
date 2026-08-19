@@ -6,202 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>SAI Workspace | Sangho Portfolio</title>
-
+    <!-- Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <!-- Pretendard -->
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="/assets/css/reset.css">
-    <link rel="stylesheet" href="/sai/assets/css/content.css">
+    <link rel="stylesheet" href="/sai/assets/css/token.css">
     <link rel="stylesheet" href="/sai/assets/css/common.css">
 </head>
 
 <body>
     <div id="wrap">
         <div data-include="./includes/header.html"></div>
-
-        <main id="main" class="sai-main">
+        <div class="sai-layout">
             <div data-include="./includes/aside.html"></div>
+            <main id="main" class="sai-main">
 
-            <section class="sai-workspace">
+            </main>
+        </div>
 
-                <!--
-                    ====================================================
-                    KPI
-                    ====================================================
-                -->
-                <div class="sai-kpi-list">
-
-                    <!-- AI Messages -->
-                    <div class="sai-kpi" data-kpi-type="messages">
-                        <div class="sai-kpi__icon">
-                            <span class="sai-kpi__icon-symbol">
-                                <!-- icon -->
-                            </span>
-                        </div>
-
-                        <div class="sai-kpi__content">
-                            <p class="sai-kpi__label">
-                                AI Messages
-                            </p>
-
-                            <!--
-                                chart.js에서 값 삽입
-                            -->
-                            <strong class="sai-kpi__value js-kpi-value">
-                                -
-                            </strong>
-
-                            <p class="sai-kpi__change js-kpi-change">
-                                <strong class="js-kpi-change-value">
-                                    -
-                                </strong>
-
-                                <span>
-                                    vs yesterday
-                                </span>
-                            </p>
-                        </div>
-
-                        <div class="sai-kpi__chart js-kpi-chart" data-chart-type="messages" aria-hidden="true"></div>
-                    </div>
-
-
-                    <!-- Tokens Used -->
-                    <div class="sai-kpi" data-kpi-type="tokens">
-                        <div class="sai-kpi__icon">
-                            <span class="sai-kpi__icon-symbol">
-                                <!-- icon -->
-                            </span>
-                        </div>
-
-                        <div class="sai-kpi__content">
-                            <p class="sai-kpi__label">
-                                Tokens Used
-                            </p>
-
-                            <strong class="sai-kpi__value js-kpi-value">
-                                -
-                            </strong>
-
-                            <p class="sai-kpi__change js-kpi-change">
-                                <strong class="js-kpi-change-value">
-                                    -
-                                </strong>
-
-                                <span>
-                                    vs yesterday
-                                </span>
-                            </p>
-                        </div>
-
-                        <div class="sai-kpi__chart js-kpi-chart" data-chart-type="tokens" aria-hidden="true"></div>
-                    </div>
-
-
-                    <!-- Total Cost -->
-                    <div class="sai-kpi" data-kpi-type="cost">
-                        <div class="sai-kpi__icon">
-                            <span class="sai-kpi__icon-symbol">
-                                <!-- icon -->
-                            </span>
-                        </div>
-
-                        <div class="sai-kpi__content">
-                            <p class="sai-kpi__label">
-                                Total Cost
-                            </p>
-
-                            <strong class="sai-kpi__value js-kpi-value">
-                                -
-                            </strong>
-
-                            <p class="sai-kpi__change js-kpi-change">
-                                <strong class="js-kpi-change-value">
-                                    -
-                                </strong>
-
-                                <span>
-                                    vs yesterday
-                                </span>
-                            </p>
-                        </div>
-
-                        <div class="sai-kpi__chart js-kpi-chart" data-chart-type="cost" aria-hidden="true"></div>
-                    </div>
-
-
-                    <!-- Success Rate -->
-                    <div class="sai-kpi" data-kpi-type="successRate">
-                        <div class="sai-kpi__icon">
-                            <span class="sai-kpi__icon-symbol">
-                                <!-- icon -->
-                            </span>
-                        </div>
-
-                        <div class="sai-kpi__content">
-                            <p class="sai-kpi__label">
-                                Success Rate
-                            </p>
-
-                            <strong class="sai-kpi__value js-kpi-value">
-                                -
-                            </strong>
-
-                            <p class="sai-kpi__change js-kpi-change">
-                                <strong class="js-kpi-change-value">
-                                    -
-                                </strong>
-
-                                <span>
-                                    vs yesterday
-                                </span>
-                            </p>
-                        </div>
-
-                        <div class="sai-kpi__chart js-kpi-chart" data-chart-type="successRate" aria-hidden="true"></div>
-                    </div>
-
-                </div>
-
-
-                <!--
-                    ====================================================
-                    AI Usage Summary
-                    ====================================================
-                -->
-                <div class="sai-chart-card">
-
-                    <div class="sai-chart-card__header">
-                        <div>
-                            <h2 class="sai-chart-card__title">
-                                AI Usage Summary
-                            </h2>
-
-                            <p class="sai-chart-card__description">
-                                Usage metrics over the selected period
-                            </p>
-                        </div>
-
-                        <select class="sai-chart-card__period js-ai-usage-period" aria-label="조회 기간 선택">
-                            <option value="7">
-                                Last 7 days
-                            </option>
-
-                            <option value="14">
-                                Last 14 days
-                            </option>
-
-                            <option value="30">
-                                Last 30 days
-                            </option>
-                        </select>
-                    </div>
-
-                    <div class="sai-chart-card__chart js-ai-usage-chart" role="img"
-                        aria-label="날짜별 AI 메시지, 토큰, 비용 사용량 차트"></div>
-
-                </div>
-
-            </section>
-        </main>
 
         <div data-include="./includes/footer.html"></div>
     </div>
@@ -222,9 +51,7 @@
 
     <script defer src="/sai/assets/js/chart.js"></script>
 
-    <script defer src="/sai/assets/js/toggle.js"></script>
 
-    <script defer src="/sai/assets/js/main.js"></script>
 </body>
 
 </html>
