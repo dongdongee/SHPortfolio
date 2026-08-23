@@ -1085,6 +1085,678 @@ class ScrollTextReveal {
     }
 }
 
+/**
+ * =========================================================
+ * ParticleMorph
+ * ---------------------------------------------------------
+ * 메인 우측 파티클 모핑
+ *
+ * scatter
+ * → square
+ * → scatter
+ * → circle
+ * → scatter
+ * → triangle
+ * → 반복
+ *
+ * 모든 파티클은 동일한 크기를 사용한다.
+ * =========================================================
+ */
+class ParticleMorph {
+    constructor(options = {}) {
+        this.selector =
+            options.selector ?? '.c-main--particle';
+
+        this.particleCount =
+            options.particleCount ?? 900;
+
+        this.particleSize =
+            options.particleSize ?? 1;
+
+        /**
+         * 목표 지점으로 당겨지는 힘.
+         *
+         * 높이면 빨리 모이고,
+         * 낮추면 천천히 모인다.
+         */
+        this.spring =
+            options.spring ?? 0.012;
+
+        /**
+         * 이동 감쇠.
+         *
+         * 1에 가까우면 오래 출렁이고,
+         * 낮으면 빠르게 멈춘다.
+         */
+        this.damping =
+            options.damping ?? 0.9;
+
+        this.canvas =
+            document.querySelector(
+                this.selector
+            );
+
+        this.ctx = null;
+
+        this.width = 0;
+        this.height = 0;
+
+        this.particles = [];
+
+        this.stateIndex = 0;
+
+        this.stateStartedAt = null;
+
+        this.animationFrame = null;
+
+        /**
+         * 모핑 순서
+         */
+        this.states = [
+            {
+                name: 'scatter',
+                duration: 1400
+            },
+            {
+                name: 'square',
+                duration: 2200
+            },
+            {
+                name: 'scatter',
+                duration: 1400
+            },
+            {
+                name: 'circle',
+                duration: 2200
+            },
+            {
+                name: 'scatter',
+                duration: 1400
+            },
+            {
+                name: 'triangle',
+                duration: 2200
+            }
+        ];
+    }
+
+    /**
+     * 초기화
+     */
+    init() {
+        if (!this.canvas) {
+            return;
+        }
+
+        this.ctx =
+            this.canvas.getContext('2d');
+
+        if (!this.ctx) {
+            return;
+        }
+
+        this.resize();
+
+        this.createParticles();
+
+        /**
+         * 처음에는 흩어진 상태로 시작
+         */
+        this.setTargets(
+            this.states[0].name,
+            true
+        );
+
+        this.stateStartedAt =
+            performance.now();
+
+        this.animationFrame =
+            requestAnimationFrame(
+                this.animate
+            );
+    }
+
+    /**
+     * Canvas 크기 설정
+     */
+    resize() {
+        if (
+            !this.canvas ||
+            !this.ctx
+        ) {
+            return;
+        }
+
+        const rect =
+            this.canvas.getBoundingClientRect();
+
+        /**
+         * Retina 대응.
+         *
+         * 지나치게 높은 DPR은
+         * 성능을 위해 2로 제한.
+         */
+        const dpr =
+            Math.min(
+                window.devicePixelRatio || 1,
+                2
+            );
+
+        this.width =
+            rect.width;
+
+        this.height =
+            rect.height;
+
+        this.canvas.width =
+            Math.round(
+                this.width * dpr
+            );
+
+        this.canvas.height =
+            Math.round(
+                this.height * dpr
+            );
+
+        this.ctx.setTransform(
+            dpr,
+            0,
+            0,
+            dpr,
+            0,
+            0
+        );
+
+        /**
+         * resize 후 현재 도형 기준으로
+         * 좌표를 다시 계산
+         */
+        if (
+            this.particles.length
+        ) {
+            this.setTargets(
+                this.states[
+                    this.stateIndex
+                ].name
+            );
+        }
+    }
+
+    /**
+     * 파티클 생성
+     */
+    createParticles() {
+        this.particles =
+            Array.from(
+                {
+                    length:
+                        this.particleCount
+                },
+                () => ({
+                    x:
+                        Math.random() *
+                        this.width,
+
+                    y:
+                        Math.random() *
+                        this.height,
+
+                    vx: 0,
+                    vy: 0,
+
+                    tx: 0,
+                    ty: 0
+                })
+            );
+    }
+
+    /**
+     * =========================================
+     * Scatter
+     * =========================================
+     */
+    createScatterTargets() {
+        const centerX =
+            this.width * 0.5;
+
+        const centerY =
+            this.height * 0.5;
+
+        const radius =
+            Math.min(
+                this.width,
+                this.height
+            ) * 0.43;
+
+        return this.particles.map(
+            () => {
+                const angle =
+                    Math.random() *
+                    Math.PI *
+                    2;
+
+                /**
+                 * sqrt 사용:
+                 * 중앙에 너무 몰리지 않고
+                 * 면적 전체에 자연스럽게 분산
+                 */
+                const distance =
+                    Math.sqrt(
+                        Math.random()
+                    ) * radius;
+
+                return {
+                    x:
+                        centerX +
+                        Math.cos(angle) *
+                            distance,
+
+                    y:
+                        centerY +
+                        Math.sin(angle) *
+                            distance
+                };
+            }
+        );
+    }
+
+    /**
+     * =========================================
+     * Filled Square
+     * =========================================
+     */
+    createSquareTargets() {
+        const size =
+            Math.min(
+                this.width,
+                this.height
+            ) * 0.5;
+
+        const startX =
+            this.width * 0.5 -
+            size * 0.5;
+
+        const startY =
+            this.height * 0.5 -
+            size * 0.5;
+
+        return this.particles.map(
+            () => ({
+                x:
+                    startX +
+                    Math.random() *
+                        size,
+
+                y:
+                    startY +
+                    Math.random() *
+                        size
+            })
+        );
+    }
+
+    /**
+     * =========================================
+     * Filled Circle
+     * =========================================
+     */
+    createCircleTargets() {
+        const centerX =
+            this.width * 0.5;
+
+        const centerY =
+            this.height * 0.5;
+
+        const radius =
+            Math.min(
+                this.width,
+                this.height
+            ) * 0.26;
+
+        return this.particles.map(
+            () => {
+                const angle =
+                    Math.random() *
+                    Math.PI *
+                    2;
+
+                const distance =
+                    Math.sqrt(
+                        Math.random()
+                    ) * radius;
+
+                return {
+                    x:
+                        centerX +
+                        Math.cos(angle) *
+                            distance,
+
+                    y:
+                        centerY +
+                        Math.sin(angle) *
+                            distance
+                };
+            }
+        );
+    }
+
+    /**
+     * =========================================
+     * Filled Triangle
+     * =========================================
+     */
+    createTriangleTargets() {
+        const centerX =
+            this.width * 0.5;
+
+        const centerY =
+            this.height * 0.5;
+
+        const size =
+            Math.min(
+                this.width,
+                this.height
+            ) * 0.6;
+
+        /**
+         * 정삼각형 꼭짓점
+         */
+        const pointA = {
+            x: centerX,
+            y:
+                centerY -
+                size * 0.48
+        };
+
+        const pointB = {
+            x:
+                centerX -
+                size * 0.5,
+
+            y:
+                centerY +
+                size * 0.38
+        };
+
+        const pointC = {
+            x:
+                centerX +
+                size * 0.5,
+
+            y:
+                centerY +
+                size * 0.38
+        };
+
+        return this.particles.map(
+            () => {
+                /**
+                 * 삼각형 내부에
+                 * 균일하게 랜덤 분포
+                 */
+                let r1 =
+                    Math.random();
+
+                let r2 =
+                    Math.random();
+
+                if (
+                    r1 + r2 >
+                    1
+                ) {
+                    r1 =
+                        1 - r1;
+
+                    r2 =
+                        1 - r2;
+                }
+
+                return {
+                    x:
+                        pointA.x +
+                        r1 *
+                            (
+                                pointB.x -
+                                pointA.x
+                            ) +
+                        r2 *
+                            (
+                                pointC.x -
+                                pointA.x
+                            ),
+
+                    y:
+                        pointA.y +
+                        r1 *
+                            (
+                                pointB.y -
+                                pointA.y
+                            ) +
+                        r2 *
+                            (
+                                pointC.y -
+                                pointA.y
+                            )
+                };
+            }
+        );
+    }
+
+    /**
+     * 현재 state에 맞는
+     * 목표 좌표 지정
+     */
+    setTargets(
+        state,
+        isInstant = false
+    ) {
+        if (
+            !this.particles.length
+        ) {
+            return;
+        }
+
+        let targets;
+
+        switch (state) {
+            case 'square':
+                targets =
+                    this.createSquareTargets();
+
+                break;
+
+            case 'circle':
+                targets =
+                    this.createCircleTargets();
+
+                break;
+
+            case 'triangle':
+                targets =
+                    this.createTriangleTargets();
+
+                break;
+
+            default:
+                targets =
+                    this.createScatterTargets();
+        }
+
+        this.particles.forEach(
+            (
+                particle,
+                index
+            ) => {
+                const target =
+                    targets[index];
+
+                particle.tx =
+                    target.x;
+
+                particle.ty =
+                    target.y;
+
+                if (isInstant) {
+                    particle.x =
+                        target.x;
+
+                    particle.y =
+                        target.y;
+                }
+            }
+        );
+    }
+
+    /**
+     * 일정 시간이 지나면
+     * 다음 state로 전환
+     */
+    updateState(now) {
+        const state =
+            this.states[
+                this.stateIndex
+            ];
+
+        if (
+            now -
+                this.stateStartedAt <
+            state.duration
+        ) {
+            return;
+        }
+
+        this.stateIndex =
+            (
+                this.stateIndex +
+                1
+            ) %
+            this.states.length;
+
+        this.stateStartedAt =
+            now;
+
+        this.setTargets(
+            this.states[
+                this.stateIndex
+            ].name
+        );
+    }
+
+    /**
+     * 파티클 이동
+     */
+    updateParticle(
+        particle
+    ) {
+        const dx =
+            particle.tx -
+            particle.x;
+
+        const dy =
+            particle.ty -
+            particle.y;
+
+        /**
+         * spring
+         */
+        particle.vx +=
+            dx *
+            this.spring;
+
+        particle.vy +=
+            dy *
+            this.spring;
+
+        /**
+         * damping
+         */
+        particle.vx *=
+            this.damping;
+
+        particle.vy *=
+            this.damping;
+
+        particle.x +=
+            particle.vx;
+
+        particle.y +=
+            particle.vy;
+    }
+
+    /**
+     * 작은 동일 크기 점 렌더
+     */
+    drawParticle(
+        particle
+    ) {
+        this.ctx.beginPath();
+
+        this.ctx.arc(
+            particle.x,
+            particle.y,
+            this.particleSize,
+            0,
+            Math.PI * 2
+        );
+
+        this.ctx.fillStyle =
+            '#000';
+
+        this.ctx.fill();
+    }
+
+    /**
+     * RAF Loop
+     */
+    animate = (now) => {
+        this.updateState(now);
+
+        this.ctx.clearRect(
+            0,
+            0,
+            this.width,
+            this.height
+        );
+
+        this.particles.forEach(
+            (particle) => {
+                this.updateParticle(
+                    particle
+                );
+
+                this.drawParticle(
+                    particle
+                );
+            }
+        );
+
+        this.animationFrame =
+            requestAnimationFrame(
+                this.animate
+            );
+    };
+
+    /**
+     * 정리
+     */
+    destroy() {
+        if (
+            this.animationFrame
+        ) {
+            cancelAnimationFrame(
+                this.animationFrame
+            );
+
+            this.animationFrame =
+                null;
+        }
+
+        this.particles = [];
+    }
+}
+
+
+
 
 /**
  * =========================================================
@@ -1121,6 +1793,16 @@ class PortfolioApp {
          */
         this.mainIntro =
             new MainIntro();
+
+this.particleMorph =
+    new ParticleMorph({
+        selector: '.c-main--particle',
+        particleCount: 900,
+        particleSize: 1,
+        spring: 0.012,
+        damping: 0.9
+    });
+
 
         /**
          * section 진입 텍스트 애니메이션
@@ -1206,6 +1888,12 @@ class PortfolioApp {
          * .text-exam ScrollTrigger 생성
          */
         this.scrollTextReveal.init();
+
+
+    /**
+     * 파티클 실행
+     */
+    this.particleMorph.init();
 
         /**
          * Loader와 Hero Intro가 진행되는 동안
