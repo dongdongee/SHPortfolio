@@ -475,6 +475,7 @@ class PageLoader {
     }
 }
 
+<<<<<<< Updated upstream
 
 /**
  * =========================================================
@@ -2021,3 +2022,40 @@ document.addEventListener(
         window.portfolioApp = app;
     }
 );
+=======
+class HeaderController {
+    constructor() {
+        this.header = document.querySelector('.site-header');
+        this.targetSection = document.querySelector('.section:nth-of-type(2)');
+
+        if (!this.header || !this.targetSection) return;
+
+        this.init();
+    }
+
+    init() {
+        this.header.classList.remove('is-show');
+
+        window.addEventListener('scroll', this.onScroll, { passive: true });
+        window.addEventListener('resize', this.onScroll);
+
+        this.onScroll();
+    }
+
+    onScroll = () => {
+        const targetTop = this.targetSection.getBoundingClientRect().top;
+
+        if (targetTop <= 0) {
+            this.header.classList.add('is-show');
+        } else {
+            this.header.classList.remove('is-show');
+        }
+    };
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    new PageLoader();
+    new HeaderController();
+});
+>>>>>>> Stashed changes

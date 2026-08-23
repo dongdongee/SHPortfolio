@@ -270,6 +270,23 @@ body.is-loading #wrap {
     letter-spacing: -0.05em;
 }
 
+.site-header {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-16px);
+    transition:
+        opacity .5s ease,
+        transform .5s ease,
+        visibility .5s ease;
+}
+
+.site-header.is-show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
 .c-main--content {
     height: 100vh;
     padding: calc(var(--spacing)*10) calc(var(--spacing)*5);
@@ -282,19 +299,27 @@ body.is-loading #wrap {
         height: 100%;
         color: #000;
 
+<<<<<<< Updated upstream
         .c-main--txt__eyebrow {
             font-size: clamp(16px, 2vw, 24px);
             text-align: left;
         }
 
+=======
+>>>>>>> Stashed changes
         .c-main--txt__title {
             /* color: #05cd4f; */
             white-space: nowrap;
             font-size: clamp(48px, 30vw, 120px);
             font-weight: 900;
             text-align: left;
+<<<<<<< Updated upstream
             line-height: 1;
             margin: 10px 0px 30px;
+=======
+            line-height: 1.2;
+            margin: 0px 0px 30px;
+>>>>>>> Stashed changes
         }
 
         .c-main--txt__text {
