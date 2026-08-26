@@ -3,54 +3,54 @@
 ======================================== */
 body {
     font-family: var(--sai-font-family);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg);
+}
+
+.blind{
+    position: absolute;
+    z-index: -10;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    font-size: inherit;
+    line-height: inherit;
+    word-break: break-all;
+    clip: rect(0, 0, 0, 0);
+    clip-path: polygon(0 0, 0 0, 0 0);
+    white-space: nowrap;
+    transform: scale(.01);
 }
 
 
 /* ========================================
 SAI Header
 ======================================== */
-.sai-header {
-    .sai-header__inner {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: var(--space-3);
-        border-bottom: 1px solid var(--color-primary-soft);
-    }
-
-    .sai-header__logo {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        color: var(--color-text-primary);
-    }
-}
 
 .sai-header {
     .sai-header__inner {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        padding: var(--space-3);
+        padding: calc(var(--space)*5);
         border-bottom: 1px solid var(--color-primary-soft);
-    }
-
-    .sai-header__logo {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        color: var(--color-text-primary);
-        .sai-header__logo-link {
+        .sai-header__logo {
             display: flex;
+            flex-direction: row;
             align-items: center;
             justify-content: center;
-            .sai-header__logo-image {
-                width: clamp(18px, 3vw, 44px);
-            }
-            .sai-header__logo-text {
-                font-size: var(--font-size-2xl);
+            color: var(--color-text-primary);
+            .sai-header__logo-link {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .sai-header__logo-image {
+                    width: clamp(18px, 3vw, 44px);
+                }
+                .sai-header__logo-text {
+                    font-size: var(--font-size-2xl);
+                    color: var(--color-text-primary);
+                }
             }
         }
     }
@@ -58,22 +58,65 @@ SAI Header
         display: flex;
         flex-direction: row;
         align-items: center;
-        gap: var(--space-3);
+        gap: calc(var(--space)*6);
+        .sai-header__button {
+            .sai-header__button-ico {
+                display: block;
+                width: 24px;
+                height: 24px;
+                background-color: currentColor;
+
+                mask: var(--icon) no-repeat center / contain;
+                -webkit-mask: var(--icon) no-repeat center / contain;
+            }
+            border-radius: 8px;
+            &:hover {
+                color: #8b5cf6;
+            }
+
+            &.sai-header__button--light {
+                --icon: url('/sai/assets/svg/ico_sun.svg');
+            }
+
+            &.sai-header__button--dark {
+                --icon: url('/sai/assets/svg/ico_moon.svg');
+            }
+
+            &.sai-header__button--setting {
+                --icon: url('/sai/assets/svg/ico_setting.svg');
+            }
+        }
         .sai-header__credit {
             display: flex;
-            flex-direction: column;
-            font-size: var(--font-size-md);
-            .sai-header__credit-status {
-
+            flex-direction: row;
+            font-size: var(--font-size-lg);
+            align-items: center;
+            justify-content: center;
+            gap: calc(var(--space)*2);
+            line-height: 1.4;
+            .sai-header__credit-symbol {
+                display: block;
+                width: 12px;
+                height: 12px;
+                border-radius: 100%;
+                background-color: var(--color-primary);
+            }
+        }
+        .sai-header__user-info{
+            width: 40px;
+            height: 40px;
+            background-color: var(--color-primary);
+            border-radius: 100%;
+            .sai-header__user-text{
+                color: var(--color-primary-soft);   
             }
         }
     }
+    
 
 
 
-    .sai-header__credit-ico {}
 
-    .sai-header__credit-label {}
 
     .sai-header__credit-value {}
 
@@ -92,4 +135,118 @@ SAI Header
     .sai-header__button-ico {}
 
     .sai-header__button-text {}
+}
+
+
+
+
+/* ========================================
+   Header Theme State
+======================================== */
+
+html[data-theme="light"] {
+    .sai-header__button--light {
+        display: none;
+    }
+
+    .sai-header__button--dark {
+        display: flex;
+    }
+}
+
+html[data-theme="dark"] {
+    .sai-header__button--light {
+        display: flex;
+    }
+
+    .sai-header__button--dark {
+        display: none;
+    }
+}
+
+
+
+#wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+    overflow: hidden;
+    .sai-layout {
+        display: flex;
+        flex: 1;
+        min-height: 0;
+        .sai-aside {
+            display: flex;
+            flex: 0 0 240px;
+            flex-direction: column;
+            width: 240px;
+            min-height: 0;
+            border-right: 1px solid var(--color-primary-soft);
+            .sai-aside__nav {
+                flex: 1;
+                overflow-y: auto;
+                .sai-aside-menuwrap{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    column-gap: var(--space);
+                    &.sai-aside__bigMenu{
+                        padding-left: calc(4*var(--space));
+                        /* .sai-nav-ico{
+                            display: inline-block;
+                            width: 20px;
+                            height: 20px;
+                            background-color: currentColor;
+                            mask-repeat: no-repeat;
+                            mask-position: center;
+                            mask-size: contain;
+                            &.sai-nav-ico--dashboard {
+                                mask-image: url("/sai/assets/svg/ico_dashboard.svg");
+                            }
+                        } */
+                    }
+                }
+            }
+            .sai-aside__footer {
+                flex-shrink: 0;
+            }
+        }
+    }
+    .sai-main {
+        flex: 1;
+        min-width: 0;
+        min-height: 0;
+        overflow-y: auto;
+    }
+}
+.sai-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sai-nav-ico {
+    display: block;
+    width: 24px;
+    height: 24px;
+    flex: 0 0 24px;
+
+    background-color: currentColor;
+
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+
+    -webkit-mask-position: center;
+    mask-position: center;
+
+    -webkit-mask-size: contain;
+    mask-size: contain;
+}
+
+.sai-nav-txt {
+    line-height: 1;
+}
+.sai-nav-ico--dashboard {
+    -webkit-mask-image: url("/sai/assets/svg/ico_dashboard.svg");
+    mask-image: url("/sai/assets/svg/ico_dashboard.svg");
 }
