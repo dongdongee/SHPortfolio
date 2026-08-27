@@ -19,44 +19,71 @@
     --color-primary-hover: #7c3aed;
     --color-primary-active: #6d28d9;
 
-    --color-primary-soft: #f3eeff;
+    --color-primary-soft: #f1edff;
+    --color-primary-soft-hover: #e9e2ff;
+    --color-primary-soft-active: #e0d5ff;
+
     --color-primary-border: #ddd0ff;
 
 
     /* ========================
-       Background / Surface
+       Background
     ======================== */
 
-    /* 페이지 전체 배경 */
-    --color-bg: #f7f7fb;
+    /* Page */
+    --color-bg-page: #f8f8fb;
 
     /* Header / Aside / Card */
-    --color-surface: #ffffff;
+    --color-bg-surface: #ffffff;
 
-    /* Secondary Surface */
-    --color-surface-subtle: #f4f3f8;
+    /* Secondary Area */
+    --color-bg-subtle: #f6f6f8;
 
-    /* Hover Surface */
-    --color-surface-hover: #f3f0ff;
+    /* Interactive */
+    --color-bg-hover: #eeeeF2;
+    --color-bg-active: #f1edff;
+    --color-bg-selected: #f1edff;
+
+    /* Disabled */
+    --color-bg-disabled: #f3f3f5;
 
 
     /* ========================
        Text
     ======================== */
 
-    --color-text-primary: #171a23;
-    --color-text-secondary: #667085;
-    --color-text-tertiary: #98a2b3;
-    --color-text-disabled: #b9c0cc;
+    --color-text-primary: #202126;
+    --color-text-secondary: #686b73;
+    --color-text-tertiary: #9699a2;
+    --color-text-disabled: #b9bbc2;
+
+    /* Interactive */
+    --color-text-hover: #202126;
+    --color-text-active: #7c3aed;
+
+    /* Brand Text */
+    --color-text-brand: #8b5cf6;
+    --color-text-brand-hover: #7c3aed;
+    --color-text-brand-active: #6d28d9;
+
+    /* Inverse */
+    --color-text-inverse: #ffffff;
 
 
     /* ========================
        Border
     ======================== */
 
-    --color-border: #e7e5ec;
-    --color-border-light: #efedf3;
-    --color-divider: #eaecf0;
+    --color-border: #e7e7eb;
+    --color-border-light: #efeff2;
+    --color-border-strong: #d5d5db;
+
+    /* Interactive */
+    --color-border-hover: #c9c9d0;
+    --color-border-focus: #8b5cf6;
+    --color-border-active: #8b5cf6;
+
+    --color-divider: #e8e8ec;
 
 
     /* ========================
@@ -137,58 +164,80 @@
        Brand
     ======================== */
 
-    --color-primary: #8b5cf6;
-    --color-primary-hover: #a78bfa;
-    --color-primary-active: #7c3aed;
+    --color-primary: #a78bfa;
+    --color-primary-hover: #c4b5fd;
+    --color-primary-active: #8b5cf6;
 
-    --color-primary-soft: rgba(139, 92, 246, 0.12);
-    --color-primary-border: rgba(139, 92, 246, 0.28);
+    --color-primary-soft: rgba(139, 92, 246, 0.14);
+    --color-primary-soft-hover: rgba(139, 92, 246, 0.20);
+    --color-primary-soft-active: rgba(139, 92, 246, 0.28);
+
+    --color-primary-border: rgba(167, 139, 250, 0.32);
 
 
     /* ========================
-       Background / Surface
+       Background
     ======================== */
 
-    /* 페이지 전체 배경 */
-    --color-bg: #0d0d12;
+    --color-bg-page: #0d0d12;
 
-    /* Header / Aside / Card */
-    --color-surface: #15151c;
+    --color-bg-surface: #15151c;
 
-    /* Secondary Surface */
-    --color-surface-subtle: #1b1b24;
+    --color-bg-subtle: #1b1b23;
 
-    /* Hover Surface */
-    --color-surface-hover: #211d2e;
+    /* hover는 기본 surface보다 확실하게 밝게 */
+    --color-bg-hover: #292934;
+
+    --color-bg-active: #29213a;
+    --color-bg-selected: #29213a;
+
+    --color-bg-disabled: #1c1c22;
 
 
     /* ========================
        Text
     ======================== */
 
-    --color-text-primary: #f8fafc;
-    --color-text-secondary: #a7b0c0;
-    --color-text-tertiary: #697386;
-    --color-text-disabled: #4b5565;
+    --color-text-primary: #f5f5f7;
+    --color-text-secondary: #a8abb4;
+    --color-text-tertiary: #747781;
+    --color-text-disabled: #50525b;
+
+    /* Interactive */
+    --color-text-hover: #ffffff;
+    --color-text-active: #c4b5fd;
+
+    /* Brand Text */
+    --color-text-brand: #a78bfa;
+    --color-text-brand-hover: #c4b5fd;
+    --color-text-brand-active: #8b5cf6;
+
+    --color-text-inverse: #17171c;
 
 
     /* ========================
        Border
     ======================== */
 
-    --color-border: #292933;
-    --color-border-light: #22222b;
-    --color-divider: #292933;
+    --color-border: #2b2b33;
+    --color-border-light: #222229;
+    --color-border-strong: #3b3b45;
+
+    --color-border-hover: #50505c;
+    --color-border-focus: #a78bfa;
+    --color-border-active: #a78bfa;
+
+    --color-divider: #292930;
 
 
     /* ========================
        Status
     ======================== */
 
-    --color-success: #22c55e;
+    --color-success: #4ade80;
     --color-success-soft: rgba(34, 197, 94, 0.12);
 
-    --color-warning: #f59e0b;
+    --color-warning: #fbbf24;
     --color-warning-soft: rgba(245, 158, 11, 0.12);
 
     --color-error: #f87171;

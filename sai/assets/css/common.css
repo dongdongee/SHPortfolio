@@ -33,7 +33,7 @@ SAI Header
         flex-direction: row;
         justify-content: space-between;
         padding: calc(var(--space)*5);
-        border-bottom: 1px solid var(--color-primary-soft);
+        border-bottom: 1px solid var(--color-divider);
         .sai-header__logo {
             display: flex;
             flex-direction: row;
@@ -179,31 +179,55 @@ html[data-theme="dark"] {
             display: flex;
             flex: 0 0 240px;
             flex-direction: column;
-            width: 240px;
             min-height: 0;
-            border-right: 1px solid var(--color-primary-soft);
+            border-right: 1px solid var(--color-divider);
             .sai-aside__nav {
                 flex: 1;
                 overflow-y: auto;
-                .sai-aside-menuwrap{
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    column-gap: var(--space);
-                    &.sai-aside__bigMenu{
-                        padding-left: calc(4*var(--space));
-                        /* .sai-nav-ico{
-                            display: inline-block;
-                            width: 20px;
-                            height: 20px;
-                            background-color: currentColor;
-                            mask-repeat: no-repeat;
-                            mask-position: center;
-                            mask-size: contain;
-                            &.sai-nav-ico--dashboard {
-                                mask-image: url("/sai/assets/svg/ico_dashboard.svg");
+                .sai-nav-toggle{
+                    padding: calc(2*var(--space)) calc(5*var(--space));
+                    margin-top: calc(4*var(--space));
+                    &:nth-child(n+2){
+                        margin-top: calc(6*var(--space));
+                    }
+                    .sai-aside__main_menu{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        column-gap: calc(2 * var(--space));
+                        width: 100%;
+                        font-size: var(--font-size-lg);
+                        font-weight: var(--font-weight-medium);
+                        .sai-nav-ico{
+                            width: 24px;
+                        }
+                    }
+                    .aside__detail_menu{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        justify-content: flex-start;
+                        li{
+                            width: 100%;
+                            margin-top: var(--space);
+                            a{
+                                display: block;
+                                width: 100%;
+                                border-radius: 4px;
+                                padding:  calc(2*var(--space)) 0 calc(2*var(--space)) calc(8*var(--space));
+                                font-size: var(--font-size-md);
+    &:hover {
+        background-color: var(--color-bg-hover);
+        color: var(--color-text-hover);
+    }
+
+    &.is-active {
+        background-color: var(--color-bg-active);
+        color: var(--color-text-active);
+        font-weight: var(--font-weight-medium);
+    }
                             }
-                        } */
+                        }
                     }
                 }
             }
@@ -223,30 +247,4 @@ html[data-theme="dark"] {
     display: flex;
     align-items: center;
     gap: 8px;
-}
-
-.sai-nav-ico {
-    display: block;
-    width: 24px;
-    height: 24px;
-    flex: 0 0 24px;
-
-    background-color: currentColor;
-
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-
-    -webkit-mask-position: center;
-    mask-position: center;
-
-    -webkit-mask-size: contain;
-    mask-size: contain;
-}
-
-.sai-nav-txt {
-    line-height: 1;
-}
-.sai-nav-ico--dashboard {
-    -webkit-mask-image: url("/sai/assets/svg/ico_dashboard.svg");
-    mask-image: url("/sai/assets/svg/ico_dashboard.svg");
 }
