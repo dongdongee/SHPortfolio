@@ -199,7 +199,8 @@ html[data-theme="dark"] {
                         font-size: var(--font-size-lg);
                         font-weight: var(--font-weight-medium);
                         .sai-nav-ico{
-                            width: 24px;
+                            svg{
+                            }
                         }
                     }
                     .aside__detail_menu{
