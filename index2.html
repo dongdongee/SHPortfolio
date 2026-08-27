@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+            font-family: Pretendard, sans-serif;
+        }
+
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .blur {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 650px;
+            height: 650px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background:
+                radial-gradient(circle,
+                    rgba(142, 77, 255, .28) 0%,
+                    rgba(142, 77, 255, .12) 35%,
+                    transparent 70%);
+            filter: blur(70px);
+        }
+
+        .title {
+            position: absolute;
+            left: 2vw;
+            top: 4vh;
+            z-index: 10;
+        }
+
+        .title h1 {
+            font-size: 8vw;
+            line-height: .95;
+            font-weight: 900;
+            color: #fff;
+            letter-spacing: -.07em;
+        }
+
+        .desc {
+            position: absolute;
+            right: 2vw;
+            bottom: 5vh;
+            z-index: 10;
+            text-align: right;
+            font-size: 3vw;
+            line-height: 1.18;
+            font-weight: 800;
+            letter-spacing: -.05em;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero">
+
+        <div class="blur"></div>
+
+        <canvas id="network"></canvas>
+
+        <div class="title">
+            <h1>
+                웹 퍼블리셔,<br>
+                박상호.
+            </h1>
+        </div>
+
+        <div class="desc">
+            사용자의 흐름을 읽고,<br>
+            화면의 구조를 설계하며,<br>
+            세밀한 인터랙션을 구현하고,<br>
+            더 나은 경험을 고민합니다.
+        </div>
+
+    </section>
+
+    <script>
+
+        const canvas = document.getElementById("network");
+        const ctx = canvas.getContext("2d");
+
+        let w, h;
+
+        const mouse = {
+            x: window.innerWidth / 2,
+            y: window.innerHeight / 2
+        };
+
+        const points = [];
+
+        function resize() {
+
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+
+            points.length = 0;
+
+            const total = 24;
+
+            for (let i = 0; i < total; i++) {
+
+                const angle = (Math.PI * 2 / total) * i;
+
+                const radius = 120 + Math.random() * 220;
+
+                points.push({
+
+                    baseX: w / 2 + Math.cos(angle) * radius,
+                    baseY: h / 2 + Math.sin(angle) * radius,
+
+                    x: 0,
+                    y: 0,
+
+                    size: 2 + Math.random() * 2,
+
+                    speed: .2 + Math.random(),
+
+                    offset: Math.random() * 1000
+
+                });
+
+            }
+
+        }
+
+        resize();
+
+        window.addEventListener("resize", resize);
+
+        window.addEventListener("mousemove", e => {
+
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+
+        });
+
+        function draw() {
+
+            ctx.clearRect(0, 0, w, h);
+
+            const t = performance.now() * 0.00025;
+
+            points.forEach((p, i) => {
+
+                p.x = p.baseX +
+                    Math.cos(t * p.speed + p.offset) * 18 +
+                    (mouse.x - w / 2) * 0.02;
+
+                p.y = p.baseY +
+                    Math.sin(t * p.speed + p.offset) * 18 +
+                    (mouse.y - h / 2) * 0.02;
+
+                for (let j = i + 1; j < points.length; j++) {
+
+                    const p2 = points[j];
+
+                    const dx = p.x - p2.x;
+                    const dy = p.y - p2.y;
+
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 180) {
+
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+
+                        ctx.strokeStyle = `rgba(255,255,255,${0.12 - (dist / 180) * 0.12})`;
+
+                        ctx.lineWidth = 1;
+
+                        ctx.stroke();
+
+                    }
+
+                }
+
+            });
+
+            points.forEach(p => {
+
+                ctx.beginPath();
+
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+
+                ctx.fillStyle = "rgba(255,255,255,.7)";
+
+                ctx.fill();
+
+            });
+
+            requestAnimationFrame(draw);
+
+        }
+
+        draw();
+
+    </script>
+
+</body>
+
+</html>

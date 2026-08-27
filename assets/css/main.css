@@ -1,654 +1,155 @@
+/* 기본 scrollbar 숨김 */
+/* 기본 브라우저 scrollbar 숨김 */
 html {
     scrollbar-width: none;
 }
 
-body {
-    -ms-overflow-style: none;
-}
-
-body::-webkit-scrollbar {
+html::-webkit-scrollbar {
     display: none;
 }
 
-body.is-loading {
-    overflow: hidden;
-    width: 100%;
-    height: 100vh;
-}
-
-body.is-loading #wrap {
-    height: 100vh;
-    overflow: hidden;
-}
-
-
-.c-main--content {
-    visibility: hidden;
+/* 인트로 동안 실제 페이지 숨김 */
+body.is-intro #wrap {
     opacity: 0;
+    visibility: hidden;
 }
 
-.c-main--txt__title,
-.c-main--txt__text {
-    perspective: 800px;
-}
-
-.c-main--txt__title .line,
-.c-main--txt__text .line {
-    display: block;
-    overflow: hidden;
-}
-
-.c-main--txt__title .char,
-.c-main--txt__text .char {
-    display: inline-block;
-    backface-visibility: hidden;
-    will-change: transform, opacity, filter;
-}
-
-/* ==============================
-   Header
-============================== */
-
-.p-header__box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: calc(var(--spacing) * 5) calc(var(--spacing) * 7.5);
-
-    .p-header__logo {
-        font-size: var(--text-md);
-        font-weight: var(--fw-black);
-        font-family: var(--font-en);
-    }
-
-    .p-header__gnb {
-        ul {
-            display: flex;
-            flex-direction: row;
-            column-gap: calc(var(--spacing) * 5);
-            align-items: center;
-
-            li {
-                a {
-                    font-size: var(--text-sm);
-                    font-weight: var(--fw-sb);
-                    font-family: var(--font-en);
-                }
-            }
-        }
-    }
-}
-
-/* ==============================
-   Header
-============================== */
-
-
-
-/* ==============================
-   Loader
-============================== */
-
-#loader {
+/* Hero */
+.hero {
     position: fixed;
-    top: 0;
-    left: 0;
+    inset: 0;
     z-index: 9999;
 
     display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: center;
 
-    width: 100%;
-    height: 100%;
-
-    overflow: hidden;
-
-    background-color: #fff4df;
-
-    transition:
-        opacity 0.8s ease-out,
-        visibility 0.8s ease-out;
-}
-
-#loader.hidden {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.loader-content {
-    width: 300px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
-
-.loader-bg-fill {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 1;
-
-    width: 100%;
-    height: 0%;
-
-    background: #111;
-
-    pointer-events: none;
-
-    transition: height .12s cubic-bezier(.1, .8, .2, 1);
-}
-
-.loader-number {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: 10;
-
-    transform: translate(-50%, -50%);
-
-    font-size: clamp(20px, 10vw, 60px);
-    font-weight: 300;
-    color: #fff;
-
-    mix-blend-mode: difference;
-}
-
-/* ==============================
-   Wrap
-============================== */
-
-#wrap {
-    position: relative;
-    z-index: 2;
-
-    opacity: 0;
-    visibility: hidden;
-
-    transition:
-        opacity 1s ease-out,
-        visibility 1s ease-out;
-}
-
-#wrap.is-loaded {
-    z-index: 10000;
-
-    opacity: 1;
-    visibility: visible;
-}
-
-/* ==============================
-   Header / Logo
-============================== */
-
-.site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10001;
-
-    width: 100%;
-    height: 72px;
-
-    pointer-events: none;
-}
-
-.logo-target {
-    position: absolute;
-    top: 24px;
-    left: 32px;
-
-    font-size: 18px;
-    font-weight: 900;
-    color: #fff;
-
-    opacity: 0;
-}
-
-/* ==============================
-   Hero Intro
-============================== */
-
-.hero {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 5;
     width: 100%;
     height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+
     background: #fff;
 }
 
 .intro-titles {
-    overflow: hidden;
-}
+    position: relative;
 
-.title {
-    color: #000;
-    font-size: clamp(12px, 1.5vw, 20px);
-    font-weight: 900;
-    line-height: 1;
-    letter-spacing: -0.07em;
-
-    transform-origin: left top;
-
-    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .intro-titles .title {
     position: absolute;
-    top: 50%;
-    left: 50%;
-
     margin: 0;
-
-    transform: translate(-50%, -50%);
-
-    opacity: 0;
-
-    text-align: center;
-    white-space: normal;
-}
-
-/* ==============================
-   Main Content
-============================== */
-
-.main-content {
-    padding: 120px 40px 200px;
-}
-
-.main-content p {
-    margin: 0;
-    font-size: clamp(48px, 6vw, 120px);
-    font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: -0.05em;
-}
-
-.c-main--content {
-    height: 100vh;
-    padding: 60px 30px;
-
-    .c-main--txt {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-end;
-        height: 100%;
-        color: #000;
-
-        .c-main--txt__eyebrow {
-            font-size: clamp(16px, 2vw, 24px);
-            text-align: left;
-        }
-
-        .c-main--txt__title {
-            /* color: #05cd4f; */
-            white-space: nowrap;
-            font-size: clamp(48px, 16vw, 220px);
-            font-weight: 900;
-            text-align: left;
-            line-height: 1.32;
-            margin: 10px 0px 30px;
-        }
-
-        .c-main--txt__text {
-            font-size: clamp(16px, 3vw, 20px);
-            text-align: left;
-            line-height: 1.4;
-            margin: 0 0 calc(var(--spacing)*20) calc(var(--spacing)*10);
-            font-weight: 500;
-        }
-    }
-}
-
-/* ==============================
-   Container Title
-============================== */
-
-.c-container__title {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-
-    font-size: 80px;
-    font-weight: 900;
-    line-height: 1.2;
-    color: #fff;
-
-    mix-blend-mode: difference;
-}
-
-/* ==============================
-   Animation 1: Staggered Text Reveal
-============================== */
-
-.anim-1 .title-word {
-    display: inline-flex;
-    overflow: hidden;
-}
-
-.anim-1 .title-word span {
-    display: inline-block;
-
-    transform: translateY(110%) skewY(10deg) scale(1.1);
-
-    opacity: 0;
-    filter: blur(10px);
-
-    transition:
-        transform 0.9s cubic-bezier(0.19, 1, 0.22, 1),
-        filter 0.9s cubic-bezier(0.19, 1, 0.22, 1),
-        opacity 0s;
-}
-
-#wrap.anim-1.is-loaded .title-word span {
-    transform: translateY(0) skewY(0) scale(1);
-
-    opacity: 1;
-    filter: blur(0);
-}
-
-/* ==============================
-   Animation 2: Scale & Blur
-============================== */
-
-#wrap.anim-2 {
-    transform: scale(1.15);
-    filter: blur(15px);
-
-    transition:
-        opacity 1.2s ease-out,
-        visibility 1.2s ease-out,
-        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-        filter 1.2s ease-out;
-}
-
-#wrap.anim-2.is-loaded {
-    transform: scale(1);
-    filter: blur(0);
-}
-
-/* ==============================
-   Animation 3: Infinite Marquee
-============================== */
-
-.anim-3 .marquee-container {
-    display: block;
-
-    width: 100%;
-
-    overflow: hidden;
     white-space: nowrap;
 }
 
-.anim-3 .marquee-track {
-    display: inline-block;
 
-    opacity: 0;
-    transform: translateY(30px);
-
-    animation: marquee 10s linear infinite;
-
-    transition:
-        opacity 1.2s ease,
-        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-#wrap.anim-3.is-loaded .marquee-track {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.anim-3 .marquee-track span {
-    padding-right: 30px;
-}
-
-@keyframes marquee {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-50%);
-    }
-}
-
-/* ==============================
-   Animation 4: 3D Flip Reveal
-============================== */
-
-.anim-4 .perspective-container {
-    perspective: 1000px;
-}
-
-.anim-4 .flip-word {
-    display: inline-block;
-}
-
-.anim-4 .flip-word span {
-    display: inline-block;
-
-    transform: rotateX(90deg);
-    transform-origin: center bottom;
-
-    opacity: 0;
-
-    transition:
-        transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-        opacity 0.8s ease;
-}
-
-#wrap.anim-4.is-loaded .flip-word span {
-    transform: rotateX(0);
-    opacity: 1;
-}
-
-#wrap.anim-4.is-loaded .flip-word:nth-child(1) span {
-    transition-delay: 0.1s;
-}
-
-#wrap.anim-4.is-loaded .flip-word:nth-child(2) span {
-    transition-delay: 0.2s;
-}
-
-#wrap.anim-4.is-loaded .flip-word:nth-child(3) span {
-    transition-delay: 0.3s;
-}
-
-#wrap.anim-4.is-loaded .flip-word:nth-child(4) span {
-    transition-delay: 0.4s;
-}
-
-#wrap.anim-4.is-loaded .flip-word:nth-child(5) span {
-    transition-delay: 0.5s;
-}
-
-/* ==============================
-   Loader Transition: Radial Reveal
-============================== */
-
-#loader[data-transition="radial-reveal"] {
-    clip-path: circle(150% at 50% 50%);
-
-    transition: clip-path 1.2s cubic-bezier(0.85, 0, 0.15, 1);
-}
-
-#loader[data-transition="radial-reveal"].hidden {
-    opacity: 1 !important;
-    visibility: visible !important;
-
-    clip-path: circle(0% at 50% 50%);
-}
-
-/* ==============================
-   Loader Transition: Multi Column
-============================== */
-
-.loader-col-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-
-    display: flex;
-
-    width: 100%;
-    height: 100%;
-
-    pointer-events: none;
-}
-
-.loader-col {
-    flex: 1;
-
-    height: 100%;
-
-    background-color: #000;
-
-    transform: translateY(0);
-    transition: transform 0.9s cubic-bezier(0.85, 0, 0.15, 1);
-}
-
-.loader-col.slide-up {
-    transform: translateY(-100%);
-}
-
-#loader[data-transition="multi-column"] {
-    background-color: transparent !important;
-
-    transition: visibility 1.2s;
-}
-
-#loader[data-transition="multi-column"] .loader-content {
-    z-index: 10;
-
-    transition: opacity 0.4s ease;
-}
-
-#loader[data-transition="multi-column"].hidden .loader-content {
-    opacity: 0;
-}
-
-/* ==============================
-   Loader Transition: Liquid Wipe
-============================== */
-
-#loader[data-transition="liquid-wipe"] {
-    background-color: transparent !important;
-
-    transition: visibility 1.4s;
-}
-
-#loader[data-transition="liquid-wipe"] .loader-content {
-    z-index: 10;
-
-    transition: opacity 0.4s ease;
-}
-
-#loader[data-transition="liquid-wipe"].hidden .loader-content {
-    opacity: 0;
-}
-
-.liquid-svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-
-    width: 100%;
-    height: 100%;
-
-    pointer-events: none;
-}
-
-.liquid-path {
-    fill: #000;
-
-    transition: d 1.3s cubic-bezier(0.76, 0, 0.24, 1);
-
-    d: path("M 0,0 L 100,0 L 100,100 Q 50,100 0,100 Z");
-}
-
-#loader[data-transition="liquid-wipe"].hidden .liquid-path {
-    d: path("M 0,0 L 100,0 L 100,0 Q 50,-40 0,0 Z");
-}
-
-/* ==============================
-   Loader Transition: Zoom Warp
-============================== */
-
-#loader[data-transition="zoom-warp"] {
-    transition:
-        opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-        visibility 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-#loader[data-transition="zoom-warp"] .loader-number {
-    transition:
-        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-        opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-        filter 1s ease;
-}
-
-#loader[data-transition="zoom-warp"].hidden .loader-number {
-    transform: translate(-50%, -50%) scale(15);
-
-    opacity: 0;
-    filter: blur(15px);
-}
-
-
-
-
-
-
-.c-main__fixed {
+/* =========================
+   Custom Scrollbar
+========================= */
+.scrollbar {
     position: fixed;
     top: 0;
+    right: 10px;
+    z-index: 9998;
+
+    width: 15px;
+    height: 100vh;
+
+    pointer-events: none;
+}
+
+.scrollbar__thumb {
+    position: absolute;
+    top: 0;
     left: 0;
+
+    width: 10px;
+
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.45);
+
+    opacity: 0;
+    transition: opacity 0.25s ease;
+
+    will-change: transform;
+}
+/* 스크롤 중 */
+.scrollbar.is-show .scrollbar__thumb {
+    opacity: 1;
+}
+
+/* Intro에서는 thumb 숨김 */
+body.is-intro .scrollbar__thumb {
+    opacity: 0;
+}
+/* 인트로 중 스크롤 잠금 */
+body.is-intro {
+    overflow: hidden;
+}
+
+/* 인트로 동안 실제 페이지 숨김 */
+body.is-intro #wrap {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Hero */
+.hero {
+    position: fixed;
+    inset: 0;
     z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: 100%;
-    height: 100%;
+    height: 100vh;
+
+    background: #fff;
+}
+
+.intro-titles {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.intro-titles .title {
+    position: absolute;
+
+    margin: 0;
+
+    white-space: nowrap;
+}
+
+
+/* custom scrollbar */
+.scrollbar {
+    position: fixed;
+    top: 0;
+    right: 4px;
+    z-index: 9998;
+
+    width: 3px;
+    height: 100vh;
+
+    opacity: 0;
+
     pointer-events: none;
 
-    .c-main__fixed-vertical {
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacing);
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+    transition: opacity 0.3s ease;
+}
 
-        .c-main__fixed-line {
-            flex: 1;
-            width: 100%;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-    }
+.scrollbar.is-show {
+    opacity: 1;
+}
 
-    .c-main__fixed-horizontal {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
 
-        display: grid;
-        grid-template-rows: repeat(4, 1fr);
-        gap: var(--spacing);
-
-        .c-main__fixed-line {
-            width: 100%;
-        }
-    }
+body.is-intro .scrollbar {
+    display: none;
 }
