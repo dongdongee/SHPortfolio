@@ -69,9 +69,9 @@ SAI Header
                 mask: var(--icon) no-repeat center / contain;
                 -webkit-mask: var(--icon) no-repeat center / contain;
             }
-            border-radius: 8px;
+                border-radius: 8px;
             &:hover {
-                color: #8b5cf6;
+                color: var(--color-text-active);
             }
 
             &.sai-header__button--light {
@@ -169,21 +169,21 @@ html[data-theme="dark"] {
 #wrap {
     display: flex;
     flex-direction: column;
-    height: 100dvh;
-    overflow: hidden;
+    min-height: 100vh;
+    overflow: visible;
     .sai-layout {
         display: flex;
         flex: 1;
-        min-height: 0;
+        min-height: 100vh;
         .sai-aside {
             display: flex;
             flex: 0 0 240px;
             flex-direction: column;
-            min-height: 0;
+            min-height: 100vh;
             border-right: 1px solid var(--color-divider);
             .sai-aside__nav {
                 flex: 1;
-                overflow-y: auto;
+                overflow: visible;
                 .sai-nav-toggle{
                     padding: calc(2*var(--space)) calc(5*var(--space));
                     margin-top: calc(4*var(--space));
@@ -199,8 +199,37 @@ html[data-theme="dark"] {
                         font-size: var(--font-size-lg);
                         font-weight: var(--font-weight-medium);
                         .sai-nav-ico{
-                            svg{
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            flex-shrink: 0;
+                            width: 20px;
+                            height: 20px;
+                            svg,
+                            img {
+                                display: block;
+                                width: 18px;
+                                height: 18px;
                             }
+                            /* background-color: currentColor;
+
+                            mask: var(--icon) no-repeat center / contain;
+                            -webkit-mask: var(--icon) no-repeat center / contain;
+                            &:hover {
+                                color: var(--color-text-active);
+                            }
+
+                            &.sai-nav-ico--dashboard {
+                                --icon: url('/sai/assets/svg/ico_dashboard.svg');
+                            }
+
+                            &.sai-header__button--dark {
+                                --icon: url('/sai/assets/svg/ico_moon.svg');
+                            }
+
+                            &.sai-header__button--setting {
+                                --icon: url('/sai/assets/svg/ico_setting.svg');
+                            } */
                         }
                     }
                     .aside__detail_menu{
@@ -210,7 +239,7 @@ html[data-theme="dark"] {
                         justify-content: flex-start;
                         li{
                             width: 100%;
-                            margin-top: var(--space);
+                            margin-top: calc(2*var(--space));
                             a{
                                 display: block;
                                 width: 100%;
