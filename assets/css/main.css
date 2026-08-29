@@ -1,5 +1,11 @@
-/* 기본 scrollbar 숨김 */
-/* 기본 브라우저 scrollbar 숨김 */
+/****************************/
+/* 브라우저 환경 세팅 */
+/****************************/
+html,
+body {
+    font-family: "Inter", "Pretendard Variable", sans-serif;
+}
+
 html {
     scrollbar-width: none;
 }
@@ -8,41 +14,45 @@ html::-webkit-scrollbar {
     display: none;
 }
 
-/* 인트로 동안 실제 페이지 숨김 */
 body.is-intro #wrap {
     opacity: 0;
     visibility: hidden;
 }
+/****************************/
+/* // 브라우저 환경 세팅 */
+/****************************/
 
-/* Hero */
+
+/****************************/
+/* 인트로 */
+/****************************/
 .hero {
     position: fixed;
     inset: 0;
     z-index: 9999;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 100%;
     height: 100vh;
-
     background: #fff;
+    .hero__container{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .hero__title{
+            position: absolute;
+            margin: 0;
+            white-space: nowrap;
+            font-size: var(--font-size-md);
+            font-weight: var(--font-weight-bold);
+        }
+    }
 }
-
-.intro-titles {
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.intro-titles .title {
-    position: absolute;
-    margin: 0;
-    white-space: nowrap;
-}
+/****************************/
+/* // 인트로로 */
+/****************************/
 
 
 /* =========================
