@@ -163,3 +163,49 @@ body.is-intro #wrap {
 body.is-intro .scrollbar {
     display: none;
 }
+
+
+#wrap{
+    .c-header__box{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: calc(5*var(--space)) calc(10*var(--space));
+        background: rgba(255, 255, 255, 0.005);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        .c-header__logo{
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-bold);
+            font-family: var(--font-family-en);
+        }        
+        .c-header__gnb{
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-regular);
+            font-family: var(--font-family-en);
+            ul{
+                display: flex;
+                flex-direction: row;
+                column-gap: calc(4*var(--space));
+            }
+        }        
+    }
+    .c-main--content{
+        height: 100vh;
+        padding: 0 calc(10*var(--space));
+        .c-main--txt{
+            .c-main--txt__title{
+                font-size: clamp(40px,20vw,180px);
+                font-weight: 900;
+                font-family: var(--font-family-en);
+                line-height: 1;
+                margin-top: calc(20*var(--space));
+            }
+        }   
+    }
+}
