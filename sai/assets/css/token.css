@@ -23,29 +23,12 @@
     --color-primary-soft-hover: #e9e2ff;
     --color-primary-soft-active: #e0d5ff;
 
-    --color-primary-border: #ddd0ff;
 
 
     /* ========================
        Background
     ======================== */
-
-    /* Page */
     --color-bg-page: #f8f8fb;
-
-    /* Header / Aside / Card */
-    --color-bg-surface: #ffffff;
-
-    /* Secondary Area */
-    --color-bg-subtle: #f6f6f8;
-
-    /* Interactive */
-    --color-bg-hover: #eeeeF2;
-    --color-bg-active: #f1edff;
-    --color-bg-selected: #f1edff;
-
-    /* Disabled */
-    --color-bg-disabled: #f3f3f5;
 
 
     /* ========================
@@ -70,37 +53,23 @@
     --color-text-inverse: #ffffff;
 
 
+
+    /* ========================
+       Background
+    ======================== */
+    --color-bg-hover: #eeeeF2;
+    --color-bg-active: #f1edff;
+    --color-bg-selected: #f1edff;
+
+
+
+
     /* ========================
        Border
     ======================== */
-
-    --color-border: #e7e7eb;
-    --color-border-light: #efeff2;
-    --color-border-strong: #d5d5db;
-
-    /* Interactive */
-    --color-border-hover: #c9c9d0;
-    --color-border-focus: #8b5cf6;
-    --color-border-active: #8b5cf6;
-
     --color-divider: #e8e8ec;
 
-
-    /* ========================
-       Status
-    ======================== */
-
-    --color-success: #22c55e;
-    --color-success-soft: #ecfdf3;
-
-    --color-warning: #f59e0b;
-    --color-warning-soft: #fff7e6;
-
-    --color-error: #ef4444;
-    --color-error-soft: #fef2f2;
-
-    --color-info: #3b82f6;
-    --color-info-soft: #eff6ff;
+    
 
 
     /* ========================
@@ -120,10 +89,13 @@
        Font Weight
     ======================== */
 
+    --font-weight-light: 300;
     --font-weight-regular: 400;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+    --font-weight-black: 900;
 
 
     /* ========================
@@ -167,13 +139,6 @@
     --color-primary: #a78bfa;
     --color-primary-hover: #c4b5fd;
     --color-primary-active: #8b5cf6;
-
-    --color-primary-soft: rgba(139, 92, 246, 0.14);
-    --color-primary-soft-hover: rgba(139, 92, 246, 0.20);
-    --color-primary-soft-active: rgba(139, 92, 246, 0.28);
-
-    --color-primary-border: rgba(167, 139, 250, 0.32);
-
 
     /* ========================
        Background
