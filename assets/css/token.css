@@ -1,0 +1,125 @@
+/* ========================================
+   SH Portfolio Design Tokens
+======================================== */
+
+:root {
+
+
+
+    /* Background */
+    --color-bg: #f4f1e8;
+    --color-bg-subtle: #ebe7dc;
+    --color-bg-muted: #ddd8ca;
+
+    /* Text */
+    --color-text-primary: #252823;
+    --color-text-secondary: #5f625a;
+    --color-text-tertiary: #8b8d84;
+    --color-text-inverse: #f4f1e8;
+
+    /* Border */
+    --color-border: #d6d1c5;
+    --color-divider: #e2ddd2;
+
+    /* Accent */
+    --color-accent: #7d8463;
+    --color-accent-hover: #666d50;
+    --color-accent-soft: #e3e5d5;
+
+    /* ========================
+       Font Family
+    ======================== */
+
+    --font-family-en: "Inter", sans-serif;
+    --font-family-ko: "Pretendard Variable", sans-serif;
+
+
+    /* ========================
+       Font Size
+    ======================== */
+
+    --font-size-xs: 12px;
+    --font-size-sm: 14px;
+    --font-size-md: 16px;
+    --font-size-lg: 20px;
+    --font-size-xl: 24px;
+    --font-size-2xl: 32px;
+    --font-size-3xl: 48px;
+    --font-size-4xl: 64px;
+    --font-size-display: clamp(56px, 7vw, 134px);
+
+
+    /* ========================
+       Font Weight
+    ======================== */
+
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+
+    /* ========================
+       Color
+    ======================== */
+
+    --color-bg: #ffffff;
+    --color-bg-inverse: #111111;
+
+    --color-text-primary: #111111;
+    --color-text-secondary: #666666;
+    --color-text-tertiary: #999999;
+    --color-text-inverse: #ffffff;
+
+    --color-border: #e5e5e5;
+    --color-divider: #eeeeee;
+
+
+    /* ========================
+       Spacing
+    ======================== */
+
+    --space: 4px;
+
+
+    /* ========================
+       Layout
+    ======================== */
+
+    --layout-max-width: 1600px;
+    --layout-padding: clamp(20px, 3.125vw, 60px);
+
+    --header-height: 80px;
+
+
+    /* ========================
+       Radius
+    ======================== */
+
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --radius-full: 9999px;
+
+
+    /* ========================
+       Motion
+    ======================== */
+
+    --duration-fast: 0.2s;
+    --duration-normal: 0.4s;
+    --duration-slow: 0.8s;
+
+    --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+
+    /* ========================
+       Z-index
+    ======================== */
+
+    --z-content: 1;
+    --z-header: 100;
+    --z-scrollbar: 200;
+    --z-intro: 1000;
+}

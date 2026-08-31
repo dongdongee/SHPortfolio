@@ -249,7 +249,7 @@ class SmoothScroll {
                     'is-show'
                 );
 
-            }, 700);
+            }, 10);
     }
 
 
@@ -376,7 +376,7 @@ class HeroIntro {
     constructor(options = {}) {
         this.selector =
             options.selector ??
-            '.intro-titles .title';
+            '.hero__container .hero__title';
 
         this.heroSelector =
             options.heroSelector ??
