@@ -8,14 +8,14 @@
        Font
     ======================== */
 
-    --sai-font-family: "Inter", "Pretendard Variable", sans-serif;
+    --sai-font-family: "Poppins", "Pretendard Variable", sans-serif;
 
 
     /* ========================
        Brand
     ======================== */
 
-    --color-primary: #8b5cf6;
+    --color-primary: #773df9;
     --color-primary-hover: #7c3aed;
     --color-primary-active: #6d28d9;
 
@@ -24,11 +24,19 @@
     --color-primary-soft-active: #e0d5ff;
 
 
-
     /* ========================
        Background
     ======================== */
+
     --color-bg-page: #f8f8fb;
+    --color-bg-content: #ffffff;
+    --color-bg-surface: #ffffff;
+    --color-bg-subtle: #f4f3f8;
+
+    --color-bg-hover: #eeeef2;
+    --color-bg-active: #f1edff;
+    --color-bg-selected: #f1edff;
+    --color-bg-disabled: #f2f2f4;
 
 
     /* ========================
@@ -49,27 +57,13 @@
     --color-text-brand-hover: #7c3aed;
     --color-text-brand-active: #6d28d9;
 
-    /* Inverse */
-    --color-text-inverse: #ffffff;
-
-
-
-    /* ========================
-       Background
-    ======================== */
-    --color-bg-hover: #eeeeF2;
-    --color-bg-active: #f1edff;
-    --color-bg-selected: #f1edff;
-
-
-
 
     /* ========================
        Border
     ======================== */
-    --color-divider: #e8e8ec;
 
-    
+    --color-border: #e8e8ec;
+    --color-divider: #eaecf0;
 
 
     /* ========================
@@ -136,27 +130,28 @@
        Brand
     ======================== */
 
-    --color-primary: #a78bfa;
-    --color-primary-hover: #c4b5fd;
-    --color-primary-active: #8b5cf6;
+    --color-primary: #773df9;
+    --color-primary-hover: #a78bfa;
+    --color-primary-active: #5b21b6;
+
+    --color-primary-soft: #29213a;
+    --color-primary-soft-hover: #332748;
+    --color-primary-soft-active: #3c2c57;
+
 
     /* ========================
        Background
     ======================== */
 
-    --color-bg-page: #0d0d12;
+    --color-bg-page: #0b0f1a;
+    --color-bg-content: #0f1421;
+    --color-bg-surface: #131827;
+    --color-bg-subtle: #191f30;
 
-    --color-bg-surface: #15151c;
-
-    --color-bg-subtle: #1b1b23;
-
-    /* hover는 기본 surface보다 확실하게 밝게 */
-    --color-bg-hover: #292934;
-
+    --color-bg-hover: #202738;
     --color-bg-active: #29213a;
     --color-bg-selected: #29213a;
-
-    --color-bg-disabled: #1c1c22;
+    --color-bg-disabled: #1c2130;
 
 
     /* ========================
@@ -177,39 +172,13 @@
     --color-text-brand-hover: #c4b5fd;
     --color-text-brand-active: #8b5cf6;
 
-    --color-text-inverse: #17171c;
-
 
     /* ========================
        Border
     ======================== */
 
-    --color-border: #2b2b33;
-    --color-border-light: #222229;
-    --color-border-strong: #3b3b45;
-
-    --color-border-hover: #50505c;
-    --color-border-focus: #a78bfa;
-    --color-border-active: #a78bfa;
-
-    --color-divider: #292930;
-
-
-    /* ========================
-       Status
-    ======================== */
-
-    --color-success: #4ade80;
-    --color-success-soft: rgba(34, 197, 94, 0.12);
-
-    --color-warning: #fbbf24;
-    --color-warning-soft: rgba(245, 158, 11, 0.12);
-
-    --color-error: #f87171;
-    --color-error-soft: rgba(239, 68, 68, 0.12);
-
-    --color-info: #60a5fa;
-    --color-info-soft: rgba(59, 130, 246, 0.12);
+    --color-border: #292f40;
+    --color-divider: #252b3a;
 
 
     /* ========================

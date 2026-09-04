@@ -15,33 +15,78 @@
     <!-- Pretendard -->
     <link rel="stylesheet" as="style" crossorigin
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" href="/assets/css/reset.css">
     <link rel="stylesheet" href="/sai/assets/css/token.css">
     <link rel="stylesheet" href="/sai/assets/css/common.css">
+    <link rel="stylesheet" href="/sai/assets/css/content.css">
 </head>
 
 <body>
     <div id="wrap">
         <div class="sai-header" data-include="./includes/header.html"></div>
         <div class="sai-layout">
-            <div class="sai-aside" data-include="./includes/aside.html"></div>
-            <main class="sai-main">
 
-            </main>
+            <div class="sai-aside" data-include="./includes/aside.html"></div>
+                <main class="sai-content">
+                    <section class="sai-kpi"></section>
+                    <section class="ai-content-grid">
+                        <article class="sai-content-card">
+                            <div class="sai-chart__head">
+                                <div class="sai-chart__title-wrap">
+                                    <h2 class="sai-chart__title">AI Requests</h2>
+                                </div>
+                                <select id="periodSelect" class="sai-select">
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly">Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                </select>
+                                <p class="sai-chart-value">
+                                    <span id="requestTotal" class="sai-chart-value__total">0</span>
+                                    <span id="requestChange" class="sai-chart-value__change"></span>
+                                </p>
+                            </div>
+                            <div class="sai-chart__body">
+                                <canvas id="requestChart"></canvas>
+                            </div>
+                        </article>
+                        <article class="sai-content-card">
+                            <div class="sai-chart__head">
+                                <div class="sai-chart__title-wrap">
+                                    <h2 class="sai-chart__title">
+                                        AI Requests by Model
+                                    </h2>
+                                </div>
+                                <select id="modelPeriodSelect" class="sai-select">
+                                    <option value="7">7 Days</option>
+                                    <option value="30">30 Days</option>
+                                    <option value="90">90 Days</option>
+                                </select>
+                            </div>
+                            <div class="sai-chart__body">
+                                <canvas id="modelChart"></canvas>
+                            </div>
+                        </article>
+                    </section>
+                    <section class="sai-activity">
+                        <div class="sai-activity__head">
+                            <h2 class="sai-activity__title">Recent Activity</h2>
+                        </div>
+                        <div class="sai-activity__body">
+                            <ul class="sai-activity__list" id="activityList"></ul>
+                        </div>
+
+                    </section>
+                </main>
+            </div>
         </div>
     </div>
 
-
-    <!-- ECharts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/6.1.0/echarts.min.js"
-        integrity="sha512-Uyq/AgtqFM4vT+unIGTDr4wMJDTUK9O5w2PXMQeBCSR8koqHpVz+qBmcQ+9Oeo5H+EmvT4pp/5QrsqhIbyjHTQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script defer src="/assets/js/include.js"></script>
-
     <script defer src="/sai/assets/js/common.js"></script>
+    <script defer src="/sai/assets/js/chart.js"></script>
 
 
 </body>
