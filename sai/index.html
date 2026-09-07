@@ -31,7 +31,7 @@
             <div class="sai-aside" data-include="./includes/aside.html"></div>
                 <main class="sai-content">
                     <section class="sai-kpi"></section>
-                    <section class="ai-content-grid">
+                    <section class="sai-content-grid">
                         <article class="sai-content-card">
                             <div class="sai-content-card__header">
                                 <div class="sai-chart__title-wrap">
@@ -42,12 +42,12 @@
                                     <option value="weekly">Weekly</option>
                                     <option value="monthly">Monthly</option>
                                 </select>
-                                <p class="sai-chart-value">
+                                <div class="sai-chart-value">
                                     <span id="requestTotal" class="sai-chart-value__total">0</span>
                                     <span id="requestChange" class="sai-chart-value__change"></span>
-                                </p>
+                                </div>
                             </div>
-                            <div class="sai-chart__body">
+                            <div class="sai-content-card__body">
                                 <canvas id="requestChart"></canvas>
                             </div>
                         </article>
@@ -64,19 +64,67 @@
                                     <option value="90">90 Days</option>
                                 </select>
                             </div>
-                            <div class="sai-chart__body">
+                            <div class="sai-content-card__body">
                                 <canvas id="modelChart"></canvas>
                             </div>
                         </article>
                     </section>
-                    <section class="sai-activity">
-                        <div class="sai-activity__head">
-                            <h2 class="sai-activity__title">Recent Activity</h2>
-                        </div>
-                        <div class="sai-activity__body">
-                            <ul class="sai-activity__list" id="activityList"></ul>
-                        </div>
+                    <section class="sai-content-grid">
+                        <article class="sai-content-card">
+                            <div class="sai-content-card__header">
+                                <div class="sai-chart__title-wrap">
+                                    <h2 class="sai-chart__title">Resent Projects</h2>
+                                </div>
+                                <a href="javascript:;" role="button" class="sai-link__button">View All</a>
+                            </div>
+                            <div class="sai-content-card__body">
+                                <ul class="sai-project-list">
+                                    <li class="sai-project-list__item">
+                                        <a href="javascript:;" class="sai-project-list__link">
+                                            <span class="sai-project-list__icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-file-invoice">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                    <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+                                                    <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2" />
+                                                    <path d="M9 7l1 0" />
+                                                    <path d="M9 13l6 0" />
+                                                    <path d="M13 17l2 0" />
+                                                </svg>
+                                            </span>
 
+                                            <span class="sai-recent-projects__info">
+                                                <strong>SAI Marketing Website</strong>
+                                                <span>Web Project</span>
+                                            </span>
+
+                                            <span class="sai-recent-projects__members">
+                                                <button class="sai-header__user-info" type="button" aria-label="사용자 메뉴" >
+                                                    <span class="sai-header__user-text">S</span>
+                                                </button>
+                                            </span>
+
+                                            <span class="sai-recent-projects__date">
+                                                2d ago
+                                            </span>
+
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </article>
+                        <article class="sai-content-card">
+                            <div class="sai-content-card__header">
+                                <div class="sai-chart__title-wrap">
+                                    <h2 class="sai-chart__title">
+                                        AI Requests by Model
+                                    </h2>
+                                </div>
+                                <a href="#" role="button" class="sai-link__button">View All</a>
+                            </div>
+                            <div class="sai-chart__body">
+                                <canvas id="modelChart"></canvas>
+                            </div>
+                        </article>
                     </section>
                 </main>
             </div>

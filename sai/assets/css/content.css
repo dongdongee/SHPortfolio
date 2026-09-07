@@ -5,6 +5,8 @@
 .sai-content{
     width: 100%;
     padding: calc(10*var(--space));
+    overflow-x: hidden;
+    overflow-y: auto;
     .sai-kpi {
         width: 100%;
         max-width: 1440px;
@@ -60,7 +62,7 @@
             grid-template-columns: 1fr;
         }
     }
-    .ai-content-grid {
+    .sai-content-grid {
         display: flex;
         gap: 24px;
         max-width: 1400px;
@@ -82,7 +84,7 @@
                 justify-content: space-between;
                 margin-bottom: calc(4 * var(--space));
                 .sai-chart__title{
-                    font-size: var(--font-size-2xl);
+                    font-size: var(--font-size-xl);
                     font-family: var(--sai-font-family);
                     font-weight: var(--font-weight-semibold);
                     color: var(--color-text-primary);
@@ -112,8 +114,43 @@
                     }
                 }
             }
-            .sai-chart__body{
+            .sai-content-card__body{
+                max-height: 300px;
+                min-height: 300px;
                 height: 100%;
+                .sai-project-list{
+                    .sai-project-list__item{
+                        display: block;
+                        justify-content: space-between;
+                        padding: calc(2 * var(--space)) 0;
+                        border-bottom: 1px solid var(--color-border);
+                        &:last-child{
+                            border-bottom: none;
+                        }
+                        .sai-project-list__link{
+                            display: flex;
+                            align-items: center;
+                            .sai-project-list__icon{
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                flex-shrink: 0;
+                                width: 40px;
+                                height: 40px;
+                                margin-right: calc(2 * var(--space));
+                                color: var(--color-primary-soft);
+                                background: red;
+                                border-radius: var(--radius-full);
+                                svg,
+                                img {
+                                    display: block;
+                                    width: 22px;
+                                    height: 22px;
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }
