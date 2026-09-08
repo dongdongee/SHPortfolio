@@ -115,22 +115,24 @@
                 }
             }
             .sai-content-card__body{
-                max-height: 300px;
-                min-height: 300px;
-                height: 100%;
-                .sai-project-list{
-                    .sai-project-list__item{
-                        display: block;
+                display: flex;
+                height: 300px;
+                .sai-content-card__list{
+                    flex: 1;
+                    min-height: 0;
+                    overflow-y: auto;
+                    .sai-content-card__item{
+                        display: flex;
                         justify-content: space-between;
                         padding: calc(2 * var(--space)) 0;
                         border-bottom: 1px solid var(--color-border);
                         &:last-child{
                             border-bottom: none;
                         }
-                        .sai-project-list__link{
+                        .sai-content-card__link{
                             display: flex;
                             align-items: center;
-                            .sai-project-list__icon{
+                            .sai-content-card__icon{
                                 display: flex;
                                 align-items: center;
                                 justify-content: center;
