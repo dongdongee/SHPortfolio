@@ -4,110 +4,56 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FORM / 26</title>
+<title>FORM / 26 — Form Is Never Fixed</title>
 
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 
 <style>
-/* =========================================================
-   RESET
-========================================================= */
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+:root {
+    --bg: #f2efe7;
+    --black: #151515;
+    --accent: #ff5538;
+    --yellow: #ffd629;
+}
+
 html {
+    background: var(--bg);
+    color: var(--black);
     font-family: Arial, Helvetica, sans-serif;
-    background: #f3f1ea;
-    color: #111;
 }
 
 body {
     overflow-x: hidden;
 }
 
-button,
-a {
-    color: inherit;
-}
-
-a {
-    text-decoration: none;
-}
-
-img,
-svg {
-    display: block;
-}
-
-
-/* =========================================================
-   COMMON
-========================================================= */
-
-.section {
+section {
     position: relative;
-    min-height: 100vh;
-    padding: 80px 4vw;
 }
 
-.section-label {
-    margin-bottom: 40px;
-
-    font-size: 12px;
+.label {
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: .15em;
-    text-transform: uppercase;
+    letter-spacing: .18em;
 }
 
-.section-title {
-    font-size: clamp(52px, 8vw, 140px);
+.display {
+    font-size: clamp(70px, 13vw, 220px);
     font-weight: 700;
-    line-height: .9;
-    letter-spacing: -.06em;
+    line-height: .78;
+    letter-spacing: -.08em;
 }
 
 
-/* =========================================================
-   HEADER
-========================================================= */
-
-.header {
-    position: fixed;
-    z-index: 100;
-    top: 0;
-    left: 0;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    width: 100%;
-    padding: 24px 4vw;
-
-    mix-blend-mode: difference;
-    color: #fff;
-
-    pointer-events: none;
-}
-
-.logo {
-    font-size: 14px;
-    font-weight: 700;
-}
-
-.header-meta {
-    font-size: 12px;
-}
-
-
-/* =========================================================
+/* =========================
    HERO
-========================================================= */
+========================= */
 
 .hero {
     display: flex;
@@ -115,29 +61,29 @@ svg {
     justify-content: space-between;
 
     min-height: 100vh;
-    padding: 110px 4vw 30px;
+    padding: 35px 4vw;
+}
+
+.hero-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hero-center {
+    position: relative;
 }
 
 .hero-title {
     position: relative;
     z-index: 2;
 
-    font-size: clamp(90px, 19vw, 340px);
-    font-weight: 700;
-    line-height: .72;
-    letter-spacing: -.085em;
+    font-size: clamp(100px, 21vw, 360px);
+    line-height: .7;
+    letter-spacing: -.1em;
 }
 
 .hero-title span {
     display: block;
-}
-
-.hero-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-
-    font-size: 13px;
 }
 
 .hero-shape {
@@ -147,484 +93,483 @@ svg {
     top: 50%;
     left: 50%;
 
-    width: min(38vw, 520px);
+    width: min(35vw, 520px);
 
     transform: translate(-50%, -50%);
-
-    pointer-events: none;
 }
 
 .hero-shape polygon {
-    fill: #ff593f;
+    fill: var(--accent);
+}
+
+.hero-footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: end;
+
+    font-size: 12px;
+}
+
+.hero-footer div:nth-child(2) {
+    text-align: center;
+}
+
+.hero-footer div:last-child {
+    text-align: right;
 }
 
 
-/* =========================================================
-   ABOUT
-========================================================= */
+/* =========================
+   MANIFESTO
+========================= */
 
-.about {
-    overflow: hidden;
-
+.manifesto {
     display: flex;
     align-items: center;
 
-    background: #111;
-    color: #f3f1ea;
+    min-height: 140vh;
+    padding: 10vw 4vw;
+
+    background: var(--black);
+    color: var(--bg);
 }
 
-.about-inner {
-    position: relative;
-    z-index: 2;
-
+.manifesto-copy {
     width: 100%;
 }
 
-.about-copy {
-    width: min(1100px, 100%);
+.manifesto-line {
+    overflow: hidden;
 
-    font-size: clamp(42px, 7vw, 110px);
-    font-weight: 600;
-    line-height: .98;
-    letter-spacing: -.055em;
+    font-size: clamp(55px, 10vw, 155px);
+    font-weight: 700;
+    line-height: .9;
+    letter-spacing: -.06em;
 }
 
-.about-copy .line {
+.manifesto-line span {
     display: block;
 }
 
-.about-shape {
-    position: absolute;
 
-    right: -5vw;
-    bottom: -20%;
+/* =========================
+   PRINCIPLES
+========================= */
 
-    width: min(45vw, 650px);
-
-    opacity: .2;
+.principles {
+    padding: 10vw 4vw;
 }
 
-.about-shape polygon {
-    fill: none;
-    stroke: #f3f1ea;
-    stroke-width: 2;
+.principles-head {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 100px;
+}
+
+.principle-list {
+    border-top: 1px solid var(--black);
+}
+
+.principle {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr;
+    gap: 4vw;
+
+    padding: 50px 0;
+
+    border-bottom: 1px solid var(--black);
+}
+
+.principle-symbol {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100px;
+    height: 100px;
+}
+
+.symbol-circle {
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.symbol-square {
+    background: var(--black);
+}
+
+.symbol-triangle {
+    width: 0;
+    height: 0;
+
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 90px solid var(--yellow);
+}
+
+.principle-title {
+    font-size: clamp(42px, 7vw, 95px);
+    font-weight: 700;
+    letter-spacing: -.06em;
+}
+
+.principle-description {
+    align-self: end;
+
+    max-width: 430px;
+
+    font-size: 16px;
+    line-height: 1.6;
 }
 
 
-/* =========================================================
+/* =========================
    ARTISTS
-========================================================= */
+========================= */
 
 .artists {
     overflow: hidden;
-    padding-left: 0;
-    padding-right: 0;
 
-    background: #ff593f;
+    background: var(--accent);
 }
 
-.artists-header {
-    padding: 0 4vw 50px;
+.artist-intro {
+    padding: 8vw 4vw 60px;
 }
 
 .artist-track {
     display: flex;
-    gap: 18px;
-
     width: max-content;
-    padding: 0 4vw;
 }
 
-.artist-card {
-    flex-shrink: 0;
-
-    width: min(40vw, 520px);
-}
-
-.artist-image {
+.artist {
     position: relative;
 
-    overflow: hidden;
+    flex-shrink: 0;
 
-    aspect-ratio: 4 / 5;
-    margin-bottom: 18px;
+    width: 60vw;
+    height: 80vh;
 
-    background: #111;
-}
+    padding: 4vw;
 
-.artist-visual {
-    position: absolute;
-    inset: 0;
-
-    transform: scale(1.15);
-}
-
-.artist-card:nth-child(1) .artist-visual {
-    background:
-        radial-gradient(circle at 40% 40%, #ff593f 0 12%, transparent 13%),
-        linear-gradient(135deg, #111 30%, #f3f1ea 30%);
-}
-
-.artist-card:nth-child(2) .artist-visual {
-    background:
-        repeating-linear-gradient(
-            90deg,
-            #f3f1ea 0 20px,
-            #111 20px 40px
-        );
-}
-
-.artist-card:nth-child(3) .artist-visual {
-    background:
-        radial-gradient(circle, #111 0 20%, #f3f1ea 21% 40%, #111 41%);
-}
-
-.artist-card:nth-child(4) .artist-visual {
-    background:
-        linear-gradient(45deg, #111 50%, #ffcc00 50%);
-}
-
-.artist-card:nth-child(5) .artist-visual {
-    background:
-        repeating-radial-gradient(
-            circle,
-            #111 0 15px,
-            #f3f1ea 15px 30px
-        );
-}
-
-.artist-card:nth-child(6) .artist-visual {
-    background:
-        linear-gradient(
-            20deg,
-            #f3f1ea 0 33%,
-            #111 33% 66%,
-            #ffcc00 66%
-        );
+    border-right: 1px solid var(--black);
 }
 
 .artist-index {
-    margin-bottom: 7px;
-
-    font-size: 11px;
+    margin-bottom: 40px;
 }
 
 .artist-name {
-    font-size: clamp(24px, 3vw, 42px);
+    font-size: clamp(60px, 9vw, 145px);
     font-weight: 700;
-    letter-spacing: -.04em;
+    line-height: .85;
+    letter-spacing: -.07em;
+}
+
+.artist-form {
+    position: absolute;
+
+    right: 8%;
+    bottom: 8%;
+
+    width: 280px;
+    height: 280px;
+}
+
+.artist-form svg {
+    width: 100%;
+    height: 100%;
+}
+
+.artist-meta {
+    position: absolute;
+
+    left: 4vw;
+    bottom: 4vw;
+
+    font-size: 12px;
+    line-height: 1.7;
 }
 
 
-/* =========================================================
-   EXHIBITIONS
-========================================================= */
-
-.exhibitions {
-    background: #f3f1ea;
-}
-
-.exhibition-list {
-    margin-top: 100px;
-}
+/* =========================
+   EXHIBITION
+========================= */
 
 .exhibition {
+    padding: 10vw 4vw;
+
+    background: var(--bg);
+}
+
+.exhibition-head {
+    margin-bottom: 120px;
+}
+
+.work {
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 4vw;
+    grid-template-columns: .7fr 1.3fr;
+    gap: 6vw;
 
-    padding: 40px 0;
+    padding: 70px 0;
 
-    border-top: 1px solid #111;
+    border-top: 1px solid var(--black);
 }
 
-.exhibition:last-child {
-    border-bottom: 1px solid #111;
-}
-
-.exhibition-number {
+.work-number {
     font-size: 12px;
 }
 
-.exhibition-content h3 {
-    margin-bottom: 25px;
+.work-title {
+    margin-bottom: 35px;
 
-    font-size: clamp(38px, 6vw, 90px);
-    font-weight: 600;
-    line-height: .95;
-    letter-spacing: -.05em;
+    font-size: clamp(50px, 8vw, 120px);
+    font-weight: 700;
+    line-height: .85;
+    letter-spacing: -.07em;
 }
 
-.exhibition-visual {
-    position: relative;
-
+.work-visual {
     overflow: hidden;
 
-    height: 420px;
-    margin-top: 30px;
+    height: 520px;
 
-    clip-path: inset(0 100% 0 0);
+    clip-path: polygon(
+        50% 0,
+        50% 0,
+        50% 100%,
+        50% 100%
+    );
 }
 
-.exhibition:nth-child(1) .exhibition-visual {
+.work:nth-child(1) .work-visual {
     background:
-        linear-gradient(135deg, #ff593f 50%, #111 50%);
-}
-
-.exhibition:nth-child(2) .exhibition-visual {
-    background:
-        repeating-linear-gradient(
-            -45deg,
-            #111,
-            #111 35px,
-            #ffcc00 35px,
-            #ffcc00 70px
+        radial-gradient(
+            circle,
+            var(--accent) 0 25%,
+            var(--black) 26%
         );
 }
 
-.exhibition:nth-child(3) .exhibition-visual {
+.work:nth-child(2) .work-visual {
     background:
-        radial-gradient(circle at center, #ff593f 0 25%, #111 26%);
+        linear-gradient(
+            45deg,
+            var(--yellow) 0 50%,
+            var(--black) 50%
+        );
 }
 
 
-/* =========================================================
-   SCHEDULE
-========================================================= */
+/* =========================
+   JOURNEY
+========================= */
 
-.schedule {
-    background: #111;
-    color: #f3f1ea;
-}
-
-.schedule-list {
-    margin-top: 100px;
-}
-
-.schedule-item {
-    position: relative;
-
-    display: grid;
-    grid-template-columns: 130px 1fr 150px;
-    gap: 30px;
-
-    padding: 32px 0;
-
-    font-size: 18px;
-}
-
-.schedule-line {
-    position: absolute;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 1px;
-
-    background: #f3f1ea;
-
-    transform: scaleX(0);
-    transform-origin: left;
-}
-
-.schedule-time {
-    opacity: .5;
-}
-
-.schedule-name {
-    font-size: clamp(26px, 4vw, 56px);
-    font-weight: 600;
-    letter-spacing: -.04em;
-}
-
-.schedule-location {
-    text-align: right;
-    opacity: .5;
-}
-
-
-/* =========================================================
-   LOCATION
-========================================================= */
-
-.location {
-    display: grid;
-    grid-template-columns: .8fr 1.2fr;
+.journey {
+    display: flex;
     align-items: center;
-    gap: 8vw;
 
-    background: #ffcc00;
+    min-height: 150vh;
+    padding: 8vw 4vw;
+
+    background: var(--black);
+    color: var(--bg);
 }
 
-.location-info p {
-    max-width: 420px;
-    margin-top: 40px;
-
-    font-size: 18px;
-    line-height: 1.6;
-}
-
-.location-map svg {
+.journey-inner {
     width: 100%;
 }
 
-.map-path {
+.journey-svg {
+    width: 100%;
+    margin-top: 80px;
+}
+
+.journey-path {
     fill: none;
-    stroke: #111;
-    stroke-width: 3;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+    stroke: var(--bg);
+    stroke-width: 2;
 }
 
-.map-point {
-    fill: #ff593f;
-    opacity: 0;
+.journey-dot {
+    fill: var(--accent);
 }
 
 
-/* =========================================================
-   TICKET
-========================================================= */
+/* =========================
+   FINAL
+========================= */
 
-.ticket {
+.final {
     overflow: hidden;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    min-height: 120vh;
-
-    background: #f3f1ea;
+    min-height: 140vh;
 }
 
-.ticket-title {
+.final-shapes {
+    position: absolute;
+    inset: 0;
+}
+
+.final-shape {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 300px;
+    height: 300px;
+}
+
+.final-circle {
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    transform: translate(-150%, -50%);
+}
+
+.final-square {
+    background: var(--black);
+
+    transform: translate(-50%, -50%);
+}
+
+.final-triangle {
+    width: 0;
+    height: 0;
+
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-bottom: 270px solid var(--yellow);
+
+    transform: translate(50%, -50%);
+}
+
+.final-copy {
     position: relative;
-    z-index: 2;
+    z-index: 5;
 
     text-align: center;
+    mix-blend-mode: difference;
+    color: white;
 
-    font-size: clamp(90px, 20vw, 360px);
+    font-size: clamp(80px, 17vw, 280px);
     font-weight: 700;
-    line-height: .75;
+    line-height: .7;
     letter-spacing: -.09em;
 }
 
-.ticket-shape {
+.final-description {
     position: absolute;
 
-    width: min(55vw, 800px);
-}
-
-.ticket-shape polygon {
-    fill: #ff593f;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.footer {
-    display: flex;
-    justify-content: space-between;
-
-    padding: 30px 4vw;
-
-    background: #111;
-    color: #f3f1ea;
+    z-index: 6;
+    bottom: 40px;
 
     font-size: 11px;
+    letter-spacing: .15em;
 }
 
 
-/* =========================================================
+/* =========================
    MOBILE
-========================================================= */
+========================= */
 
 @media (max-width: 768px) {
 
-    .artist-card {
-        width: 75vw;
+    .principle {
+        grid-template-columns: 60px 1fr;
     }
 
-    .exhibition {
+    .principle-description {
+        grid-column: 2;
+    }
+
+    .artist {
+        width: 90vw;
+    }
+
+    .work {
         grid-template-columns: 1fr;
     }
 
-    .schedule-item {
-        grid-template-columns: 80px 1fr;
+    .hero-footer {
+        grid-template-columns: 1fr 1fr;
     }
 
-    .schedule-location {
+    .hero-footer div:nth-child(2) {
         display: none;
-    }
-
-    .location {
-        grid-template-columns: 1fr;
     }
 
 }
 </style>
 </head>
 
+
 <body>
 
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
-<header class="header">
-    <div class="logo">FORM / 26</div>
-    <div class="header-meta">SEOUL · 2026</div>
-</header>
-
-
-
-<!-- =====================================================
+<!-- ===============================================
      HERO
-===================================================== -->
+     "형태는 아직 정의되지 않았다"
+================================================ -->
 
 <section class="hero">
 
-    <h1 class="hero-title">
-        <span>FORM</span>
-        <span>/26</span>
-    </h1>
+    <div class="hero-header">
+        <div class="label">FORM / 26</div>
+        <div class="label">SEOUL · SEP 18—20</div>
+    </div>
 
 
-    <svg
-        class="hero-shape"
-        viewBox="0 0 500 500"
-        aria-hidden="true"
-    >
-        <polygon
-            id="mainShape"
-            points="
-                250,30
-                405,95
-                470,250
-                405,405
-                250,470
-                95,405
-                30,250
-                95,95
-            "
-        />
-    </svg>
+    <div class="hero-center">
+
+        <h1 class="hero-title">
+            <span>FORM</span>
+            <span>/26</span>
+        </h1>
 
 
-    <div class="hero-bottom">
+        <svg
+            class="hero-shape"
+            viewBox="0 0 500 500"
+        >
+            <polygon
+                id="heroPolygon"
+                points="
+                    250,30
+                    405,95
+                    470,250
+                    405,405
+                    250,470
+                    95,405
+                    30,250
+                    95,95
+                "
+            />
+        </svg>
+
+    </div>
+
+
+    <div class="hero-footer">
 
         <div>
-            DIGITAL ART<br>
-            & DESIGN FESTIVAL
+            DIGITAL ART &<br>
+            DESIGN EXHIBITION
         </div>
 
         <div>
-            SCROLL TO EXPLORE ↓
+            FORM IS NEVER FIXED.
+        </div>
+
+        <div>
+            SCROLL ↓
         </div>
 
     </div>
@@ -633,182 +578,307 @@ svg {
 
 
 
-<!-- =====================================================
-     ABOUT
-===================================================== -->
+<!-- ===============================================
+     MANIFESTO
+================================================ -->
 
-<section class="section about">
+<section class="manifesto">
 
-    <div class="about-inner">
+    <div class="manifesto-copy">
 
-        <div class="section-label">
-            01 / ABOUT
+        <div class="label">
+            01 / MANIFESTO
         </div>
 
-        <div class="about-copy">
+        <div style="height: 60px"></div>
 
-            <span class="line">
-                SHAPE
-            </span>
+        <div class="manifesto-line">
+            <span>FORM IS NOT</span>
+        </div>
 
-            <span class="line">
-                CHANGES.
-            </span>
+        <div class="manifesto-line">
+            <span>A RESULT.</span>
+        </div>
 
-            <span class="line">
-                IDEAS MOVE.
-            </span>
+        <div class="manifesto-line">
+            <span>IT IS A</span>
+        </div>
 
+        <div class="manifesto-line">
+            <span>PROCESS.</span>
         </div>
 
     </div>
-
-
-    <svg
-        class="about-shape"
-        viewBox="0 0 500 500"
-        aria-hidden="true"
-    >
-        <polygon
-            points="
-                250,30
-                405,95
-                470,250
-                405,405
-                250,470
-                95,405
-                30,250
-                95,95
-            "
-        />
-    </svg>
 
 </section>
 
 
 
-<!-- =====================================================
+<!-- ===============================================
+     THREE PRINCIPLES
+
+     Circle   = Organic
+     Square   = Structure
+     Triangle = Direction
+================================================ -->
+
+<section class="principles">
+
+    <div class="principles-head">
+
+        <div class="label">
+            02 / THREE FORMS
+        </div>
+
+        <div class="label">
+            A VISUAL LANGUAGE
+        </div>
+
+    </div>
+
+
+    <div class="principle-list">
+
+
+        <article class="principle">
+
+            <div class="label">
+                01
+            </div>
+
+            <div>
+
+                <div class="principle-symbol symbol-circle"></div>
+
+                <div class="principle-title">
+                    ORGANIC
+                </div>
+
+            </div>
+
+            <p class="principle-description">
+                The circle represents organic form —
+                fluid, continuous and unrestricted.
+                It is the beginning of change.
+            </p>
+
+        </article>
+
+
+        <article class="principle">
+
+            <div class="label">
+                02
+            </div>
+
+            <div>
+
+                <div class="principle-symbol symbol-square"></div>
+
+                <div class="principle-title">
+                    STRUCTURE
+                </div>
+
+            </div>
+
+            <p class="principle-description">
+                The square represents systems and rules.
+                Form gains structure before transforming
+                into something new.
+            </p>
+
+        </article>
+
+
+        <article class="principle">
+
+            <div class="label">
+                03
+            </div>
+
+            <div>
+
+                <div class="principle-symbol symbol-triangle"></div>
+
+                <div class="principle-title">
+                    DIRECTION
+                </div>
+
+            </div>
+
+            <p class="principle-description">
+                The triangle introduces movement and direction.
+                Change does not simply happen —
+                it moves somewhere.
+            </p>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ===============================================
      ARTISTS
-===================================================== -->
 
-<section class="section artists">
+     각각 서로 다른 FORM 비율을 가진다.
+================================================ -->
 
-    <div class="artists-header">
+<section class="artists">
 
-        <div class="section-label">
-            02 / ARTISTS
+    <div class="artist-intro">
+
+        <div class="label">
+            03 / ARTISTS
         </div>
 
-        <h2 class="section-title">
-            6 VOICES<br>
-            6 FORMS
-        </h2>
+        <div style="height: 40px"></div>
+
+        <div class="display">
+            DIFFERENT<br>
+            FORMS.
+        </div>
 
     </div>
 
 
     <div class="artist-track">
 
-        <article class="artist-card">
 
-            <div class="artist-image">
-                <div class="artist-visual"></div>
+        <article class="artist">
+
+            <div class="artist-index label">
+                ARTIST / 01
             </div>
 
-            <div class="artist-index">
-                01
+            <h2 class="artist-name">
+                JIHO<br>
+                PARK
+            </h2>
+
+
+            <div class="artist-form">
+
+                <svg viewBox="0 0 300 300">
+
+                    <circle
+                        cx="150"
+                        cy="150"
+                        r="120"
+                        fill="#151515"
+                    />
+
+                    <rect
+                        x="105"
+                        y="105"
+                        width="90"
+                        height="90"
+                        fill="#ffd629"
+                    />
+
+                </svg>
+
             </div>
 
-            <div class="artist-name">
-                JIHO PARK
-            </div>
 
-        </article>
-
-
-        <article class="artist-card">
-
-            <div class="artist-image">
-                <div class="artist-visual"></div>
-            </div>
-
-            <div class="artist-index">
-                02
-            </div>
-
-            <div class="artist-name">
-                MINA KIM
-            </div>
-
-        </article>
-
-
-        <article class="artist-card">
-
-            <div class="artist-image">
-                <div class="artist-visual"></div>
-            </div>
-
-            <div class="artist-index">
-                03
-            </div>
-
-            <div class="artist-name">
-                STUDIO 404
+            <div class="artist-meta">
+                ORGANIC 70<br>
+                STRUCTURE 30<br>
+                DIRECTION 00
             </div>
 
         </article>
 
 
-        <article class="artist-card">
 
-            <div class="artist-image">
-                <div class="artist-visual"></div>
+        <article class="artist">
+
+            <div class="artist-index label">
+                ARTIST / 02
             </div>
 
-            <div class="artist-index">
-                04
+            <h2 class="artist-name">
+                MINA<br>
+                KIM
+            </h2>
+
+
+            <div class="artist-form">
+
+                <svg viewBox="0 0 300 300">
+
+                    <rect
+                        x="35"
+                        y="35"
+                        width="230"
+                        height="230"
+                        fill="#151515"
+                    />
+
+                    <polygon
+                        points="150,55 255,245 45,245"
+                        fill="#f2efe7"
+                    />
+
+                </svg>
+
             </div>
 
-            <div class="artist-name">
-                YU SEO
+
+            <div class="artist-meta">
+                ORGANIC 00<br>
+                STRUCTURE 65<br>
+                DIRECTION 35
+            </div>
+
+        </article>
+
+
+
+        <article class="artist">
+
+            <div class="artist-index label">
+                ARTIST / 03
+            </div>
+
+            <h2 class="artist-name">
+                STUDIO<br>
+                ZERO
+            </h2>
+
+
+            <div class="artist-form">
+
+                <svg viewBox="0 0 300 300">
+
+                    <circle
+                        cx="150"
+                        cy="150"
+                        r="115"
+                        fill="#151515"
+                    />
+
+                    <polygon
+                        points="150,40 250,230 50,230"
+                        fill="#ffd629"
+                    />
+
+                </svg>
+
+            </div>
+
+
+            <div class="artist-meta">
+                ORGANIC 40<br>
+                STRUCTURE 00<br>
+                DIRECTION 60
             </div>
 
         </article>
 
-
-        <article class="artist-card">
-
-            <div class="artist-image">
-                <div class="artist-visual"></div>
-            </div>
-
-            <div class="artist-index">
-                05
-            </div>
-
-            <div class="artist-name">
-                LAYER LAB
-            </div>
-
-        </article>
-
-
-        <article class="artist-card">
-
-            <div class="artist-image">
-                <div class="artist-visual"></div>
-            </div>
-
-            <div class="artist-index">
-                06
-            </div>
-
-            <div class="artist-name">
-                HAN SOL
-            </div>
-
-        </article>
 
     </div>
 
@@ -816,250 +886,125 @@ svg {
 
 
 
-<!-- =====================================================
-     EXHIBITIONS
-===================================================== -->
+<!-- ===============================================
+     EXHIBITION
+================================================ -->
 
-<section class="section exhibitions">
+<section class="exhibition">
 
-    <div class="section-label">
-        03 / EXHIBITIONS
-    </div>
+    <div class="exhibition-head">
 
-    <h2 class="section-title">
-        NEW<br>
-        PERSPECTIVES
-    </h2>
+        <div class="label">
+            04 / EXHIBITION
+        </div>
 
+        <div style="height: 50px"></div>
 
-    <div class="exhibition-list">
-
-        <article class="exhibition">
-
-            <div class="exhibition-number">
-                EX.01
-            </div>
-
-            <div class="exhibition-content">
-
-                <h3>
-                    BETWEEN<br>
-                    THE LINES
-                </h3>
-
-                <p>
-                    Digital typography explores
-                    the boundary between language
-                    and visual form.
-                </p>
-
-                <div class="exhibition-visual"></div>
-
-            </div>
-
-        </article>
-
-
-        <article class="exhibition">
-
-            <div class="exhibition-number">
-                EX.02
-            </div>
-
-            <div class="exhibition-content">
-
-                <h3>
-                    MOVING<br>
-                    STRUCTURES
-                </h3>
-
-                <p>
-                    Geometry changes through movement,
-                    interaction and time.
-                </p>
-
-                <div class="exhibition-visual"></div>
-
-            </div>
-
-        </article>
-
-
-        <article class="exhibition">
-
-            <div class="exhibition-number">
-                EX.03
-            </div>
-
-            <div class="exhibition-content">
-
-                <h3>
-                    DIGITAL<br>
-                    MATTER
-                </h3>
-
-                <p>
-                    An experiment between physical
-                    objects and digital environments.
-                </p>
-
-                <div class="exhibition-visual"></div>
-
-            </div>
-
-        </article>
+        <div class="display">
+            FORM<br>
+            IN MOTION.
+        </div>
 
     </div>
+
+
+    <article class="work">
+
+        <div class="work-number">
+            EX / 01
+        </div>
+
+        <div>
+
+            <h3 class="work-title">
+                BETWEEN<br>
+                STATES
+            </h3>
+
+            <p>
+                A digital installation exploring
+                the moment between one shape
+                and another.
+            </p>
+
+            <div class="work-visual"></div>
+
+        </div>
+
+    </article>
+
+
+    <article class="work">
+
+        <div class="work-number">
+            EX / 02
+        </div>
+
+        <div>
+
+            <h3 class="work-title">
+                RULES<br>
+                BREAK
+            </h3>
+
+            <p>
+                Structure creates form.
+                Transformation begins
+                when structure breaks.
+            </p>
+
+            <div class="work-visual"></div>
+
+        </div>
+
+    </article>
 
 </section>
 
 
 
-<!-- =====================================================
-     SCHEDULE
-===================================================== -->
+<!-- ===============================================
+     JOURNEY
 
-<section class="section schedule">
+     단순 지도 → "관람의 흐름"
+================================================ -->
 
-    <div class="section-label">
-        04 / SCHEDULE
-    </div>
+<section class="journey">
 
-    <h2 class="section-title">
-        ONE DAY.<br>
-        MANY FORMS.
-    </h2>
+    <div class="journey-inner">
 
+        <div class="label">
+            05 / JOURNEY
+        </div>
 
-    <div class="schedule-list">
+        <div style="height:50px"></div>
 
-        <div class="schedule-item">
-
-            <div class="schedule-line"></div>
-
-            <div class="schedule-time">
-                10:00
-            </div>
-
-            <div class="schedule-name">
-                Opening Talk
-            </div>
-
-            <div class="schedule-location">
-                Hall A
-            </div>
-
+        <div class="display">
+            FOLLOW<br>
+            THE FORM.
         </div>
 
 
-        <div class="schedule-item">
-
-            <div class="schedule-line"></div>
-
-            <div class="schedule-time">
-                13:00
-            </div>
-
-            <div class="schedule-name">
-                Typography & Motion
-            </div>
-
-            <div class="schedule-location">
-                Hall B
-            </div>
-
-        </div>
-
-
-        <div class="schedule-item">
-
-            <div class="schedule-line"></div>
-
-            <div class="schedule-time">
-                16:30
-            </div>
-
-            <div class="schedule-name">
-                Generative Design
-            </div>
-
-            <div class="schedule-location">
-                Studio 02
-            </div>
-
-        </div>
-
-
-        <div class="schedule-item">
-
-            <div class="schedule-line"></div>
-
-            <div class="schedule-time">
-                19:00
-            </div>
-
-            <div class="schedule-name">
-                Closing Performance
-            </div>
-
-            <div class="schedule-location">
-                Main Hall
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     LOCATION
-===================================================== -->
-
-<section class="section location">
-
-    <div class="location-info">
-
-        <div class="section-label">
-            05 / LOCATION
-        </div>
-
-        <h2 class="section-title">
-            FIND<br>
-            THE FORM
-        </h2>
-
-        <p>
-            Culture Station Seoul 284<br>
-            1 Tongil-ro, Jung-gu, Seoul<br><br>
-
-            September 18–20, 2026
-        </p>
-
-    </div>
-
-
-    <div class="location-map">
-
-        <svg viewBox="0 0 600 500">
+        <svg
+            class="journey-svg"
+            viewBox="0 0 1200 400"
+        >
 
             <path
-                class="map-path"
+                class="journey-path"
                 d="
-                    M40 400
-                    C120 330 100 200 210 220
-                    C330 250 310 100 420 130
-                    C500 150 480 260 560 70
+                    M30 300
+                    C220 300 220 80 410 80
+                    C600 80 600 320 790 320
+                    C980 320 980 100 1170 100
                 "
             />
 
             <circle
-                class="map-point"
-                cx="420"
-                cy="130"
-                r="12"
+                class="journey-dot"
+                cx="30"
+                cy="300"
+                r="9"
             />
 
         </svg>
@@ -1070,71 +1015,62 @@ svg {
 
 
 
-<!-- =====================================================
-     TICKET
-===================================================== -->
+<!-- ===============================================
+     FINAL
 
-<section class="ticket">
+     3개의 형태가 하나의 FORM으로 결합
+================================================ -->
 
-    <svg
-        class="ticket-shape"
-        viewBox="0 0 500 500"
-        aria-hidden="true"
-    >
+<section class="final">
 
-        <polygon
-            id="ticketShape"
-            points="
-                250,30
-                405,95
-                470,250
-                405,405
-                250,470
-                95,405
-                30,250
-                95,95
-            "
-        />
+    <div class="final-shapes">
 
-    </svg>
+        <div class="
+            final-shape
+            final-circle
+        "></div>
+
+        <div class="
+            final-shape
+            final-square
+        "></div>
+
+        <div class="
+            final-shape
+            final-triangle
+        "></div>
+
+    </div>
 
 
-    <div class="ticket-title">
-        JOIN<br>
-        FORM
+    <div class="final-copy">
+        FORM<br>
+        /26
+    </div>
+
+
+    <div class="final-description">
+        FORM IS NEVER FIXED.
     </div>
 
 </section>
 
 
 
-<footer class="footer">
-
-    <div>
-        FORM / 26
-    </div>
-
-    <div>
-        DIGITAL ART & DESIGN FESTIVAL
-    </div>
-
-    <div>
-        © 2026
-    </div>
-
-</footer>
-
-
-
 <script>
+
 gsap.registerPlugin(ScrollTrigger);
 
 
-/* =========================================================
-   SHAPE DATA
-========================================================= */
 
-const shapes = {
+/* =============================================
+   SHAPE
+
+   모든 형태의 vertex 수를 동일하게 맞춰
+   polygon morph가 가능하도록 한다.
+============================================= */
+
+const FORM = {
 
     circle: `
         250,30
@@ -1167,105 +1103,204 @@ const shapes = {
         160,420
         70,420
         160,200
-    `,
-
-    diamond: `
-        250,30
-        360,140
-        470,250
-        360,360
-        250,470
-        140,360
-        30,250
-        140,140
     `
+
 };
 
 
-/* =========================================================
+
+/* =============================================
    HERO
-========================================================= */
+
+   처음에는 ORGANIC.
+
+   스크롤에 따라
+
+   ORGANIC
+   ↓
+   STRUCTURE
+   ↓
+   DIRECTION
+
+   전시의 핵심 개념을
+   첫 화면에서 직접 경험하도록 한다.
+============================================= */
 
 const heroTimeline = gsap.timeline({
+
     scrollTrigger: {
+
         trigger: '.hero',
+
         start: 'top top',
-        end: 'bottom top',
-        scrub: 1
+
+        end: '+=1600',
+
+        scrub: 1,
+
+        pin: true
+
     }
+
 });
 
 
 heroTimeline
-.to('#mainShape', {
+
+.to('#heroPolygon', {
+
     attr: {
-        points: shapes.square
+        points: FORM.square
     },
+
     ease: 'none'
+
 })
-.to('#mainShape', {
+
+.to('#heroPolygon', {
+
     attr: {
-        points: shapes.triangle
+        points: FORM.triangle
     },
+
     ease: 'none'
+
 })
+
 .to('.hero-title', {
-    yPercent: -35,
-    scale: .9,
+
+    scale: .88,
+
     opacity: .15,
+
     ease: 'none'
+
 }, 0);
 
 
-/* =========================================================
-   ABOUT
-========================================================= */
 
-gsap.from('.about-copy .line', {
+/* =============================================
+   MANIFESTO
 
-    y: 120,
+   컨셉 문장 자체가 하나씩
+   형태를 갖는 느낌.
+============================================= */
+
+gsap.utils
+.toArray('.manifesto-line span')
+.forEach((line, index) => {
+
+    gsap.from(line, {
+
+        yPercent: 110,
+
+        rotation: index % 2
+            ? 2
+            : -2,
+
+        scrollTrigger: {
+
+            trigger: line,
+
+            start: 'top 90%',
+
+            end: 'top 55%',
+
+            scrub: 1
+
+        }
+
+    });
+
+});
+
+
+
+/* =============================================
+   PRINCIPLES
+
+   세 형태가 각각 다른 방식으로 등장한다.
+============================================= */
+
+gsap.from('.symbol-circle', {
+
+    scale: 0,
+
+    borderRadius: '0%',
+
+    scrollTrigger: {
+
+        trigger: '.symbol-circle',
+
+        start: 'top 80%',
+
+        scrub: 1
+
+    }
+
+});
+
+
+gsap.from('.symbol-square', {
+
+    rotation: 90,
+
+    scale: .4,
+
+    scrollTrigger: {
+
+        trigger: '.symbol-square',
+
+        start: 'top 80%',
+
+        scrub: 1
+
+    }
+
+});
+
+
+gsap.from('.symbol-triangle', {
+
+    y: 100,
+
     opacity: 0,
 
-    stagger: .12,
-
     scrollTrigger: {
-        trigger: '.about',
-        start: 'top 65%'
+
+        trigger: '.symbol-triangle',
+
+        start: 'top 80%',
+
+        scrub: 1
+
     }
 
 });
 
 
-gsap.to('.about-shape', {
 
-    rotation: 180,
-    scale: 1.4,
-
-    scrollTrigger: {
-        trigger: '.about',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: true
-    }
-
-});
-
-
-/* =========================================================
+/* =============================================
    ARTISTS
-========================================================= */
 
-const artistTrack = document.querySelector('.artist-track');
+   세로 스크롤 → 가로 이동
+
+   동일한 FORM이라는 언어 안에서
+   서로 다른 작가를 연속적으로 탐색한다.
+============================================= */
+
+const artistTrack =
+    document.querySelector('.artist-track');
 
 
+const artistAnimation =
 gsap.to(artistTrack, {
 
-    x: () => {
-        return -(
-            artistTrack.scrollWidth -
-            window.innerWidth
-        );
-    },
+    x: () =>
+        -(
+            artistTrack.scrollWidth
+            - window.innerWidth
+        ),
 
     ease: 'none',
 
@@ -1275,60 +1310,37 @@ gsap.to(artistTrack, {
 
         start: 'top top',
 
-        end: () => {
-            return '+=' + artistTrack.scrollWidth;
-        },
+        end: () =>
+            '+=' +
+            artistTrack.scrollWidth,
 
         scrub: 1,
 
         pin: true,
 
         invalidateOnRefresh: true
+
     }
 
 });
 
 
+
+/* =============================================
+   EXHIBITION
+
+   이미지가 단순 fade가 아니라
+   하나의 shape가 벌어지면서 드러난다.
+============================================= */
+
 gsap.utils
-.toArray('.artist-visual')
+.toArray('.work-visual')
 .forEach((visual) => {
 
     gsap.to(visual, {
 
-        scale: 1,
-
-        scrollTrigger: {
-
-            trigger: visual,
-
-            containerAnimation: null,
-
-            start: 'left 80%',
-
-            end: 'left 30%',
-
-            scrub: true
-
-        }
-
-    });
-
-});
-
-
-/* =========================================================
-   EXHIBITIONS
-========================================================= */
-
-gsap.utils
-.toArray('.exhibition-visual')
-.forEach((visual) => {
-
-    gsap.to(visual, {
-
-        clipPath: 'inset(0 0% 0 0)',
-
-        duration: 1.2,
+        clipPath:
+            'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
 
         ease: 'power3.inOut',
 
@@ -1336,7 +1348,11 @@ gsap.utils
 
             trigger: visual,
 
-            start: 'top 80%'
+            start: 'top 85%',
+
+            end: 'top 45%',
+
+            scrub: 1
 
         }
 
@@ -1345,57 +1361,31 @@ gsap.utils
 });
 
 
-/* =========================================================
-   SCHEDULE
-========================================================= */
 
-gsap.utils
-.toArray('.schedule-item')
-.forEach((item) => {
+/* =============================================
+   JOURNEY
 
-    const line =
-        item.querySelector('.schedule-line');
+   사용자의 스크롤 = 관람자의 이동
+============================================= */
 
-    gsap.to(line, {
+const journeyPath =
+    document.querySelector('.journey-path');
 
-        scaleX: 1,
-
-        duration: 1,
-
-        ease: 'power2.out',
-
-        scrollTrigger: {
-
-            trigger: item,
-
-            start: 'top 85%'
-
-        }
-
-    });
-
-});
-
-
-/* =========================================================
-   LOCATION PATH
-========================================================= */
-
-const path =
-    document.querySelector('.map-path');
+const journeyDot =
+    document.querySelector('.journey-dot');
 
 const pathLength =
-    path.getTotalLength();
+    journeyPath.getTotalLength();
 
 
-path.style.strokeDasharray =
+journeyPath.style.strokeDasharray =
     pathLength;
 
-path.style.strokeDashoffset =
+journeyPath.style.strokeDashoffset =
     pathLength;
 
 
-gsap.to(path, {
+gsap.to(journeyPath, {
 
     strokeDashoffset: 0,
 
@@ -1403,11 +1393,11 @@ gsap.to(path, {
 
     scrollTrigger: {
 
-        trigger: '.location',
+        trigger: '.journey',
 
-        start: 'top 70%',
+        start: 'top 60%',
 
-        end: 'center center',
+        end: 'bottom 60%',
 
         scrub: 1
 
@@ -1416,82 +1406,86 @@ gsap.to(path, {
 });
 
 
-gsap.to('.map-point', {
+gsap.to(journeyDot, {
 
-    opacity: 1,
+    motionPath: {
+        path: journeyPath
+    }
 
-    scale: 1.5,
+});
+
+
+
+/* =============================================
+   FINAL
+
+   ORGANIC
+   STRUCTURE
+   DIRECTION
+
+   서로 다른 세 FORM이
+   마지막에 하나로 겹쳐진다.
+============================================= */
+
+const finalTimeline =
+gsap.timeline({
 
     scrollTrigger: {
 
-        trigger: '.location',
+        trigger: '.final',
 
-        start: 'center center'
+        start: 'top top',
+
+        end: '+=1300',
+
+        scrub: 1,
+
+        pin: true
 
     }
 
 });
 
 
-/* =========================================================
-   TICKET
-========================================================= */
+finalTimeline
 
-const ticketTimeline =
-    gsap.timeline({
+.to('.final-circle', {
 
-        scrollTrigger: {
+    xPercent: 50,
 
-            trigger: '.ticket',
+    scale: 1.4
 
-            start: 'top 70%',
+}, 0)
 
-            end: 'bottom bottom',
+.to('.final-square', {
 
-            scrub: 1
+    rotation: 45,
 
-        }
+    scale: 1.35
 
-    });
+}, 0)
 
+.to('.final-triangle', {
 
-ticketTimeline
+    xPercent: -50,
 
-.to('#ticketShape', {
+    scale: 1.3
 
-    attr: {
-        points: shapes.square
-    }
+}, 0)
 
-})
+.to('.final-shapes', {
 
-.to('#ticketShape', {
+    scale: 4,
 
-    attr: {
-        points: shapes.triangle
-    }
+    rotation: 45,
+
+    ease: 'power2.in'
 
 })
 
-.to('#ticketShape', {
+.to('.final-copy', {
 
-    attr: {
-        points: shapes.diamond
-    }
-
-})
-
-.to('.ticket-shape', {
-
-    scale: 3.5,
-
-    rotation: 45
-
-})
-
-.to('.ticket-title', {
-
-    scale: .85
+    scale: .8
 
 }, '<');
 

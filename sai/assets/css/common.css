@@ -258,6 +258,21 @@ SAI Layout
         width: 20px;
         height: 20px;
     }
+    &.sai-mark--md {
+        width: 36px;
+        height: 36px;
+        font-size: var(--font-size-sm);
+
+        svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+}
+
+.sai-mark--gray {
+    --mark-color: var(--color-mark-gray);
+    --mark-bg: var(--color-mark-gray-bg);
 }
 
 .sai-mark--red {
@@ -280,8 +295,6 @@ SAI Layout
     --mark-bg: var(--color-mark-green-bg);
 }
 
-
-/* Blue */
 .sai-mark--blue {
     --mark-color: var(--color-mark-blue);
     --mark-bg: var(--color-mark-blue-bg);

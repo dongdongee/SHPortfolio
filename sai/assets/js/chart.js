@@ -237,6 +237,167 @@ class Kpi {
 }
 
 
+
+
+
+
+/* *********************************
+ * KPI
+ * ********************************* */
+class SystemStatus {
+    constructor() {
+        this.container = document.querySelector('.sai-system');
+
+        this.data = [
+            {
+                id: 'ai-service',
+                title: 'AI Service',
+                status: 'outage',
+                chartData: [8, 10, 9, 12, 10, 13, 11, 12]
+            },
+            {
+                id: 'database',
+                title: 'Database',
+                status: 'operational',
+                chartData: [10, 12, 11, 14, 12, 15, 13, 16]
+            },
+            {
+                id: 'storage',
+                title: 'Storage',
+                status: 'operational',
+                chartData: [9, 11, 10, 13, 11, 14, 12, 13]
+            },
+            {
+                id: 'api-gateway',
+                title: 'API Gateway',
+                status: 'outage',
+                chartData: [12, 10, 13, 9, 12, 11, 14, 10]
+            },
+            {
+                id: 'web-application',
+                title: 'Web Application',
+                status: 'operational',
+                chartData: [10, 11, 10, 13, 11, 14, 12, 15]
+            }
+        ];
+
+        if (!this.container) return;
+
+        this.init();
+    }
+
+    init() {
+        this.render();
+        this.createCharts();
+    }
+
+    render() {
+        this.container.innerHTML = this.data
+            .map((item) => {
+                const isOperational = item.status === 'operational';
+
+                const statusText = isOperational
+                    ? 'Operational'
+                    : 'Non-operational';
+
+                const markClass = isOperational
+                    ? 'sai-mark--green'
+                    : 'sai-mark--red';
+                    
+                const txtClass = isOperational
+                    ? 'operating'
+                    : 'non-operating';
+
+                return `
+                    <li class="sai-content-card__item">
+                        <span class="sai-mark sai-mark--sm ${markClass}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-circle-check"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M9 12l2 2l4 -4" /></svg>
+                        </span>
+
+                        <span class="sai-content-card__info">
+                            ${item.title}
+                        </span>
+
+                        <span class="sai-content-card__status ${txtClass}">
+                            ${statusText}
+                        </span>
+
+                        <div class="sai-content-card__chart">
+                            <canvas id="${item.id}-chart"></canvas>
+                        </div>
+                    </li>
+                `;
+            })
+            .join('');
+    }
+
+    createCharts() {
+        this.data.forEach((item) => {
+            const canvas = this.container.querySelector(
+                `#${item.id}-chart`
+            );
+
+            if (!canvas) return;
+
+            this.createLineChart(
+                canvas,
+                item.chartData,
+                item.status
+            );
+        });
+    }
+
+    createLineChart(canvas, data, status) {
+        const color = status === 'operational'
+            ? '#22c55e'
+            : '#ef4444';
+
+        new Chart(canvas, {
+            type: 'line',
+
+            data: {
+                labels: data.map((_, index) => index + 1),
+
+                datasets: [{
+                    data,
+                    borderColor: color,
+                    borderWidth: 2,
+                    tension: 0.4,
+                    pointRadius: 0,
+                    pointHoverRadius: 0,
+                    fill: false
+                }]
+            },
+
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+
+                    tooltip: {
+                        enabled: false
+                    }
+                },
+
+                scales: {
+                    x: {
+                        display: false
+                    },
+
+                    y: {
+                        display: false
+                    }
+                }
+            }
+        });
+    }
+}
+
+
 /* ========================================
    Doughnut Center Text Plugin
 ======================================== */
@@ -1570,5 +1731,6 @@ function externalChartTooltip(context) {
  * INIT
  * ********************************* */
 
+new SystemStatus();
 new Kpi();
 new DashboardChart();

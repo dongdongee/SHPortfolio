@@ -57,6 +57,10 @@
     --color-text-brand-hover: #7c3aed;
     --color-text-brand-active: #6d28d9;
 
+   /* Brand Text */
+    --color-status-green: #16a34a;
+    --color-status-red: #dc2626;
+
 
     /* ========================
        Border
@@ -123,6 +127,8 @@
     /* ========================
        Mark
     ======================== */
+    --color-mark-gray: #667085;
+    --color-mark-gray-bg: #f2f4f7;
 
     --color-mark-red: #ef4444;
     --color-mark-red-bg: #fee2e2;
