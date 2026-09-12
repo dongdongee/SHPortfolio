@@ -1,235 +1,1495 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Portfolio</title>
+<title>FORM / 26 — Form Is Never Fixed</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 
-        html,
-        body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background: #000;
-            font-family: Pretendard, sans-serif;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .hero {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-        }
+:root {
+    --bg: #f2efe7;
+    --black: #151515;
+    --accent: #ff5538;
+    --yellow: #ffd629;
+}
 
-        canvas {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-        }
+html {
+    background: var(--bg);
+    color: var(--black);
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-        .blur {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 650px;
-            height: 650px;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            background:
-                radial-gradient(circle,
-                    rgba(142, 77, 255, .28) 0%,
-                    rgba(142, 77, 255, .12) 35%,
-                    transparent 70%);
-            filter: blur(70px);
-        }
+body {
+    overflow-x: hidden;
+}
 
-        .title {
-            position: absolute;
-            left: 2vw;
-            top: 4vh;
-            z-index: 10;
-        }
+section {
+    position: relative;
+}
 
-        .title h1 {
-            font-size: 8vw;
-            line-height: .95;
-            font-weight: 900;
-            color: #fff;
-            letter-spacing: -.07em;
-        }
+.label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .18em;
+}
 
-        .desc {
-            position: absolute;
-            right: 2vw;
-            bottom: 5vh;
-            z-index: 10;
-            text-align: right;
-            font-size: 3vw;
-            line-height: 1.18;
-            font-weight: 800;
-            letter-spacing: -.05em;
-            color: #fff;
-        }
-    </style>
+.display {
+    font-size: clamp(70px, 13vw, 220px);
+    font-weight: 700;
+    line-height: .78;
+    letter-spacing: -.08em;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-height: 100vh;
+    padding: 35px 4vw;
+}
+
+.hero-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hero-center {
+    position: relative;
+}
+
+.hero-title {
+    position: relative;
+    z-index: 2;
+
+    font-size: clamp(100px, 21vw, 360px);
+    line-height: .7;
+    letter-spacing: -.1em;
+}
+
+.hero-title span {
+    display: block;
+}
+
+.hero-shape {
+    position: absolute;
+    z-index: 1;
+
+    top: 50%;
+    left: 50%;
+
+    width: min(35vw, 520px);
+
+    transform: translate(-50%, -50%);
+}
+
+.hero-shape polygon {
+    fill: var(--accent);
+}
+
+.hero-footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: end;
+
+    font-size: 12px;
+}
+
+.hero-footer div:nth-child(2) {
+    text-align: center;
+}
+
+.hero-footer div:last-child {
+    text-align: right;
+}
+
+
+/* =========================
+   MANIFESTO
+========================= */
+
+.manifesto {
+    display: flex;
+    align-items: center;
+
+    min-height: 140vh;
+    padding: 10vw 4vw;
+
+    background: var(--black);
+    color: var(--bg);
+}
+
+.manifesto-copy {
+    width: 100%;
+}
+
+.manifesto-line {
+    overflow: hidden;
+
+    font-size: clamp(55px, 10vw, 155px);
+    font-weight: 700;
+    line-height: .9;
+    letter-spacing: -.06em;
+}
+
+.manifesto-line span {
+    display: block;
+}
+
+
+/* =========================
+   PRINCIPLES
+========================= */
+
+.principles {
+    padding: 10vw 4vw;
+}
+
+.principles-head {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 100px;
+}
+
+.principle-list {
+    border-top: 1px solid var(--black);
+}
+
+.principle {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr;
+    gap: 4vw;
+
+    padding: 50px 0;
+
+    border-bottom: 1px solid var(--black);
+}
+
+.principle-symbol {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100px;
+    height: 100px;
+}
+
+.symbol-circle {
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.symbol-square {
+    background: var(--black);
+}
+
+.symbol-triangle {
+    width: 0;
+    height: 0;
+
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 90px solid var(--yellow);
+}
+
+.principle-title {
+    font-size: clamp(42px, 7vw, 95px);
+    font-weight: 700;
+    letter-spacing: -.06em;
+}
+
+.principle-description {
+    align-self: end;
+
+    max-width: 430px;
+
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   ARTISTS
+========================= */
+
+.artists {
+    overflow: hidden;
+
+    background: var(--accent);
+}
+
+.artist-intro {
+    padding: 8vw 4vw 60px;
+}
+
+.artist-track {
+    display: flex;
+    width: max-content;
+}
+
+.artist {
+    position: relative;
+
+    flex-shrink: 0;
+
+    width: 60vw;
+    height: 80vh;
+
+    padding: 4vw;
+
+    border-right: 1px solid var(--black);
+}
+
+.artist-index {
+    margin-bottom: 40px;
+}
+
+.artist-name {
+    font-size: clamp(60px, 9vw, 145px);
+    font-weight: 700;
+    line-height: .85;
+    letter-spacing: -.07em;
+}
+
+.artist-form {
+    position: absolute;
+
+    right: 8%;
+    bottom: 8%;
+
+    width: 280px;
+    height: 280px;
+}
+
+.artist-form svg {
+    width: 100%;
+    height: 100%;
+}
+
+.artist-meta {
+    position: absolute;
+
+    left: 4vw;
+    bottom: 4vw;
+
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+
+/* =========================
+   EXHIBITION
+========================= */
+
+.exhibition {
+    padding: 10vw 4vw;
+
+    background: var(--bg);
+}
+
+.exhibition-head {
+    margin-bottom: 120px;
+}
+
+.work {
+    display: grid;
+    grid-template-columns: .7fr 1.3fr;
+    gap: 6vw;
+
+    padding: 70px 0;
+
+    border-top: 1px solid var(--black);
+}
+
+.work-number {
+    font-size: 12px;
+}
+
+.work-title {
+    margin-bottom: 35px;
+
+    font-size: clamp(50px, 8vw, 120px);
+    font-weight: 700;
+    line-height: .85;
+    letter-spacing: -.07em;
+}
+
+.work-visual {
+    overflow: hidden;
+
+    height: 520px;
+
+    clip-path: polygon(
+        50% 0,
+        50% 0,
+        50% 100%,
+        50% 100%
+    );
+}
+
+.work:nth-child(1) .work-visual {
+    background:
+        radial-gradient(
+            circle,
+            var(--accent) 0 25%,
+            var(--black) 26%
+        );
+}
+
+.work:nth-child(2) .work-visual {
+    background:
+        linear-gradient(
+            45deg,
+            var(--yellow) 0 50%,
+            var(--black) 50%
+        );
+}
+
+
+/* =========================
+   JOURNEY
+========================= */
+
+.journey {
+    display: flex;
+    align-items: center;
+
+    min-height: 150vh;
+    padding: 8vw 4vw;
+
+    background: var(--black);
+    color: var(--bg);
+}
+
+.journey-inner {
+    width: 100%;
+}
+
+.journey-svg {
+    width: 100%;
+    margin-top: 80px;
+}
+
+.journey-path {
+    fill: none;
+    stroke: var(--bg);
+    stroke-width: 2;
+}
+
+.journey-dot {
+    fill: var(--accent);
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+.final {
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 140vh;
+}
+
+.final-shapes {
+    position: absolute;
+    inset: 0;
+}
+
+.final-shape {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 300px;
+    height: 300px;
+}
+
+.final-circle {
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    transform: translate(-150%, -50%);
+}
+
+.final-square {
+    background: var(--black);
+
+    transform: translate(-50%, -50%);
+}
+
+.final-triangle {
+    width: 0;
+    height: 0;
+
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-bottom: 270px solid var(--yellow);
+
+    transform: translate(50%, -50%);
+}
+
+.final-copy {
+    position: relative;
+    z-index: 5;
+
+    text-align: center;
+    mix-blend-mode: difference;
+    color: white;
+
+    font-size: clamp(80px, 17vw, 280px);
+    font-weight: 700;
+    line-height: .7;
+    letter-spacing: -.09em;
+}
+
+.final-description {
+    position: absolute;
+
+    z-index: 6;
+    bottom: 40px;
+
+    font-size: 11px;
+    letter-spacing: .15em;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    .principle {
+        grid-template-columns: 60px 1fr;
+    }
+
+    .principle-description {
+        grid-column: 2;
+    }
+
+    .artist {
+        width: 90vw;
+    }
+
+    .work {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-footer {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-footer div:nth-child(2) {
+        display: none;
+    }
+
+}
+</style>
 </head>
+
 
 <body>
 
-    <section class="hero">
 
-        <div class="blur"></div>
+<!-- ===============================================
+     HERO
+     "형태는 아직 정의되지 않았다"
+================================================ -->
 
-        <canvas id="network"></canvas>
+<section class="hero">
 
-        <div class="title">
-            <h1>
-                웹 퍼블리셔,<br>
-                박상호.
-            </h1>
+    <div class="hero-header">
+        <div class="label">FORM / 26</div>
+        <div class="label">SEOUL · SEP 18—20</div>
+    </div>
+
+
+    <div class="hero-center">
+
+        <h1 class="hero-title">
+            <span>FORM</span>
+            <span>/26</span>
+        </h1>
+
+
+        <svg
+            class="hero-shape"
+            viewBox="0 0 500 500"
+        >
+            <polygon
+                id="heroPolygon"
+                points="
+                    250,30
+                    405,95
+                    470,250
+                    405,405
+                    250,470
+                    95,405
+                    30,250
+                    95,95
+                "
+            />
+        </svg>
+
+    </div>
+
+
+    <div class="hero-footer">
+
+        <div>
+            DIGITAL ART &<br>
+            DESIGN EXHIBITION
         </div>
 
-        <div class="desc">
-            사용자의 흐름을 읽고,<br>
-            화면의 구조를 설계하며,<br>
-            세밀한 인터랙션을 구현하고,<br>
-            더 나은 경험을 고민합니다.
+        <div>
+            FORM IS NEVER FIXED.
         </div>
 
-    </section>
+        <div>
+            SCROLL ↓
+        </div>
 
-    <script>
+    </div>
 
-        const canvas = document.getElementById("network");
-        const ctx = canvas.getContext("2d");
+</section>
 
-        let w, h;
 
-        const mouse = {
-            x: window.innerWidth / 2,
-            y: window.innerHeight / 2
-        };
 
-        const points = [];
+<!-- ===============================================
+     MANIFESTO
+================================================ -->
 
-        function resize() {
+<section class="manifesto">
 
-            w = canvas.width = window.innerWidth;
-            h = canvas.height = window.innerHeight;
+    <div class="manifesto-copy">
 
-            points.length = 0;
+        <div class="label">
+            01 / MANIFESTO
+        </div>
 
-            const total = 24;
+        <div style="height: 60px"></div>
 
-            for (let i = 0; i < total; i++) {
+        <div class="manifesto-line">
+            <span>FORM IS NOT</span>
+        </div>
 
-                const angle = (Math.PI * 2 / total) * i;
+        <div class="manifesto-line">
+            <span>A RESULT.</span>
+        </div>
 
-                const radius = 120 + Math.random() * 220;
+        <div class="manifesto-line">
+            <span>IT IS A</span>
+        </div>
 
-                points.push({
+        <div class="manifesto-line">
+            <span>PROCESS.</span>
+        </div>
 
-                    baseX: w / 2 + Math.cos(angle) * radius,
-                    baseY: h / 2 + Math.sin(angle) * radius,
+    </div>
 
-                    x: 0,
-                    y: 0,
+</section>
 
-                    size: 2 + Math.random() * 2,
 
-                    speed: .2 + Math.random(),
 
-                    offset: Math.random() * 1000
+<!-- ===============================================
+     THREE PRINCIPLES
 
-                });
+     Circle   = Organic
+     Square   = Structure
+     Triangle = Direction
+================================================ -->
 
-            }
+<section class="principles">
+
+    <div class="principles-head">
+
+        <div class="label">
+            02 / THREE FORMS
+        </div>
+
+        <div class="label">
+            A VISUAL LANGUAGE
+        </div>
+
+    </div>
+
+
+    <div class="principle-list">
+
+
+        <article class="principle">
+
+            <div class="label">
+                01
+            </div>
+
+            <div>
+
+                <div class="principle-symbol symbol-circle"></div>
+
+                <div class="principle-title">
+                    ORGANIC
+                </div>
+
+            </div>
+
+            <p class="principle-description">
+                The circle represents organic form —
+                fluid, continuous and unrestricted.
+                It is the beginning of change.
+            </p>
+
+        </article>
+
+
+        <article class="principle">
+
+            <div class="label">
+                02
+            </div>
+
+            <div>
+
+                <div class="principle-symbol symbol-square"></div>
+
+                <div class="principle-title">
+                    STRUCTURE
+                </div>
+
+            </div>
+
+            <p class="principle-description">
+                The square represents systems and rules.
+                Form gains structure before transforming
+                into something new.
+            </p>
+
+        </article>
+
+
+        <article class="principle">
+
+            <div class="label">
+                03
+            </div>
+
+            <div>
+
+                <div class="principle-symbol symbol-triangle"></div>
+
+                <div class="principle-title">
+                    DIRECTION
+                </div>
+
+            </div>
+
+            <p class="principle-description">
+                The triangle introduces movement and direction.
+                Change does not simply happen —
+                it moves somewhere.
+            </p>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ===============================================
+     ARTISTS
+
+     각각 서로 다른 FORM 비율을 가진다.
+================================================ -->
+
+<section class="artists">
+
+    <div class="artist-intro">
+
+        <div class="label">
+            03 / ARTISTS
+        </div>
+
+        <div style="height: 40px"></div>
+
+        <div class="display">
+            DIFFERENT<br>
+            FORMS.
+        </div>
+
+    </div>
+
+
+    <div class="artist-track">
+
+
+        <article class="artist">
+
+            <div class="artist-index label">
+                ARTIST / 01
+            </div>
+
+            <h2 class="artist-name">
+                JIHO<br>
+                PARK
+            </h2>
+
+
+            <div class="artist-form">
+
+                <svg viewBox="0 0 300 300">
+
+                    <circle
+                        cx="150"
+                        cy="150"
+                        r="120"
+                        fill="#151515"
+                    />
+
+                    <rect
+                        x="105"
+                        y="105"
+                        width="90"
+                        height="90"
+                        fill="#ffd629"
+                    />
+
+                </svg>
+
+            </div>
+
+
+            <div class="artist-meta">
+                ORGANIC 70<br>
+                STRUCTURE 30<br>
+                DIRECTION 00
+            </div>
+
+        </article>
+
+
+
+        <article class="artist">
+
+            <div class="artist-index label">
+                ARTIST / 02
+            </div>
+
+            <h2 class="artist-name">
+                MINA<br>
+                KIM
+            </h2>
+
+
+            <div class="artist-form">
+
+                <svg viewBox="0 0 300 300">
+
+                    <rect
+                        x="35"
+                        y="35"
+                        width="230"
+                        height="230"
+                        fill="#151515"
+                    />
+
+                    <polygon
+                        points="150,55 255,245 45,245"
+                        fill="#f2efe7"
+                    />
+
+                </svg>
+
+            </div>
+
+
+            <div class="artist-meta">
+                ORGANIC 00<br>
+                STRUCTURE 65<br>
+                DIRECTION 35
+            </div>
+
+        </article>
+
+
+
+        <article class="artist">
+
+            <div class="artist-index label">
+                ARTIST / 03
+            </div>
+
+            <h2 class="artist-name">
+                STUDIO<br>
+                ZERO
+            </h2>
+
+
+            <div class="artist-form">
+
+                <svg viewBox="0 0 300 300">
+
+                    <circle
+                        cx="150"
+                        cy="150"
+                        r="115"
+                        fill="#151515"
+                    />
+
+                    <polygon
+                        points="150,40 250,230 50,230"
+                        fill="#ffd629"
+                    />
+
+                </svg>
+
+            </div>
+
+
+            <div class="artist-meta">
+                ORGANIC 40<br>
+                STRUCTURE 00<br>
+                DIRECTION 60
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ===============================================
+     EXHIBITION
+================================================ -->
+
+<section class="exhibition">
+
+    <div class="exhibition-head">
+
+        <div class="label">
+            04 / EXHIBITION
+        </div>
+
+        <div style="height: 50px"></div>
+
+        <div class="display">
+            FORM<br>
+            IN MOTION.
+        </div>
+
+    </div>
+
+
+    <article class="work">
+
+        <div class="work-number">
+            EX / 01
+        </div>
+
+        <div>
+
+            <h3 class="work-title">
+                BETWEEN<br>
+                STATES
+            </h3>
+
+            <p>
+                A digital installation exploring
+                the moment between one shape
+                and another.
+            </p>
+
+            <div class="work-visual"></div>
+
+        </div>
+
+    </article>
+
+
+    <article class="work">
+
+        <div class="work-number">
+            EX / 02
+        </div>
+
+        <div>
+
+            <h3 class="work-title">
+                RULES<br>
+                BREAK
+            </h3>
+
+            <p>
+                Structure creates form.
+                Transformation begins
+                when structure breaks.
+            </p>
+
+            <div class="work-visual"></div>
+
+        </div>
+
+    </article>
+
+</section>
+
+
+
+<!-- ===============================================
+     JOURNEY
+
+     단순 지도 → "관람의 흐름"
+================================================ -->
+
+<section class="journey">
+
+    <div class="journey-inner">
+
+        <div class="label">
+            05 / JOURNEY
+        </div>
+
+        <div style="height:50px"></div>
+
+        <div class="display">
+            FOLLOW<br>
+            THE FORM.
+        </div>
+
+
+        <svg
+            class="journey-svg"
+            viewBox="0 0 1200 400"
+        >
+
+            <path
+                class="journey-path"
+                d="
+                    M30 300
+                    C220 300 220 80 410 80
+                    C600 80 600 320 790 320
+                    C980 320 980 100 1170 100
+                "
+            />
+
+            <circle
+                class="journey-dot"
+                cx="30"
+                cy="300"
+                r="9"
+            />
+
+        </svg>
+
+    </div>
+
+</section>
+
+
+
+<!-- ===============================================
+     FINAL
+
+     3개의 형태가 하나의 FORM으로 결합
+================================================ -->
+
+<section class="final">
+
+    <div class="final-shapes">
+
+        <div class="
+            final-shape
+            final-circle
+        "></div>
+
+        <div class="
+            final-shape
+            final-square
+        "></div>
+
+        <div class="
+            final-shape
+            final-triangle
+        "></div>
+
+    </div>
+
+
+    <div class="final-copy">
+        FORM<br>
+        /26
+    </div>
+
+
+    <div class="final-description">
+        FORM IS NEVER FIXED.
+    </div>
+
+</section>
+
+
+
+<script>
+
+gsap.registerPlugin(ScrollTrigger);
+
+
+
+/* =============================================
+   SHAPE
+
+   모든 형태의 vertex 수를 동일하게 맞춰
+   polygon morph가 가능하도록 한다.
+============================================= */
+
+const FORM = {
+
+    circle: `
+        250,30
+        405,95
+        470,250
+        405,405
+        250,470
+        95,405
+        30,250
+        95,95
+    `,
+
+    square: `
+        70,70
+        250,70
+        430,70
+        430,250
+        430,430
+        250,430
+        70,430
+        70,250
+    `,
+
+    triangle: `
+        250,40
+        340,200
+        430,420
+        340,420
+        250,420
+        160,420
+        70,420
+        160,200
+    `
+
+};
+
+
+
+/* =============================================
+   HERO
+
+   처음에는 ORGANIC.
+
+   스크롤에 따라
+
+   ORGANIC
+   ↓
+   STRUCTURE
+   ↓
+   DIRECTION
+
+   전시의 핵심 개념을
+   첫 화면에서 직접 경험하도록 한다.
+============================================= */
+
+const heroTimeline = gsap.timeline({
+
+    scrollTrigger: {
+
+        trigger: '.hero',
+
+        start: 'top top',
+
+        end: '+=1600',
+
+        scrub: 1,
+
+        pin: true
+
+    }
+
+});
+
+
+heroTimeline
+
+.to('#heroPolygon', {
+
+    attr: {
+        points: FORM.square
+    },
+
+    ease: 'none'
+
+})
+
+.to('#heroPolygon', {
+
+    attr: {
+        points: FORM.triangle
+    },
+
+    ease: 'none'
+
+})
+
+.to('.hero-title', {
+
+    scale: .88,
+
+    opacity: .15,
+
+    ease: 'none'
+
+}, 0);
+
+
+
+/* =============================================
+   MANIFESTO
+
+   컨셉 문장 자체가 하나씩
+   형태를 갖는 느낌.
+============================================= */
+
+gsap.utils
+.toArray('.manifesto-line span')
+.forEach((line, index) => {
+
+    gsap.from(line, {
+
+        yPercent: 110,
+
+        rotation: index % 2
+            ? 2
+            : -2,
+
+        scrollTrigger: {
+
+            trigger: line,
+
+            start: 'top 90%',
+
+            end: 'top 55%',
+
+            scrub: 1
 
         }
 
-        resize();
+    });
 
-        window.addEventListener("resize", resize);
+});
 
-        window.addEventListener("mousemove", e => {
 
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
 
-        });
+/* =============================================
+   PRINCIPLES
 
-        function draw() {
+   세 형태가 각각 다른 방식으로 등장한다.
+============================================= */
 
-            ctx.clearRect(0, 0, w, h);
+gsap.from('.symbol-circle', {
 
-            const t = performance.now() * 0.00025;
+    scale: 0,
 
-            points.forEach((p, i) => {
+    borderRadius: '0%',
 
-                p.x = p.baseX +
-                    Math.cos(t * p.speed + p.offset) * 18 +
-                    (mouse.x - w / 2) * 0.02;
+    scrollTrigger: {
 
-                p.y = p.baseY +
-                    Math.sin(t * p.speed + p.offset) * 18 +
-                    (mouse.y - h / 2) * 0.02;
+        trigger: '.symbol-circle',
 
-                for (let j = i + 1; j < points.length; j++) {
+        start: 'top 80%',
 
-                    const p2 = points[j];
+        scrub: 1
 
-                    const dx = p.x - p2.x;
-                    const dy = p.y - p2.y;
+    }
 
-                    const dist = Math.sqrt(dx * dx + dy * dy);
+});
 
-                    if (dist < 180) {
 
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
+gsap.from('.symbol-square', {
 
-                        ctx.strokeStyle = `rgba(255,255,255,${0.12 - (dist / 180) * 0.12})`;
+    rotation: 90,
 
-                        ctx.lineWidth = 1;
+    scale: .4,
 
-                        ctx.stroke();
+    scrollTrigger: {
 
-                    }
+        trigger: '.symbol-square',
 
-                }
+        start: 'top 80%',
 
-            });
+        scrub: 1
 
-            points.forEach(p => {
+    }
 
-                ctx.beginPath();
+});
 
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
 
-                ctx.fillStyle = "rgba(255,255,255,.7)";
+gsap.from('.symbol-triangle', {
 
-                ctx.fill();
+    y: 100,
 
-            });
+    opacity: 0,
 
-            requestAnimationFrame(draw);
+    scrollTrigger: {
+
+        trigger: '.symbol-triangle',
+
+        start: 'top 80%',
+
+        scrub: 1
+
+    }
+
+});
+
+
+
+/* =============================================
+   ARTISTS
+
+   세로 스크롤 → 가로 이동
+
+   동일한 FORM이라는 언어 안에서
+   서로 다른 작가를 연속적으로 탐색한다.
+============================================= */
+
+const artistTrack =
+    document.querySelector('.artist-track');
+
+
+const artistAnimation =
+gsap.to(artistTrack, {
+
+    x: () =>
+        -(
+            artistTrack.scrollWidth
+            - window.innerWidth
+        ),
+
+    ease: 'none',
+
+    scrollTrigger: {
+
+        trigger: '.artists',
+
+        start: 'top top',
+
+        end: () =>
+            '+=' +
+            artistTrack.scrollWidth,
+
+        scrub: 1,
+
+        pin: true,
+
+        invalidateOnRefresh: true
+
+    }
+
+});
+
+
+
+/* =============================================
+   EXHIBITION
+
+   이미지가 단순 fade가 아니라
+   하나의 shape가 벌어지면서 드러난다.
+============================================= */
+
+gsap.utils
+.toArray('.work-visual')
+.forEach((visual) => {
+
+    gsap.to(visual, {
+
+        clipPath:
+            'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+
+        ease: 'power3.inOut',
+
+        scrollTrigger: {
+
+            trigger: visual,
+
+            start: 'top 85%',
+
+            end: 'top 45%',
+
+            scrub: 1
 
         }
 
-        draw();
+    });
 
-    </script>
+});
+
+
+
+/* =============================================
+   JOURNEY
+
+   사용자의 스크롤 = 관람자의 이동
+============================================= */
+
+const journeyPath =
+    document.querySelector('.journey-path');
+
+const journeyDot =
+    document.querySelector('.journey-dot');
+
+const pathLength =
+    journeyPath.getTotalLength();
+
+
+journeyPath.style.strokeDasharray =
+    pathLength;
+
+journeyPath.style.strokeDashoffset =
+    pathLength;
+
+
+gsap.to(journeyPath, {
+
+    strokeDashoffset: 0,
+
+    ease: 'none',
+
+    scrollTrigger: {
+
+        trigger: '.journey',
+
+        start: 'top 60%',
+
+        end: 'bottom 60%',
+
+        scrub: 1
+
+    }
+
+});
+
+
+gsap.to(journeyDot, {
+
+    motionPath: {
+        path: journeyPath
+    }
+
+});
+
+
+
+/* =============================================
+   FINAL
+
+   ORGANIC
+   STRUCTURE
+   DIRECTION
+
+   서로 다른 세 FORM이
+   마지막에 하나로 겹쳐진다.
+============================================= */
+
+const finalTimeline =
+gsap.timeline({
+
+    scrollTrigger: {
+
+        trigger: '.final',
+
+        start: 'top top',
+
+        end: '+=1300',
+
+        scrub: 1,
+
+        pin: true
+
+    }
+
+});
+
+
+finalTimeline
+
+.to('.final-circle', {
+
+    xPercent: 50,
+
+    scale: 1.4
+
+}, 0)
+
+.to('.final-square', {
+
+    rotation: 45,
+
+    scale: 1.35
+
+}, 0)
+
+.to('.final-triangle', {
+
+    xPercent: -50,
+
+    scale: 1.3
+
+}, 0)
+
+.to('.final-shapes', {
+
+    scale: 4,
+
+    rotation: 45,
+
+    ease: 'power2.in'
+
+})
+
+.to('.final-copy', {
+
+    scale: .8
+
+}, '<');
+
+</script>
 
 </body>
-
 </html>

@@ -1,50 +1,32 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SHPortfolio</title>
+    <title>Observe / Build / Experience</title>
 
-    <script src="https://unpkg.com/split-type"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.css"
+    >
 
     <style>
-        /* ==============================
-   Inline Reset / Common
-============================== */
-        *,
-        *::before,
-        *::after {
+        * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
-        html,
-        body {
-            width: 100%;
-            min-height: 100%;
-            margin: 0;
-            padding: 0;
+        html {
+            font-size: 10px;
         }
 
         body {
-            font-family: Pretendard, "Noto Sans KR", Arial, sans-serif;
-            background: #fff;
+            background: #f1efe9;
             color: #111;
-        }
-
-        h1,
-        p {
-            margin: 0;
-        }
-
-        button,
-        input,
-        textarea,
-        select {
-            font: inherit;
+            font-family: "Pretendard", sans-serif;
+            overflow-x: hidden;
         }
 
         a {
@@ -52,935 +34,1096 @@
             text-decoration: none;
         }
 
-        /* Main stagger initial state */
-        .c-main--content {
-            visibility: hidden;
-            opacity: 0;
+        .wrap {
+            width: 100%;
         }
 
-        .c-main--txt__title .line,
-        .c-main--txt__text .line {
+        /* =========================
+           Header
+        ========================= */
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 2.4rem 3.2rem;
+            mix-blend-mode: difference;
+            color: #fff;
+            pointer-events: none;
+        }
+
+        .header__logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        .header__index {
+            font-size: 1.1rem;
+            letter-spacing: 0.08em;
+        }
+
+
+        /* =========================
+           Common
+        ========================= */
+
+        .section {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        .section-label {
+            position: absolute;
+            top: 3rem;
+            left: 3.2rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+        }
+
+        .eyebrow {
+            font-size: 1.2rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+
+        /* =========================
+           Intro
+        ========================= */
+
+        .intro {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+            padding: 12rem 3.2rem 3.2rem;
+            background: #111;
+            color: #f1efe9;
+        }
+
+        .intro__small {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .intro__title {
+            width: 100%;
+            font-size: clamp(7rem, 13vw, 19rem);
+            font-weight: 700;
+            line-height: 0.8;
+            letter-spacing: -0.075em;
+            text-transform: uppercase;
+        }
+
+        .intro__line {
             display: block;
             overflow: hidden;
         }
 
-        .c-main--txt__title .char,
-        .c-main--txt__text .char {
-            display: inline-block;
-            will-change: transform, opacity, filter;
-            backface-visibility: hidden;
+        .intro__line span {
+            display: block;
+            transform: translateY(110%);
         }
 
-        .c-main--txt__title,
-        .c-main--txt__text {
-            perspective: 800px;
+        .intro__bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 6rem;
+            font-size: 1.1rem;
         }
 
-        /* SplitType가 공백을 유지하도록 처리 */
-        .c-main--txt__title .whitespace,
-        .c-main--txt__text .whitespace {
-            display: inline-block;
-        }
-
-
-        body.is-loading {
-            overflow: hidden;
-            width: 100%;
-            height: 100vh;
-        }
-
-        body.is-loading #wrap {
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        /* ==============================
-   Header
-============================== */
-
-        .p-header__box {
+        .scroll-hint {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: calc(var(--spacing) * 5) calc(var(--spacing) * 7.5);
-
-            .p-header__logo {
-                font-size: var(--text-md);
-                font-weight: var(--fw-black);
-                font-family: var(--font-en);
-            }
-
-            .p-header__gnb {
-                ul {
-                    display: flex;
-                    flex-direction: row;
-                    column-gap: calc(var(--spacing) * 5);
-                    align-items: center;
-
-                    li {
-                        a {
-                            font-size: var(--text-sm);
-                            font-weight: var(--fw-sb);
-                            font-family: var(--font-en);
-                        }
-                    }
-                }
-            }
+            gap: 1rem;
         }
 
-        /* ==============================
-   Header
-============================== */
+        .scroll-hint::before {
+            content: "";
+            width: 5rem;
+            height: 1px;
+            background: currentColor;
+        }
 
 
+        /* =========================
+           Statement
+        ========================= */
 
-        /* ==============================
-   Loader
-============================== */
-
-        #loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 9999;
-
+        .statement {
             display: flex;
             justify-content: center;
             align-items: center;
+            min-height: 160vh;
+            padding: 4rem;
+        }
 
-            width: 100%;
-            height: 100%;
+        .statement__inner {
+            width: min(120rem, 100%);
+        }
 
+        .statement__text {
+            font-size: clamp(4rem, 7vw, 10rem);
+            font-weight: 600;
+            line-height: 1.12;
+            letter-spacing: -0.055em;
+        }
+
+        .statement__word {
+            opacity: 0.15;
+            transition: opacity 0.3s;
+        }
+
+
+        /* =========================
+           Observe
+        ========================= */
+
+        .observe {
+            min-height: 200vh;
+            background: #cbc6b8;
+        }
+
+        .observe__sticky {
+            position: sticky;
+            top: 0;
+            display: flex;
+            height: 100vh;
             overflow: hidden;
-
-            background-color: #fff4df;
-
-            transition:
-                opacity 0.8s ease-out,
-                visibility 0.8s ease-out;
         }
 
-        #loader.hidden {
-            opacity: 0;
-            visibility: hidden;
+        .observe__number {
+            position: absolute;
+            left: 3rem;
+            bottom: 2rem;
+            z-index: 2;
+            font-size: 28vw;
+            font-weight: 700;
+            line-height: 0.7;
+            letter-spacing: -0.1em;
+            opacity: 0.12;
         }
 
-        .loader-content {
-            width: 300px;
-
+        .observe__copy {
+            position: relative;
+            z-index: 3;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .loader-bg-fill {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            z-index: 1;
-
-            width: 100%;
-            height: 0%;
-
-            background: #111;
-
-            pointer-events: none;
-
-            transition: height .12s cubic-bezier(.1, .8, .2, 1);
-        }
-
-        .loader-number {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            z-index: 10;
-
-            transform: translate(-50%, -50%);
-
-            font-size: clamp(20px, 10vw, 60px);
-            font-weight: 300;
-            color: #fff;
-
-            mix-blend-mode: difference;
-        }
-
-        /* ==============================
-   Wrap
-============================== */
-
-        #wrap {
-            position: relative;
-            z-index: 2;
-
-            opacity: 0;
-            visibility: hidden;
-
-            transition:
-                opacity 1s ease-out,
-                visibility 1s ease-out;
-        }
-
-        #wrap.is-loaded {
-            z-index: 10000;
-
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* ==============================
-   Header / Logo
-============================== */
-
-        .site-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 10001;
-
-            width: 100%;
-            height: 72px;
-
-            pointer-events: none;
-        }
-
-        .logo-target {
-            position: absolute;
-            top: 24px;
-            left: 32px;
-
-            font-size: 18px;
-            font-weight: 900;
-            color: #fff;
-
-            opacity: 0;
-        }
-
-        /* ==============================
-   Hero Intro
-============================== */
-
-        .hero {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 5;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            overflow: hidden;
-            background: #fff;
+            width: 50%;
+            padding: 8vw;
         }
 
-        .intro-titles {
-            overflow: hidden;
-        }
-
-        .title {
-            color: #000;
-            font-size: clamp(12px, 1.5vw, 20px);
-            font-weight: 900;
-            line-height: 1;
+        .observe__copy h2 {
+            margin-top: 2rem;
+            font-size: clamp(5rem, 8vw, 12rem);
+            line-height: 0.88;
             letter-spacing: -0.07em;
+        }
 
-            transform-origin: left top;
+        .observe__description {
+            width: min(40rem, 100%);
+            margin-top: 4rem;
+            font-size: 1.5rem;
+            line-height: 1.7;
+        }
 
+        .observe__visual {
+            position: relative;
+            width: 50%;
+            overflow: hidden;
+            background: #111;
+        }
+
+        .observe__word {
+            position: absolute;
+            font-size: clamp(8rem, 15vw, 22rem);
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -0.08em;
+            color: #f1efe9;
             white-space: nowrap;
         }
 
-        .intro-titles .title {
+        .observe__word--1 {
+            top: 10%;
+            left: -10%;
+        }
+
+        .observe__word--2 {
+            top: 42%;
+            left: 10%;
+        }
+
+        .observe__word--3 {
+            bottom: -4%;
+            left: -30%;
+        }
+
+
+        /* =========================
+           Process
+        ========================= */
+
+        .process {
+            min-height: 100vh;
+            padding: 14rem 3.2rem;
+            background: #f1efe9;
+        }
+
+        .process__headline {
+            width: 100%;
+            font-size: clamp(5rem, 10vw, 15rem);
+            font-weight: 700;
+            line-height: 0.88;
+            letter-spacing: -0.07em;
+        }
+
+        .process__list {
+            margin-top: 12rem;
+            border-top: 1px solid #111;
+        }
+
+        .process__item {
+            position: relative;
+            display: grid;
+            grid-template-columns: 10rem 1fr auto;
+            align-items: center;
+            min-height: 14rem;
+            border-bottom: 1px solid #111;
+            overflow: hidden;
+        }
+
+        .process__item-bg {
             position: absolute;
-            top: 50%;
-            left: 50%;
-
-            margin: 0;
-
-            transform: translate(-50%, -50%);
-
-            opacity: 0;
-
-            text-align: center;
-            white-space: normal;
+            inset: 0;
+            z-index: 0;
+            background: #111;
+            transform: scaleY(0);
+            transform-origin: bottom;
         }
 
-        /* ==============================
-   Main Content
-============================== */
-
-        .main-content {
-            padding: 120px 40px 200px;
+        .process__item > *:not(.process__item-bg) {
+            position: relative;
+            z-index: 1;
         }
 
-        .main-content p {
-            margin: 0;
-            font-size: clamp(48px, 6vw, 120px);
+        .process__item-num {
+            font-size: 1.2rem;
+        }
+
+        .process__item-title {
+            font-size: clamp(3rem, 5vw, 7rem);
             font-weight: 600;
-            line-height: 1.2;
             letter-spacing: -0.05em;
         }
 
-        .c-main--content {
-            height: 100vh;
-            padding: 60px 30px;
-
-            .c-main--txt {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: space-between;
-                height: 100%;
-                color: #000;
-
-                .c-main--txt__eyebrow {
-                    font-size: clamp(26px, 3vw, 40px);
-                    text-align: left;
-                }
-
-                .c-main--txt__title {
-                    white-space: nowrap;
-                    font-size: clamp(48px, 16vw, 160px);
-                    font-weight: 900;
-                    text-align: left;
-                    line-height: 1.2;
-                    margin: 10px 0px 30px;
-                }
-
-                .c-main--txt__text {
-                    font-size: clamp(30px, 3.2vw, 80px);
-                    text-align: right;
-                    line-height: 1.2;
-                    margin-left: auto;
-                    font-weight: 900;
-                }
-            }
+        .process__item-desc {
+            max-width: 30rem;
+            font-size: 1.3rem;
+            line-height: 1.6;
+            text-align: right;
         }
 
-        /* ==============================
-   Container Title
-============================== */
 
-        .c-container__title {
+        /* =========================
+           Build
+        ========================= */
+
+        .build {
+            height: 400vh;
+            background: #111;
+            color: #f1efe9;
+        }
+
+        .build__sticky {
+            position: sticky;
+            top: 0;
             display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-
-            font-size: 80px;
-            font-weight: 900;
-            line-height: 1.2;
-            color: #fff;
-
-            mix-blend-mode: difference;
-        }
-
-        /* ==============================
-   Animation 1: Staggered Text Reveal
-============================== */
-
-        .anim-1 .title-word {
-            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
             overflow: hidden;
         }
 
-        .anim-1 .title-word span {
-            display: inline-block;
-
-            transform: translateY(110%) skewY(10deg) scale(1.1);
-
-            opacity: 0;
-            filter: blur(10px);
-
-            transition:
-                transform 0.9s cubic-bezier(0.19, 1, 0.22, 1),
-                filter 0.9s cubic-bezier(0.19, 1, 0.22, 1),
-                opacity 0s;
-        }
-
-        #wrap.anim-1.is-loaded .title-word span {
-            transform: translateY(0) skewY(0) scale(1);
-
-            opacity: 1;
-            filter: blur(0);
-        }
-
-        /* ==============================
-   Animation 2: Scale & Blur
-============================== */
-
-        #wrap.anim-2 {
-            transform: scale(1.15);
-            filter: blur(15px);
-
-            transition:
-                opacity 1.2s ease-out,
-                visibility 1.2s ease-out,
-                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 1.2s ease-out;
-        }
-
-        #wrap.anim-2.is-loaded {
-            transform: scale(1);
-            filter: blur(0);
-        }
-
-        /* ==============================
-   Animation 3: Infinite Marquee
-============================== */
-
-        .anim-3 .marquee-container {
-            display: block;
-
-            width: 100%;
-
-            overflow: hidden;
+        .build__text {
+            position: absolute;
+            z-index: 2;
+            font-size: clamp(6rem, 15vw, 22rem);
+            font-weight: 700;
+            letter-spacing: -0.09em;
             white-space: nowrap;
         }
 
-        .anim-3 .marquee-track {
-            display: inline-block;
-
-            opacity: 0;
-            transform: translateY(30px);
-
-            animation: marquee 10s linear infinite;
-
-            transition:
-                opacity 1.2s ease,
-                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        .build__text--1 {
+            transform: translateX(-120vw);
         }
 
-        #wrap.anim-3.is-loaded .marquee-track {
-            opacity: 1;
-            transform: translateY(0);
+        .build__text--2 {
+            transform: translateX(120vw);
         }
 
-        .anim-3 .marquee-track span {
-            padding-right: 30px;
+        .build__frame {
+            position: relative;
+            z-index: 5;
+            width: 15vw;
+            height: 15vw;
+            min-width: 12rem;
+            min-height: 12rem;
+            border: 1px solid rgba(255, 255, 255, 0.7);
         }
 
-        @keyframes marquee {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        /* ==============================
-   Animation 4: 3D Flip Reveal
-============================== */
-
-        .anim-4 .perspective-container {
-            perspective: 1000px;
-        }
-
-        .anim-4 .flip-word {
-            display: inline-block;
-        }
-
-        .anim-4 .flip-word span {
-            display: inline-block;
-
-            transform: rotateX(90deg);
-            transform-origin: center bottom;
-
-            opacity: 0;
-
-            transition:
-                transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-                opacity 0.8s ease;
-        }
-
-        #wrap.anim-4.is-loaded .flip-word span {
-            transform: rotateX(0);
-            opacity: 1;
-        }
-
-        #wrap.anim-4.is-loaded .flip-word:nth-child(1) span {
-            transition-delay: 0.1s;
-        }
-
-        #wrap.anim-4.is-loaded .flip-word:nth-child(2) span {
-            transition-delay: 0.2s;
-        }
-
-        #wrap.anim-4.is-loaded .flip-word:nth-child(3) span {
-            transition-delay: 0.3s;
-        }
-
-        #wrap.anim-4.is-loaded .flip-word:nth-child(4) span {
-            transition-delay: 0.4s;
-        }
-
-        #wrap.anim-4.is-loaded .flip-word:nth-child(5) span {
-            transition-delay: 0.5s;
-        }
-
-        /* ==============================
-   Loader Transition: Radial Reveal
-============================== */
-
-        #loader[data-transition="radial-reveal"] {
-            clip-path: circle(150% at 50% 50%);
-
-            transition: clip-path 1.2s cubic-bezier(0.85, 0, 0.15, 1);
-        }
-
-        #loader[data-transition="radial-reveal"].hidden {
-            opacity: 1 !important;
-            visibility: visible !important;
-
-            clip-path: circle(0% at 50% 50%);
-        }
-
-        /* ==============================
-   Loader Transition: Multi Column
-============================== */
-
-        .loader-col-container {
+        .build__frame::before,
+        .build__frame::after {
+            content: "";
             position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
+            background: rgba(255, 255, 255, 0.4);
+        }
 
+        .build__frame::before {
+            top: 50%;
+            left: -100vw;
+            width: 200vw;
+            height: 1px;
+        }
+
+        .build__frame::after {
+            top: -100vh;
+            left: 50%;
+            width: 1px;
+            height: 200vh;
+        }
+
+        .build__caption {
+            position: absolute;
+            bottom: 3rem;
+            left: 3rem;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           Experience
+        ========================= */
+
+        .experience {
+            position: relative;
             display: flex;
+            align-items: flex-end;
+            min-height: 100vh;
+            padding: 3.2rem;
+            overflow: hidden;
+            background: #9cacef;
+        }
 
+        .experience__message {
+            position: relative;
+            z-index: 3;
             width: 100%;
-            height: 100%;
-
-            pointer-events: none;
         }
 
-        .loader-col {
-            flex: 1;
-
-            height: 100%;
-
-            background-color: #000;
-
-            transform: translateY(0);
-            transition: transform 0.9s cubic-bezier(0.85, 0, 0.15, 1);
+        .experience__small {
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
         }
 
-        .loader-col.slide-up {
-            transform: translateY(-100%);
+        .experience__title {
+            font-size: clamp(7rem, 16vw, 24rem);
+            font-weight: 700;
+            line-height: 0.78;
+            letter-spacing: -0.09em;
         }
 
-        #loader[data-transition="multi-column"] {
-            background-color: transparent !important;
-
-            transition: visibility 1.2s;
+        .experience__title span {
+            display: block;
         }
 
-        #loader[data-transition="multi-column"] .loader-content {
-            z-index: 10;
-
-            transition: opacity 0.4s ease;
-        }
-
-        #loader[data-transition="multi-column"].hidden .loader-content {
-            opacity: 0;
-        }
-
-        /* ==============================
-   Loader Transition: Liquid Wipe
-============================== */
-
-        #loader[data-transition="liquid-wipe"] {
-            background-color: transparent !important;
-
-            transition: visibility 1.4s;
-        }
-
-        #loader[data-transition="liquid-wipe"] .loader-content {
-            z-index: 10;
-
-            transition: opacity 0.4s ease;
-        }
-
-        #loader[data-transition="liquid-wipe"].hidden .loader-content {
-            opacity: 0;
-        }
-
-        .liquid-svg {
+        .experience__circle {
             position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 2;
-
-            width: 100%;
-            height: 100%;
-
-            pointer-events: none;
+            top: 50%;
+            left: 50%;
+            width: 20rem;
+            height: 20rem;
+            border-radius: 50%;
+            background: #111;
+            transform: translate(-50%, -50%);
         }
 
-        .liquid-path {
-            fill: #000;
 
-            transition: d 1.3s cubic-bezier(0.76, 0, 0.24, 1);
+        /* =========================
+           Finale
+        ========================= */
 
-            d: path("M 0,0 L 100,0 L 100,100 Q 50,100 0,100 Z");
+        .finale {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+            padding: 3.2rem;
+            background: #f1efe9;
         }
 
-        #loader[data-transition="liquid-wipe"].hidden .liquid-path {
-            d: path("M 0,0 L 100,0 L 100,0 Q 50,-40 0,0 Z");
+        .finale__top {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.1rem;
         }
 
-        /* ==============================
-   Loader Transition: Zoom Warp
-============================== */
-
-        #loader[data-transition="zoom-warp"] {
-            transition:
-                opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-                visibility 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        .finale__title {
+            margin: auto 0;
+            font-size: clamp(6rem, 13vw, 19rem);
+            font-weight: 700;
+            line-height: 0.82;
+            letter-spacing: -0.08em;
         }
 
-        #loader[data-transition="zoom-warp"] .loader-number {
-            transition:
-                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 1s ease;
+        .finale__title span {
+            display: block;
         }
 
-        #loader[data-transition="zoom-warp"].hidden .loader-number {
-            transform: translate(-50%, -50%) scale(15);
+        .finale__bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-top: 4rem;
+            border-top: 1px solid #111;
+            font-size: 1.1rem;
+        }
 
-            opacity: 0;
-            filter: blur(15px);
+
+        /* =========================
+           Mobile
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            .intro,
+            .process,
+            .experience,
+            .finale {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+
+            .header {
+                padding: 2rem;
+            }
+
+            .observe__sticky {
+                flex-direction: column;
+            }
+
+            .observe__copy,
+            .observe__visual {
+                width: 100%;
+                height: 50%;
+            }
+
+            .observe__copy {
+                padding: 7rem 2rem 3rem;
+            }
+
+            .process__item {
+                grid-template-columns: 5rem 1fr;
+            }
+
+            .process__item-desc {
+                display: none;
+            }
+
         }
     </style>
 </head>
 
 <body>
-    <div id="loader" data-transition="radial-reveal">
-        <div class="loader-content">
-            <div class="loader-number" id="loader-number">0%</div>
+
+<header class="header">
+    <div class="header__logo">
+        SANGHO®
+    </div>
+
+    <div class="header__index">
+        01—05
+    </div>
+</header>
+
+
+<main class="wrap">
+
+    <!-- =========================
+         INTRO
+    ========================== -->
+
+    <section class="section intro">
+
+        <div class="intro__small">
+            <span>
+                Interactive Developer<br>
+                Seoul / 2026
+            </span>
+
+            <span>
+                Observe<br>
+                Build<br>
+                Experience
+            </span>
         </div>
-    </div>
 
-    <div id="wrap" class="anim-1">
-        <header class="p-header__box">
-            <a href="#" class="p-header__logo">SHPortfolio</a>
+        <h1 class="intro__title">
 
-            <nav class="p-header__gnb" aria-label="주요 메뉴">
-                <ul>
-                    <li><a href="#">ABOUT</a></li>
-                    <li><a href="#">WORK</a></li>
-                    <li><a href="#">CONTACT</a></li>
-                </ul>
-            </nav>
-        </header>
+            <span class="intro__line">
+                <span>OBSERVE</span>
+            </span>
 
-        <section class="hero">
-            <div class="intro-titles">
-                <h1 class="title">관찰은 집요하게</h1>
-                <h1 class="title">구현은 정교하게</h1>
-                <h1 class="title">경험은 자연스럽게</h1>
-            </div>
-        </section>
+            <span class="intro__line">
+                <span>BEYOND</span>
+            </span>
 
-        <section class="c-main--content">
-            <div class="c-main--txt">
-                <p class="c-main--txt__title">웹퍼블리셔,<br>박상호</p>
+            <span class="intro__line">
+                <span>THE SURFACE.</span>
+            </span>
 
-                <p class="c-main--txt__text">
-                    사용자의 흐름을 읽고,<br>
-                    화면의 구조를 설계하며,<br>
-                    세밀한 인터랙션을 구현하고,<br>
-                    더 나은 경험을 고민합니다.
+        </h1>
+
+        <div class="intro__bottom">
+
+            <span>
+                Digital Experience / 2026
+            </span>
+
+            <span class="scroll-hint">
+                Scroll to explore
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         STATEMENT
+    ========================== -->
+
+    <section class="section statement">
+
+        <div class="statement__inner">
+
+            <p class="statement__text">
+                <span class="statement__word">좋은</span>
+                <span class="statement__word">화면은</span>
+                <span class="statement__word">보이는</span>
+                <span class="statement__word">것에서</span>
+                <span class="statement__word">시작하지만,</span>
+                <span class="statement__word">보이지</span>
+                <span class="statement__word">않는</span>
+                <span class="statement__word">질서에서</span>
+                <span class="statement__word">완성된다.</span>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         OBSERVE
+    ========================== -->
+
+    <section class="section observe">
+
+        <div class="observe__sticky">
+
+            <span class="observe__number">
+                01
+            </span>
+
+            <div class="observe__copy">
+
+                <span class="eyebrow">
+                    Chapter 01 / Observe
+                </span>
+
+                <h2>
+                    먼저<br>
+                    바라본다.
+                </h2>
+
+                <p class="observe__description">
+                    화면을 만들기 전에 사용자의 시선,
+                    정보의 우선순위, 움직임의 방향을 관찰한다.
+                    작은 차이가 전체 경험의 리듬을 만든다.
                 </p>
+
             </div>
-        </section>
-    </div>
 
-    <script>
-        class PageLoader {
-            constructor() {
-                this.progress = 0;
-                this.duration = 3000;
-                this.startTime = null;
-                this.mainSplit = null;
+            <div class="observe__visual">
 
-                this.loader = document.getElementById('loader');
-                this.loaderNumber = document.getElementById('loader-number');
-                this.wrap = document.getElementById('wrap');
+                <span class="observe__word observe__word--1">
+                    LOOK
+                </span>
 
-                if (this.loader) {
-                    this.bgFill = document.createElement('div');
-                    this.bgFill.className = 'loader-bg-fill';
-                    this.loader.appendChild(this.bgFill);
-                }
+                <span class="observe__word observe__word--2">
+                    FIND
+                </span>
 
-                document.body.classList.add('is-loading');
+                <span class="observe__word observe__word--3">
+                    NOTICE
+                </span>
 
-                this.init();
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROCESS
+    ========================== -->
+
+    <section class="section process">
+
+        <span class="eyebrow">
+            Chapter 02 / Interpret
+        </span>
+
+        <h2 class="process__headline">
+            발견한 것을<br>
+            구조로 바꾼다.
+        </h2>
+
+        <div class="process__list">
+
+            <div class="process__item">
+
+                <div class="process__item-bg"></div>
+
+                <span class="process__item-num">
+                    01
+                </span>
+
+                <strong class="process__item-title">
+                    Observe
+                </strong>
+
+                <p class="process__item-desc">
+                    콘텐츠와 사용자의 행동을 관찰한다.
+                </p>
+
+            </div>
+
+            <div class="process__item">
+
+                <div class="process__item-bg"></div>
+
+                <span class="process__item-num">
+                    02
+                </span>
+
+                <strong class="process__item-title">
+                    Simplify
+                </strong>
+
+                <p class="process__item-desc">
+                    복잡한 정보를 필요한 것만 남긴다.
+                </p>
+
+            </div>
+
+            <div class="process__item">
+
+                <div class="process__item-bg"></div>
+
+                <span class="process__item-num">
+                    03
+                </span>
+
+                <strong class="process__item-title">
+                    Structure
+                </strong>
+
+                <p class="process__item-desc">
+                    관계와 순서를 화면의 구조로 만든다.
+                </p>
+
+            </div>
+
+            <div class="process__item">
+
+                <div class="process__item-bg"></div>
+
+                <span class="process__item-num">
+                    04
+                </span>
+
+                <strong class="process__item-title">
+                    Motion
+                </strong>
+
+                <p class="process__item-desc">
+                    움직임을 통해 관계를 이해시킨다.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         BUILD
+    ========================== -->
+
+    <section class="section build">
+
+        <div class="build__sticky">
+
+            <div class="build__text build__text--1">
+                IDEA
+            </div>
+
+            <div class="build__text build__text--2">
+                EXPERIENCE
+            </div>
+
+            <div class="build__frame"></div>
+
+            <div class="build__caption">
+                Chapter 03 / Build<br>
+                Turn structure into interaction.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         EXPERIENCE
+    ========================== -->
+
+    <section class="section experience">
+
+        <div class="experience__circle"></div>
+
+        <div class="experience__message">
+
+            <p class="experience__small">
+                Chapter 04 / Experience
+            </p>
+
+            <h2 class="experience__title">
+                <span>NOT JUST</span>
+                <span>SEEN.</span>
+                <span>FELT.</span>
+            </h2>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FINALE
+    ========================== -->
+
+    <section class="section finale">
+
+        <div class="finale__top">
+
+            <span>
+                05 / Conclusion
+            </span>
+
+            <span>
+                Seoul — 2026
+            </span>
+
+        </div>
+
+        <h2 class="finale__title">
+            <span>OBSERVE.</span>
+            <span>BUILD.</span>
+            <span>EXPERIENCE.</span>
+        </h2>
+
+        <div class="finale__bottom">
+
+            <span>
+                Designed & Developed<br>
+                by Sangho Park
+            </span>
+
+            <span>
+                The end is<br>
+                another beginning.
+            </span>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+
+<script>
+
+    gsap.registerPlugin(ScrollTrigger);
+
+
+    /* =========================
+       Intro
+    ========================= */
+
+    const introTimeline = gsap.timeline();
+
+    introTimeline
+        .to('.intro__line span', {
+            y: 0,
+            duration: 1.2,
+            stagger: 0.12,
+            ease: 'power4.out'
+        })
+        .from('.intro__small, .intro__bottom', {
+            opacity: 0,
+            y: 20,
+            duration: 0.8
+        }, '-=0.5');
+
+
+    /* =========================
+       Statement
+    ========================= */
+
+    const statementWords = gsap.utils.toArray('.statement__word');
+
+    statementWords.forEach((word) => {
+
+        gsap.to(word, {
+
+            opacity: 1,
+
+            scrollTrigger: {
+                trigger: word,
+                start: 'top 70%',
+                end: 'bottom 45%',
+                scrub: true
             }
 
-            init() {
-                requestAnimationFrame(this.updateProgress);
-            }
+        });
 
-            customEasing(x) {
-                const base = x < 0.5
-                    ? 4 * x * x * x
-                    : 1 - Math.pow(-2 * x + 2, 3) / 2;
+    });
 
-                const hesitation = Math.sin(x * Math.PI * 6) * 0.04;
 
-                return Math.max(0, Math.min(base - hesitation, 1));
-            }
+    /* =========================
+       Observe
+    ========================= */
 
-            updateProgress = (timestamp) => {
-                if (!this.startTime) {
-                    this.startTime = timestamp;
-                }
+    gsap.to('.observe__word--1', {
 
-                const elapsedTime = timestamp - this.startTime;
-                const timeProgress = Math.min(elapsedTime / this.duration, 1);
-                const easedProgress = this.customEasing(timeProgress);
-                const newPercent = Math.floor(easedProgress * 100);
+        xPercent: 60,
 
-                if (newPercent > this.progress) {
-                    this.progress = Math.min(newPercent, 100);
-                    this.updateDOM();
-                }
-
-                if (timeProgress >= 1) {
-                    this.progress = 100;
-                    this.updateDOM();
-                    this.finishLoading();
-                    return;
-                }
-
-                requestAnimationFrame(this.updateProgress);
-            };
-
-            updateDOM() {
-                if (this.loaderNumber) {
-                    this.loaderNumber.textContent = `${this.progress}%`;
-                    this.loaderNumber.style.transition = 'none';
-                    this.loaderNumber.style.transform = 'translate(-50%, -50%) scale(1)';
-                    this.loaderNumber.style.opacity = '1';
-                    this.loaderNumber.style.filter = 'blur(0)';
-                }
-
-                if (this.bgFill) {
-                    this.bgFill.style.height = `${this.progress}%`;
-                }
-            }
-
-            initHeroIntroOut() {
-                if (typeof gsap === 'undefined') {
-                    this.showMainContentWithoutAnimation();
-                    return;
-                }
-
-                const titles = gsap.utils.toArray('.title');
-                const hero = document.querySelector('.hero');
-
-                if (!titles.length) {
-                    this.initMainContent();
-                    return;
-                }
-
-                const tl = gsap.timeline();
-
-                titles.forEach((title) => {
-                    tl.fromTo(
-                        title,
-                        {
-                            yPercent: 100,
-                            opacity: 0
-                        },
-                        {
-                            yPercent: 0,
-                            opacity: 1,
-                            duration: 0.6,
-                            ease: 'power3.out'
-                        }
-                    ).to(
-                        title,
-                        {
-                            yPercent: -120,
-                            opacity: 0,
-                            duration: 0.55,
-                            ease: 'power2.inOut'
-                        },
-                        '+=0.25'
-                    );
-                });
-
-                tl.to(
-                    hero,
-                    {
-                        opacity: 0,
-                        duration: 0.8,
-                        ease: 'power2.out',
-                        onComplete: () => {
-                            if (hero) {
-                                hero.style.display = 'none';
-                            }
-
-                            this.initMainContent();
-                        }
-                    },
-                    '-=0.15'
-                );
-            }
-
-            initMainContent() {
-                const mainContent = document.querySelector('.c-main--content');
-                const title = document.querySelector('.c-main--txt__title');
-                const text = document.querySelector('.c-main--txt__text');
-
-                if (!mainContent || !title || !text) return;
-
-                if (
-                    typeof gsap === 'undefined' ||
-                    typeof SplitType === 'undefined'
-                ) {
-                    this.showMainContentWithoutAnimation();
-                    return;
-                }
-
-                if (mainContent.dataset.animated === 'true') return;
-                mainContent.dataset.animated = 'true';
-
-                const titleSplit = new SplitType(title, {
-                    types: 'lines, chars',
-                    tagName: 'span'
-                });
-
-                const textSplit = new SplitType(text, {
-                    types: 'lines, chars',
-                    tagName: 'span'
-                });
-
-                this.mainSplit = [titleSplit, textSplit];
-
-                gsap.set(mainContent, {
-                    autoAlpha: 1
-                });
-
-                /*
-                 * Leonid Kostetskyi 스타일 참고:
-                 * 모든 글자가 동일한 위치에서 일렬로 등장하지 않고,
-                 * 글자마다 서로 다른 Y값·회전·블러를 가진 상태에서
-                 * 자연스럽게 제자리로 정렬된다.
-                 */
-                gsap.set(titleSplit.chars, {
-                    yPercent: () => gsap.utils.random(90, 170),
-                    rotation: () => gsap.utils.random(-10, 10),
-                    scaleY: () => gsap.utils.random(1.05, 1.25),
-                    opacity: 0,
-                    filter: 'blur(10px)',
-                    transformOrigin: '50% 100%'
-                });
-
-                gsap.set(textSplit.chars, {
-                    yPercent: () => gsap.utils.random(65, 125),
-                    rotation: () => gsap.utils.random(-5, 5),
-                    opacity: 0,
-                    filter: 'blur(7px)',
-                    transformOrigin: '50% 100%'
-                });
-
-                const tl = gsap.timeline({
-                    defaults: {
-                        overwrite: 'auto'
-                    }
-                });
-
-                tl.to(titleSplit.chars, {
-                    yPercent: 0,
-                    rotation: 0,
-                    scaleY: 1,
-                    opacity: 1,
-                    filter: 'blur(0px)',
-                    duration: 1.05,
-                    stagger: {
-                        each: 0.045,
-                        from: 'random'
-                    },
-                    ease: 'expo.out'
-                });
-
-                tl.to(
-                    textSplit.chars,
-                    {
-                        yPercent: 0,
-                        rotation: 0,
-                        opacity: 1,
-                        filter: 'blur(0px)',
-                        duration: 0.85,
-                        stagger: {
-                            each: 0.014,
-                            from: 'random'
-                        },
-                        ease: 'power4.out'
-                    },
-                    '-=0.55'
-                );
-            }
-
-            showMainContentWithoutAnimation() {
-                const mainContent = document.querySelector('.c-main--content');
-
-                if (mainContent) {
-                    mainContent.style.visibility = 'visible';
-                    mainContent.style.opacity = '1';
-                }
-            }
-
-            finishLoading() {
-                if (this.loaderNumber) {
-                    this.loaderNumber.style.transition =
-                        'opacity .6s cubic-bezier(.25,1,.5,1), ' +
-                        'transform .6s cubic-bezier(.25,1,.5,1), ' +
-                        'filter .6s ease';
-
-                    this.loaderNumber.style.opacity = '0';
-                    this.loaderNumber.style.transform =
-                        'translate(-50%, -50%) scale(.9)';
-                    this.loaderNumber.style.filter = 'blur(10px)';
-                }
-
-                setTimeout(() => {
-                    if (this.wrap) {
-                        this.wrap.classList.add('is-loaded');
-
-                        setTimeout(() => {
-                            this.initHeroIntroOut();
-                        }, 300);
-                    }
-
-                    setTimeout(() => {
-                        if (!this.loader) return;
-
-                        if (this.loader.hasAttribute('data-transition')) {
-                            this.loader.classList.add('hidden');
-                        } else {
-                            this.loader.style.transition = 'opacity .8s ease-out';
-                            this.loader.style.opacity = '0';
-                        }
-
-                        setTimeout(() => {
-                            this.loader.style.display = 'none';
-                            document.body.classList.remove('is-loading');
-                        }, 1300);
-                    }, 1500);
-                }, 600);
-            }
+        scrollTrigger: {
+            trigger: '.observe',
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 1
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            new PageLoader();
-        });
-    </script>
-</body>
+    });
 
+    gsap.to('.observe__word--2', {
+
+        xPercent: -55,
+
+        scrollTrigger: {
+            trigger: '.observe',
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 1
+        }
+
+    });
+
+    gsap.to('.observe__word--3', {
+
+        xPercent: 80,
+
+        scrollTrigger: {
+            trigger: '.observe',
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 1
+        }
+
+    });
+
+
+    /* =========================
+       Process
+    ========================= */
+
+    const processItems = document.querySelectorAll('.process__item');
+
+    processItems.forEach((item) => {
+
+        const background = item.querySelector('.process__item-bg');
+
+        item.addEventListener('mouseenter', () => {
+
+            gsap.to(background, {
+                scaleY: 1,
+                duration: 0.45,
+                ease: 'power3.out'
+            });
+
+            gsap.to(item, {
+                color: '#f1efe9',
+                duration: 0.25
+            });
+
+        });
+
+        item.addEventListener('mouseleave', () => {
+
+            gsap.to(background, {
+                scaleY: 0,
+                duration: 0.45,
+                ease: 'power3.inOut'
+            });
+
+            gsap.to(item, {
+                color: '#111',
+                duration: 0.25
+            });
+
+        });
+
+    });
+
+
+    /* =========================
+       Build
+    ========================= */
+
+    const buildTimeline = gsap.timeline({
+
+        scrollTrigger: {
+            trigger: '.build',
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 1
+        }
+
+    });
+
+    buildTimeline
+
+        .to('.build__text--1', {
+            x: 0
+        })
+
+        .to('.build__text--2', {
+            x: 0
+        }, '<')
+
+        .to('.build__frame', {
+            width: '70vw',
+            height: '55vh',
+            duration: 1
+        })
+
+        .to('.build__text--1', {
+            yPercent: -150,
+            opacity: 0
+        })
+
+        .to('.build__text--2', {
+            yPercent: 150,
+            opacity: 0
+        }, '<')
+
+        .to('.build__frame', {
+            width: '100vw',
+            height: '100vh'
+        });
+
+
+    /* =========================
+       Experience
+    ========================= */
+
+    gsap.fromTo('.experience__circle',
+
+        {
+            scale: 0.2
+        },
+
+        {
+            scale: 12,
+
+            scrollTrigger: {
+                trigger: '.experience',
+                start: 'top 80%',
+                end: 'bottom bottom',
+                scrub: 1
+            }
+
+        }
+
+    );
+
+
+    gsap.from('.experience__title span', {
+
+        yPercent: 120,
+        opacity: 0,
+        stagger: 0.1,
+
+        scrollTrigger: {
+            trigger: '.experience__title',
+            start: 'top 80%'
+        }
+
+    });
+
+
+    /* =========================
+       Finale
+    ========================= */
+
+    gsap.from('.finale__title span', {
+
+        y: 120,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 1,
+
+        scrollTrigger: {
+            trigger: '.finale',
+            start: 'top 60%'
+        }
+
+    });
+
+</script>
+
+</body>
 </html>

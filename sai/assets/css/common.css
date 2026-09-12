@@ -1,11 +1,16 @@
 /* ========================================
    SAI Common css
 ======================================== */
+html,
 body {
-    font-family: var(--sai-font-family);
-    color: var(--color-text-primary);
-    background-color: var(--color-bg-page);
-    overflow: hidden;
+    height: 100%;
+}
+
+body { 
+    font-family: var(--sai-font-family); 
+    color: var(--color-text-primary); 
+    background-color: var(--color-bg-page); 
+    overflow: hidden; 
 }
 
 .blind{
@@ -23,105 +28,6 @@ body {
     transform: scale(.01);
 }
 
-
-/* ========================================
-SAI Header
-======================================== */
-
-.sai-header {
-    .sai-header__inner {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: calc(var(--space)*5);
-        background: var(--color-bg-surface);
-        border-bottom: 1px solid var(--color-border);
-        .sai-header__logo {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-text-primary);
-            .sai-header__logo-link {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                .sai-header__logo-image {
-                    width: clamp(18px, 3vw, 44px);
-                }
-                .sai-header__logo-text {
-                    font-size: var(--font-size-2xl);
-                    color: var(--color-text-primary);
-                }
-            }
-        }
-    }
-    .sai-header__util {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: calc(var(--space)*6);
-        .sai-header__button {
-            .sai-header__button-ico {
-                display: block;
-                width: 24px;
-                height: 24px;
-                color: var(--color-text-primary);
-            &:hover {
-                color: var(--color-text-active);
-            }
-            }
-        }
-        .sai-header__credit {
-            display: flex;
-            flex-direction: row;
-            font-size: var(--font-size-lg);
-            align-items: center;
-            justify-content: center;
-            gap: calc(var(--space)*2);
-            line-height: 1.4;
-            .sai-header__credit-symbol {
-                display: block;
-                width: 12px;
-                height: 12px;
-                border-radius: 100%;
-                background-color: var(--color-primary);
-            }
-        }
-        .sai-header__user-info{
-            width: 40px;
-            height: 40px;
-            background-color: var(--color-primary);
-            border-radius: 100%;
-            .sai-header__user-text{
-                color: var(--color-primary-soft);   
-            }
-        }
-    }
-    
-
-
-
-
-
-    .sai-header__credit-value {}
-
-    .sai-header__theme {}
-
-    .sai-header__button {}
-
-    .sai-header__button--light {}
-
-    .sai-header__button--dark {}
-
-    .sai-header__button--setting {}
-
-    .sai-header__button--user {}
-
-    .sai-header__button-ico {}
-
-    .sai-header__button-text {}
-}
 
 
 
@@ -152,20 +58,87 @@ html[data-theme="dark"] {
 
 
 
+
+
+
+
+
+/* ========================================
+SAI Layout
+======================================== */
+
 #wrap {
     display: flex;
     flex-direction: column;
     width: min(calc(100% - (10 * var(--space))), 1680px);
-    min-height: calc(100dvh - (20 * var(--space)));
-    margin: calc(10 * var(--space)) auto;
+    height: calc(100dvh - (40 * var(--space)));
+    min-height: 0;
+    margin: calc(20 * var(--space)) auto;
     background: var(--color-bg-page);
     border: 1px solid var(--color-border);
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(16, 24, 40, .06);
+
+
+    /* ========================================
+    SAI Header
+    ======================================== */
+    .sai-header {
+        .sai-header__inner {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: calc(var(--space)*5);
+            background: var(--color-bg-surface);
+            border-bottom: 1px solid var(--color-border);
+            .sai-header__logo {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                color: var(--color-text-primary);
+                .sai-header__logo-link {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    .sai-header__logo-image {
+                        width: clamp(18px, 3vw, 44px);
+                    }
+                    .sai-header__logo-text {
+                        font-size: var(--font-size-2xl);
+                        color: var(--color-text-primary);
+                    }
+                }
+            }
+        }
+        .sai-header__util {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: calc(var(--space)*6);
+            .sai-header__credit {
+                display: flex;
+                flex-direction: row;
+                font-size: var(--font-size-lg);
+                align-items: center;
+                justify-content: center;
+                gap: calc(var(--space)*2);
+                line-height: 1.4;
+                .sai-header__credit-symbol {
+                    display: block;
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 100%;
+                    background-color: var(--color-primary);
+                }
+            }
+        }
+    }
     .sai-layout {
         display: flex;
         flex: 1;
+        overflow: hidden;
         .sai-aside {
             display: flex;
             flex: 0 0 280px;
@@ -260,8 +233,107 @@ html[data-theme="dark"] {
         }
     }
 }
-.sai-nav-link {
-    display: flex;
+
+
+
+
+/* ========================================
+   Mark
+======================================== */
+
+.sai-mark {
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+    line-height: 1;
+    color: var(--mark-color);
+    background-color: var(--mark-bg);
+    border-radius: var(--radius-full);
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+    &.sai-mark--md {
+        width: 36px;
+        height: 36px;
+        font-size: var(--font-size-sm);
+
+        svg {
+            width: 18px;
+            height: 18px;
+        }
+    }
+}
+
+.sai-mark--gray {
+    --mark-color: var(--color-mark-gray);
+    --mark-bg: var(--color-mark-gray-bg);
+}
+
+.sai-mark--red {
+    --mark-color: var(--color-mark-red);
+    --mark-bg: var(--color-mark-red-bg);
+}
+
+.sai-mark--orange {
+    --mark-color: var(--color-mark-orange);
+    --mark-bg: var(--color-mark-orange-bg);
+}
+
+.sai-mark--yellow {
+    --mark-color: var(--color-mark-yellow);
+    --mark-bg: var(--color-mark-yellow-bg);
+}
+
+.sai-mark--green {
+    --mark-color: var(--color-mark-green);
+    --mark-bg: var(--color-mark-green-bg);
+}
+
+.sai-mark--blue {
+    --mark-color: var(--color-mark-blue);
+    --mark-bg: var(--color-mark-blue-bg);
+}
+
+.sai-mark--purple {
+    --mark-color: var(--color-mark-purple);
+    --mark-bg: var(--color-mark-purple-bg);
+}
+
+.sai-mark--pink {
+    --mark-color: var(--color-mark-pink);
+    --mark-bg: var(--color-mark-pink-bg);
+}
+
+
+
+/* ========================================
+   Button
+======================================== */
+
+
+.sai-button {
+    .sai-button__ico {
+        display: block;
+        width: 24px;
+        height: 24px;
+        color: var(--color-text-primary);
+        &:hover {
+            color: var(--color-text-active);
+        }
+    }
+    .sai-button__txt {
+        display: block;
+        color: var(--color-text-secondary);
+        font-size: var(--font-size-md);
+        font-weight: var(--font-weight-semibold);
+        &:hover {
+            color: var(--color-text-active);
+        }
+    }
 }

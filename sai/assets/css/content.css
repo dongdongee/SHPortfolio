@@ -5,6 +5,8 @@
 .sai-content{
     width: 100%;
     padding: calc(10*var(--space));
+    overflow-x: hidden;
+    overflow-y: auto;
     .sai-kpi {
         width: 100%;
         max-width: 1440px;
@@ -60,7 +62,7 @@
             grid-template-columns: 1fr;
         }
     }
-    .ai-content-grid {
+    .sai-content-grid {
         display: flex;
         gap: 24px;
         max-width: 1400px;
@@ -82,7 +84,7 @@
                 justify-content: space-between;
                 margin-bottom: calc(4 * var(--space));
                 .sai-chart__title{
-                    font-size: var(--font-size-2xl);
+                    font-size: var(--font-size-xl);
                     font-family: var(--sai-font-family);
                     font-weight: var(--font-weight-semibold);
                     color: var(--color-text-primary);
@@ -112,8 +114,85 @@
                     }
                 }
             }
-            .sai-chart__body{
-                height: 100%;
+            .sai-content-card__body{
+                display: flex;
+                .sai-content-card__list{
+                    flex: 1;
+                    min-height: 0;
+                    overflow-y: auto;
+                    .sai-content-card__item{
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        padding: calc(3 * var(--space)) calc(4 * var(--space));
+                        column-gap: 10px;
+                        border-bottom: 1px solid var(--color-border);
+                        &:last-child{
+                            border-bottom: none;
+                        }
+                        .sai-content-card__icon{
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            flex-shrink: 0;
+                            width: 40px;
+                            height: 40px;
+                            margin-right: calc(2 * var(--space));
+                            color: var(--color-primary-soft);
+                            background: red;
+                            border-radius: var(--radius-full);
+                            svg,
+                            img {
+                                display: block;
+                                width: 22px;
+                                height: 22px;
+                            }
+                        }
+                        .sai-content-card__info{
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: flex-start;
+                            min-width: 200px;
+                            gap: calc(var(--space)/2);
+                            line-height: 1;
+                            .sai-content-card-title{
+                                font-size: var(--font-size-lg);
+                                font-weight: var(--font-weight-medium);
+                                color: var(--color-text-primary);
+                            }
+                            .sai-content-card-category{
+                                font-size: var(--font-size-md);
+                                color: var(--color-text-secondary);
+                            }
+                        }
+                        .sai-content-card__members{
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-start;
+                            gap: 2px;
+                            margin: 0 auto 0 0;
+                            padding-left: calc(10*var(--space));
+                        }
+                        .sai-content-card__date{
+                            min-width: 80px;
+                            font-size: var(--font-size-md);
+                            color: var(--color-text-tertiary);
+                        }
+                        .sai-content-card__status{
+                            &.operating{
+                                color: var(--color-status-green);
+                            }
+                            &.non-operating{
+                                color: var(--color-status-red);
+                            }
+                        }
+                        .sai-content-card__chart{
+                            max-width: 80px;
+                            margin-left: auto;
+                        }
+                    }
+                }
             }
         }
     }

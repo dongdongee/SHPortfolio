@@ -57,6 +57,10 @@
     --color-text-brand-hover: #7c3aed;
     --color-text-brand-active: #6d28d9;
 
+   /* Brand Text */
+    --color-status-green: #16a34a;
+    --color-status-red: #dc2626;
+
 
     /* ========================
        Border
@@ -117,6 +121,35 @@
     --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.04);
     --shadow-md: 0 2px 8px rgba(16, 24, 40, 0.06);
     --shadow-lg: 0 8px 24px rgba(16, 24, 40, 0.10);
+
+
+
+    /* ========================
+       Mark
+    ======================== */
+    --color-mark-gray: #667085;
+    --color-mark-gray-bg: #f2f4f7;
+
+    --color-mark-red: #ef4444;
+    --color-mark-red-bg: #fee2e2;
+
+    --color-mark-orange: #f59e0b;
+    --color-mark-orange-bg: #ffedd5;
+
+    --color-mark-yellow: #eab308;
+    --color-mark-yellow-bg: #fef3c7;
+
+    --color-mark-green: #22c55e;
+    --color-mark-green-bg: #dcfce7;
+
+    --color-mark-blue: #3b82f6;
+    --color-mark-blue-bg: #dbeafe;
+
+    --color-mark-purple: #773df9;
+    --color-mark-purple-bg: #e9e2ff;
+
+    --color-mark-pink: #ec4899;
+    --color-mark-pink-bg: #fce7f3;
 }
 
 
@@ -188,4 +221,30 @@
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.18);
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.24);
     --shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.32);
+
+
+    /* ========================
+       Mark
+    ======================== */
+    
+    --color-mark-red: #f87171;
+    --color-mark-red-bg: #451a1a;
+
+    --color-mark-orange: #fbbf24;
+    --color-mark-orange-bg: #422006;
+
+    --color-mark-yellow: #fde047;
+    --color-mark-yellow-bg: #422006;
+
+    --color-mark-green: #4ade80;
+    --color-mark-green-bg: #052e16;
+
+    --color-mark-blue: #60a5fa;
+    --color-mark-blue-bg: #172554;
+
+    --color-mark-purple: #a78bfa;
+    --color-mark-purple-bg: #2e1065;
+
+    --color-mark-pink: #f472b6;
+    --color-mark-pink-bg: #500724;
 }
