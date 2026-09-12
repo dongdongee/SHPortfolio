@@ -206,6 +206,13 @@ body.is-intro .scrollbar {
                 line-height: 1;
                 margin-top: calc(20*var(--space));
             }
+            .c-main--txt__text{
+                font-size: clamp(40px,20vw,80px);
+                font-weight: 900;
+                font-family: var(--font-family-kr);
+                line-height: 1;
+                margin-top: calc(20*var(--space));
+            }
         }   
     }
 }
