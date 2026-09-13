@@ -34,24 +34,25 @@
         <section class="c-main--content">
             <div class="c-main--txt">
                 <p class="c-main--txt__title">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1840 407" width="100%" height="auto" role="img"
-                        aria-labelledby="title desc">
-                        <title id="title">WEB PUBLISHER, SANGHO.</title>
-                        <desc id="desc">WEB PUBLISHER, SANGHO.</desc>
+    <span id="title">WEB PUBLISHER, SANGHO.</span>
+    <span id="desc">WEB PUBLISHER, SANGHO.</span>
+</p>
+<style>
+    .c-main--txt__title {
+    overflow: hidden;
+}
 
-                        <g fill="currentColor" font-family="Arial Black, Arial, Helvetica, sans-serif"
-                            font-weight="900">
-                            <text x="20" y="178" font-size="205" textLength="1745" lengthAdjust="spacingAndGlyphs">
-                                WEB PUBLISHER,
-                            </text>
+.c-main--txt__title #title,
+.c-main--txt__title #desc {
+    display: block;
+    overflow: hidden;
+}
 
-                            <text x="20" y="383" font-size="205" textLength="985" lengthAdjust="spacingAndGlyphs">
-                                SANGHO.
-                            </text>
-                        </g>
-                    </svg>
-                </p>
-
+.c-main--txt__title .char {
+    display: inline-block;
+    will-change: transform, opacity;
+}
+</style>
                 <p class="c-main--txt__text">
                     사용자의 흐름을 읽고,<br>
                     화면의 구조를 설계하며,<br>
