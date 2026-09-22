@@ -57,7 +57,20 @@ class ActiveToggle {
 
             if (!button) return;
 
-            button.classList.toggle('is-active');
+            const isActive = button.classList.toggle('is-active');
+            const targetSelector = button.dataset.activeTarget;
+            const target = targetSelector
+                ? document.querySelector(targetSelector)
+                : null;
+
+            target?.classList.toggle('is-active', isActive);
+
+            if (button.hasAttribute('aria-expanded')) {
+                button.setAttribute(
+                    'aria-expanded',
+                    String(isActive)
+                );
+            }
         });
     }
 }

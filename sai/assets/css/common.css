@@ -85,13 +85,78 @@ SAI Layout
     SAI Header
     ======================================== */
     .sai-header {
+        position: relative;
+        z-index: 999;
         .sai-header__inner {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
-            padding: calc(var(--space)*5);
+            justify-content: flex-start;
+            padding: calc(var(--space)*3) calc(var(--space)*5);
             background: var(--color-bg-surface);
             border-bottom: 1px solid var(--color-border);
+            .sai-header__hamburger{
+                width: 40px;
+                aspect-ratio: 1/1;
+                .sai-hamburger__button {
+                    display: block;
+                    position: relative;
+                    width: 40px;
+                    height: 40px;
+                    padding: 0;
+                    border: 0;
+                    background: transparent;
+                    cursor: pointer;
+
+                    span {
+                        position: absolute;
+                        left: 9px;
+                        width: 22px;
+                        height: 2px;
+                        border-radius: 2px;
+                        background: var(--color-text-primary);
+                        transition:
+                            top 0.25s ease,
+                            transform 0.25s ease,
+                            opacity 0.15s ease;
+
+                        &:nth-child(1) {
+                            top: 12px;
+                        }
+
+                        &:nth-child(2) {
+                            top: 19px;
+                        }
+
+                        &:nth-child(3) {
+                            top: 26px;
+                        }
+                    }
+
+                    &.is-active {
+                        span {
+                            &:nth-child(1) {
+                                top: 19px;
+                                transform: rotate(45deg);
+                            }
+
+                            &:nth-child(2) {
+                                opacity: 0;
+                            }
+
+                            &:nth-child(3) {
+                                top: 19px;
+                                transform: rotate(-45deg);
+                            }
+                        }
+                    }
+                }
+
+                @media (max-width: 1280px) {
+                    .sai-menu-btn {
+                        display: block;
+                    }
+                }
+            }
             .sai-header__logo {
                 display: flex;
                 flex-direction: row;
@@ -103,10 +168,10 @@ SAI Layout
                     align-items: center;
                     justify-content: center;
                     .sai-header__logo-image {
-                        width: clamp(18px, 3vw, 44px);
+                        width: clamp(18px, 3vw, 32px);
                     }
                     .sai-header__logo-text {
-                        font-size: var(--font-size-2xl);
+                        font-size: var(--font-size-xl);
                         color: var(--color-text-primary);
                     }
                 }
@@ -117,6 +182,7 @@ SAI Layout
             flex-direction: row;
             align-items: center;
             gap: calc(var(--space)*6);
+            margin-left: auto;
             .sai-header__credit {
                 display: flex;
                 flex-direction: row;
@@ -139,6 +205,9 @@ SAI Layout
         display: flex;
         flex: 1;
         overflow: hidden;
+        /* ========================================
+        SAI Aside
+        ======================================== */
         .sai-aside {
             display: flex;
             flex: 0 0 280px;
@@ -146,6 +215,8 @@ SAI Layout
             background: var(--color-bg-surface);
             border-right: 1px solid var(--color-border);
             .sai-aside__nav {
+                position: relative;
+                z-index: 999;
                 flex: 1;
                 overflow: visible;
                 .sai-nav-toggle{
@@ -188,6 +259,18 @@ SAI Layout
                         &:hover{
                             color: var(--color-primary);
                         }
+                        &.is-active{
+                            .sai-nav-status{
+                                transform: rotate(0deg);
+                            }
+                            .aside__detail_menu{
+                                display: flex;
+                            }
+                            +.aside__detail_menu{
+                                display: block;
+                            }
+
+                        }
                     }
                     .aside__detail_menu{
                         display: none;
@@ -216,19 +299,67 @@ SAI Layout
                             }
                         }
                     }
-                    &.is-active{
-                        .sai-nav-status{
-                            transform: rotate(0deg);
-                        }
-                        .aside__detail_menu{
-                            display: flex;
-                        }
-
-                    }
                 }
             }
             .sai-aside__footer {
                 flex-shrink: 0;
+            }
+        }
+    }
+    @media screen and (max-width: 1280px) {
+        display: block;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        margin: 0;
+        border: none;
+        border-radius: unset;
+        overflow: hidden;
+        box-shadow: none;
+        .sai-layout {
+            display: block;
+            /* ========================================
+            SAI Aside
+            ======================================== */
+            .sai-aside {
+                .sai-aside__wrap {
+                    position: fixed;
+                    top: 65px;
+                    left: 0;
+                    bottom: 0;
+                    width: 280px;
+                    background: var(--color-bg-surface);
+                    transform: translateX(-100%);
+                    transition: transform .3s ease;
+
+                    z-index: 1001;
+
+                    &.is-active {
+                        transform: translateX(0);
+                    }
+                }
+
+                .sai-aside__overlay {
+                    position: fixed;
+                    top: 65px;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    background: rgb(16 24 40 / 56%);
+                    opacity: 0;
+                    visibility: hidden;
+                    transition:
+                    opacity .3s ease,
+                    visibility .3s ease;
+                    z-index: 1000;
+                }
+
+                &:has(.sai-aside__wrap.is-active) {
+                    .sai-aside__overlay {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
             }
         }
     }

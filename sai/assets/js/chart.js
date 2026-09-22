@@ -1055,6 +1055,12 @@ class DashboardChart {
 
                     cutout: '70%',
 
+                    layout: {
+                        padding: {
+                            top: 10,
+                            bottom: 10
+                        }
+                    },
                     plugins: {
                         centerText: {
                             display: true,
