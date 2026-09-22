@@ -194,7 +194,8 @@
         }
     }
     @media (max-width: 1280px) {
-        max-height: calc(100vh - (10*var(--space)) - 65px);
+        overflow: hidden;
+        padding-top: calc((10 * var(--space)) + 65px);
         .sai-content-grid{
             
         }

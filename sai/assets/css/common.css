@@ -200,6 +200,12 @@ SAI Layout
                 }
             }
         }
+        @media screen and (max-width: 1280px) {
+            .sai-header__inner{
+                position: fixed;
+                width: 100%;
+            }
+        }
     }
     .sai-layout {
         display: flex;
