@@ -448,7 +448,7 @@ SAI Layout
         }
     }
     &.sai-mark--square{
-        border-radius: var(--radius-lg);
+        border-radius: var(--radius-md);
     }
 }
 

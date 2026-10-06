@@ -224,28 +224,4 @@
     --shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.32);
 
 
-    /* ========================
-       Mark
-    ======================== */
-    
-    --color-mark-red: #f87171;
-    --color-mark-red-bg: #451a1a;
-
-    --color-mark-orange: #fbbf24;
-    --color-mark-orange-bg: #422006;
-
-    --color-mark-yellow: #fde047;
-    --color-mark-yellow-bg: #422006;
-
-    --color-mark-green: #4ade80;
-    --color-mark-green-bg: #052e16;
-
-    --color-mark-blue: #60a5fa;
-    --color-mark-blue-bg: #172554;
-
-    --color-mark-purple: #a78bfa;
-    --color-mark-purple-bg: #2e1065;
-
-    --color-mark-pink: #f472b6;
-    --color-mark-pink-bg: #500724;
 }

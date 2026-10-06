@@ -135,7 +135,8 @@ class KpiChart {
 
                     y: {
                         display: false,
-                        beginAtZero: false
+                        beginAtZero: true,
+                        max: max
                     }
                 }
             }
@@ -152,48 +153,48 @@ const kpiData = [
     {
         selector: '#kpiUsers',
         data: [
-            9800,
-            10100,
-            10500,
-            11000,
-            11400,
-            11900,
-            12728
+            400,
+            242,
+            367,
+            800,
+            820,
+            898,
+            923
         ]
     },
     {
         selector: '#kpiRequests',
         data: [
-            72100,
-            75800,
-            79400,
-            82100,
-            88600,
-            92300,
-            98346
+            20,
+            50,
+            54,
+            82,
+            88,
+            92,
+            98
         ]
     },
     {
         selector: '#kpiProjects',
         data: [
-            1810,
-            1890,
-            1930,
-            2010,
-            2050,
-            2110,
-            2156
+            2,
+            2,
+            5,
+            8,
+            14,
+            4,
+            6
         ]
     },
     {
         selector: '#kpiStatus',
         data: [
-            99.2,
+            89.2,
             99.4,
-            99.3,
+            79.3,
             99.6,
             99.7,
-            99.8,
+            79.8,
             99.9
         ]
     }

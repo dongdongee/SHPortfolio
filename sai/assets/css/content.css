@@ -12,7 +12,7 @@
     }
     .sai-content-grid {
         display: flex;
-        gap: 24px;
+        gap: calc(6*var(--space));
         max-width: 1400px;
         margin: calc(6 * var(--space)) auto 0;
         &.sai-content-grid--kpi{
@@ -21,16 +21,56 @@
             .kpi-card{
                 .kpi-card__body{
                     display: grid;
-                    grid-template-columns: repeat(2, 2fr);
-                    padding: calc(5 * var(--space));
+                    grid-template-columns: repeat(10, 2fr);
+                    padding: calc(4 * var(--space));
+                    min-width: 0;
+                    background: var(--color-bg-surface);
+                    border: 1px solid var(--color-border);
+                    border-radius: var(--radius-md);
+                    .kpi-card__mark{
+                        grid-column: span 3;
+                    }
+                    .kpi-card__content{
+                        grid-column: span 7;
+                        .kpi-card__label{
+                            display: block;
+                            font-size: var(--font-size-md);
+                            font-weight: var(--font-weight-medium);
+                            color: var(--color-text-secondary);
+                        }
+                        .kpi-card__value{
+                            display: block;
+                            font-size: var(--font-size-2lg);
+                            font-weight: var(--font-weight-bold);
+                            color: var(--color-text-primary);
+                        }
+                    }
+                    .kpi-card__meta{
+                        display: flex;
+                        flex-direction: row;
+                        grid-column: span 7;
+                        align-items: flex-end;
+                        line-height: 1;
+                        gap: var(--space);
+                        font-size: var(--font-size-sm);
+                        font-weight: var(--font-weight-medium);
+                        .kpi-card__change{
+                            &.is-up{
+                                color: var(--color-status-green);
+                            }
+                        }
+                        .kpi-card__change.is-down{
+                            color: var(--color-status-red);
+                        }
+                    }
                     .kpi-card__chart{
-                        max-width: 80px;
+                        grid-column: span 3;
+                        max-height: 80px;
                     }
                 }
             grid-template-columns: repeat(4, 1fr);
-                padding: calc(5 * var(--space));
                 .kpi-card__chart{
-                    max-width: 80px;
+                    max-width: 60px;
                 }
             }
         }
