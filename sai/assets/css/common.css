@@ -31,7 +31,6 @@ body {
 
 
 
-
 /* ========================================
    Header Theme State
 ======================================== */
@@ -70,7 +69,7 @@ SAI Layout
 #wrap {
     display: flex;
     flex-direction: column;
-    width: min(calc(100% - (10 * var(--space))), 1680px);
+    width: min(calc(100% - (10 * var(--space))), 1480px);
     height: calc(100dvh - (40 * var(--space)));
     min-height: 0;
     margin: calc(20 * var(--space)) auto;
@@ -95,6 +94,7 @@ SAI Layout
             background: var(--color-bg-surface);
             border-bottom: 1px solid var(--color-border);
             .sai-header__hamburger{
+                display: none;
                 width: 40px;
                 aspect-ratio: 1/1;
                 .sai-hamburger__button {
@@ -157,55 +157,8 @@ SAI Layout
                     }
                 }
             }
-            .sai-header__logo {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: center;
-                color: var(--color-text-primary);
-                .sai-header__logo-link {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    .sai-header__logo-image {
-                        width: clamp(18px, 3vw, 32px);
-                    }
-                    .sai-header__logo-text {
-                        font-size: var(--font-size-xl);
-                        color: var(--color-text-primary);
-                    }
-                }
-            }
         }
-        .sai-header__util {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: calc(var(--space)*6);
-            margin-left: auto;
-            .sai-header__credit {
-                display: flex;
-                flex-direction: row;
-                font-size: var(--font-size-lg);
-                align-items: center;
-                justify-content: center;
-                gap: calc(var(--space)*2);
-                line-height: 1.4;
-                .sai-header__credit-symbol {
-                    display: block;
-                    width: 12px;
-                    height: 12px;
-                    border-radius: 100%;
-                    background-color: var(--color-primary);
-                }
-            }
-        }
-        @media screen and (max-width: 1280px) {
-            .sai-header__inner{
-                position: fixed;
-                width: 100%;
-            }
-        }
+        
     }
     .sai-layout {
         display: flex;
@@ -220,95 +173,175 @@ SAI Layout
             flex-direction: column;
             background: var(--color-bg-surface);
             border-right: 1px solid var(--color-border);
-            .sai-aside__nav {
-                position: relative;
-                z-index: 999;
-                flex: 1;
-                overflow: visible;
-                .sai-nav-toggle{
-                    padding: calc(2*var(--space)) calc(5*var(--space));
-                    margin-top: calc(4*var(--space));
-                    &:nth-child(n+2){
-                        margin-top: calc(2*var(--space));
-                    }
-                    .sai-aside__main_menu{
-                        display: flex;
-                        flex-direction: row;
-                        align-items: center;
-                        column-gap: calc(2 * var(--space));
-                        width: 100%;
-                        padding: calc(2*var(--space)) calc(4*var(--space));
-                        background: transparent;
-                        color: var(--color-text-primary);
-                        .sai-nav-ico{
+            padding: calc(5*var(--space));
+            .sai-aside__wrap{
+                display: flex;
+                flex-direction: column;
+                min-height: 100%;
+                .sai-aside__top {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: flex-start;
+                    color: var(--color-text-primary);
+                    .sai-aside__logo{
+                        font-weight: var(--font-weight-semibold);
+                        .sai-aside__logo-link {
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            flex-shrink: 0;
-                            width: 22px;
-                            height: 22px;
-                            svg,
-                            img {
-                                display: block;
-                                width: 22px;
-                                height: 22px;
+                            .sai-header__logo-image {
+                                width: clamp(18px, 3vw, 32px);
                             }
-                        }
-                        .sai-nav-txt{
-                            font-size: var(--font-size-lg);
-                            font-weight: var(--font-weight-medium);
-                        }
-                        .sai-nav-status{
-                            margin-left: auto;
-                            transform: rotate(-180deg);
-                        }
-                        &:hover{
-                            color: var(--color-primary);
-                        }
-                        &.is-active{
-                            .sai-nav-status{
-                                transform: rotate(0deg);
+                            .sai-header__logo-text {
+                                font-size: var(--font-size-2xl);
+                                color: var(--color-text-primary);
                             }
-                            .aside__detail_menu{
-                                display: flex;
-                            }
-                            +.aside__detail_menu{
-                                display: block;
-                            }
-
                         }
                     }
-                    .aside__detail_menu{
-                        display: none;
-                        flex-direction: column;
-                        align-items: flex-start;
-                        justify-content: flex-start;
-                        li{
+                    .sai-aside__theme{
+                        margin-left: auto;
+                    }
+                    .sai-aside__setting{
+                        margin-left: calc(3*var(--space));
+                    }
+                }
+                .sai-aside__nav {
+                    position: relative;
+                    z-index: 999;
+                    flex: 1;
+                    overflow-y: auto;
+                    scrollbar-width: thin;
+                    scrollbar-color: transparent transparent;
+                    &::-webkit-scrollbar {
+                        width: 6px;
+                    }
+                    &::-webkit-scrollbar-track {
+                        background: transparent;
+                    }
+                    &::-webkit-scrollbar-thumb {
+                        background-color: transparent;
+                        border-radius: 999px;
+                    }
+                    &:hover {
+                        scrollbar-color: var(--color-border) transparent;
+
+                        &::-webkit-scrollbar-thumb {
+                            background-color: var(--color-border);
+                        }
+                    }
+                    &::-webkit-scrollbar-thumb:hover {
+                        background-color: var(--color-text-tertiary);
+                    }
+                    .sai-nav-toggle{
+                        margin-top: calc(4*var(--space));
+                        &:nth-child(n+2){
+                            margin-top: calc(4*var(--space));
+                        }
+                        .sai-aside__main_menu{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            column-gap: calc(2 * var(--space));
                             width: 100%;
-                            margin-top: calc(2*var(--space));
-                            a{
-                                display: block;
-                                width: 100%;
-                                border-radius: 4px;
-                                padding:  calc(2*var(--space)) 0 calc(2*var(--space)) calc(8*var(--space));
-                                font-size: var(--font-size-md);
-                                &:hover {
-                                    background-color: var(--color-bg-hover);
-                                    color: var(--color-text-hover);
+                            padding: calc(2*var(--space)) calc(4*var(--space));
+                            background: transparent;
+                            color: var(--color-text-primary);
+                            .sai-nav-txt{
+                                font-size: var(--font-size-lg);
+                                font-weight: var(--font-weight-medium);
+                            }
+                            .sai-nav-status{
+                                margin-left: auto;
+                                transform: rotate(-180deg);
+                            }
+                            &:hover{
+                                color: var(--color-primary);
+                            }
+                            &.is-active{
+                                .sai-nav-status{
+                                    transform: rotate(0deg);
+                                }
+                                .aside__detail_menu{
+                                    display: flex;
+                                }
+                                +.aside__detail_menu{
+                                    display: block;
                                 }
 
-                                &.is-active {
-                                    background-color: var(--color-bg-active);
-                                    color: var(--color-text-active);
-                                    font-weight: var(--font-weight-medium);
+                            }
+                        }
+                        .aside__detail_menu{
+                            display: none;
+                            flex-direction: column;
+                            align-items: flex-start;
+                            justify-content: flex-start;
+                            li{
+                                width: 100%;
+                                margin-top: calc(2*var(--space));
+                                a{
+                                    display: block;
+                                    width: 100%;
+                                    border-radius: 4px;
+                                    padding:  calc(2*var(--space)) 0 calc(2*var(--space)) calc(8*var(--space));
+                                    font-size: var(--font-size-md);
+                                    &:hover {
+                                        background-color: var(--color-bg-hover);
+                                        color: var(--color-text-hover);
+                                    }
+
+                                    &.is-active {
+                                        background-color: var(--color-bg-active);
+                                        color: var(--color-text-active);
+                                        font-weight: var(--font-weight-medium);
+                                    }
                                 }
                             }
                         }
                     }
                 }
+                .sai-aside__info{
+                    margin-top: auto;
+                    .sai-aside__user{
+                        display: flex;
+                        width: 100%;
+                        flex-direction: row;
+                        align-items: center;
+                        gap: calc(3*var(--space));
+                        padding: calc(3*var(--space));
+                        border: 1px solid var(--color-border);
+                        border-radius: var(--radius-md);
+                        background-color: var(--color-bg-button);
+                        .sai-user__info{
+                            display: flex;
+                            flex-direction: column;
+                            align-items: flex-start;
+                            justify-content: center;
+                            gap: var(--space);
+                            .sai-user__title{
+                                font-size: var(--font-size-lg);
+                                line-height: 1;
+                                color: var(--color-text-primary);
+                            }
+                            .sai-user__grade{
+                                font-size: var(--font-size-sm);
+                                line-height: 1;
+                                color: var(--color-text-secondary)
+                            }
+                        }
+                        .sai-nav-ico{
+                            transform: rotate(-90deg);
+                            margin-left: auto;
+                            color: var(--color-text-secondary)
+                        }
+                    }
+                }
             }
-            .sai-aside__footer {
-                flex-shrink: 0;
+            @media screen and (max-width: 1280px) {
+                .sai-header__inner{
+                    position: fixed;
+                    width: 100%;
+                }
             }
         }
     }
@@ -320,7 +353,7 @@ SAI Layout
         margin: 0;
         border: none;
         border-radius: unset;
-        overflow: hidden;
+        overflow-y: auto;
         box-shadow: none;
         .sai-layout {
             display: block;
@@ -395,6 +428,15 @@ SAI Layout
         width: 20px;
         height: 20px;
     }
+    &.sai-mark--lg {
+        width: 50px;
+        height: 50px;
+        font-size: var(--font-size-sm);
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
     &.sai-mark--md {
         width: 36px;
         height: 36px;
@@ -404,6 +446,9 @@ SAI Layout
             width: 18px;
             height: 18px;
         }
+    }
+    &.sai-mark--square{
+        border-radius: var(--radius-lg);
     }
 }
 
@@ -472,5 +517,31 @@ SAI Layout
         &:hover {
             color: var(--color-text-active);
         }
+    }
+}
+
+
+
+
+
+
+
+/* ========================================
+   SVG ICO
+======================================== */
+
+
+.sai-nav-ico{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    svg,
+    img {
+        display: block;
+        width: 24px;
+        height: 24px;
     }
 }

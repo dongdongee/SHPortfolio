@@ -1,274 +1,239 @@
 <aside id="sai-aside__wrap" class="sai-aside__wrap">
+    <div class="sai-aside__top">
+        <div class="sai-aside__logo">
+            <a href="/sai/" class="sai-aside__logo-link">
+                <img class="sai-header__logo-image" src="/assets/svg/ico_logo.svg" alt="">
+                <span class="sai-header__logo-text">SAI</span>
+            </a>
+        </div>
+        <div class="sai-aside__theme js-theme-toggle">
+            <button class="sai-button sai-header__button--light js-theme-button" type="button" data-theme-value="light" aria-label="라이트 모드로 전환" >
+                <span class="sai-button__ico sai-nav-ico">
+                    <svg class="sai-icon" aria-hidden="true">
+                        <use href="/sai/assets/images/svg_ico.svg#ico_lightmode"></use>
+                    </svg>
+                </span>
+                <span class="blind">Dark Mode</span>
+            </button>
+
+            <button class="sai-button sai-header__button--dark js-theme-button" type="button" data-theme-value="dark" aria-label="다크 모드로 전환" >
+                <span class="sai-button__ico sai-nav-ico">
+                    <svg class="sai-icon" aria-hidden="true">
+                        <use href="/sai/assets/images/svg_ico.svg#ico_darkmode"></use>
+                    </svg>
+                </span>
+                <span class="blind">Dark Mode</span>
+            </button>
+        </div>
+
+        <button class="sai-button sai-aside__setting" type="button" aria-label="설정" >
+            <span class="sai-button__ico sai-nav-ico">
+                <svg class="sai-icon" aria-hidden="true">
+                    <use href="/sai/assets/images/svg_ico.svg#ico_settings"></use>
+                </svg>
+            </span>
+            <span class="blind">settings</span>
+        </button>
+    </div>
     <div class="sai-aside__nav">
         <div class="sai-nav-toggle">
-            <button type="button" class="sai-aside__main_menu js-active-toggle is-active">
-                <span class="sai-nav-ico sai-nav-ico--dashboard">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-layout-dashboard"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 4h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1" /><path d="M5 16h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1" /><path d="M15 12h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1" /><path d="M15 4h4a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1" /></svg>
+            <button type="button" class="sai-aside__main_menu js-active-toggle" data-active-group="aside-nav" aria-expanded="false">
+                <span class="sai-nav-ico">
+                    <svg class="sai-icon" aria-hidden="true">
+                        <use href="/sai/assets/images/svg_ico.svg#ico_dashboard"></use>
+                    </svg>
                 </span>
                 <span class="sai-nav-txt">Dashboard</span>
-                <span class="sai-nav-status">
-                    <svg
-                        class="sai-nav-arrow"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        aria-hidden="true"
-                    >
-                        <path d="M6 9l6 6l6 -6" />
+                <span class="sai-nav-ico">
+                    <svg class="sai-icon" aria-hidden="true">
+                        <use href="/sai/assets/images/svg_ico.svg#ico_arrow"></use>
                     </svg>
                 </span>
             </button>
             <ul class="aside__detail_menu">
                 <li>
-                    <a role="button" class="is-active" href="#">
+                    <a role="button" class="" href="/sai/index.html">
                         <span></span>
                         <span>Overview</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/sai/favorites.html">
                         <span></span>
                         <span>Analytics</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/sai/favorites.html">
                         <span></span>
                         <span>Favorites</span>
                     </a>
                 </li>
             </ul>
         </div>
-
-
-
-
-        <div class="sai-nav-toggle js-active-toggle">
-            <button type="button" class="sai-aside__main_menu js-active-toggle">
-                <span class="sai-nav-ico sai-nav-ico--dashboard">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-sparkle-highlight">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M14.504 8.522l-1.758 -4.032a.814 .814 0 0 0 -1.492 0l-1.759 4.032c-.19 .436 -.537 .784 -.973 .973l-4.032 1.759a.814 .814 0 0 0 0 1.492l4.033 1.758c.436 .19 .784 .538 .973 .974l1.759 4.033a.814 .814 0 0 0 1.492 0l1.758 -4.033c.19 -.436 .538 -.784 .974 -.974l4.033 -1.758a.814 .814 0 0 0 0 -1.492l-4.033 -1.759a1.88 1.88 0 0 1 -.974 -.973" />
-                        <path d="M3 3l2 2" />
-                        <path d="M21 3l-2 2" />
-                        <path d="M3 21l2 -2" />
-                        <path d="M21 21l-2 -2" />
+        <div class="sai-nav-toggle">
+            <button type="button" class="sai-aside__main_menu js-active-toggle" data-active-group="aside-nav" aria-expanded="false">
+                <span class="sai-nav-ico">
+                    <svg class="sai-icon" aria-hidden="true">
+                        <use href="/sai/assets/images/svg_ico.svg#ico_tools"></use>
                     </svg>
                 </span>
                 <span class="sai-nav-txt">AI Tools</span>
-                <span class="sai-nav-status">
-                    <svg
-                        class="sai-nav-arrow"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        aria-hidden="true"
-                    >
-                        <path d="M6 9l6 6l6 -6" />
+                <span class="sai-nav-ico">
+                    <svg class="sai-icon" aria-hidden="true">
+                        <use href="/sai/assets/images/svg_ico.svg#ico_arrow"></use>
                     </svg>
                 </span>
             </button>
             <ul class="aside__detail_menu">
                 <li>
-                    <a href="#">
+                    <a href="/sai/favorites.html">
                         <span></span>
                         <span>AI Chat</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/sai/favorites.html">
                         <span></span>
                         <span>Prompt Studio</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/sai/favorites.html">
                         <span></span>
                         <span>Image Generator</span>
                     </a>
                 </li>
             </ul>
         </div>
-        <div class="sai-nav-toggle js-active-toggle">
-            <button type="button" class="sai-aside__main_menu js-active-toggle">
-                <span class="sai-nav-ico sai-nav-ico--dashboard">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-device-workstation"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M7.07 20l-4.84 -4.617a.79 .79 0 0 1 -.065 -1.041l2.835 -3.342" /><path d="M9 20h-5" /><path d="M6.398 8.063l-1.302 -.896a.95 .95 0 0 0 -1.318 .245l-.611 .889a.95 .95 0 0 0 .245 1.318l1.302 .896c1.041 .716 .635 3.505 2.735 4.949l4.551 -6.62c-2.067 -1.42 -4.559 -.065 -5.602 -.781" /><path d="M9 4h10a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-7" /><path d="M13 20h4" /><path d="M15 16v4" /></svg>
+        <div class="sai-nav-toggle">
+            <button type="button" class="sai-aside__main_menu js-active-toggle" data-active-group="aside-nav" aria-expanded="false">
+                <span class="sai-nav-ico">
+                    <svg class="sai-icon" aria-hidden="true">
+                        <use href="/sai/assets/images/svg_ico.svg#ico_symbol"></use>
+                    </svg>
                 </span>
                 <span class="sai-nav-txt">Workspace</span>
-                <span class="sai-nav-status">
-                    <svg
-                        class="sai-nav-arrow"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        aria-hidden="true"
-                    >
-                        <path d="M6 9l6 6l6 -6" />
+                <span class="sai-nav-ico">
+                    <svg class="sai-icon" aria-hidden="true">
+                        <use href="/sai/assets/images/svg_ico.svg#ico_arrow"></use>
                     </svg>
                 </span>
             </button>
             <ul class="aside__detail_menu">
                 <li>
-                    <a href="#">
+                    <a href="/sai/favorites.html">
                         <span></span>
                         <span>Projects</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/sai/favorites.html">
                         <span></span>
                         <span>Documents</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/sai/favorites.html">
                         <span></span>
                         <span>Notes</span>
                     </a>
                 </li>
             </ul>
         </div>
-        <div class="sai-nav-toggle js-active-toggle">
-            <button type="button" class="sai-aside__main_menu js-active-toggle">
-                <span class="sai-nav-ico sai-nav-ico--dashboard">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-components"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M3 12l3 3l3 -3l-3 -3l-3 3" /><path d="M15 12l3 3l3 -3l-3 -3l-3 3" /><path d="M9 6l3 3l3 -3l-3 -3l-3 3" /><path d="M9 18l3 3l3 -3l-3 -3l-3 3" /></svg>
+        <div class="sai-nav-toggle">
+            <button type="button" class="sai-aside__main_menu js-active-toggle" data-active-group="aside-nav" aria-expanded="false">
+                <span class="sai-nav-ico">
+                    <svg class="sai-icon" aria-hidden="true">
+                        <use href="/sai/assets/images/svg_ico.svg#ico_component "></use>
+                    </svg>
                 </span>
                 <span class="sai-nav-txt">Components</span>
-                <span class="sai-nav-status">
-                    <svg
-                        class="sai-nav-arrow"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        aria-hidden="true"
-                    >
-                        <path d="M6 9l6 6l6 -6" />
+                <span class="sai-nav-ico">
+                    <svg class="sai-icon" aria-hidden="true">
+                        <use href="/sai/assets/images/svg_ico.svg#ico_arrow"></use>
                     </svg>
                 </span>
             </button>
             <ul class="aside__detail_menu">
                 <li>
-                    <a href="#">
+                    <a href="/sai/favorites.html">
                         <span></span>
                         <span>UI Components</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/sai/favorites.html">
                         <span></span>
                         <span>Design Tokens</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/sai/favorites.html">
                         <span></span>
                         <span>Animations</span>
                     </a>
                 </li>
             </ul>
         </div>
-        <div class="sai-nav-toggle js-active-toggle">
-            <button type="button" class="sai-aside__main_menu js-active-toggle">
-                <span class="sai-nav-ico sai-nav-ico--dashboard">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-stackshare"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M17 6a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M17 18a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M3 12a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M7 12h3l3.5 6h3.5" /><path d="M17 6h-3.5l-3.5 6" /></svg>
+        <div class="sai-nav-toggle">
+            <button type="button" class="sai-aside__main_menu js-active-toggle" data-active-group="aside-nav" aria-expanded="false">
+                <span class="sai-nav-ico">
+                    <svg class="sai-icon" aria-hidden="true">
+                        <use href="/sai/assets/images/svg_ico.svg#ico_component "></use>
+                    </svg>
                 </span>
                 <span class="sai-nav-txt">Development</span>
-                <span class="sai-nav-status">
-                    <svg
-                        class="sai-nav-arrow"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        aria-hidden="true"
-                    >
-                        <path d="M6 9l6 6l6 -6" />
+                <span class="sai-nav-ico">
+                    <svg class="sai-icon" aria-hidden="true">
+                        <use href="/sai/assets/images/svg_ico.svg#ico_arrow"></use>
                     </svg>
                 </span>
             </button>
             <ul class="aside__detail_menu">
                 <li>
-                    <a href="#">
+                    <a href="/sai/favorites.html">
                         <span></span>
                         <span>Source</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/sai/favorites.html">
                         <span></span>
                         <span>Deploy</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/sai/favorites.html">
                         <span></span>
                         <span>API Monitor</span>
                     </a>
                 </li>
             </ul>
         </div>
-        <div class="sai-nav-toggle js-active-toggle">
-            <button type="button" class="sai-aside__main_menu js-active-toggle">
-                <span class="sai-nav-ico sai-nav-ico--dashboard">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-codeblock"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 4l-2 2l2 2" /><path d="M12 4l2 2l-2 2" /><path d="M8 8l1 -4" /><path d="M17 6a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-7" /></svg>
+        <div class="sai-nav-toggle">
+            <button type="button" class="sai-aside__main_menu js-active-toggle" data-active-group="aside-nav" aria-expanded="false">
+                <span class="sai-nav-ico">
+                    <svg class="sai-icon" aria-hidden="true">
+                        <use href="/sai/assets/images/svg_ico.svg#ico_resource "></use>
+                    </svg>
                 </span>
                 <span class="sai-nav-txt">Resources</span>
-                <span class="sai-nav-status">
-                    <svg
-                        class="sai-nav-arrow"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        aria-hidden="true"
-                    >
-                        <path d="M6 9l6 6l6 -6" />
+                <span class="sai-nav-ico">
+                    <svg class="sai-icon" aria-hidden="true">
+                        <use href="/sai/assets/images/svg_ico.svg#ico_arrow"></use>
                     </svg>
                 </span>
             </button>
             <ul class="aside__detail_menu">
                 <li>
-                    <a href="#">
+                    <a href="/sai/favorites.html">
                         <span></span>
                         <span>Documentation</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="/sai/favorites.html">
                         <span></span>
                         <span>Playground</span>
                     </a>
@@ -276,5 +241,24 @@
             </ul>
         </div>
     </div>
+    <div class="sai-aside__info">
+        <button class="sai-aside__user" type="button" aria-label="사용자 메뉴" >
+            <div class="sai-mark sai-mark--purple">
+                <span>S</span>
+            </div>
+            <div class="sai-user__info">
+                <span class="sai-user__title">
+                    SANGHOW
+                </span>
+                <span class="sai-user__grade">
+                    admin
+                </span>
+            </div>
+            <span class="sai-nav-ico">
+                <svg class="sai-icon" aria-hidden="true">
+                    <use href="/sai/assets/images/svg_ico.svg#ico_arrow"></use>
+                </svg>
+            </span>
+        </button>
+    </div>
 </aside>
-<div class="sai-aside__overlay"></div>

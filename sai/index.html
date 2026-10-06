@@ -1,6 +1,28 @@
 <!DOCTYPE html>
 <html lang="ko" data-theme="light">
 
+
+
+<!-- Page	Title	Desc
+Overview	Overview	Get a quick overview of your workspace.
+Analytics	Analytics	Track activity and performance at a glance.
+Favorites	Favorites	Quickly access your saved items.
+AI Chat	AI Chat	Chat with AI and explore your ideas.
+Prompt Studio	Prompt Studio	Create, test, and refine your prompts.
+Image Generator	Image Generator	Turn your ideas into images with AI.
+Projects	Projects	Organize and manage your projects.
+Documents	Documents	Create and manage your documents.
+Notes	Notes	Capture ideas and keep your notes organized.
+UI Components	UI Components	Explore reusable interface components.
+Design Tokens	Design Tokens	Manage the foundations of your design system.
+Animations	Animations	Explore motion and interaction patterns.
+Source	Source	Browse and manage your source files.
+Deploy	Deploy	Manage and track your deployments.
+API Monitor	API Monitor	Monitor API activity and performance.
+Documentation	Documentation	Find guides and references for SAI.
+Playground	Playground	Experiment with features in a sandbox.
+
+-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,12 +47,124 @@
 
 <body>
     <div id="wrap">
-        <div class="sai-header" data-include="./includes/header.html"></div>
         <div class="sai-layout">
-
             <div class="sai-aside" data-include="./includes/aside.html"></div>
                 <main class="sai-content">
-                    <section class="sai-kpi"></section>
+                    <section class="sai-content__title">
+                        <h1 class="sai-title__main">OVERVIEW</h1>
+                        <p class="sai-title__desc">SAI workspace의 전반적인 상태를 요약했어요.</p>
+                    </section>
+                    <section class="sai-content-grid sai-content-grid--kpi">
+
+                        <!-- Total Users -->
+                        <article class="kpi-card" id="kpiUsers">
+                            <div class="kpi-card__body">
+
+                                <span class="sai-mark sai-mark--lg sai-mark--red sai-mark--square">
+                                </span>
+
+                                <div class="kpi-card__content">
+                                    <span class="kpi-card__label">Total Users</span>
+                                    <strong class="kpi-card__value"></strong>
+                                </div>
+
+                                <div class="kpi-card__meta">
+                                    <span class="kpi-card__change"></span>
+                                    <span class="kpi-card__compare">vs last 7 days</span>
+                                </div>
+
+                                <div class="kpi-card__chart">
+                                    <canvas></canvas>
+                                </div>
+
+                            </div>
+                        </article>
+
+
+                        <!-- AI Requests -->
+                        <article class="kpi-card" id="kpiRequests">
+                            <div class="kpi-card__body">
+
+                                <span class="sai-mark sai-mark--lg sai-mark--blue sai-mark--square">
+                                    <svg class="sai-icon" aria-hidden="true">
+                                        <use href="/sai/assets/images/svg_ico.svg#ico_sparkles"></use>
+                                    </svg>
+                                </span>
+
+                                <div class="kpi-card__content">
+                                    <span class="kpi-card__label">AI Requests</span>
+                                    <strong class="kpi-card__value"></strong>
+                                </div>
+
+                                <div class="kpi-card__meta">
+                                    <span class="kpi-card__change"></span>
+                                    <span class="kpi-card__compare">vs last 7 days</span>
+                                </div>
+
+                                <div class="kpi-card__chart">
+                                    <canvas></canvas>
+                                </div>
+
+                            </div>
+                        </article>
+
+
+                        <!-- Projects -->
+                        <article class="kpi-card" id="kpiProjects">
+                            <div class="kpi-card__body">
+
+                                <span class="sai-mark sai-mark--lg sai-mark--green sai-mark--square">
+                                    <svg class="sai-icon" aria-hidden="true">
+                                        <use href="/sai/assets/images/svg_ico.svg#ico_folder"></use>
+                                    </svg>
+                                </span>
+
+                                <div class="kpi-card__content">
+                                    <span class="kpi-card__label">Projects</span>
+                                    <strong class="kpi-card__value"></strong>
+                                </div>
+
+                                <div class="kpi-card__meta">
+                                    <span class="kpi-card__change"></span>
+                                    <span class="kpi-card__compare">vs last 7 days</span>
+                                </div>
+
+                                <div class="kpi-card__chart">
+                                    <canvas></canvas>
+                                </div>
+
+                            </div>
+                        </article>
+
+
+                        <!-- System Status -->
+                        <article class="kpi-card" id="kpiStatus">
+                            <div class="kpi-card__body">
+
+                                <span class="sai-mark sai-mark--lg sai-mark--purple sai-mark--square">
+                                    <svg class="sai-icon" aria-hidden="true">
+                                        <use href="/sai/assets/images/svg_ico.svg#ico_shield"></use>
+                                    </svg>
+                                </span>
+
+                                <div class="kpi-card__content">
+                                    <span class="kpi-card__label">System Status</span>
+                                    <strong class="kpi-card__value"></strong>
+                                </div>
+
+                                <div class="kpi-card__meta">
+                                    <span class="kpi-card__change"></span>
+                                    <span class="kpi-card__compare">vs last 7 days</span>
+                                </div>
+
+                                <div class="kpi-card__chart">
+                                    <canvas></canvas>
+                                </div>
+
+                            </div>
+                        </article>
+
+                    </section>
                     <section class="sai-content-grid">
                         <article class="sai-content-card">
                             <div class="sai-content-card__header">

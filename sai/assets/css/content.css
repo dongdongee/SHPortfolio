@@ -7,64 +7,39 @@
     padding: calc(10*var(--space));
     overflow-x: hidden;
     overflow-y: auto;
-    .sai-kpi {
-        width: 100%;
-        max-width: 1440px;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 16px;
-        margin: 0 auto;
-        .sai-kpi__card {
-            min-width: 0;
-            min-height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            gap: calc(4 * var(--space));
-            padding: calc(5 * var(--space));
-            background: var(--color-bg-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-lg);
-            .sai-kpi__content {
-                min-width: 0;
-                .sai-kpi__title {
-                    display: block;
-                    margin-bottom: 8px;
-                    font-size: 13px;
-                    font-weight: 500;
-                    color: var(--color-text-secondary);
-                }
-                .sai-kpi__value {
-                    display: block;
-                    margin-bottom: 8px;
-                    font-size: 24px;
-                    line-height: 1;
-                    font-weight: 700;
-                    color: var(--color-text-primary);
-                }
-                .sai-kpi__change {
-                    margin: 0;
-                    font-size: 12px;
-                    color: var(--color-text-tertiary);
-                    white-space: nowrap;
-                    span {
-                        color: #16a34a;
-                        font-weight: 500;
-                    }
-                }
-            }
-        }
+    .sai-content__title{
+        padding-bottom: calc();
     }
     .sai-content-grid {
         display: flex;
         gap: 24px;
         max-width: 1400px;
         margin: calc(6 * var(--space)) auto 0;
+        &.sai-content-grid--kpi{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            .kpi-card{
+                .kpi-card__body{
+                    display: grid;
+                    grid-template-columns: repeat(2, 2fr);
+                    padding: calc(5 * var(--space));
+                    .kpi-card__chart{
+                        max-width: 80px;
+                    }
+                }
+            grid-template-columns: repeat(4, 1fr);
+                padding: calc(5 * var(--space));
+                .kpi-card__chart{
+                    max-width: 80px;
+                }
+            }
+        }
         .sai-content-card {
             position: relative;
             display: flex;
             flex: 1;
             flex-direction: column;
+            justify-content: space-around;
             padding: calc(5 * var(--space));
             min-width: 0;
             background: var(--color-bg-surface);
@@ -108,7 +83,12 @@
                 }
             }
             .sai-content-card__body{
-                display: flex;
+                display: flex;    
+                min-height: 0;
+                canvas {
+                    width: 100% !important;
+                    height: 100% !important;
+                }
                 .sai-content-card__list{
                     flex: 1;
                     min-height: 0;
