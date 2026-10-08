@@ -39,6 +39,7 @@ Playground	Playground	Experiment with features in a sandbox.
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- CSS -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/assets/css/reset.css">
     <link rel="stylesheet" href="/sai/assets/css/token.css">
     <link rel="stylesheet" href="/sai/assets/css/common.css">
@@ -61,7 +62,7 @@ Playground	Playground	Experiment with features in a sandbox.
                                     <span class="sai-mark sai-mark--lg sai-mark--purple sai-mark--square">
                                         <span class="sai-button__ico sai-nav-ico">
                                             <svg class="sai-icon" aria-hidden="true">
-                                                <use href="/sai/assets/images/svg_ico.svg#ico_settings"></use>
+                                                <use href="/sai/assets/images/svg_ico.svg#ico_user"></use>
                                             </svg>
                                         </span>
                                     </span>
@@ -85,7 +86,7 @@ Playground	Playground	Experiment with features in a sandbox.
                                     <span class="sai-mark sai-mark--lg sai-mark--purple sai-mark--square">
                                         <span class="sai-button__ico sai-nav-ico">
                                             <svg class="sai-icon" aria-hidden="true">
-                                                <use href="/sai/assets/images/svg_ico.svg#ico_settings"></use>
+                                                <use href="/sai/assets/images/svg_ico.svg#ico_apply"></use>
                                             </svg>
                                         </span>
                                     </span>
@@ -109,7 +110,7 @@ Playground	Playground	Experiment with features in a sandbox.
                                     <span class="sai-mark sai-mark--lg sai-mark--purple sai-mark--square">
                                         <span class="sai-button__ico sai-nav-ico">
                                             <svg class="sai-icon" aria-hidden="true">
-                                                <use href="/sai/assets/images/svg_ico.svg#ico_settings"></use>
+                                                <use href="/sai/assets/images/svg_ico.svg#ico_project"></use>
                                             </svg>
                                         </span>
                                     </span>
@@ -133,7 +134,7 @@ Playground	Playground	Experiment with features in a sandbox.
                                     <span class="sai-mark sai-mark--lg sai-mark--purple sai-mark--square">
                                         <span class="sai-button__ico sai-nav-ico">
                                             <svg class="sai-icon" aria-hidden="true">
-                                                <use href="/sai/assets/images/svg_ico.svg#ico_settings"></use>
+                                                <use href="/sai/assets/images/svg_ico.svg#ico_status"></use>
                                             </svg>
                                         </span>
                                     </span>
@@ -154,35 +155,42 @@ Playground	Playground	Experiment with features in a sandbox.
                     </section>
                     <section class="sai-content-grid">
                         <article class="sai-content-card">
-                            <div class="sai-content-card__header">
-                                <h2 class="sai-chart__title">AI Requests</h2>
-                                <select id="periodSelect" class="sai-select">
-                                    <option value="daily">Daily</option>
-                                    <option value="weekly">Weekly</option>
-                                    <option value="monthly">Monthly</option>
-                                </select>
-                                <div class="sai-chart-value">
-                                    <span id="requestTotal" class="sai-chart-value__total">0</span>
-                                    <span id="requestChange" class="sai-chart-value__change"></span>
-                                </div>
-                            </div>
                             <div class="sai-content-card__body">
-                                <canvas id="requestChart"></canvas>
+                                <div class="swiper js-project-swiper">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <img src="https://placehold.co/700x300" alt="Placeholder">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="https://placehold.co/700x300" alt="Placeholder">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="https://placehold.co/700x300" alt="Placeholder">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="https://placehold.co/700x300" alt="Placeholder">
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
                             </div>
                         </article>
                         <article class="sai-content-card">
-                            <div class="sai-content-card__header">
-                                <h2 class="sai-chart__title">
-                                    AI Requests by Model
-                                </h2>
-                                <select id="modelPeriodSelect" class="sai-select">
-                                    <option value="7">7 Days</option>
-                                    <option value="30">30 Days</option>
-                                    <option value="90">90 Days</option>
-                                </select>
-                            </div>
                             <div class="sai-content-card__body">
-                                <canvas id="modelChart"></canvas>
+                                <div class="sai-content__progress">
+                                    <div class="sai-progress">
+                                        <div class="sai-progress__bar" style="--progress: 78.5%;"></div>
+                                    </div>
+                                    <div class="sai-progress">
+                                        <div class="sai-progress__bar" style="--progress: 78.5%;"></div>
+                                    </div>
+                                    <div class="sai-progress">
+                                        <div class="sai-progress__bar" style="--progress: 78.5%;"></div>
+                                    </div>
+                                    <div class="sai-progress">
+                                        <div class="sai-progress__bar" style="--progress: 78.5%;"></div>
+                                    </div>
+                                </div>
                             </div>
                         </article>
                     </section>
@@ -353,11 +361,12 @@ Playground	Playground	Experiment with features in a sandbox.
             </div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script defer src="/assets/js/include.js"></script>
     <script defer src="/sai/assets/js/common.js"></script>
     <script defer src="/sai/assets/js/chart.js"></script>
+    <script defer src="/sai/assets/js/overview.js"></script>
 
 
 </body>
