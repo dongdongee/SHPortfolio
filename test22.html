@@ -7,11 +7,28 @@
 </head>
 <body>
     <script>
+        let output =  '';
+        const size = 5
 
-        const result = (100>200)
-        ? prompt('값을 입력해주세여', '')
-        : confirm('버튼을 클릭해주세요')
-        alert(result);
+        for(let i = 1; i <= size; i++){
+            for( let j = size; j > i; j-- ){
+                output += ' '
+            }
+            for(let k = 0; k < 2 * i - 1; k++){
+                output += '*'
+            }
+            output += '\n'
+        }
+        for(let i = size - 1; i > 0; i--){
+            for( let j = size; j > i; j--  ){
+                output += ' '
+            }
+            for(let k = 0; k < 2 * i - 1; k++){
+                output += '*'
+            }
+            output += '\n'
+        }
+        console.log(output);
 
 
     </script>
