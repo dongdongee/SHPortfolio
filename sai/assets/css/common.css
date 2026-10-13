@@ -500,6 +500,10 @@ SAI Layout
 
 
 .sai-button {
+    div{
+        display: flex;
+        flex-direction: row;
+    }
     .sai-button__ico {
         display: block;
         width: 24px;
@@ -510,12 +514,22 @@ SAI Layout
         }
     }
     .sai-button__txt {
-        display: block;
+        display: flex;
+        position: relative;
+        align-items: center;
         color: var(--color-text-secondary);
-        font-size: var(--font-size-md);
-        font-weight: var(--font-weight-semibold);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-medium);
+        letter-spacing: -0.02em;
+        gap: var(--space);
         &:hover {
             color: var(--color-text-active);
+        }
+        &::after{
+            content: '';
+            display: block;
+            position: absolute;
+            background: url('/sai/assets/images/ico_line_arrow_right.svg') no-repeat center center;
         }
     }
 }
@@ -543,5 +557,13 @@ SAI Layout
         display: block;
         width: 24px;
         height: 24px;
+    }
+    &.sai-nav-ico-20{
+        svg,
+        img {
+            display: block;
+            width: 20px;
+            height: 20px;
+        }
     }
 }

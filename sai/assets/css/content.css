@@ -12,12 +12,17 @@
     }
     .sai-content-grid {
         display: grid;
-            display: grid;
-            grid-template-columns: 5.5fr 4.5fr;
-            gap: 16px;
+        gap: 16px;
+        grid-template-columns: 5fr 5fr;
         gap: calc(6*var(--space));
         max-width: 1400px;
         margin: calc(6 * var(--space)) auto 0;
+        &.sai-content-grid--left{
+            grid-template-columns: 6fr 4fr;
+        }
+        &.sai-content-grid--right{
+            grid-template-columns: 4fr 6fr;
+        }
         &.sai-content-grid--kpi{
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -89,16 +94,30 @@
             border: 1px solid var(--color-border);
             border-radius: var(--radius-lg);
             .sai-card__body{
-                display: flex;    
-                .sai-card__title-main{
-                    font-size: var(--font-size-xl);
-                    font-weight: var(--font-weight-bold);
-                    color: var(--color-text-primary);
+                display: flex;
+                flex-direction: column;
+                gap: calc(2 * var(--space));  
+                flex: 1;
+                &.sai-card__body--padding{
+                    padding: calc(4 * var(--space)) calc(6 * var(--space));
                 }
-                .sai-card__title-sub{
-                    font-size: var(--font-size-lg);
-                    font-weight: var(--font-weight-normal);
-                    color: var(--color-text-secondary);
+                .sai-card__title{
+                    &.sai-card__title--flex{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-between;
+                    }
+                    .sai-card__title-main{
+                        font-size: var(--font-size-xl);
+                        font-weight: var(--font-weight-bold);
+                        color: var(--color-text-primary);
+                    }
+                    .sai-card__title-sub{
+                        font-size: var(--font-size-lg);
+                        font-weight: var(--font-weight-semibold);
+                        color: var(--color-text-secondary);
+                    }
                 }
                 .js-project-swiper{
                     width: 100%;
@@ -111,76 +130,105 @@
                             }
                         }
                     }
-                        .swiper-pagination{
-                            .swiper-pagination-bullet{
-                                width: 30px;
-                                height: 6px;
-                                border-radius: var(--radius-full);
-                            }
+                    .swiper-pagination{
+                        .swiper-pagination-bullet{
+                            width: 30px;
+                            height: 6px;
+                            border-radius: var(--radius-full);
                         }
+                    }
                 }
                 &.sai-card__body--progress{
-                    display: flex;
-                    flex-direction: column;
-                    padding: calc(4 * var(--space));
-                    gap: calc(2 * var(--space));  
-                    flex: 1;
                     .sai-card__content{
                         .sai-card__content--top{
                             border-bottom: 1px solid var(--color-border);
-                            padding: 0 calc(2 * var(--space)) calc(2 * var(--space));
-                            margin-bottom: calc(2 * var(--space));
+                            padding: 0 calc(2 * var(--space)) calc(3 * var(--space));
+                            margin-bottom: calc(3 * var(--space));
+                            .sai-progress__main{
+                                display: flex;
+                                flex-direction: row;
+                                align-items: center;
+                                justify-content: space-between;
+                                gap: calc(5 * var(--space));
+                            }
+                            .sai-card__value{
+                                display: flex;
+                                flex-direction: row;
+                                align-items: flex-end;
+                                line-height: 1;
+                                gap: calc(2 * var(--space));
+                                padding: calc(2 * var(--space)) 0;
+                                .sai-card__value--current{
+                                    font-size: var(--font-size-2xl);
+                                    font-weight: var(--font-weight-bold);
+                                    color: var(--color-text-primary);
+                                }
+                                .sai-card__value--slash{
+                                    font-size: var(--font-size-md);
+                                    font-weight: var(--font-weight-normal);
+                                    color: var(--color-text-secondary);
+                                    padding-bottom: calc(0.5 * var(--space));
+                                }
+                                .sai-card__value--total{
+                                    font-size: var(--font-size-lg);
+                                    font-weight: var(--font-weight-normal);
+                                    color: var(--color-text-secondary);
+                                }
+                            }
+                            .sai-progress__track{
+                                display: block;
+                                width: 100%;
+                                height: 16px;
+                                background: #e5e7eb;
+                                border-radius: 100px;
+                                .sai-progress__bar{
+                                    width: var(--progress, 0%);
+                                    height: 100%;
+                                    background: var(--color-text-active);
+                                    border-radius: inherit;
+                                    transition: width 0.3s ease;
+                                }
+                            }
+                            .sai-progress__per{
+                                font-size: var(--font-size-md);
+                                font-weight: var(--font-weight-bold);
+                                color: var(--color-text-primary);
+                            }
                         }
-                        .sai-progress__main{
-                            display: flex;
-                            flex-direction: row;
-                            align-items: center;
-                            justify-content: space-between;
-                            gap: calc(5 * var(--space));
+                        .sai-card__content--bottom{
+                            padding: 0 calc(2 * var(--space)) 0;
+                            .sai-progress__sub{
+                                display: flex;
+                                flex-direction: column;
+                                gap: calc(5 * var(--space));
+                                padding-top: calc(2 * var(--space));
+                                .sai-progress__sub--box{
+                                    flex: 1;
+                                    display: flex;
+                                    flex-direction: row;
+                                    align-items: center;
+                                    gap: calc(2 * var(--space));
+                                    .sai-progress__model{
+                                        font-size: var(--font-size-sm);
+                                        min-width: 80px;
+                                    }
+                                }
+                                .sai-progress__track{
+                                    display: block;
+                                    width: 100%;
+                                    height: 16px;
+                                    background: #e5e7eb;
+                                    border-radius: 100px;
+                                    .sai-progress__bar{
+                                        width: var(--progress, 0%);
+                                        height: 100%;
+                                        background: var(--color-primary-soft);
+                                        border-radius: inherit;
+                                        transition: width 0.3s ease;
+                                    }
+                                }
+                            }
                         }
-                    }
-                    .sai-card__value{
-                        display: flex;
-                        flex-direction: row;
-                        align-items: flex-end;
-                        line-height: 1;
-                        gap: calc(2 * var(--space));
-                        padding: calc(2 * var(--space)) 0;
-                        .sai-card__value--current{
-                            font-size: var(--font-size-2xl);
-                            font-weight: var(--font-weight-bold);
-                            color: var(--color-text-primary);
-                        }
-                        .sai-card__value--slash{
-                            font-size: var(--font-size-md);
-                            font-weight: var(--font-weight-normal);
-                            color: var(--color-text-secondary);
-                            padding-bottom: calc(0.5 * var(--space));
-                        }
-                        .sai-card__value--total{
-                            font-size: var(--font-size-lg);
-                            font-weight: var(--font-weight-normal);
-                            color: var(--color-text-secondary);
-                        }
-                    }
-                    .sai-progress__track{
-                        display: block;
-                        width: 100%;
-                        height: 20px;
-                        background: #e5e7eb;
-                        border-radius: 100px;
-                        .sai-progress__bar{
-                            width: var(--progress, 0%);
-                            height: 100%;
-                            background: #8957ff;
-                            border-radius: inherit;
-                            transition: width 0.3s ease;
-                        }
-                    }
-                    .sai-progress__per{
-                        font-size: var(--font-size-md);
-                        font-weight: var(--font-weight-bold);
-                        color: var(--color-text-primary);
                     }
                 }
                 .sai-content-card__list{
@@ -193,7 +241,7 @@
                         justify-content: flex-start;
                         align-items: center;
                         padding: calc(3 * var(--space)) calc(4 * var(--space));
-                        column-gap: 10px;
+                        column-gap: calc(2 * var(--space));
                         border-bottom: 1px solid var(--color-border);
                         &:last-child{
                             border-bottom: none;
@@ -221,7 +269,6 @@
                             flex-direction: column;
                             justify-content: center;
                             align-items: flex-start;
-                            min-width: 200px;
                             gap: calc(var(--space)/2);
                             line-height: 1;
                             .sai-content-card-title{
@@ -238,13 +285,11 @@
                             display: flex;
                             align-items: center;
                             justify-content: flex-start;
-                            min-width: 160px;
-                            gap: 2px;
+                            gap: var(--space);
                             margin: 0 auto 0 0;
                             padding-left: calc(10*var(--space));
                         }
                         .sai-content-card__date{
-                            min-width: 60px;
                             font-size: var(--font-size-md);
                             color: var(--color-text-tertiary);
                         }
@@ -264,6 +309,34 @@
                         }
                     }
                 }
+                .sai-content-card__grid{
+                    display: grid;
+                    grid-template-columns: repeat(2, 2fr);
+                    gap: calc(2*var(--space));
+                    .sai-content-card__item{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        padding: calc(2*var(--space));
+                        gap: calc(2*var(--space));
+                        border: 1px solid var(--color-border);
+                        border-radius: var(--radius-md);
+                        .sai-content-card-title{
+                            font-size: var(--font-size-md);
+                            font-weight: var(--font-weight-medium);
+                            color: var(--color-text-primary);
+                        }
+                        .sai-content-card-category{
+                            font-size: var(--font-size-sm);
+                            color: var(--color-text-tertiary);
+                            letter-spacing: -0.02em;
+                        }
+                        .sai-content-card__arrow{
+                            margin-left: auto;
+                            color: var(--color-text-tertiary);
+                        }
+                    }
+                }
             }
         }
     }
@@ -279,96 +352,3 @@
     }
 }
 
-
-.sai-chart-tooltip {
-    position: fixed;
-    z-index: 9999;
-
-    min-width: 140px;
-
-    padding: 10px 12px;
-
-    background: #202126;
-
-    border-radius: 8px;
-
-    box-shadow:
-        0 4px 12px rgba(16, 24, 40, 0.16);
-
-    pointer-events: none;
-
-    opacity: 0;
-
-    transform:
-        translate(
-            -50%,
-            calc(-100% - 10px)
-        );
-
-    transition:
-        opacity 0.15s ease;
-
-    white-space: nowrap;
-}
-
-
-.sai-chart-tooltip__title {
-    margin-bottom: 5px;
-
-    font-size: 11px;
-    font-weight: 400;
-
-    color: #98a2b3;
-}
-
-
-.sai-chart-tooltip__content {
-    display: flex;
-
-    align-items: baseline;
-
-    gap: 6px;
-}
-
-
-.sai-chart-tooltip__content strong {
-    font-size: 14px;
-    font-weight: 700;
-
-    color: #fff;
-}
-
-
-.sai-chart-tooltip__content span {
-    font-size: 12px;
-    font-weight: 400;
-
-    color: #d0d2d8;
-}
-
-/* *********************************
- * KPI CHART
- * ********************************* */
-
-.sai-kpi__chart {
-    width: 88px;
-    height: 42px;
-
-    flex-shrink: 0;
-}
-
-/* *********************************
- * RESPONSIVE
- * ********************************* */
-
-@media (max-width: 1200px) {
-    .sai-kpi {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 640px) {
-    .sai-kpi {
-        grid-template-columns: 1fr;
-    }
-}
