@@ -1,264 +1,319 @@
 <aside id="sai-aside__wrap" class="sai-aside__wrap">
-    <div class="sai-aside__top">
+    <div class="sai-aside__pc">
+        <div class="sai-aside__top">
+            
+            <button type="button" class="sai-menu-button sai-aside__close js-aside-close" aria-label="메뉴 닫기" aria-controls="saiAside" aria-expanded="false">
+                <span class="sai-menu-button__line"></span>
+                <span class="sai-menu-button__line"></span>
+                <span class="sai-menu-button__line"></span>
+            </button>
+            <div class="sai-aside__logo">
+                <a href="/sai/" class="sai-aside__logo-link">
+                    <img class="sai-header__logo-image" src="/assets/svg/ico_logo.svg" alt="">
+                    <span class="sai-header__logo-text">SAI</span>
+                </a>
+            </div>
+            <div class="sai-aside__util">
+                <div class="sai-aside__theme js-theme-toggle">
+                    <button class="sai-button sai-header__button--light js-theme-button" type="button" data-theme-value="light" aria-label="라이트 모드로 전환" >
+                        <span class="sai-button__ico sai-nav-ico">
+                            <svg class="sai-icon" aria-hidden="true">
+                                <use href="/sai/assets/images/svg_ico.svg#ico_lightmode"></use>
+                            </svg>
+                        </span>
+                        <span class="blind">Dark Mode</span>
+                    </button>
+
+                    <button class="sai-button sai-header__button--dark js-theme-button" type="button" data-theme-value="dark" aria-label="다크 모드로 전환" >
+                        <span class="sai-button__ico sai-nav-ico">
+                            <svg class="sai-icon" aria-hidden="true">
+                                <use href="/sai/assets/images/svg_ico.svg#ico_darkmode"></use>
+                            </svg>
+                        </span>
+                        <span class="blind">Dark Mode</span>
+                    </button>
+                </div>
+                <button class="sai-button sai-aside__setting" type="button" aria-label="설정" >
+                    <span class="sai-button__ico sai-nav-ico">
+                        <svg class="sai-icon" aria-hidden="true">
+                            <use href="/sai/assets/images/svg_ico.svg#ico_settings"></use>
+                        </svg>
+                    </span>
+                    <span class="blind">settings</span>
+                </button>
+            </div>
+        </div>
+        <div class="sai-aside__nav">
+            <div class="sai-nav-toggle">
+                <button type="button" class="sai-aside__main_menu js-active-toggle" data-active-group="aside-nav" aria-expanded="false">
+                    <span class="sai-nav-ico">
+                        <svg class="sai-icon" aria-hidden="true">
+                            <use href="/sai/assets/images/svg_ico.svg#ico_dashboard"></use>
+                        </svg>
+                    </span>
+                    <span class="sai-nav-txt">Dashboard</span>
+                    <span class="sai-nav-ico">
+                        <svg class="sai-icon" aria-hidden="true">
+                            <use href="/sai/assets/images/svg_ico.svg#ico_arrow"></use>
+                        </svg>
+                    </span>
+                </button>
+                <ul class="aside__detail_menu">
+                    <li>
+                        <a role="button" class="" href="/sai/index.html">
+                            <span></span>
+                            <span>Overview</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/sai/favorites.html">
+                            <span></span>
+                            <span>Analytics</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/sai/favorites.html">
+                            <span></span>
+                            <span>Favorites</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sai-nav-toggle">
+                <button type="button" class="sai-aside__main_menu js-active-toggle" data-active-group="aside-nav" aria-expanded="false">
+                    <span class="sai-nav-ico">
+                        <svg class="sai-icon" aria-hidden="true">
+                            <use href="/sai/assets/images/svg_ico.svg#ico_tools"></use>
+                        </svg>
+                    </span>
+                    <span class="sai-nav-txt">AI Tools</span>
+                    <span class="sai-nav-ico">
+                        <svg class="sai-icon" aria-hidden="true">
+                            <use href="/sai/assets/images/svg_ico.svg#ico_arrow"></use>
+                        </svg>
+                    </span>
+                </button>
+                <ul class="aside__detail_menu">
+                    <li>
+                        <a href="/sai/favorites.html">
+                            <span></span>
+                            <span>AI Chat</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/sai/favorites.html">
+                            <span></span>
+                            <span>Prompt Studio</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/sai/favorites.html">
+                            <span></span>
+                            <span>Image Generator</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sai-nav-toggle">
+                <button type="button" class="sai-aside__main_menu js-active-toggle" data-active-group="aside-nav" aria-expanded="false">
+                    <span class="sai-nav-ico">
+                        <svg class="sai-icon" aria-hidden="true">
+                            <use href="/sai/assets/images/svg_ico.svg#ico_symbol"></use>
+                        </svg>
+                    </span>
+                    <span class="sai-nav-txt">Workspace</span>
+                    <span class="sai-nav-ico">
+                        <svg class="sai-icon" aria-hidden="true">
+                            <use href="/sai/assets/images/svg_ico.svg#ico_arrow"></use>
+                        </svg>
+                    </span>
+                </button>
+                <ul class="aside__detail_menu">
+                    <li>
+                        <a href="/sai/favorites.html">
+                            <span></span>
+                            <span>Projects</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/sai/favorites.html">
+                            <span></span>
+                            <span>Documents</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/sai/favorites.html">
+                            <span></span>
+                            <span>Notes</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sai-nav-toggle">
+                <button type="button" class="sai-aside__main_menu js-active-toggle" data-active-group="aside-nav" aria-expanded="false">
+                    <span class="sai-nav-ico">
+                        <svg class="sai-icon" aria-hidden="true">
+                            <use href="/sai/assets/images/svg_ico.svg#ico_component "></use>
+                        </svg>
+                    </span>
+                    <span class="sai-nav-txt">Components</span>
+                    <span class="sai-nav-ico">
+                        <svg class="sai-icon" aria-hidden="true">
+                            <use href="/sai/assets/images/svg_ico.svg#ico_arrow"></use>
+                        </svg>
+                    </span>
+                </button>
+                <ul class="aside__detail_menu">
+                    <li>
+                        <a href="/sai/favorites.html">
+                            <span></span>
+                            <span>UI Components</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/sai/favorites.html">
+                            <span></span>
+                            <span>Design Tokens</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/sai/favorites.html">
+                            <span></span>
+                            <span>Animations</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sai-nav-toggle">
+                <button type="button" class="sai-aside__main_menu js-active-toggle" data-active-group="aside-nav" aria-expanded="false">
+                    <span class="sai-nav-ico">
+                        <svg class="sai-icon" aria-hidden="true">
+                            <use href="/sai/assets/images/svg_ico.svg#ico_component "></use>
+                        </svg>
+                    </span>
+                    <span class="sai-nav-txt">Development</span>
+                    <span class="sai-nav-ico">
+                        <svg class="sai-icon" aria-hidden="true">
+                            <use href="/sai/assets/images/svg_ico.svg#ico_arrow"></use>
+                        </svg>
+                    </span>
+                </button>
+                <ul class="aside__detail_menu">
+                    <li>
+                        <a href="/sai/favorites.html">
+                            <span></span>
+                            <span>Source</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/sai/favorites.html">
+                            <span></span>
+                            <span>Deploy</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/sai/favorites.html">
+                            <span></span>
+                            <span>API Monitor</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sai-nav-toggle">
+                <button type="button" class="sai-aside__main_menu js-active-toggle" data-active-group="aside-nav" aria-expanded="false">
+                    <span class="sai-nav-ico">
+                        <svg class="sai-icon" aria-hidden="true">
+                            <use href="/sai/assets/images/svg_ico.svg#ico_resource "></use>
+                        </svg>
+                    </span>
+                    <span class="sai-nav-txt">Resources</span>
+                    <span class="sai-nav-ico">
+                        <svg class="sai-icon" aria-hidden="true">
+                            <use href="/sai/assets/images/svg_ico.svg#ico_arrow"></use>
+                        </svg>
+                    </span>
+                </button>
+                <ul class="aside__detail_menu">
+                    <li>
+                        <a href="/sai/favorites.html">
+                            <span></span>
+                            <span>Documentation</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/sai/favorites.html">
+                            <span></span>
+                            <span>Playground</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="sai-aside__info">
+            <button class="sai-aside__user" type="button" aria-label="사용자 메뉴" >
+                <div class="sai-mark sai-mark--purple">
+                    <span>S</span>
+                </div>
+                <div class="sai-user__info">
+                    <span class="sai-user__title">
+                        SANGHOW
+                    </span>
+                    <span class="sai-user__grade">
+                        admin
+                    </span>
+                </div>
+                <span class="sai-nav-ico">
+                    <svg class="sai-icon" aria-hidden="true">
+                        <use href="/sai/assets/images/svg_ico.svg#ico_arrow"></use>
+                    </svg>
+                </span>
+            </button>
+        </div>
+    </div>
+
+    <div class="sai-aside__mo">
+        <button type="button" class="sai-menu-button js-menu-button" aria-label="메뉴 열기" aria-controls="saiAside" aria-expanded="false">
+            <span class="sai-menu-button__line"></span>
+            <span class="sai-menu-button__line"></span>
+            <span class="sai-menu-button__line"></span>
+        </button>
         <div class="sai-aside__logo">
             <a href="/sai/" class="sai-aside__logo-link">
                 <img class="sai-header__logo-image" src="/assets/svg/ico_logo.svg" alt="">
                 <span class="sai-header__logo-text">SAI</span>
             </a>
         </div>
-        <div class="sai-aside__theme js-theme-toggle">
-            <button class="sai-button sai-header__button--light js-theme-button" type="button" data-theme-value="light" aria-label="라이트 모드로 전환" >
+        <div class="sai-aside__util">
+            <div class="sai-aside__theme js-theme-toggle">
+                <button class="sai-button sai-header__button--light js-theme-button" type="button" data-theme-value="light" aria-label="라이트 모드로 전환" >
+                    <span class="sai-button__ico sai-nav-ico">
+                        <svg class="sai-icon" aria-hidden="true">
+                            <use href="/sai/assets/images/svg_ico.svg#ico_lightmode"></use>
+                        </svg>
+                    </span>
+                    <span class="blind">Dark Mode</span>
+                </button>
+
+                <button class="sai-button sai-header__button--dark js-theme-button" type="button" data-theme-value="dark" aria-label="다크 모드로 전환" >
+                    <span class="sai-button__ico sai-nav-ico">
+                        <svg class="sai-icon" aria-hidden="true">
+                            <use href="/sai/assets/images/svg_ico.svg#ico_darkmode"></use>
+                        </svg>
+                    </span>
+                    <span class="blind">Dark Mode</span>
+                </button>
+            </div>
+
+            <button class="sai-button sai-aside__setting" type="button" aria-label="설정" >
                 <span class="sai-button__ico sai-nav-ico">
                     <svg class="sai-icon" aria-hidden="true">
-                        <use href="/sai/assets/images/svg_ico.svg#ico_lightmode"></use>
+                        <use href="/sai/assets/images/svg_ico.svg#ico_settings"></use>
                     </svg>
                 </span>
-                <span class="blind">Dark Mode</span>
+                <span class="blind">settings</span>
             </button>
-
-            <button class="sai-button sai-header__button--dark js-theme-button" type="button" data-theme-value="dark" aria-label="다크 모드로 전환" >
-                <span class="sai-button__ico sai-nav-ico">
-                    <svg class="sai-icon" aria-hidden="true">
-                        <use href="/sai/assets/images/svg_ico.svg#ico_darkmode"></use>
-                    </svg>
-                </span>
-                <span class="blind">Dark Mode</span>
-            </button>
-        </div>
-
-        <button class="sai-button sai-aside__setting" type="button" aria-label="설정" >
-            <span class="sai-button__ico sai-nav-ico">
-                <svg class="sai-icon" aria-hidden="true">
-                    <use href="/sai/assets/images/svg_ico.svg#ico_settings"></use>
-                </svg>
-            </span>
-            <span class="blind">settings</span>
-        </button>
-    </div>
-    <div class="sai-aside__nav">
-        <div class="sai-nav-toggle">
-            <button type="button" class="sai-aside__main_menu js-active-toggle" data-active-group="aside-nav" aria-expanded="false">
-                <span class="sai-nav-ico">
-                    <svg class="sai-icon" aria-hidden="true">
-                        <use href="/sai/assets/images/svg_ico.svg#ico_dashboard"></use>
-                    </svg>
-                </span>
-                <span class="sai-nav-txt">Dashboard</span>
-                <span class="sai-nav-ico">
-                    <svg class="sai-icon" aria-hidden="true">
-                        <use href="/sai/assets/images/svg_ico.svg#ico_arrow"></use>
-                    </svg>
-                </span>
-            </button>
-            <ul class="aside__detail_menu">
-                <li>
-                    <a role="button" class="" href="/sai/index.html">
-                        <span></span>
-                        <span>Overview</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/sai/favorites.html">
-                        <span></span>
-                        <span>Analytics</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/sai/favorites.html">
-                        <span></span>
-                        <span>Favorites</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="sai-nav-toggle">
-            <button type="button" class="sai-aside__main_menu js-active-toggle" data-active-group="aside-nav" aria-expanded="false">
-                <span class="sai-nav-ico">
-                    <svg class="sai-icon" aria-hidden="true">
-                        <use href="/sai/assets/images/svg_ico.svg#ico_tools"></use>
-                    </svg>
-                </span>
-                <span class="sai-nav-txt">AI Tools</span>
-                <span class="sai-nav-ico">
-                    <svg class="sai-icon" aria-hidden="true">
-                        <use href="/sai/assets/images/svg_ico.svg#ico_arrow"></use>
-                    </svg>
-                </span>
-            </button>
-            <ul class="aside__detail_menu">
-                <li>
-                    <a href="/sai/favorites.html">
-                        <span></span>
-                        <span>AI Chat</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/sai/favorites.html">
-                        <span></span>
-                        <span>Prompt Studio</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/sai/favorites.html">
-                        <span></span>
-                        <span>Image Generator</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="sai-nav-toggle">
-            <button type="button" class="sai-aside__main_menu js-active-toggle" data-active-group="aside-nav" aria-expanded="false">
-                <span class="sai-nav-ico">
-                    <svg class="sai-icon" aria-hidden="true">
-                        <use href="/sai/assets/images/svg_ico.svg#ico_symbol"></use>
-                    </svg>
-                </span>
-                <span class="sai-nav-txt">Workspace</span>
-                <span class="sai-nav-ico">
-                    <svg class="sai-icon" aria-hidden="true">
-                        <use href="/sai/assets/images/svg_ico.svg#ico_arrow"></use>
-                    </svg>
-                </span>
-            </button>
-            <ul class="aside__detail_menu">
-                <li>
-                    <a href="/sai/favorites.html">
-                        <span></span>
-                        <span>Projects</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/sai/favorites.html">
-                        <span></span>
-                        <span>Documents</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/sai/favorites.html">
-                        <span></span>
-                        <span>Notes</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="sai-nav-toggle">
-            <button type="button" class="sai-aside__main_menu js-active-toggle" data-active-group="aside-nav" aria-expanded="false">
-                <span class="sai-nav-ico">
-                    <svg class="sai-icon" aria-hidden="true">
-                        <use href="/sai/assets/images/svg_ico.svg#ico_component "></use>
-                    </svg>
-                </span>
-                <span class="sai-nav-txt">Components</span>
-                <span class="sai-nav-ico">
-                    <svg class="sai-icon" aria-hidden="true">
-                        <use href="/sai/assets/images/svg_ico.svg#ico_arrow"></use>
-                    </svg>
-                </span>
-            </button>
-            <ul class="aside__detail_menu">
-                <li>
-                    <a href="/sai/favorites.html">
-                        <span></span>
-                        <span>UI Components</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/sai/favorites.html">
-                        <span></span>
-                        <span>Design Tokens</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/sai/favorites.html">
-                        <span></span>
-                        <span>Animations</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="sai-nav-toggle">
-            <button type="button" class="sai-aside__main_menu js-active-toggle" data-active-group="aside-nav" aria-expanded="false">
-                <span class="sai-nav-ico">
-                    <svg class="sai-icon" aria-hidden="true">
-                        <use href="/sai/assets/images/svg_ico.svg#ico_component "></use>
-                    </svg>
-                </span>
-                <span class="sai-nav-txt">Development</span>
-                <span class="sai-nav-ico">
-                    <svg class="sai-icon" aria-hidden="true">
-                        <use href="/sai/assets/images/svg_ico.svg#ico_arrow"></use>
-                    </svg>
-                </span>
-            </button>
-            <ul class="aside__detail_menu">
-                <li>
-                    <a href="/sai/favorites.html">
-                        <span></span>
-                        <span>Source</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/sai/favorites.html">
-                        <span></span>
-                        <span>Deploy</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/sai/favorites.html">
-                        <span></span>
-                        <span>API Monitor</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="sai-nav-toggle">
-            <button type="button" class="sai-aside__main_menu js-active-toggle" data-active-group="aside-nav" aria-expanded="false">
-                <span class="sai-nav-ico">
-                    <svg class="sai-icon" aria-hidden="true">
-                        <use href="/sai/assets/images/svg_ico.svg#ico_resource "></use>
-                    </svg>
-                </span>
-                <span class="sai-nav-txt">Resources</span>
-                <span class="sai-nav-ico">
-                    <svg class="sai-icon" aria-hidden="true">
-                        <use href="/sai/assets/images/svg_ico.svg#ico_arrow"></use>
-                    </svg>
-                </span>
-            </button>
-            <ul class="aside__detail_menu">
-                <li>
-                    <a href="/sai/favorites.html">
-                        <span></span>
-                        <span>Documentation</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/sai/favorites.html">
-                        <span></span>
-                        <span>Playground</span>
-                    </a>
-                </li>
-            </ul>
         </div>
     </div>
-    <div class="sai-aside__info">
-        <button class="sai-aside__user" type="button" aria-label="사용자 메뉴" >
-            <div class="sai-mark sai-mark--purple">
-                <span>S</span>
-            </div>
-            <div class="sai-user__info">
-                <span class="sai-user__title">
-                    SANGHOW
-                </span>
-                <span class="sai-user__grade">
-                    admin
-                </span>
-            </div>
-            <span class="sai-nav-ico">
-                <svg class="sai-icon" aria-hidden="true">
-                    <use href="/sai/assets/images/svg_ico.svg#ico_arrow"></use>
-                </svg>
-            </span>
-        </button>
-    </div>
+    
+<div class="sai-aside-overlay js-aside-overlay"></div>
 </aside>

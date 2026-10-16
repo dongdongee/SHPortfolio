@@ -1,14 +1,26 @@
-/* *********************************
- * KPI
- * Dashboard summary cards.
- * ********************************* */
+
+
+
+
 .sai-content{
     width: 100%;
     padding: calc(10*var(--space));
     overflow-x: hidden;
     overflow-y: auto;
     .sai-content__title{
-        padding-bottom: calc();
+        display: flex;
+        flex-direction: column;
+        row-gap: calc(4*var(--space));
+        padding-bottom: calc(4*var(--space));
+        h1{
+            font-size: var(--font-size-3xl);
+            line-height: 1;
+        }
+        p{
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-medium);
+            line-height: 1;
+        }
     }
     .sai-content-grid {
         display: grid;
@@ -28,18 +40,23 @@
             grid-template-columns: repeat(4, 1fr);
             .kpi-card{
                 .kpi-card__body{
-                    display: grid;
-                    grid-template-columns: repeat(10, 2fr);
+                    display: flex;
+                    flex-wrap: wrap;
                     padding: calc(4 * var(--space));
                     min-width: 0;
                     background: var(--color-bg-surface);
                     border: 1px solid var(--color-border);
                     border-radius: var(--radius-md);
                     .kpi-card__mark{
-                        grid-column: span 3;
+                        width: 50px;
+                        margin-right: calc(2*var(--space));
                     }
                     .kpi-card__content{
-                        grid-column: span 7;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        justify-content: center;
+                        min-width: calc(100% - (50px + 2 * var(--space)));
                         .kpi-card__label{
                             display: block;
                             font-size: var(--font-size-md);
@@ -57,7 +74,7 @@
                     .kpi-card__meta{
                         display: flex;
                         flex-direction: column;
-                        grid-column: span 7;
+                        min-width: 100px;
                         align-items: flex-start ;
                         line-height: 1;
                         gap: var(--space);
@@ -74,8 +91,8 @@
                         }
                     }
                     .kpi-card__chart{
-                        grid-column: span 3;
-                        width: 200px;
+                        min-width: calc(100% - (120px + 2 * var(--space)));
+                        margin-left: auto;
                     }
                 }
             grid-template-columns: repeat(4, 1fr);
@@ -86,6 +103,7 @@
         }
         .sai-content-card {
             position: relative;
+            display: flex;
             flex: 1;
             flex-direction: column;
             justify-content: space-around;
@@ -121,12 +139,18 @@
                 }
                 .js-project-swiper{
                     width: 100%;
+                    height: 100%;
                     .swiper-wrapper{
                         .swiper-slide{
+                            width: 100%;
+                            height: 100%;
                             overflow: hidden;
                             border-radius: var(--radius-lg);
-                            img{
-                                border-radius: var(--radius-lg);
+                            img {
+                                display: block;
+                                width: 100%;
+                                height: 100%;
+                                object-fit: cover;
                             }
                         }
                     }
@@ -165,13 +189,13 @@
                                 }
                                 .sai-card__value--slash{
                                     font-size: var(--font-size-md);
-                                    font-weight: var(--font-weight-normal);
+                                    font-weight: var(--font-weight-regular);
                                     color: var(--color-text-secondary);
                                     padding-bottom: calc(0.5 * var(--space));
                                 }
                                 .sai-card__value--total{
                                     font-size: var(--font-size-lg);
-                                    font-weight: var(--font-weight-normal);
+                                    font-weight: var(--font-weight-regular);
                                     color: var(--color-text-secondary);
                                 }
                             }
@@ -179,12 +203,12 @@
                                 display: block;
                                 width: 100%;
                                 height: 16px;
-                                background: #e5e7eb;
+                                background: var(--color-bg-subtle);
                                 border-radius: 100px;
                                 .sai-progress__bar{
                                     width: var(--progress, 0%);
                                     height: 100%;
-                                    background: var(--color-text-active);
+                                    background: var(--color-primary);
                                     border-radius: inherit;
                                     transition: width 0.3s ease;
                                 }
@@ -217,12 +241,12 @@
                                     display: block;
                                     width: 100%;
                                     height: 16px;
-                                    background: #e5e7eb;
+                                    background: var(--color-bg-subtle);
                                     border-radius: 100px;
                                     .sai-progress__bar{
                                         width: var(--progress, 0%);
                                         height: 100%;
-                                        background: var(--color-primary-soft);
+                                        background: var(--color-primary-muted);
                                         border-radius: inherit;
                                         transition: width 0.3s ease;
                                     }
@@ -232,7 +256,7 @@
                     }
                 }
                 .sai-content-card__list{
-                    flex: 1;
+                    display: grid;
                     min-height: 0;
                     overflow-y: auto;
                     .sai-content-card__item{
@@ -272,12 +296,18 @@
                             gap: calc(var(--space)/2);
                             line-height: 1;
                             .sai-content-card-title{
-                                font-size: var(--font-size-lg);
+                                width: 160px;
+                                overflow: hidden;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+                                font-size: var(--font-size-md);
                                 font-weight: var(--font-weight-medium);
+                                line-height: 1.3;
                                 color: var(--color-text-primary);
                             }
                             .sai-content-card-category{
-                                font-size: var(--font-size-md);
+                                font-size: var(--font-size-sm);
+                                line-height: 1.2;
                                 color: var(--color-text-secondary);
                             }
                         }
@@ -286,12 +316,12 @@
                             align-items: center;
                             justify-content: flex-start;
                             gap: var(--space);
-                            margin: 0 auto 0 0;
-                            padding-left: calc(10*var(--space));
+                            margin: 0 0 0 calc(10*var(--space));
                         }
                         .sai-content-card__date{
                             font-size: var(--font-size-md);
                             color: var(--color-text-tertiary);
+                            margin-left: auto;
                         }
                         .sai-content-card__status{
                             min-width: 200px;
@@ -317,7 +347,7 @@
                         display: flex;
                         flex-direction: row;
                         align-items: center;
-                        padding: calc(2*var(--space));
+                        padding: calc(4 * var(--space)) calc(2 * var(--space));
                         gap: calc(2*var(--space));
                         border: 1px solid var(--color-border);
                         border-radius: var(--radius-md);
@@ -342,9 +372,148 @@
     }
     @media (max-width: 1280px) {
         overflow: hidden;
-        padding-top: calc((10 * var(--space)) + 65px);
-        .sai-content-grid{
-            
+        padding: calc((12 * var(--space)) + 32px) calc(6*var(--space)) calc(8*var(--space));
+        .sai-content-grid {
+            grid-template-columns: 1fr;
+            gap: calc(4*var(--space));
+            margin: calc(4 * var(--space)) auto 0;
+            scrollbar-width: none;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            &.sai-content-grid--left{
+                grid-template-columns: 1fr;
+            }
+            &.sai-content-grid--right{
+                grid-template-columns: 1fr;
+            }
+            &.sai-content-grid--kpi{
+            overflow-x: auto;
+                .kpi-card{
+                    .kpi-card__body{
+                        min-width: 240px;
+                    }
+                    .kpi-card__chart{
+                        max-width: 70px;
+                    }
+                }
+            }
+            .sai-content-card {
+                .sai-card__body{
+                    .sai-content-card__list{
+                        flex: 1;
+                        min-height: 0;
+                        overflow-y: auto;
+                        .sai-content-card__item{
+                            display: flex;
+                            min-width: max-content;
+                            justify-content: flex-start;
+                            align-items: center;
+                            padding: calc(3 * var(--space)) calc(4 * var(--space));
+                            column-gap: calc(2 * var(--space));
+                            border-bottom: 1px solid var(--color-border);
+                            &:last-child{
+                                border-bottom: none;
+                            }
+                            .sai-content-card__icon{
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                flex-shrink: 0;
+                                width: 40px;
+                                height: 40px;
+                                margin-right: calc(2 * var(--space));
+                                color: var(--color-primary-soft);
+                                background: red;
+                                border-radius: var(--radius-full);
+                                svg,
+                                img {
+                                    display: block;
+                                    width: 22px;
+                                    height: 22px;
+                                }
+                            }
+                            .sai-content-card__info{
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: flex-start;
+                                gap: calc(var(--space)/2);
+                                line-height: 1;
+                                .sai-content-card-title{
+                                    width: 160px;
+                                    overflow: hidden;
+                                    white-space: nowrap;
+                                    text-overflow: ellipsis;
+                                    font-size: var(--font-size-md);
+                                    font-weight: var(--font-weight-medium);
+                                    line-height: 1.3;
+                                    color: var(--color-text-primary);
+                                }
+                                .sai-content-card-category{
+                                    font-size: var(--font-size-sm);
+                                    line-height: 1.2;
+                                    color: var(--color-text-secondary);
+                                }
+                            }
+                            .sai-content-card__members{
+                                display: flex;
+                                align-items: center;
+                                justify-content: flex-start;
+                                gap: var(--space);
+                                margin: 0 0 0 calc(10*var(--space));
+                            }
+                            .sai-content-card__date{
+                                font-size: var(--font-size-md);
+                                color: var(--color-text-tertiary);
+                                margin-left: auto;
+                            }
+                            .sai-content-card__status{
+                                min-width: 200px;
+                                &.operating{
+                                    color: var(--color-status-green);
+                                }
+                                &.non-operating{
+                                    color: var(--color-status-red);
+                                }
+                            }
+                            .sai-content-card__chart{
+                                max-width: 80px;
+                                min-width: 80px;
+                                margin-left: auto;
+                            }
+                        }
+                    }
+                    .sai-content-card__grid{
+                        display: grid;
+                        grid-template-columns: repeat(2, 2fr);
+                        gap: calc(2*var(--space));
+                        .sai-content-card__item{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            padding: calc(4 * var(--space)) calc(2 * var(--space));
+                            gap: calc(2*var(--space));
+                            border: 1px solid var(--color-border);
+                            border-radius: var(--radius-md);
+                            .sai-content-card-title{
+                                font-size: var(--font-size-md);
+                                font-weight: var(--font-weight-medium);
+                                color: var(--color-text-primary);
+                            }
+                            .sai-content-card-category{
+                                font-size: var(--font-size-sm);
+                                color: var(--color-text-tertiary);
+                                letter-spacing: -0.02em;
+                            }
+                            .sai-content-card__arrow{
+                                margin-left: auto;
+                                color: var(--color-text-tertiary);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
     @media (max-width: 640px) {

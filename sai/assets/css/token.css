@@ -11,56 +11,37 @@
     --sai-font-family: "Poppins", "Pretendard Variable", sans-serif;
 
 
-    /* ========================
-       Brand
-    ======================== */
+   /* ========================
+      Brand
+   ======================== */
 
-    --color-primary: #773df9;
-    --color-primary-hover: #7c3aed;
-    --color-primary-active: #6d28d9;
-
-    --color-primary-soft: #B8A0FA;
-    --color-primary-soft-hover: #e9e2ff;
-    --color-primary-soft-active: #e0d5ff;
+   --color-primary: #773df9;
+   --color-primary-hover: #0f0f0f;
+   --color-primary-muted: #b8a0fa;
+   --color-primary-soft: #f1edff;
+   --color-nav-current: #773df9;
 
 
-    /* ========================
-       Background
-    ======================== */
+   /* ========================
+      Background
+   ======================== */
 
-    --color-bg-page: #f8f8fb;
-    --color-bg-content: #ffffff;
-    --color-bg-surface: #ffffff;
-    --color-bg-subtle: #f4f3f8;
+   --color-bg-page: #f8f8fb;
+   --color-bg-surface: #ffffff;
+   --color-bg-subtle: #e9e9ef;
 
-    --color-bg-hover: #eeeef2;
-    --color-bg-active: #f1edff;
-    --color-bg-selected: #f1edff;
-    --color-bg-disabled: #f2f2f4;
-    --color-bg-button: #fbfbfb;
+   --color-bg-hover: #eeeef2;
+   --color-bg-active: #f1edff;
 
 
-    /* ========================
-       Text
-    ======================== */
+   /* ========================
+      Text
+   ======================== */
 
-    --color-text-primary: #202126;
-    --color-text-secondary: #636363;
-    --color-text-tertiary: #9699a2;
-    --color-text-disabled: #b9bbc2;
-
-    /* Interactive */
-    --color-text-hover: #202126;
-    --color-text-active: #7c3aed;
-
-    /* Brand Text */
-    --color-text-brand: #8b5cf6;
-    --color-text-brand-hover: #7c3aed;
-    --color-text-brand-active: #6d28d9;
-
-   /* Brand Text */
-    --color-status-green: #16a34a;
-    --color-status-red: #dc2626;
+   --color-text-primary: #202126;
+   --color-text-secondary: #636363;
+   --color-text-tertiary: #9699a2;
+   --color-text-disabled: #b9bbc2;
 
 
     /* ========================
@@ -160,68 +141,93 @@
 
 [data-theme="dark"] {
 
-    /* ========================
-       Brand
-    ======================== */
 
-    --color-primary: #773df9;
-    --color-primary-hover: #a78bfa;
-    --color-primary-active: #5b21b6;
+   /* ========================
+      Brand
+   ======================== */
 
-    --color-primary-soft: #29213a;
-    --color-primary-soft-hover: #332748;
-    --color-primary-soft-active: #3c2c57;
+   --color-primary: #6337c5;
+   --color-primary-hover: #c4b5fd;
+   --color-primary-muted: #522aaa;
+   --color-primary-soft: #29213a;
+   --color-nav-current: #c4b5fd;
 
+   /* ========================
+      Background
+   ======================== */
 
-    /* ========================
-       Background
-    ======================== */
+   --color-bg-page: #0b0f1a;
+   --color-bg-surface: #131827;
+   --color-bg-subtle: #353a49;
 
-    --color-bg-page: #0b0f1a;
-    --color-bg-content: #0f1421;
-    --color-bg-surface: #131827;
-    --color-bg-subtle: #191f30;
-
-    --color-bg-hover: #202738;
-    --color-bg-active: #29213a;
-    --color-bg-selected: #29213a;
-    --color-bg-disabled: #1c2130;
+   --color-bg-hover: #202738;
+   --color-bg-active: #302747;
 
 
-    /* ========================
-       Text
-    ======================== */
+   /* ========================
+      Text
+   ======================== */
 
-    --color-text-primary: #f5f5f7;
-    --color-text-secondary: #a8abb4;
-    --color-text-tertiary: #747781;
-    --color-text-disabled: #50525b;
-
-    /* Interactive */
-    --color-text-hover: #ffffff;
-    --color-text-active: #c4b5fd;
-
-    /* Brand Text */
-    --color-text-brand: #a78bfa;
-    --color-text-brand-hover: #c4b5fd;
-    --color-text-brand-active: #8b5cf6;
+   --color-text-primary: #f5f5f7;
+   --color-text-secondary: #a8abb4;
+   --color-text-tertiary: #9295a0;
+   --color-text-disabled: #50525b;
 
 
-    /* ========================
-       Border
-    ======================== */
+   /* ========================
+      Border
+   ======================== */
 
-    --color-border: #292f40;
-    --color-divider: #252b3a;
-
-
-    /* ========================
-       Shadow
-    ======================== */
-
-    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.18);
-    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.24);
-    --shadow-lg: 0 8px 28px rgba(0, 0, 0, 0.32);
+   --color-border: #292f40;
+   --color-divider: #252b3a;
 
 
+
+   /* ========================
+      Mark
+   ======================== */
+
+   --color-mark-gray: #a3aab8;
+   --color-mark-gray-bg: #252b38;
+
+   --color-mark-red: #f87171;
+   --color-mark-red-bg: #3b232b;
+
+   --color-mark-orange: #fbbf74;
+   --color-mark-orange-bg: #3d2d22;
+
+   --color-mark-yellow: #facc15;
+   --color-mark-yellow-bg: #3b3520;
+
+   --color-mark-green: #4ade80;
+   --color-mark-green-bg: #1e382d;
+
+   --color-mark-blue: #60a5fa;
+   --color-mark-blue-bg: #1e3048;
+
+   --color-mark-purple: #b8a0fa;
+   --color-mark-purple-bg: #302747;
+
+   --color-mark-pink: #f472b6;
+   --color-mark-pink-bg: #3d2638;
+
+
+}
+
+
+
+/* Tablet */
+@media (max-width: 1024px) {
+    :root {
+        --font-size-3xl: 30px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    :root {
+        --font-size-xl: 18px;
+        --font-size-2xl: 22px;
+        --font-size-3xl: 26px;
+    }
 }
