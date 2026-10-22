@@ -17,6 +17,9 @@
     <!-- 메뉴 화살표 아이콘 타입03 ( 꼬리 오른쪽 ) -->
     <symbol id="ico_line_arrow_right" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.67" stroke-linecap="round" stroke-linejoin="round"><path d="M4.17 10H15.83" /><path d="M12.5 13.33L15.83 10" /><path d="M12.5 6.67L15.83 10" /></symbol>
 
+    <!-- 메뉴 화살표 아이콘 타입04 (꼬리 왼쪽) -->
+    <symbol id="ico_line_arrow_left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5" /><path d="M9 8L5 12" /><path d="M9 16L5 12" /></symbol>
+    
     <!-- USER 아이콘 -->
     <symbol id="ico_user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /><path d="M21 21v-2a4 4 0 0 0 -3 -3.85" /></symbol>
 

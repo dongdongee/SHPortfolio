@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+
+
+
+<!-- Page	Title	Desc
+Overview	Overview	Get a quick overview of your workspace.
+Analytics	Analytics	Track activity and performance at a glance.
+Favorites	Favorites	Quickly access your saved items.
+AI Chat	AI Chat	Chat with AI and explore your ideas.
+Prompt Studio	Prompt Studio	Create, test, and refine your prompts.
+Image Generator	Image Generator	Turn your ideas into images with AI.
+Projects	Projects	Organize and manage your projects.
+Documents	Documents	Create and manage your documents.
+Notes	Notes	Capture ideas and keep your notes organized.
+UI Components	UI Components	Explore reusable interface components.
+Design Tokens	Design Tokens	Manage the foundations of your design system.
+Animations	Animations	Explore motion and interaction patterns.
+Source	Source	Browse and manage your source files.
+Deploy	Deploy	Manage and track your deployments.
+API Monitor	API Monitor	Monitor API activity and performance.
+Documentation	Documentation	Find guides and references for SAI.
+Playground	Playground	Experiment with features in a sandbox.
+
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SAI Workspace | Sangho Portfolio</title>
+    <!-- Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <!-- Pretendard -->
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- CSS -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="/assets/css/reset.css">
+    <link rel="stylesheet" href="/sai/assets/css/token.css">
+    <link rel="stylesheet" href="/sai/assets/css/common.css">
+    <link rel="stylesheet" href="/sai/assets/css/content.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="sai-layout">
+            <div class="sai-aside" data-include="./includes/aside.html"></div>
+                <main class="sai-content">
+                    <section class="sai-content__title">
+                        <h1 class="sai-title__main">Analytics</h1>
+                        <p class="sai-title__desc">SAI workspace의 전반적인 상태를 요약했어요.</p>
+                    </section>
+                    <div class="sai-content__body">
+                        <div class="sai-segment sai-tab js-tab">
+                            <ul class="sai-segment__list sai-tab__list" role="tablist">
+                                <li class="sai-segment__item sai-tab__item" role="presentation">
+                                    <button type="button" class="sai-segment__button sai-tab__button is-active" role="tab" aria-selected="true" aria-controls="tab-usage" id="tab-button-usage">
+                                        <span>Usage</span>
+                                    </button>
+                                </li>
+                                <li class="sai-segment__item sai-tab__item" role="presentation">
+                                    <button type="button" class="sai-segment__button sai-tab__button" role="tab" aria-selected="false" aria-controls="tab-models" id="tab-button-models" tabindex="-1">
+                                        <span>Models</span>
+                                    </button>
+                                </li>
+                                <li class="sai-segment__item sai-tab__item" role="presentation">
+                                    <button type="button" class="sai-segment__button sai-tab__button" role="tab" aria-selected="false" aria-controls="tab-users" id="tab-button-users" tabindex="-1">
+                                        <span>Users</span>
+                                    </button>
+                                </li>
+                                <li class="sai-segment__item sai-tab__item" role="presentation">
+                                    <button type="button" class="sai-segment__button sai-tab__button" role="tab" aria-selected="true" aria-controls="tab-projects" id="tab-button-projects">
+                                        <span>Projects</span>
+                                    </button>
+                                </li>
+                                <li class="sai-segment__item sai-tab__item" role="presentation">
+                                    <button type="button" class="sai-segment__button sai-tab__button" role="tab" aria-selected="false" aria-controls="tab-cost" id="tab-button-cost" tabindex="-1">
+                                        <span>Cost</span>
+                                    </button>
+                                </li>
+                                <li class="sai-segment__item sai-tab__item" role="presentation">
+                                    <button type="button" class="sai-segment__button sai-tab__button" role="tab" aria-selected="false" aria-controls="tab-logs" id="tab-button-logs" tabindex="-1">
+                                        <span>API Logs</span>
+                                    </button>
+                                </li>
+                                <li class="sai-segment__item sai-tab__item" role="presentation">
+                                    <button type="button" class="sai-segment__button sai-tab__button" role="tab" aria-selected="true" aria-controls="tab-export" id="tab-button-export">
+                                        <span>Export</span>
+                                    </button>
+                                </li>
+                            </ul>
+                            <div class="sai-tab-panel">
+                                <div class="sai-tab__panel" id="tab-usage" role="tabpanel" aria-labelledby="tab-button-usage">
+                                    <section class="sai-content-card" id="usageChart">
+                                        <div class="sai-content-card__head">
+                                            <div class="sai-content-card__title-group">
+                                                <h3 class="sai-content-card__title">Usage Trend</h3>
+                                                <p class="sai-content-card__description">
+                                                    AI requests and active users over time.
+                                                </p>
+                                            </div>
+                                            
+                                            <div class="sai-segment">
+                                                <ul class="sai-segment__list" role="tablist">
+                                                    <li class="sai-segment__item" role="presentation">
+                                                        <button type="button" class="sai-segment__button is-active" data-period="day" aria-pressed="true">
+                                                            D
+                                                        </button>
+                                                    </li>
+                                                    <li class="sai-segment__item" role="presentation">
+                                                        <button type="button" class="sai-segment__button" data-period="week" aria-pressed="false">
+                                                            Y
+                                                        </button>
+                                                    </li>
+                                                    <li class="sai-segment__item" role="presentation">
+                                                        <button type="button" class="sai-segment__button" data-period="month" aria-pressed="false">
+                                                            M
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="sai-content-card__body">
+                                            <div class="sai-usage-chart">
+                                                <canvas
+                                                    id="usageTrendCanvas"
+                                                    role="img"
+                                                    aria-label="AI requests and average daily active users over time"
+                                                ></canvas>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                                <div class="sai-tab__panel" id="tab-models" role="tabpanel" aria-labelledby="tab-button-models" hidden>
+                                    Models Content
+                                </div>
+                            </div>
+                        </div>
+                        <section class="sai-content-grid sai-content-grid--7-3">
+                            <article class="sai-content-card">
+                                <div class="sai-card__body">
+                                    <div class="swiper js-project-swiper">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <img src="https://placehold.co/700x440" alt="Placeholder">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img src="https://placehold.co/700x440" alt="Placeholder">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img src="https://placehold.co/700x440" alt="Placeholder">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <img src="https://placehold.co/700x440" alt="Placeholder">
+                                            </div>
+                                        </div>
+                                        <div class="swiper-pagination"></div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="sai-content-card">
+                                <div class="sai-card__body sai-card__body--padding sai-card__body--progress">
+                                    <div class="sai-card__title">
+                                        <h2 class="sai-card__title-main">Ai Usage Overview</h2>
+                                    </div>
+                                    <div class="sai-card__content">
+                                        <div class="sai-card__content--top">
+                                            <div class="sai-card__title">
+                                                <p class="sai-card__title-sub">Token usage</p>
+                                            </div>
+                                            <div class="sai-card__value">
+                                                <span class="sai-card__value--current">5,238</span>
+                                                <span class="sai-card__value--slash">/</span>
+                                                <span class="sai-card__value--total">13,000</span>
+                                            </div>
+                                            <div class="sai-progress__main">
+                                                <div class="sai-progress__track">
+                                                    <div class="sai-progress__bar sai-progress__bar--total" style="--progress: 62.7%;"></div>
+                                                </div>
+                                                <div class="sai-progress__per">
+                                                    <span class="sai-progress__text">62.7%</span>    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="sai-card__content--bottom">
+                                            <div class="sai-card__title sai-card__title--flex">
+                                                <p class="sai-card__title-sub">Model usage</p>
+                                                <a href="#" role="button" class="sai-button">
+                                                    <div>
+                                                        <span class="sai-button__txt">View Details
+                                                            <span class="sai-nav-ico sai-nav-ico-20">
+                                                                <svg class="sai-icon" aria-hidden="true">
+                                                                    <use href="/sai/assets/images/svg_ico.svg#ico_line_arrow_right"></use>
+                                                                </svg>
+                                                            </span>
+                                                        </span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="sai-progress__sub">
+                                                <div class="sai-progress__sub--box">
+                                                    <span class="sai-mark sai-mark--gray sai-mark--square">
+                                                        <span class="sai-button__ico sai-nav-ico">
+                                                            <svg class="sai-icon" aria-hidden="true">
+                                                                <use href="/sai/assets/images/svg_ico.svg#ico_gpt"></use>
+                                                            </svg>
+                                                        </span>
+                                                    </span>
+                                                    <div class="sai-progress__model">
+                                                        <span>Chat GPT</span>
+                                                    </div>
+                                                    <div class="sai-progress__track">
+                                                        <div class="sai-progress__bar sai-progress__bar--total" style="--progress: 72.7%;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="sai-progress__sub">
+                                                <div class="sai-progress__sub--box">
+                                                    <span class="sai-mark sai-mark--orange sai-mark--square">
+                                                        <span class="sai-button__ico sai-nav-ico">
+                                                            <svg class="sai-icon" aria-hidden="true">
+                                                                <use href="/sai/assets/images/svg_ico.svg#ico_claude"></use>
+                                                            </svg>
+                                                        </span>
+                                                    </span>
+                                                    <div class="sai-progress__model">
+                                                        <span>Claude</span>
+                                                    </div>
+                                                    <div class="sai-progress__track">
+                                                        <div class="sai-progress__bar sai-progress__bar--total" style="--progress: 42.7%;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="sai-progress__sub">
+                                                <div class="sai-progress__sub--box">
+                                                    <span class="sai-mark sai-mark--yellow sai-mark--square">
+                                                        <span class="sai-button__ico sai-nav-ico">
+                                                            <svg class="sai-icon" aria-hidden="true">
+                                                                <use href="/sai/assets/images/svg_ico.svg#ico_gemini"></use>
+                                                            </svg>
+                                                        </span>
+                                                    </span>
+                                                    <div class="sai-progress__model">
+                                                        <span>Gemini</span>
+                                                    </div>
+                                                    <div class="sai-progress__track">
+                                                        <div class="sai-progress__bar sai-progress__bar--total" style="--progress: 92.7%;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="sai-progress__sub">
+                                                <div class="sai-progress__sub--box">
+                                                    <span class="sai-mark sai-mark--pink sai-mark--square">
+                                                        <span class="sai-button__ico sai-nav-ico">
+                                                            <svg class="sai-icon" aria-hidden="true">
+                                                                <use href="/sai/assets/images/svg_ico.svg#ico_midjourney"></use>
+                                                            </svg>
+                                                        </span>
+                                                    </span>
+                                                    <div class="sai-progress__model">
+                                                        <span>Midjourney</span>
+                                                    </div>
+                                                    <div class="sai-progress__track">
+                                                        <div class="sai-progress__bar sai-progress__bar--total" style="--progress: 52.7%;"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </section>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script defer src="/assets/js/include.js"></script>
+    <script defer src="/sai/assets/js/common.js"></script>
+    <script defer src="/sai/assets/js/chart.js"></script>
+    <script defer src="/sai/assets/js/overview.js"></script>
+
+
+</body>
+
+</html>

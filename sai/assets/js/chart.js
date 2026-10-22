@@ -201,6 +201,154 @@ const kpiData = [
 ];
 
 
+
+
+/* *********************************
+ * Usage Chart
+ * ********************************* */
+
+class UsageChart {
+    constructor(selector, options = {}) {
+        this.el = document.querySelector(selector);
+
+        if (!this.el) return;
+
+        this.dataUrl = options.dataUrl;
+        this.data = [];
+        this.chart = null;
+
+        this.init();
+    }
+
+    async init() {
+        await this.loadData();
+
+        if (!this.data.length) return;
+
+        this.renderChart();
+    }
+
+    async loadData() {
+        try {
+            const response = await fetch(this.dataUrl);
+
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+
+            const json = await response.json();
+
+            const rows = Array.isArray(json) ? json : json.daily;
+
+            if (!Array.isArray(rows)) {
+                throw new Error('Invalid usage data format');
+            }
+
+            this.data = rows;
+
+        } catch (error) {
+            console.error('Usage data load failed:', error);
+            this.data = [];
+        }
+    }
+
+    renderChart() {
+        const canvas = this.el.querySelector('canvas');
+
+        if (!canvas) return;
+
+        const labels = this.data.map(item => item.date);
+        const requests = this.data.map(item => item.requests);
+        const users = this.data.map(item => item.users);
+
+        if (this.chart) {
+            this.chart.destroy();
+        }
+
+        this.chart = new Chart(canvas, {
+            type: 'line',
+
+            data: {
+                labels,
+
+                datasets: [
+                    {
+                        label: 'Requests',
+                        data: requests,
+                        borderColor: '#773df9',
+                        backgroundColor: 'rgba(119, 61, 249, 0.08)',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: true,
+                        pointRadius: 0,
+                        pointHoverRadius: 5,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: 'Users',
+                        data: users,
+                        borderColor: '#b8a0fa',
+                        backgroundColor: '#b8a0fa',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: false,
+                        pointRadius: 0,
+                        pointHoverRadius: 5,
+                        yAxisID: 'y1'
+                    }
+                ]
+            },
+
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false
+                },
+
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    },
+
+                    tooltip: {
+                        enabled: true
+                    }
+                },
+
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            maxTicksLimit: 8
+                        }
+                    },
+
+                    y: {
+                        type: 'linear',
+                        position: 'left',
+                        beginAtZero: true
+                    },
+
+                    y1: {
+                        type: 'linear',
+                        position: 'right',
+                        beginAtZero: true,
+                        grid: {
+                            drawOnChartArea: false
+                        }
+                    }
+                }
+            }
+        });
+    }
+}
+
+
+
 /* *********************************
  * Init
  * ********************************* */
@@ -209,4 +357,9 @@ kpiData.forEach((item) => {
     new KpiChart(item.selector, {
         data: item.data
     });
+});
+
+
+new UsageChart('#usageChart', {
+    dataUrl: '/sai/assets/data/usage.json'
 });

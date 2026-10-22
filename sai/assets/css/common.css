@@ -1,5 +1,5 @@
 /* ========================================
-   SAI Common css
+   Common Default
 ======================================== */
 html,
 body {
@@ -27,14 +27,15 @@ body {
     white-space: nowrap;
     transform: scale(.01);
 }
-
+/* ========================================
+   Common Default
+======================================== */
 
 
 
 /* ========================================
-   Header Theme State
+   Header Theme
 ======================================== */
-
 html[data-theme="light"] {
     .sai-header__button--light {
         display: none;
@@ -54,18 +55,16 @@ html[data-theme="dark"] {
         display: none;
     }
 }
-
-
-
-
+/* ========================================
+   Header Theme
+======================================== */
 
 
 
 
 /* ========================================
-SAI Layout
+    Main Wrap Layout
 ======================================== */
-
 #wrap {
     display: flex;
     flex-direction: column;
@@ -78,90 +77,10 @@ SAI Layout
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(16, 24, 40, .06);
-
-
-    /* ========================================
-    SAI Header
-    ======================================== */
-    .sai-header {
-        position: relative;
-        z-index: 999;
-        .sai-header__inner {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            padding: calc(var(--space)*3) calc(var(--space)*5);
-            background: var(--color-bg-surface);
-            border-bottom: 1px solid var(--color-border);
-            .sai-header__hamburger{
-                display: none;
-                width: 40px;
-                aspect-ratio: 1/1;
-                .sai-hamburger__button {
-                    display: block;
-                    position: relative;
-                    width: 40px;
-                    height: 40px;
-                    padding: 0;
-                    border: 0;
-                    background: transparent;
-                    cursor: pointer;
-                    span {
-                        position: absolute;
-                        left: 9px;
-                        width: 22px;
-                        height: 2px;
-                        border-radius: 2px;
-                        background: var(--color-text-primary);
-                        transition:
-                            top 0.25s ease,
-                            transform 0.25s ease,
-                            opacity 0.15s ease;
-                        &:nth-child(1) {
-                            top: 12px;
-                        }
-                        &:nth-child(2) {
-                            top: 19px;
-                        }
-                        &:nth-child(3) {
-                            top: 26px;
-                        }
-                    }
-                    &.is-active {
-                        span {
-                            &:nth-child(1) {
-                                top: 19px;
-                                transform: rotate(45deg);
-                            }
-
-                            &:nth-child(2) {
-                                opacity: 0;
-                            }
-
-                            &:nth-child(3) {
-                                top: 19px;
-                                transform: rotate(-45deg);
-                            }
-                        }
-                    }
-                }
-
-                @media (max-width: 1280px) {
-                    .sai-menu-btn {
-                        display: block;
-                    }
-                }
-            }
-        }
-        
-    }
     .sai-layout {
         display: flex;
         flex: 1;
         overflow: hidden;
-        /* ========================================
-        SAI Aside
-        ======================================== */
         .sai-aside {
             display: flex;
             flex: 0 0 280px;
@@ -344,7 +263,33 @@ SAI Layout
                 .sai-aside__mo{
                     display: none;
                 }
-                @media screen and (max-width: 1280px) {
+            }
+        }
+    }
+    @media screen and (max-width: 1280px) {
+        display: block;
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        margin: 0;
+        border: none;
+        border-radius: unset;
+        box-shadow: none;
+        .sai-layout {
+            display: flex !important;
+            flex-direction: column;
+            height: 100%;
+            min-height: 0;
+            /* ========================================
+            SAI Aside
+            ======================================== */
+            .sai-aside {
+                padding: 0;
+                flex: unset;
+                .sai-aside__wrap {
+                    &.is-active {
+                        transform: translateX(0);
+                    }
                     body.is-aside-open {
                         overflow: hidden;
                     }
@@ -405,32 +350,6 @@ SAI Layout
                             column-gap: calc(4*var(--space));
                         }
                     }
-
-                }
-            }
-        }
-    }
-    @media screen and (max-width: 1280px) {
-        display: block;
-        width: 100%;
-        height: 100%;
-        min-height: 0;
-        margin: 0;
-        border: none;
-        border-radius: unset;
-        box-shadow: none;
-        .sai-layout {
-            display: block;
-            /* ========================================
-            SAI Aside
-            ======================================== */
-            .sai-aside {
-                padding: 0;
-                flex: unset;
-                .sai-aside__wrap {
-                    &.is-active {
-                        transform: translateX(0);
-                    }
                 }
             }
         }
@@ -438,83 +357,60 @@ SAI Layout
         }
     }
 }
+/* ========================================
+    Main Wrap Layout
+======================================== */
+
+
 
 /* *********************************
- * Menu Button
+ * ASIDE MENU
  * ********************************* */
-
 .sai-menu-button {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5px;
-
+    gap: var(--space);
     width: 40px;
     height: 40px;
     padding: 0;
-
     background: transparent;
     border: 0;
     border-radius: var(--radius-md);
     cursor: pointer;
-
     transition: background 0.2s ease;
-
     &:hover {
         background: var(--color-bg-hover);
     }
-
     .sai-menu-button__line {
         display: block;
         width: 22px;
         height: 2px;
-
         background: var(--color-text-primary);
         border-radius: var(--radius-full);
-
-        transition:
-            transform 0.3s ease,
-            opacity 0.2s ease;
+        transition: transform 0.3s ease, opacity 0.2s ease;
     }
 
-    /* Active */
-    &.is-active {
-        .sai-menu-button__line {
-            &:nth-child(1) {
-                transform: translateY(7px) rotate(45deg);
-            }
-
-            &:nth-child(2) {
-                opacity: 0;
-            }
-
-            &:nth-child(3) {
-                transform: translateY(-7px) rotate(-45deg);
-            }
-        }
-    }
 }
-
-@media (prefers-reduced-motion: reduce) {
-    .sai-menu-button,
-    .sai-menu-button__line {
-        transition: none;
-    }
-}
-/* *********************************
- * Aside Close Button
- * ********************************* */
-
 .sai-aside__close {
     display: none;
+    @media (max-width: 1280px) {
+        .sai-aside__close {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            color: var(--color-text-primary);
+            background: transparent;
+            border: 0;
+            cursor: pointer;
+        }
+
+    }
+
 }
-
-
-/* *********************************
- * Aside Overlay
- * ********************************* */
-
 .sai-aside-overlay {
     position: fixed;
     inset: 0;
@@ -526,37 +422,20 @@ SAI Layout
         opacity 0.3s ease,
         visibility 0.3s ease;
 }
-
 .sai-aside-overlay.is-open {
     opacity: 1;
     visibility: visible;
 }
-
-
 /* *********************************
- * Tablet / Mobile
+ * ASIDE MENU
  * ********************************* */
 
-@media (max-width: 1280px) {
 
-    .sai-aside__close {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        color: var(--color-text-primary);
-        background: transparent;
-        border: 0;
-        cursor: pointer;
-    }
 
-}
 
 /* ========================================
-   Mark
+ * BOX ICON
 ======================================== */
-
 .sai-mark {
     display: inline-flex;
     align-items: center;
@@ -637,14 +516,15 @@ SAI Layout
     --mark-color: var(--color-mark-pink);
     --mark-bg: var(--color-mark-pink-bg);
 }
+/* ========================================
+ * BOX ICON
+======================================== */
 
 
 
 /* ========================================
-   Button
+ * Button
 ======================================== */
-
-
 .sai-button {
     div{
         display: flex;
@@ -679,18 +559,14 @@ SAI Layout
         }
     }
 }
-
-
-
-
-
-
-
 /* ========================================
-   SVG ICO
+ * Button
 ======================================== */
 
 
+/* ========================================
+ * SVG ICO
+======================================== */
 .sai-nav-ico{
     display: flex;
     align-items: center;
@@ -714,64 +590,123 @@ SAI Layout
     }
 }
 
-/* *********************************
- * Content Layout
- * ********************************* */
 
-.sai-content {
-    display: flex!important;
-    flex-direction: column!important;
 
-    flex: 1!important;
-    min-width: 0!important;
-    min-height: 0!important;
 
-    overflow: hidden!important;
-}
 
-/* 페이지 타이틀 */
-.sai-content__title {
-    flex-shrink: 0;
-}
-
-/* 스크롤 콘텐츠 */
-.sai-content__body {
-    flex: 1;
+/* ========================================
+   메인컨텐츠 레이아웃 디테일
+======================================== */
+.sai-content{
+    display: flex;
     min-width: 0;
     min-height: 0;
-
+    width: 100%;
+    padding: calc(10*var(--space));
     overflow-x: hidden;
     overflow-y: auto;
-
-    overscroll-behavior-y: contain;
-    scrollbar-gutter: stable;
-}
-
-@media (max-width: 1280px) {
-
-    .sai-layout {
-        display: flex !important;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    .sai-content__title{
+        display: flex;
         flex-direction: column;
-        height: 100%;
-        min-height: 0;
-    }
-
-    .sai-content {
-        flex: 1;
-        min-height: 0;
-
-        padding-top: 56px;
-
-        overflow: hidden;
-    }
-
-    .sai-content__title {
         flex-shrink: 0;
+        row-gap: calc(4*var(--space));
+        padding-bottom: calc(4*var(--space));
+        .sai-title__main{
+            font-size: var(--font-size-3xl);
+            line-height: 1;
+        }
+        .sai-title__desc{
+            font-size: var(--font-size-xl);
+            font-weight: var(--font-weight-medium);
+            line-height: 1;
+        }
     }
-
     .sai-content__body {
         flex: 1;
+        min-width: 0;
         min-height: 0;
+        overflow-x: hidden;
         overflow-y: auto;
+        overscroll-behavior-y: contain;
+        scrollbar-gutter: stable;
+    }
+    @media (max-width: 1280px) {
+        padding: calc(20*var(--space)) calc(4*var(--space)) calc(6*var(--space));
+        .sai-content__title{
+            row-gap: calc(2*var(--space));
+            padding-bottom: calc(2*var(--space));
+            .sai-title__main{
+                font-size: var(--font-size-3xl);
+                line-height: 1;
+            }
+            .sai-title__desc{
+                font-size: var(--font-size-xl);
+                font-weight: var(--font-weight-medium);
+                line-height: 1;
+            }
+        }
     }
 }
+/* ========================================
+   메인컨텐츠 레이아웃 디테일
+======================================== */
+
+
+
+
+
+/* ========================================
+ * 공통 탭
+======================================== */
+.sai-segment {
+    .sai-segment__list{
+        display: flex;
+        align-items: center;
+        gap: calc(1 * var(--space));
+        width: max-content;
+        margin: 0;
+        padding: calc(1 * var(--space));
+        list-style: none;
+        background: var(--color-bg-surface);
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        .sai-segment__item{
+            .sai-segment__button{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 44px;
+                padding: 0 calc(5 * var(--space));
+                color: var(--color-text-secondary);
+                background: transparent;
+                border: 0;
+                border-radius: 6px;
+                white-space: nowrap;
+                cursor: pointer;
+                transition: color 0.5s ease, background 0.5s ease;
+
+                &:hover {
+                    color: var(--color-primary);
+                    background: var(--color-primary-soft);
+                }
+
+                &.is-active {
+                    color: var(--color-primary);
+                    background: var(--color-primary-soft);
+                    font-weight: 600;
+                }
+
+                &:focus-visible {
+                    outline: 2px solid var(--color-primary);
+                    outline-offset: -2px;
+                }
+            }
+        }
+    }
+}
+/* ========================================
+ * 공통 탭
+======================================== */
