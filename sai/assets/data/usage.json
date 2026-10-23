@@ -2,7 +2,7 @@
   "meta": {
     "source": "demo",
     "timezone": "Asia/Seoul",
-    "description": "Synthetic daily usage data; July–September 2026"
+    "description": "Synthetic daily usage data; July–December 2026"
   },
   "daily": [
     {
@@ -464,6 +464,466 @@
       "date": "2026-09-30",
       "requests": 5359,
       "users": 648
+    },
+    {
+      "date": "2026-10-01",
+      "requests": 5368,
+      "users": 662
+    },
+    {
+      "date": "2026-10-02",
+      "requests": 5279,
+      "users": 686
+    },
+    {
+      "date": "2026-10-03",
+      "requests": 4074,
+      "users": 576
+    },
+    {
+      "date": "2026-10-04",
+      "requests": 3644,
+      "users": 588
+    },
+    {
+      "date": "2026-10-05",
+      "requests": 5071,
+      "users": 703
+    },
+    {
+      "date": "2026-10-06",
+      "requests": 5348,
+      "users": 682
+    },
+    {
+      "date": "2026-10-07",
+      "requests": 5655,
+      "users": 679
+    },
+    {
+      "date": "2026-10-08",
+      "requests": 5493,
+      "users": 696
+    },
+    {
+      "date": "2026-10-09",
+      "requests": 5066,
+      "users": 710
+    },
+    {
+      "date": "2026-10-10",
+      "requests": 3734,
+      "users": 530
+    },
+    {
+      "date": "2026-10-11",
+      "requests": 4644,
+      "users": 592
+    },
+    {
+      "date": "2026-10-12",
+      "requests": 5328,
+      "users": 686
+    },
+    {
+      "date": "2026-10-13",
+      "requests": 5152,
+      "users": 686
+    },
+    {
+      "date": "2026-10-14",
+      "requests": 5519,
+      "users": 719
+    },
+    {
+      "date": "2026-10-15",
+      "requests": 5607,
+      "users": 712
+    },
+    {
+      "date": "2026-10-16",
+      "requests": 5763,
+      "users": 629
+    },
+    {
+      "date": "2026-10-17",
+      "requests": 3868,
+      "users": 574
+    },
+    {
+      "date": "2026-10-18",
+      "requests": 4336,
+      "users": 546
+    },
+    {
+      "date": "2026-10-19",
+      "requests": 6199,
+      "users": 751
+    },
+    {
+      "date": "2026-10-20",
+      "requests": 5644,
+      "users": 707
+    },
+    {
+      "date": "2026-10-21",
+      "requests": 6254,
+      "users": 696
+    },
+    {
+      "date": "2026-10-22",
+      "requests": 5803,
+      "users": 718
+    },
+    {
+      "date": "2026-10-23",
+      "requests": 5245,
+      "users": 701
+    },
+    {
+      "date": "2026-10-24",
+      "requests": 4224,
+      "users": 585
+    },
+    {
+      "date": "2026-10-25",
+      "requests": 4398,
+      "users": 567
+    },
+    {
+      "date": "2026-10-26",
+      "requests": 5447,
+      "users": 644
+    },
+    {
+      "date": "2026-10-27",
+      "requests": 5912,
+      "users": 675
+    },
+    {
+      "date": "2026-10-28",
+      "requests": 5364,
+      "users": 684
+    },
+    {
+      "date": "2026-10-29",
+      "requests": 5317,
+      "users": 699
+    },
+    {
+      "date": "2026-10-30",
+      "requests": 5484,
+      "users": 675
+    },
+    {
+      "date": "2026-10-31",
+      "requests": 4700,
+      "users": 598
+    },
+    {
+      "date": "2026-11-01",
+      "requests": 4621,
+      "users": 539
+    },
+    {
+      "date": "2026-11-02",
+      "requests": 6281,
+      "users": 749
+    },
+    {
+      "date": "2026-11-03",
+      "requests": 6400,
+      "users": 747
+    },
+    {
+      "date": "2026-11-04",
+      "requests": 6441,
+      "users": 745
+    },
+    {
+      "date": "2026-11-05",
+      "requests": 5571,
+      "users": 696
+    },
+    {
+      "date": "2026-11-06",
+      "requests": 6072,
+      "users": 689
+    },
+    {
+      "date": "2026-11-07",
+      "requests": 4526,
+      "users": 658
+    },
+    {
+      "date": "2026-11-08",
+      "requests": 4682,
+      "users": 649
+    },
+    {
+      "date": "2026-11-09",
+      "requests": 6532,
+      "users": 774
+    },
+    {
+      "date": "2026-11-10",
+      "requests": 5532,
+      "users": 707
+    },
+    {
+      "date": "2026-11-11",
+      "requests": 5751,
+      "users": 780
+    },
+    {
+      "date": "2026-11-12",
+      "requests": 6003,
+      "users": 737
+    },
+    {
+      "date": "2026-11-13",
+      "requests": 5583,
+      "users": 725
+    },
+    {
+      "date": "2026-11-14",
+      "requests": 4580,
+      "users": 631
+    },
+    {
+      "date": "2026-11-15",
+      "requests": 5202,
+      "users": 593
+    },
+    {
+      "date": "2026-11-16",
+      "requests": 6307,
+      "users": 786
+    },
+    {
+      "date": "2026-11-17",
+      "requests": 5760,
+      "users": 726
+    },
+    {
+      "date": "2026-11-18",
+      "requests": 6365,
+      "users": 712
+    },
+    {
+      "date": "2026-11-19",
+      "requests": 6392,
+      "users": 787
+    },
+    {
+      "date": "2026-11-20",
+      "requests": 5724,
+      "users": 683
+    },
+    {
+      "date": "2026-11-21",
+      "requests": 5227,
+      "users": 684
+    },
+    {
+      "date": "2026-11-22",
+      "requests": 4446,
+      "users": 591
+    },
+    {
+      "date": "2026-11-23",
+      "requests": 6728,
+      "users": 692
+    },
+    {
+      "date": "2026-11-24",
+      "requests": 6246,
+      "users": 786
+    },
+    {
+      "date": "2026-11-25",
+      "requests": 6403,
+      "users": 691
+    },
+    {
+      "date": "2026-11-26",
+      "requests": 6330,
+      "users": 745
+    },
+    {
+      "date": "2026-11-27",
+      "requests": 5958,
+      "users": 800
+    },
+    {
+      "date": "2026-11-28",
+      "requests": 4999,
+      "users": 599
+    },
+    {
+      "date": "2026-11-29",
+      "requests": 5130,
+      "users": 667
+    },
+    {
+      "date": "2026-11-30",
+      "requests": 6060,
+      "users": 710
+    },
+    {
+      "date": "2026-12-01",
+      "requests": 6466,
+      "users": 732
+    },
+    {
+      "date": "2026-12-02",
+      "requests": 6212,
+      "users": 765
+    },
+    {
+      "date": "2026-12-03",
+      "requests": 6573,
+      "users": 751
+    },
+    {
+      "date": "2026-12-04",
+      "requests": 6051,
+      "users": 743
+    },
+    {
+      "date": "2026-12-05",
+      "requests": 4726,
+      "users": 638
+    },
+    {
+      "date": "2026-12-06",
+      "requests": 5144,
+      "users": 613
+    },
+    {
+      "date": "2026-12-07",
+      "requests": 6290,
+      "users": 723
+    },
+    {
+      "date": "2026-12-08",
+      "requests": 6736,
+      "users": 796
+    },
+    {
+      "date": "2026-12-09",
+      "requests": 6009,
+      "users": 718
+    },
+    {
+      "date": "2026-12-10",
+      "requests": 6308,
+      "users": 757
+    },
+    {
+      "date": "2026-12-11",
+      "requests": 6426,
+      "users": 836
+    },
+    {
+      "date": "2026-12-12",
+      "requests": 4817,
+      "users": 683
+    },
+    {
+      "date": "2026-12-13",
+      "requests": 5197,
+      "users": 601
+    },
+    {
+      "date": "2026-12-14",
+      "requests": 6598,
+      "users": 824
+    },
+    {
+      "date": "2026-12-15",
+      "requests": 7114,
+      "users": 791
+    },
+    {
+      "date": "2026-12-16",
+      "requests": 6648,
+      "users": 729
+    },
+    {
+      "date": "2026-12-17",
+      "requests": 6124,
+      "users": 793
+    },
+    {
+      "date": "2026-12-18",
+      "requests": 6930,
+      "users": 777
+    },
+    {
+      "date": "2026-12-19",
+      "requests": 4951,
+      "users": 719
+    },
+    {
+      "date": "2026-12-20",
+      "requests": 5643,
+      "users": 728
+    },
+    {
+      "date": "2026-12-21",
+      "requests": 7093,
+      "users": 810
+    },
+    {
+      "date": "2026-12-22",
+      "requests": 6251,
+      "users": 775
+    },
+    {
+      "date": "2026-12-23",
+      "requests": 6933,
+      "users": 778
+    },
+    {
+      "date": "2026-12-24",
+      "requests": 6812,
+      "users": 853
+    },
+    {
+      "date": "2026-12-25",
+      "requests": 6879,
+      "users": 771
+    },
+    {
+      "date": "2026-12-26",
+      "requests": 5581,
+      "users": 709
+    },
+    {
+      "date": "2026-12-27",
+      "requests": 5971,
+      "users": 649
+    },
+    {
+      "date": "2026-12-28",
+      "requests": 7217,
+      "users": 774
+    },
+    {
+      "date": "2026-12-29",
+      "requests": 6517,
+      "users": 830
+    },
+    {
+      "date": "2026-12-30",
+      "requests": 6822,
+      "users": 823
+    },
+    {
+      "date": "2026-12-31",
+      "requests": 7233,
+      "users": 856
     }
   ]
 }
