@@ -93,17 +93,19 @@
             background: var(--color-bg-surface);
             border: 1px solid var(--color-border);
             border-radius: var(--radius-lg);
-            .sai-content-head{
+            .sai-content__head{
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
             }
-            .sai-card__body{
+            .sai-content__body{
                 display: flex;
                 flex-direction: column;
                 gap: calc(2 * var(--space));  
                 flex: 1;
-                &.sai-card__body--padding{
+                min-width: 0; /* 추가 */
+                min-height: 0; /* 추가 */
+                &.sai-content__body--padding{
                     padding: calc(4 * var(--space)) calc(6 * var(--space));
                 }
                 .sai-card__title{
@@ -127,6 +129,10 @@
                 .js-project-swiper{
                     width: 100%;
                     height: 100%;
+            width: 100%;
+            height: 100%;
+            min-width: 0;
+            min-height: 0;
                     .swiper-wrapper{
                         .swiper-slide{
                             width: 100%;
@@ -149,7 +155,7 @@
                         }
                     }
                 }
-                &.sai-card__body--progress{
+                &.sai-content__body--progress{
                     .sai-card__content{
                         .sai-card__content--top{
                             border-bottom: 1px solid var(--color-border);
@@ -342,6 +348,10 @@
                         }
                     }
                 }
+                .sai-usage-chart{
+                    height: 100%;
+                }
+                
             }
         }
         @media (max-width: 1280px) {
@@ -374,7 +384,7 @@
                 }
             }
             .sai-content-card {
-                .sai-card__body{
+                .sai-content__body{
                     .js-project-swiper{
                         aspect-ratio: 16/7;
                     }
@@ -470,18 +480,18 @@
                 background: var(--color-bg-surface);
                 border: 1px solid var(--color-border);
                 border-radius: var(--radius-lg);
-                .sai-card__body{
+                .sai-content__body{
                     display: flex;
                     flex-direction: column;
                     gap: calc(2 * var(--space));  
                     flex: 1;
-                    &.sai-card__body--padding{
+                    &.sai-content__body--padding{
                         padding: calc(4 * var(--space));
                     }
                     .js-project-swiper{
                         aspect-ratio: 16/9;
                     }
-                    &.sai-card__body--progress{
+                    &.sai-content__body--progress{
                         .sai-card__content{
                             .sai-card__content--top{
                                 .sai-progress__track{

@@ -55,9 +55,15 @@ Playground	Playground	Experiment with features in a sandbox.
                         <h1 class="sai-title__main">Analytics</h1>
                         <p class="sai-title__desc">SAI workspace의 전반적인 상태를 요약했어요.</p>
                         
-                        <div class="sai-date-picker js-date-picker">
+                        <div class="sai-date__picker js-date-picker">
+                            
+                            <span class="sai-nav-ico">
+                                <svg class="sai-icon" aria-hidden="true">
+                                    <use href="/sai/assets/images/svg_ico.svg#ico_calendar"></use>
+                                </svg>
+                            </span>
                             <!-- <a role="button" href="#" class="sai-date-picker__nav" data-date-nav="prev" aria-label="이전 날짜"></a> -->
-                            <input type="date" class="sai-date-picker__input" aria-label="기준 날짜 선택">
+                            <input type="date" class="sai-date__input" aria-label="기준 날짜 선택">
                             <!-- <a role="button" href="#" class="sai-date-picker__nav" data-date-nav="next" aria-label="다음 날짜"></a> -->
                         </div>
                     </section>
@@ -104,8 +110,8 @@ Playground	Playground	Experiment with features in a sandbox.
                                 <div class="sai-tab__panel" id="tab-usage" role="tabpanel" aria-labelledby="tab-button-usage">
                                     <section class="sai-content-grid sai-content-grid--6-4">
                                         <article class="sai-content-card">
-                                            <div id="usageChart" class="sai-card__body sai-card__body--padding">
-                                                <div class="sai-content-head">
+                                            <div id="usageChart" class="sai-content__body sai-content__body--padding">
+                                                <div class="sai-content__head">
                                                     <div class="sai-content-card__title-group">
                                                         <h3 class="sai-content-card__title">Usage Trend</h3>
                                                         <p class="sai-content-card__description">
@@ -132,7 +138,7 @@ Playground	Playground	Experiment with features in a sandbox.
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <div class="sai-card__body">
+                                                <div class="sai-content__body">
                                                     <div class="sai-usage-chart">
                                                         <canvas
                                                             id="usageTrendCanvas"
@@ -144,9 +150,9 @@ Playground	Playground	Experiment with features in a sandbox.
                                             </div>
                                         </article>
                                         <article class="sai-content-card">
-                                            <div class="sai-card__body sai-card__body--padding">
+                                            <div class="sai-content__body sai-content__body--padding">
                                                 <div id="modelUsageChart">
-                                                    <div class="sai-content-card__head">
+                                                    <div class="sai-content__head">
                                                         <div>
                                                             <h3 class="sai-content-card__title">
                                                                 Usage by Model

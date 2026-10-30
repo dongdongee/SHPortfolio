@@ -1,4 +1,3 @@
-
 /* *********************************
  * Chart Defaults
  * ********************************* */
@@ -12,7 +11,12 @@ Chart.defaults.color = '#9699a2';
 /* *********************************
  * KPI Chart
  * ********************************* */
-
+const kpiColors = [
+    [119, 61, 249],  // Purple
+    [89, 152, 255],  // Blue
+    [255, 164, 81],  // Orange
+    [66, 214, 195]   // Mint
+];
 class KpiChart {
     constructor(selector, options = {}) {
         this.el = document.querySelector(selector);
@@ -26,6 +30,7 @@ class KpiChart {
 
     init() {
         if (!this.data.length) return;
+
         this.setData();
         this.renderChart();
     }
@@ -35,6 +40,7 @@ class KpiChart {
         const last = this.data[this.data.length - 1];
 
         this.value = last;
+
         this.changeRate = first !== 0
             ? ((last - first) / first) * 100
             : 0;
@@ -67,9 +73,7 @@ class KpiChart {
             changeEl.textContent =
                 `${arrow} ${Math.abs(this.changeRate).toFixed(1)}%`;
 
-            changeEl.classList.remove(
-                'is-up', 'is-down', 'is-same'
-            );
+            changeEl.classList.remove('is-up', 'is-down', 'is-same');
             changeEl.classList.add(`is-${this.trend}`);
         }
 
@@ -85,13 +89,18 @@ class KpiChart {
         const min = Math.min(...this.data);
         const max = Math.max(...this.data);
 
-        const colors = this.data.map(value => {
-            const ratio = max === min
-                ? 1
-                : (value - min) / (max - min);
+        const index = [...document.querySelectorAll('.kpi-card')]
+    .indexOf(this.el);
 
-            return `rgba(124, 58, 237, ${0.25 + ratio * 0.75})`;
-        });
+const [r, g, b] = kpiColors[index % kpiColors.length];
+
+const colors = this.data.map(value => {
+    const ratio = max === min
+        ? 1
+        : (value - min) / (max - min);
+
+    return `rgba(${r}, ${g}, ${b}, ${0.25 + ratio * 0.75})`;
+});
 
         new Chart(canvas, {
             type: 'bar',
@@ -166,7 +175,7 @@ class UsageChart {
         this.selectedDate = this.parseDate(new Date());
 
         this.minDate = null;
-        this.maxDate = this.parseDate(new Date());
+        this.maxDate = this.formatDate(new Date());
 
         this.chart = null;
         this.ready = this.init();
@@ -235,14 +244,19 @@ class UsageChart {
         buttons.forEach(button => {
             button.addEventListener('click', () => {
                 const period = button.dataset.period;
+
                 if (this.period === period) return;
 
                 this.setPeriod(period);
 
                 buttons.forEach(item => {
                     const isActive = item === button;
+
                     item.classList.toggle('is-active', isActive);
-                    item.setAttribute('aria-pressed', String(isActive));
+                    item.setAttribute(
+                        'aria-pressed',
+                        String(isActive)
+                    );
                 });
             });
         });
@@ -278,6 +292,7 @@ class UsageChart {
     getDailyData() {
         const endDate = new Date(this.selectedDate);
         const startDate = new Date(endDate);
+
         startDate.setDate(startDate.getDate() - 6);
 
         return this.getDataByRange(startDate, endDate);
@@ -343,12 +358,21 @@ class UsageChart {
     }
 
     sumRequests(rows) {
-        return rows.reduce((total, item) => total + item.requests, 0);
+        return rows.reduce(
+            (total, item) => total + item.requests,
+            0
+        );
     }
 
     averageUsers(rows) {
-        const total = rows.reduce((sum, item) => sum + item.users, 0);
-        return rows.length ? Math.round(total / rows.length) : 0;
+        const total = rows.reduce(
+            (sum, item) => sum + item.users,
+            0
+        );
+
+        return rows.length
+            ? Math.round(total / rows.length)
+            : 0;
     }
 
     parseDate(value) {
@@ -382,12 +406,14 @@ class UsageChart {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0');
         const day = String(date.getDate()).padStart(2, '0');
+
         return `${year}-${month}-${day}`;
     }
 
     formatMonth(date) {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0');
+
         return `${year}-${month}`;
     }
 
@@ -478,7 +504,9 @@ class UsageChart {
                         type: 'linear',
                         position: 'right',
                         beginAtZero: true,
-                        grid: { drawOnChartArea: false }
+                        grid: {
+                            drawOnChartArea: false
+                        }
                     }
                 }
             }
@@ -488,9 +516,12 @@ class UsageChart {
     updateChart() {
         if (!this.chart) return;
 
-        this.chart.data.labels = this.filteredData.map(item => item.date);
+        this.chart.data.labels =
+            this.filteredData.map(item => item.date);
+
         this.chart.data.datasets[0].data =
             this.filteredData.map(item => item.requests);
+
         this.chart.data.datasets[1].data =
             this.filteredData.map(item => item.users);
 
@@ -514,6 +545,7 @@ class DatePicker {
         this.selectedDate = new Date();
         this.minDate = null;
         this.maxDate = new Date();
+
         this.onChange = options.onChange || null;
 
         this.init();
@@ -527,6 +559,7 @@ class DatePicker {
     bindEvents() {
         this.input.addEventListener('change', () => {
             if (!this.input.value) return;
+
             this.setDate(this.input.value);
         });
     }
@@ -570,6 +603,7 @@ class DatePicker {
     changeDate(direction) {
         const date = new Date(this.selectedDate);
         date.setDate(date.getDate() + direction);
+
         this.setDate(date);
     }
 
@@ -610,6 +644,7 @@ class DatePicker {
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0');
         const day = String(date.getDate()).padStart(2, '0');
+
         return `${year}-${month}-${day}`;
     }
 
@@ -654,11 +689,31 @@ class ModelUsageChart {
         this.chart = null;
 
         this.models = [
-            { key: 'gemini', name: 'Gemini', color: '#773df9' },
-            { key: 'gpt4o', name: 'GPT-4o', color: '#5998ff' },
-            { key: 'claude', name: 'Claude', color: '#ffa451' },
-            { key: 'midjourney', name: 'Midjourney', color: '#42d6c3' },
-            { key: 'dalle', name: 'DALL·E', color: '#b8a0fa' }
+            {
+                key: 'gemini',
+                name: 'Gemini',
+                color: '#773df9'
+            },
+            {
+                key: 'gpt4o',
+                name: 'GPT-4o',
+                color: '#5998ff'
+            },
+            {
+                key: 'claude',
+                name: 'Claude',
+                color: '#ffa451'
+            },
+            {
+                key: 'midjourney',
+                name: 'Midjourney',
+                color: '#42d6c3'
+            },
+            {
+                key: 'dalle',
+                name: 'DALL·E',
+                color: '#b8a0fa'
+            }
         ];
 
         this.renderChart();
@@ -690,7 +745,6 @@ class ModelUsageChart {
                 return;
             }
 
-            // 날짜 선택기가 먼저 변경되었어도 그 날짜를 유지
             const today = this.formatDate(new Date());
             const latestDate = this.data[this.data.length - 1].date;
 
@@ -756,7 +810,6 @@ class ModelUsageChart {
     renderChart() {
         this.chart = new Chart(this.canvas, {
             type: 'doughnut',
-
             data: {
                 labels: this.models.map(model => model.name),
                 datasets: [{
@@ -766,12 +819,10 @@ class ModelUsageChart {
                     hoverOffset: 5
                 }]
             },
-
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 cutout: '72%',
-
                 plugins: {
                     legend: {
                         display: false
@@ -808,44 +859,313 @@ class ModelUsageChart {
         if (this.labelEl) {
             this.labelEl.textContent = this.type === 'requests'
                 ? 'Total Requests'
-                : 'Total Tokens';       
+                : 'Total Tokens';
         }
 
         if (!this.legend) return;
 
-this.legend.replaceChildren();
+        this.legend.replaceChildren();
 
-const labels = this.chart.data.labels;
-const colors = this.chart.data.datasets[0].backgroundColor;
+        const labels = this.chart.data.labels;
 
-this.models.forEach((model, index) => {
-    const item = document.createElement('li');
-    item.className = 'model-usage__item';
+        this.models.forEach((model, index) => {
+            const item = document.createElement('li');
+            item.className = 'model-usage__item';
 
-    const name = document.createElement('span');
-    name.className = 'model-usage__name';
+            const name = document.createElement('span');
+            name.className = 'model-usage__name';
 
-    const swatch = document.createElement('i');
-    swatch.className = 'model-usage__color';
-swatch.style.backgroundColor = model.color;
-    name.append(
-        swatch,
-        document.createTextNode(labels[index])
+            const swatch = document.createElement('i');
+            swatch.className = 'model-usage__color';
+            swatch.style.backgroundColor = model.color;
+
+            name.append(
+                swatch,
+                document.createTextNode(labels[index])
+            );
+
+            const value = document.createElement('strong');
+            value.className = 'model-usage__value';
+            value.textContent = values[index].toLocaleString();
+
+            const percent = document.createElement('span');
+            percent.className = 'model-usage__percent';
+
+            percent.textContent = total
+                ? `${(values[index] / total * 100).toFixed(1)}%`
+                : '0.0%';
+
+            item.append(name, value, percent);
+            this.legend.append(item);
+        });
+    }
+}
+
+/* *********************************
+ * Weekly Token Budget
+ * ********************************* */
+
+function calculateWeeklyTokenBudget(data, latest, weeks = 8) {
+    const [year, month, day] = latest.split('-').map(Number);
+
+    const latestDate = new Date(year, month - 1, day);
+
+    const weeklyTotals = [];
+
+    // 현재 주간을 제외한 직전 8주
+    for (let i = 1; i <= weeks; i++) {
+        const endDate = new Date(latestDate);
+        endDate.setDate(endDate.getDate() - (i * 7));
+
+        const startDate = new Date(endDate);
+        startDate.setDate(startDate.getDate() - 6);
+
+        const formatDate = date => {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+
+            return `${year}-${month}-${day}`;
+        };
+
+        const start = formatDate(startDate);
+        const end = formatDate(endDate);
+
+        const rows = data.filter(row =>
+            row.date >= start && row.date <= end
+        );
+
+        // 7일치 데이터가 모두 있는 주간만 사용
+        if (rows.length !== 7) continue;
+
+        const total = rows.reduce((sum, row) => {
+            const tokens = Object.values(row.models || {})
+                .reduce((modelSum, model) => {
+                    return modelSum + (Number(model?.tokens) || 0);
+                }, 0);
+
+            return sum + tokens;
+        }, 0);
+
+        weeklyTotals.push(total);
+    }
+
+    if (!weeklyTotals.length) return 0;
+
+    // 과거 8주 중 최대 사용량
+    const maxWeeklyTokens = Math.max(...weeklyTotals);
+
+    // 최대 사용량에 20% 여유 추가
+    const budget = maxWeeklyTokens * 1.2;
+
+    // 100만 단위 올림
+    return Math.ceil(budget / 1_000_000) * 1_000_000;
+}
+
+
+/* *********************************
+ * Overview
+ * ********************************* */
+
+async function initOverview() {
+    const root = document.querySelector('.js-ai-usage-overview');
+
+    const hasKpi = document.querySelector(
+        '#kpiUsers, #kpiRequests'
     );
 
-    const value = document.createElement('strong');
-    value.className = 'model-usage__value';
-    value.textContent = values[index].toLocaleString();
+    if (!root && !hasKpi) return;
 
-    const percent = document.createElement('span');
-    percent.className = 'model-usage__percent';
-    percent.textContent = total
-        ? `${(values[index] / total * 100).toFixed(1)}%`
-        : '0.0%';
+    try {
+        const response = await fetch(
+            '/sai/assets/data/usage.json'
+        );
 
-    item.append(name, value, percent);
-    this.legend.append(item);
-});
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+
+        const json = await response.json();
+
+        const rows = Array.isArray(json)
+            ? json
+            : json.daily;
+
+        if (!Array.isArray(rows)) {
+            throw new Error('Invalid usage data format');
+        }
+
+        const data = rows
+            .filter(row => typeof row.date === 'string')
+            .sort((a, b) => a.date.localeCompare(b.date));
+
+        if (!data.length) return;
+
+        // JSON에 기록된 최신 날짜
+        const latest = data[data.length - 1].date;
+
+        // 최신 날짜 포함 최근 7일
+        const [year, month, day] = latest
+            .split('-')
+            .map(Number);
+
+        const fromDate = new Date(
+            year,
+            month - 1,
+            day - 6
+        );
+
+        const from = [
+            fromDate.getFullYear(),
+            String(fromDate.getMonth() + 1).padStart(2, '0'),
+            String(fromDate.getDate()).padStart(2, '0')
+        ].join('-');
+
+        const week = data.filter(row =>
+            row.date >= from &&
+            row.date <= latest
+        );
+
+
+        /* *********************************
+         * Overview KPI
+         * ********************************* */
+
+        const overviewKpis = [
+            {
+                selector: '#kpiUsers',
+                key: 'users'
+            },
+            {
+                selector: '#kpiRequests',
+                key: 'requests'
+            }
+        ];
+
+        overviewKpis.forEach(item => {
+            const values = week.map(row => row[item.key]);
+
+            if (
+                values.length &&
+                values.every(Number.isFinite)
+            ) {
+                new KpiChart(item.selector, {
+                    data: values,
+                    compareText: 'vs 7 days ago'
+                });
+            }
+        });
+
+        if (!root) return;
+
+
+        /* *********************************
+         * Weekly Token Data
+         * ********************************* */
+
+        const keys = [
+            'gpt4o',
+            'claude',
+            'gemini',
+            'midjourney'
+        ];
+
+        const totals = Object.fromEntries(
+            keys.map(key => [key, 0])
+        );
+
+        let tokenTotal = 0;
+
+        // 최신 날짜를 포함한 최근 7일 토큰 합산
+        week.forEach(row => {
+            Object.entries(row.models || {}).forEach(
+                ([key, model]) => {
+                    const tokens = Number(model?.tokens) || 0;
+
+                    tokenTotal += tokens;
+
+                    if (Object.prototype.hasOwnProperty.call(totals, key)) {
+                        totals[key] += tokens;
+                    }
+                }
+            );
+        });
+
+
+        /* *********************************
+         * Token Usage
+         * ********************************* */
+
+        // HTML의 data-token-quota 값을 사용
+        // 주간 예산은 별도로 산정한 뒤 HTML에서 설정
+        const quota = calculateWeeklyTokenBudget(data, latest);
+
+        const percentage = quota > 0
+            ? (tokenTotal / quota) * 100
+            : 0;
+
+        const currentEl = root.querySelector(
+            '.sai-card__value--current'
+        );
+
+        const quotaEl = root.querySelector(
+            '.sai-card__value--total'
+        );
+
+        const progressEl = root.querySelector(
+            '.sai-progress__main .sai-progress__bar'
+        );
+
+        const percentEl = root.querySelector(
+            '.sai-progress__text'
+        );
+
+        if (currentEl) {
+            currentEl.textContent = tokenTotal.toLocaleString();
+        }
+
+        if (quotaEl) {
+            quotaEl.textContent = quota.toLocaleString();
+        }
+
+        if (progressEl) {
+            progressEl.style.setProperty(
+                '--progress',
+                `${Math.min(percentage, 100).toFixed(1)}%`
+            );
+        }
+
+        if (percentEl) {
+            percentEl.textContent = `${percentage.toFixed(1)}%`;
+        }
+
+
+        /* *********************************
+         * Model Usage
+         * ********************************* */
+
+        Object.entries(totals).forEach(([key, tokens]) => {
+            const bar = root.querySelector(
+                `[data-model="${key}"] .sai-progress__bar`
+            );
+
+            if (!bar) return;
+
+            const percent = tokenTotal
+                ? (tokens / tokenTotal) * 100
+                : 0;
+
+            bar.style.setProperty(
+                '--progress',
+                `${percent.toFixed(1)}%`
+            );
+        });
+
+    } catch (error) {
+        console.error(
+            'Overview usage data load failed:',
+            error
+        );
     }
 }
 
@@ -854,20 +1174,31 @@ swatch.style.backgroundColor = model.color;
  * Init
  * ********************************* */
 
-kpiData.forEach(item => {
-    new KpiChart(item.selector, {
-        data: item.data
+// Projects / Status는 기존 예시 데이터 사용
+kpiData
+    .filter(item =>
+        ['#kpiProjects', '#kpiStatus'].includes(item.selector)
+    )
+    .forEach(item => {
+        new KpiChart(item.selector, {
+            data: item.data
+        });
     });
-});
 
+// Overview 데이터 로드
+initOverview();
+
+// Analytics Usage Chart
 const usageChart = new UsageChart('#usageChart', {
     dataUrl: '/sai/assets/data/usage.json'
 });
 
+// Analytics Model Usage Chart
 const modelUsageChart = new ModelUsageChart('#modelUsageChart', {
     dataUrl: '/sai/assets/data/usage.json'
 });
 
+// Analytics Date Picker
 const datePicker = new DatePicker('.js-date-picker', {
     onChange: date => {
         usageChart?.setDate(date);
@@ -875,8 +1206,11 @@ const datePicker = new DatePicker('.js-date-picker', {
     }
 });
 
+// 데이터 로드 후 날짜 범위 설정
 usageChart?.ready?.then(() => {
-    if (!usageChart.data.length || !datePicker?.input) return;
+    if (!usageChart.data.length || !datePicker?.input) {
+        return;
+    }
 
     datePicker.setRange(
         usageChart.minDate,

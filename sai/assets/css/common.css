@@ -704,25 +704,31 @@ html[data-theme="dark"] {
         }
     }
 }
-/* ========================================
- * 공통 탭
-======================================== */
-
-
-
-
 
 
 /* ========================================
- * Date-pciker (달력 기능 커스텀)
+ * 공통 데이트피커
 ======================================== */
-.sai-date-picker {
+.sai-date__picker {
+    position: relative;
+    color: red;
+    .sai-nav-ico{
+        position: absolute;
+        z-index: 1;
+        top: calc(1.5*var(--space));
+        left: calc(2*var(--space));
+    }
     input[type="date"] {
         position: relative;
         cursor: pointer;
+        padding: calc(1 * var(--space)) calc(2 * var(--space)) calc(1 * var(--space)) calc(8 * var(--space));
+        background: var(--color-bg-surface);
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
     }
 }
-.sai-date-picker input[type="date"]::-webkit-calendar-picker-indicator {
+
+.sai-date__picker input[type="date"]::-webkit-calendar-picker-indicator {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -738,16 +744,8 @@ html[data-theme="dark"] {
 
 
 
-/* ========================================
- * Canvas sizing (차트용)
-======================================== */
-canvas{
-    display: block;
-    width: 100% !important;     
-    height: 100% !important;
-}
+
 /* ========================================
  * Date-pciker (달력 기능 커스텀)
 ======================================== */
-
-
+/* kpi-card__change is-up */
