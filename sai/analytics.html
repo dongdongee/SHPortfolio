@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+
+
+
+<!-- Page	Title	Desc
+Overview	Overview	Get a quick overview of your workspace.
+Analytics	Analytics	Track activity and performance at a glance.
+Favorites	Favorites	Quickly access your saved items.
+AI Chat	AI Chat	Chat with AI and explore your ideas.
+Prompt Studio	Prompt Studio	Create, test, and refine your prompts.
+Image Generator	Image Generator	Turn your ideas into images with AI.
+Projects	Projects	Organize and manage your projects.
+Documents	Documents	Create and manage your documents.
+Notes	Notes	Capture ideas and keep your notes organized.
+UI Components	UI Components	Explore reusable interface components.
+Design Tokens	Design Tokens	Manage the foundations of your design system.
+Animations	Animations	Explore motion and interaction patterns.
+Source	Source	Browse and manage your source files.
+Deploy	Deploy	Manage and track your deployments.
+API Monitor	API Monitor	Monitor API activity and performance.
+Documentation	Documentation	Find guides and references for SAI.
+Playground	Playground	Experiment with features in a sandbox.
+
+-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SAI Workspace | Sangho Portfolio</title>
+    <!-- Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <!-- Pretendard -->
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- CSS -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="/assets/css/reset.css">
+    <link rel="stylesheet" href="/sai/assets/css/token.css">
+    <link rel="stylesheet" href="/sai/assets/css/common.css">
+    <link rel="stylesheet" href="/sai/assets/css/content.css">
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="sai-layout">
+            <div class="sai-aside" data-include="./includes/aside.html"></div>
+                <main class="sai-content">
+                    <section class="sai-content__title">
+                        <h1 class="sai-title__main">Analytics</h1>
+                        <p class="sai-title__desc">SAI workspace의 전반적인 상태를 요약했어요.</p>
+                        
+                        <div class="sai-date__picker js-date-picker">
+                            
+                            <span class="sai-nav-ico">
+                                <svg class="sai-icon" aria-hidden="true">
+                                    <use href="/sai/assets/images/svg_ico.svg#ico_calendar"></use>
+                                </svg>
+                            </span>
+                            <!-- <a role="button" href="#" class="sai-date-picker__nav" data-date-nav="prev" aria-label="이전 날짜"></a> -->
+                            <input type="date" class="sai-date__input" aria-label="기준 날짜 선택">
+                            <!-- <a role="button" href="#" class="sai-date-picker__nav" data-date-nav="next" aria-label="다음 날짜"></a> -->
+                        </div>
+                    </section>
+                    <div class="sai-content__body">
+                        <div class="sai-segment">
+                            <ul class="sai-segment__list sai-tab__list" role="tablist">
+                                <li class="sai-segment__item sai-tab__item" role="presentation">
+                                    <a role="button" href="#" class="sai-segment__button is-active" role="tab" aria-selected="true" aria-controls="tab-usage" id="tab-button-usage">
+                                        <span>Usage</span>
+                                    </a>
+                                </li>
+                                <li class="sai-segment__item sai-tab__item" role="presentation">
+                                    <a role="button" href="#" class="sai-segment__button" role="tab" aria-selected="false" aria-controls="tab-models" id="tab-button-models" tabindex="-1">
+                                        <span>Models</span>
+                                    </a>
+                                </li>
+                                <li class="sai-segment__item sai-tab__item" role="presentation">
+                                    <a role="button" href="#" class="sai-segment__button" role="tab" aria-selected="false" aria-controls="tab-users" id="tab-button-users" tabindex="-1">
+                                        <span>Users</span>
+                                    </a>
+                                </li>
+                                <li class="sai-segment__item sai-tab__item" role="presentation">
+                                    <a role="button" href="#" class="sai-segment__button" role="tab" aria-selected="true" aria-controls="tab-projects" id="tab-button-projects">
+                                        <span>Projects</span>
+                                    </a>
+                                </li>
+                                <li class="sai-segment__item sai-tab__item" role="presentation">
+                                    <a role="button" href="#" class="sai-segment__button" role="tab" aria-selected="false" aria-controls="tab-cost" id="tab-button-cost" tabindex="-1">
+                                        <span>Cost</span>
+                                    </a>
+                                </li>
+                                <li class="sai-segment__item sai-tab__item" role="presentation">
+                                    <a role="button" href="#" class="sai-segment__button" role="tab" aria-selected="false" aria-controls="tab-logs" id="tab-button-logs" tabindex="-1">
+                                        <span>API Logs</span>
+                                    </a>
+                                </li>
+                                <li class="sai-segment__item sai-tab__item" role="presentation">
+                                    <a role="button" href="#" class="sai-segment__button" role="tab" aria-selected="true" aria-controls="tab-export" id="tab-button-export">
+                                        <span>Export</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="sai-tab-panel">
+                                <div class="sai-tab__panel" id="tab-usage" role="tabpanel" aria-labelledby="tab-button-usage">
+                                    <section class="sai-content-grid sai-content-grid--6-4">
+                                        <article class="sai-content-card">
+                                            <div id="usageChart" class="sai-content__body sai-content__body--padding">
+                                                <div class="sai-content__head">
+                                                    <div class="sai-content-card__title-group">
+                                                        <h3 class="sai-content-card__title">Usage Trend</h3>
+                                                        <p class="sai-content-card__description">
+                                                            AI requests and active users over time.
+                                                        </p>
+                                                    </div>
+                                                    <div class="sai-segment">
+                                                        <ul class="sai-segment__list" role="tablist">
+                                                            <li class="sai-segment__item" role="presentation">
+                                                                <a role="button" href="#" class="sai-segment__button is-active" data-period="day" aria-pressed="true">
+                                                                    D
+                                                                </a>
+                                                            </li>
+                                                            <li class="sai-segment__item" role="presentation">
+                                                                <a role="button" href="#" class="sai-segment__button" data-period="week" aria-pressed="false">
+                                                                    W
+                                                                </a>
+                                                            </li>
+                                                            <li class="sai-segment__item" role="presentation">
+                                                                <a role="button" href="#" class="sai-segment__button" data-period="month" aria-pressed="false">
+                                                                    M
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="sai-content__body">
+                                                    <div class="sai-usage-chart">
+                                                        <canvas
+                                                            id="usageTrendCanvas"
+                                                            role="img"
+                                                            aria-label="AI requests and average daily active users over time"
+                                                        ></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="sai-content-card">
+                                            <div class="sai-content__body sai-content__body--padding">
+                                                <div id="modelUsageChart">
+                                                    <div class="sai-content__head">
+                                                        <div>
+                                                            <h3 class="sai-content-card__title">
+                                                                Usage by Model
+                                                            </h3>
+                                                            <p class="sai-content-card__desc">
+                                                                Requests distribution by AI model.
+                                                            </p>
+                                                        </div>
+
+                                                        <select class="js-model-usage-type" aria-label="Usage metric">
+                                                            <option value="requests">Requests</option>
+                                                            <option value="tokens">Tokens</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="model-usage">
+                                                        <div class="model-usage__chart">
+                                                            <canvas aria-label="Usage by Model chart" role="img"></canvas>
+
+                                                            <div class="model-usage__total">
+                                                                <strong class="js-model-usage-total">0</strong>
+                                                                <span class="js-model-usage-label">Total Requests</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <ul class="model-usage__legend"></ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </section>
+                                </div>
+                                <div class="sai-tab__panel" id="tab-models" role="tabpanel" aria-labelledby="tab-button-models" hidden>
+                                    Models Content
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script defer src="/assets/js/include.js"></script>
+    <script defer src="/sai/assets/js/common.js"></script>
+    <script defer src="/sai/assets/js/chart.js"></script>
+    <script defer src="/sai/assets/js/overview.js"></script>
+
+
+</body>
+
+</html>

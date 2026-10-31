@@ -1,0 +1,4978 @@
+{
+  "meta": {
+    "source": "demo",
+    "timezone": "Asia/Seoul",
+    "description": "Synthetic daily usage data with model-level requests and token estimates; July–December 2026",
+    "model_metrics": "Synthetic model request splits sum exactly to each day total; tokens are illustrative estimates."
+  },
+  "daily": [
+    {
+      "date": "2026-07-01",
+      "requests": 3108,
+      "users": 368,
+      "models": {
+        "gemini": {
+          "requests": 1321,
+          "tokens": 494054
+        },
+        "gpt4o": {
+          "requests": 867,
+          "tokens": 242760
+        },
+        "claude": {
+          "requests": 516,
+          "tokens": 140868
+        },
+        "midjourney": {
+          "requests": 256,
+          "tokens": 49152
+        },
+        "dalle": {
+          "requests": 148,
+          "tokens": 24716
+        }
+      }
+    },
+    {
+      "date": "2026-07-02",
+      "requests": 2503,
+      "users": 425,
+      "models": {
+        "gemini": {
+          "requests": 1018,
+          "tokens": 236176
+        },
+        "gpt4o": {
+          "requests": 728,
+          "tokens": 182728
+        },
+        "claude": {
+          "requests": 415,
+          "tokens": 168490
+        },
+        "midjourney": {
+          "requests": 207,
+          "tokens": 35397
+        },
+        "dalle": {
+          "requests": 135,
+          "tokens": 19980
+        }
+      }
+    },
+    {
+      "date": "2026-07-03",
+      "requests": 2636,
+      "users": 372,
+      "models": {
+        "gemini": {
+          "requests": 996,
+          "tokens": 294816
+        },
+        "gpt4o": {
+          "requests": 816,
+          "tokens": 249696
+        },
+        "claude": {
+          "requests": 440,
+          "tokens": 180840
+        },
+        "midjourney": {
+          "requests": 241,
+          "tokens": 25305
+        },
+        "dalle": {
+          "requests": 143,
+          "tokens": 23166
+        }
+      }
+    },
+    {
+      "date": "2026-07-04",
+      "requests": 2207,
+      "users": 320,
+      "models": {
+        "gemini": {
+          "requests": 972,
+          "tokens": 240084
+        },
+        "gpt4o": {
+          "requests": 561,
+          "tokens": 254694
+        },
+        "claude": {
+          "requests": 355,
+          "tokens": 95495
+        },
+        "midjourney": {
+          "requests": 223,
+          "tokens": 41701
+        },
+        "dalle": {
+          "requests": 96,
+          "tokens": 18432
+        }
+      }
+    },
+    {
+      "date": "2026-07-05",
+      "requests": 2350,
+      "users": 316,
+      "models": {
+        "gemini": {
+          "requests": 1048,
+          "tokens": 217984
+        },
+        "gpt4o": {
+          "requests": 637,
+          "tokens": 262444
+        },
+        "claude": {
+          "requests": 346,
+          "tokens": 116948
+        },
+        "midjourney": {
+          "requests": 219,
+          "tokens": 49713
+        },
+        "dalle": {
+          "requests": 100,
+          "tokens": 20300
+        }
+      }
+    },
+    {
+      "date": "2026-07-06",
+      "requests": 3253,
+      "users": 394,
+      "models": {
+        "gemini": {
+          "requests": 1223,
+          "tokens": 236039
+        },
+        "gpt4o": {
+          "requests": 922,
+          "tokens": 373410
+        },
+        "claude": {
+          "requests": 637,
+          "tokens": 256711
+        },
+        "midjourney": {
+          "requests": 306,
+          "tokens": 30294
+        },
+        "dalle": {
+          "requests": 165,
+          "tokens": 36630
+        }
+      }
+    },
+    {
+      "date": "2026-07-07",
+      "requests": 3028,
+      "users": 437,
+      "models": {
+        "gemini": {
+          "requests": 1093,
+          "tokens": 414247
+        },
+        "gpt4o": {
+          "requests": 941,
+          "tokens": 235250
+        },
+        "claude": {
+          "requests": 519,
+          "tokens": 159333
+        },
+        "midjourney": {
+          "requests": 315,
+          "tokens": 30555
+        },
+        "dalle": {
+          "requests": 160,
+          "tokens": 22240
+        }
+      }
+    },
+    {
+      "date": "2026-07-08",
+      "requests": 3115,
+      "users": 440,
+      "models": {
+        "gemini": {
+          "requests": 1138,
+          "tokens": 211668
+        },
+        "gpt4o": {
+          "requests": 980,
+          "tokens": 379260
+        },
+        "claude": {
+          "requests": 522,
+          "tokens": 185832
+        },
+        "midjourney": {
+          "requests": 320,
+          "tokens": 48640
+        },
+        "dalle": {
+          "requests": 155,
+          "tokens": 35805
+        }
+      }
+    },
+    {
+      "date": "2026-07-09",
+      "requests": 3158,
+      "users": 386,
+      "models": {
+        "gemini": {
+          "requests": 1336,
+          "tokens": 253840
+        },
+        "gpt4o": {
+          "requests": 826,
+          "tokens": 267624
+        },
+        "claude": {
+          "requests": 513,
+          "tokens": 201609
+        },
+        "midjourney": {
+          "requests": 337,
+          "tokens": 40103
+        },
+        "dalle": {
+          "requests": 146,
+          "tokens": 21754
+        }
+      }
+    },
+    {
+      "date": "2026-07-10",
+      "requests": 3312,
+      "users": 425,
+      "models": {
+        "gemini": {
+          "requests": 1426,
+          "tokens": 306590
+        },
+        "gpt4o": {
+          "requests": 983,
+          "tokens": 234937
+        },
+        "claude": {
+          "requests": 456,
+          "tokens": 194712
+        },
+        "midjourney": {
+          "requests": 301,
+          "tokens": 56889
+        },
+        "dalle": {
+          "requests": 146,
+          "tokens": 33580
+        }
+      }
+    },
+    {
+      "date": "2026-07-11",
+      "requests": 2162,
+      "users": 329,
+      "models": {
+        "gemini": {
+          "requests": 891,
+          "tokens": 326997
+        },
+        "gpt4o": {
+          "requests": 614,
+          "tokens": 198936
+        },
+        "claude": {
+          "requests": 335,
+          "tokens": 117585
+        },
+        "midjourney": {
+          "requests": 227,
+          "tokens": 26105
+        },
+        "dalle": {
+          "requests": 95,
+          "tokens": 23275
+        }
+      }
+    },
+    {
+      "date": "2026-07-12",
+      "requests": 2475,
+      "users": 353,
+      "models": {
+        "gemini": {
+          "requests": 929,
+          "tokens": 279629
+        },
+        "gpt4o": {
+          "requests": 734,
+          "tokens": 335438
+        },
+        "claude": {
+          "requests": 389,
+          "tokens": 191388
+        },
+        "midjourney": {
+          "requests": 284,
+          "tokens": 61344
+        },
+        "dalle": {
+          "requests": 139,
+          "tokens": 17375
+        }
+      }
+    },
+    {
+      "date": "2026-07-13",
+      "requests": 3439,
+      "users": 447,
+      "models": {
+        "gemini": {
+          "requests": 1276,
+          "tokens": 310068
+        },
+        "gpt4o": {
+          "requests": 1117,
+          "tokens": 338451
+        },
+        "claude": {
+          "requests": 570,
+          "tokens": 277020
+        },
+        "midjourney": {
+          "requests": 295,
+          "tokens": 33335
+        },
+        "dalle": {
+          "requests": 181,
+          "tokens": 41449
+        }
+      }
+    },
+    {
+      "date": "2026-07-14",
+      "requests": 3485,
+      "users": 436,
+      "models": {
+        "gemini": {
+          "requests": 1301,
+          "tokens": 251093
+        },
+        "gpt4o": {
+          "requests": 948,
+          "tokens": 217092
+        },
+        "claude": {
+          "requests": 644,
+          "tokens": 210588
+        },
+        "midjourney": {
+          "requests": 422,
+          "tokens": 48530
+        },
+        "dalle": {
+          "requests": 170,
+          "tokens": 44030
+        }
+      }
+    },
+    {
+      "date": "2026-07-15",
+      "requests": 3315,
+      "users": 443,
+      "models": {
+        "gemini": {
+          "requests": 1255,
+          "tokens": 335085
+        },
+        "gpt4o": {
+          "requests": 894,
+          "tokens": 251214
+        },
+        "claude": {
+          "requests": 590,
+          "tokens": 285560
+        },
+        "midjourney": {
+          "requests": 413,
+          "tokens": 40474
+        },
+        "dalle": {
+          "requests": 163,
+          "tokens": 21679
+        }
+      }
+    },
+    {
+      "date": "2026-07-16",
+      "requests": 3005,
+      "users": 470,
+      "models": {
+        "gemini": {
+          "requests": 1223,
+          "tokens": 419489
+        },
+        "gpt4o": {
+          "requests": 833,
+          "tokens": 251566
+        },
+        "claude": {
+          "requests": 486,
+          "tokens": 214326
+        },
+        "midjourney": {
+          "requests": 319,
+          "tokens": 50721
+        },
+        "dalle": {
+          "requests": 144,
+          "tokens": 29088
+        }
+      }
+    },
+    {
+      "date": "2026-07-17",
+      "requests": 3071,
+      "users": 461,
+      "models": {
+        "gemini": {
+          "requests": 1212,
+          "tokens": 444804
+        },
+        "gpt4o": {
+          "requests": 828,
+          "tokens": 269100
+        },
+        "claude": {
+          "requests": 578,
+          "tokens": 272238
+        },
+        "midjourney": {
+          "requests": 290,
+          "tokens": 33930
+        },
+        "dalle": {
+          "requests": 163,
+          "tokens": 17278
+        }
+      }
+    },
+    {
+      "date": "2026-07-18",
+      "requests": 2661,
+      "users": 373,
+      "models": {
+        "gemini": {
+          "requests": 1216,
+          "tokens": 451136
+        },
+        "gpt4o": {
+          "requests": 655,
+          "tokens": 202395
+        },
+        "claude": {
+          "requests": 404,
+          "tokens": 111100
+        },
+        "midjourney": {
+          "requests": 251,
+          "tokens": 33383
+        },
+        "dalle": {
+          "requests": 135,
+          "tokens": 29295
+        }
+      }
+    },
+    {
+      "date": "2026-07-19",
+      "requests": 2211,
+      "users": 386,
+      "models": {
+        "gemini": {
+          "requests": 939,
+          "tokens": 255408
+        },
+        "gpt4o": {
+          "requests": 604,
+          "tokens": 154020
+        },
+        "claude": {
+          "requests": 375,
+          "tokens": 174000
+        },
+        "midjourney": {
+          "requests": 183,
+          "tokens": 38430
+        },
+        "dalle": {
+          "requests": 110,
+          "tokens": 20020
+        }
+      }
+    },
+    {
+      "date": "2026-07-20",
+      "requests": 3426,
+      "users": 428,
+      "models": {
+        "gemini": {
+          "requests": 1232,
+          "tokens": 407792
+        },
+        "gpt4o": {
+          "requests": 1162,
+          "tokens": 349762
+        },
+        "claude": {
+          "requests": 521,
+          "tokens": 152653
+        },
+        "midjourney": {
+          "requests": 325,
+          "tokens": 68575
+        },
+        "dalle": {
+          "requests": 186,
+          "tokens": 28458
+        }
+      }
+    },
+    {
+      "date": "2026-07-21",
+      "requests": 2961,
+      "users": 456,
+      "models": {
+        "gemini": {
+          "requests": 1141,
+          "tokens": 341159
+        },
+        "gpt4o": {
+          "requests": 918,
+          "tokens": 202878
+        },
+        "claude": {
+          "requests": 469,
+          "tokens": 166964
+        },
+        "midjourney": {
+          "requests": 300,
+          "tokens": 60900
+        },
+        "dalle": {
+          "requests": 133,
+          "tokens": 32984
+        }
+      }
+    },
+    {
+      "date": "2026-07-22",
+      "requests": 2970,
+      "users": 488,
+      "models": {
+        "gemini": {
+          "requests": 1224,
+          "tokens": 244800
+        },
+        "gpt4o": {
+          "requests": 847,
+          "tokens": 328636
+        },
+        "claude": {
+          "requests": 467,
+          "tokens": 216688
+        },
+        "midjourney": {
+          "requests": 258,
+          "tokens": 39216
+        },
+        "dalle": {
+          "requests": 174,
+          "tokens": 35670
+        }
+      }
+    },
+    {
+      "date": "2026-07-23",
+      "requests": 3377,
+      "users": 462,
+      "models": {
+        "gemini": {
+          "requests": 1398,
+          "tokens": 275406
+        },
+        "gpt4o": {
+          "requests": 931,
+          "tokens": 242060
+        },
+        "claude": {
+          "requests": 563,
+          "tokens": 248846
+        },
+        "midjourney": {
+          "requests": 341,
+          "tokens": 75020
+        },
+        "dalle": {
+          "requests": 144,
+          "tokens": 14832
+        }
+      }
+    },
+    {
+      "date": "2026-07-24",
+      "requests": 3324,
+      "users": 476,
+      "models": {
+        "gemini": {
+          "requests": 1373,
+          "tokens": 509383
+        },
+        "gpt4o": {
+          "requests": 1003,
+          "tokens": 339014
+        },
+        "claude": {
+          "requests": 487,
+          "tokens": 177268
+        },
+        "midjourney": {
+          "requests": 315,
+          "tokens": 52920
+        },
+        "dalle": {
+          "requests": 146,
+          "tokens": 15476
+        }
+      }
+    },
+    {
+      "date": "2026-07-25",
+      "requests": 2787,
+      "users": 371,
+      "models": {
+        "gemini": {
+          "requests": 1203,
+          "tokens": 293532
+        },
+        "gpt4o": {
+          "requests": 757,
+          "tokens": 198334
+        },
+        "claude": {
+          "requests": 400,
+          "tokens": 125600
+        },
+        "midjourney": {
+          "requests": 287,
+          "tokens": 30135
+        },
+        "dalle": {
+          "requests": 140,
+          "tokens": 25060
+        }
+      }
+    },
+    {
+      "date": "2026-07-26",
+      "requests": 2476,
+      "users": 390,
+      "models": {
+        "gemini": {
+          "requests": 872,
+          "tokens": 197072
+        },
+        "gpt4o": {
+          "requests": 770,
+          "tokens": 302610
+        },
+        "claude": {
+          "requests": 418,
+          "tokens": 161348
+        },
+        "midjourney": {
+          "requests": 283,
+          "tokens": 29998
+        },
+        "dalle": {
+          "requests": 133,
+          "tokens": 29393
+        }
+      }
+    },
+    {
+      "date": "2026-07-27",
+      "requests": 3307,
+      "users": 480,
+      "models": {
+        "gemini": {
+          "requests": 1483,
+          "tokens": 507186
+        },
+        "gpt4o": {
+          "requests": 877,
+          "tokens": 313089
+        },
+        "claude": {
+          "requests": 451,
+          "tokens": 128986
+        },
+        "midjourney": {
+          "requests": 311,
+          "tokens": 54736
+        },
+        "dalle": {
+          "requests": 185,
+          "tokens": 44955
+        }
+      }
+    },
+    {
+      "date": "2026-07-28",
+      "requests": 3538,
+      "users": 471,
+      "models": {
+        "gemini": {
+          "requests": 1434,
+          "tokens": 471786
+        },
+        "gpt4o": {
+          "requests": 1067,
+          "tokens": 413996
+        },
+        "claude": {
+          "requests": 504,
+          "tokens": 245952
+        },
+        "midjourney": {
+          "requests": 355,
+          "tokens": 75260
+        },
+        "dalle": {
+          "requests": 178,
+          "tokens": 44678
+        }
+      }
+    },
+    {
+      "date": "2026-07-29",
+      "requests": 3675,
+      "users": 482,
+      "models": {
+        "gemini": {
+          "requests": 1538,
+          "tokens": 370658
+        },
+        "gpt4o": {
+          "requests": 1060,
+          "tokens": 279840
+        },
+        "claude": {
+          "requests": 533,
+          "tokens": 183885
+        },
+        "midjourney": {
+          "requests": 383,
+          "tokens": 56684
+        },
+        "dalle": {
+          "requests": 161,
+          "tokens": 27531
+        }
+      }
+    },
+    {
+      "date": "2026-07-30",
+      "requests": 3203,
+      "users": 521,
+      "models": {
+        "gemini": {
+          "requests": 1300,
+          "tokens": 366600
+        },
+        "gpt4o": {
+          "requests": 1015,
+          "tokens": 368445
+        },
+        "claude": {
+          "requests": 451,
+          "tokens": 126280
+        },
+        "midjourney": {
+          "requests": 273,
+          "tokens": 36582
+        },
+        "dalle": {
+          "requests": 164,
+          "tokens": 39032
+        }
+      }
+    },
+    {
+      "date": "2026-07-31",
+      "requests": 3456,
+      "users": 481,
+      "models": {
+        "gemini": {
+          "requests": 1229,
+          "tokens": 331830
+        },
+        "gpt4o": {
+          "requests": 1115,
+          "tokens": 396940
+        },
+        "claude": {
+          "requests": 592,
+          "tokens": 152736
+        },
+        "midjourney": {
+          "requests": 317,
+          "tokens": 59279
+        },
+        "dalle": {
+          "requests": 203,
+          "tokens": 47502
+        }
+      }
+    },
+    {
+      "date": "2026-08-01",
+      "requests": 2606,
+      "users": 429,
+      "models": {
+        "gemini": {
+          "requests": 1024,
+          "tokens": 242688
+        },
+        "gpt4o": {
+          "requests": 833,
+          "tokens": 240737
+        },
+        "claude": {
+          "requests": 374,
+          "tokens": 130900
+        },
+        "midjourney": {
+          "requests": 265,
+          "tokens": 48760
+        },
+        "dalle": {
+          "requests": 110,
+          "tokens": 11770
+        }
+      }
+    },
+    {
+      "date": "2026-08-02",
+      "requests": 2979,
+      "users": 405,
+      "models": {
+        "gemini": {
+          "requests": 1274,
+          "tokens": 312130
+        },
+        "gpt4o": {
+          "requests": 859,
+          "tokens": 253405
+        },
+        "claude": {
+          "requests": 421,
+          "tokens": 127563
+        },
+        "midjourney": {
+          "requests": 273,
+          "tokens": 46137
+        },
+        "dalle": {
+          "requests": 152,
+          "tokens": 22496
+        }
+      }
+    },
+    {
+      "date": "2026-08-03",
+      "requests": 3571,
+      "users": 464,
+      "models": {
+        "gemini": {
+          "requests": 1576,
+          "tokens": 546872
+        },
+        "gpt4o": {
+          "requests": 938,
+          "tokens": 295470
+        },
+        "claude": {
+          "requests": 588,
+          "tokens": 246372
+        },
+        "midjourney": {
+          "requests": 304,
+          "tokens": 48944
+        },
+        "dalle": {
+          "requests": 165,
+          "tokens": 24255
+        }
+      }
+    },
+    {
+      "date": "2026-08-04",
+      "requests": 4034,
+      "users": 473,
+      "models": {
+        "gemini": {
+          "requests": 1536,
+          "tokens": 407040
+        },
+        "gpt4o": {
+          "requests": 1276,
+          "tokens": 327932
+        },
+        "claude": {
+          "requests": 686,
+          "tokens": 209230
+        },
+        "midjourney": {
+          "requests": 354,
+          "tokens": 40356
+        },
+        "dalle": {
+          "requests": 182,
+          "tokens": 21476
+        }
+      }
+    },
+    {
+      "date": "2026-08-05",
+      "requests": 3752,
+      "users": 490,
+      "models": {
+        "gemini": {
+          "requests": 1465,
+          "tokens": 432175
+        },
+        "gpt4o": {
+          "requests": 1195,
+          "tokens": 494730
+        },
+        "claude": {
+          "requests": 514,
+          "tokens": 204572
+        },
+        "midjourney": {
+          "requests": 415,
+          "tokens": 55610
+        },
+        "dalle": {
+          "requests": 163,
+          "tokens": 19071
+        }
+      }
+    },
+    {
+      "date": "2026-08-06",
+      "requests": 3582,
+      "users": 494,
+      "models": {
+        "gemini": {
+          "requests": 1422,
+          "tokens": 536094
+        },
+        "gpt4o": {
+          "requests": 1049,
+          "tokens": 439531
+        },
+        "claude": {
+          "requests": 504,
+          "tokens": 135072
+        },
+        "midjourney": {
+          "requests": 397,
+          "tokens": 82576
+        },
+        "dalle": {
+          "requests": 210,
+          "tokens": 35490
+        }
+      }
+    },
+    {
+      "date": "2026-08-07",
+      "requests": 3483,
+      "users": 471,
+      "models": {
+        "gemini": {
+          "requests": 1257,
+          "tokens": 378357
+        },
+        "gpt4o": {
+          "requests": 1163,
+          "tokens": 341922
+        },
+        "claude": {
+          "requests": 565,
+          "tokens": 276850
+        },
+        "midjourney": {
+          "requests": 317,
+          "tokens": 58011
+        },
+        "dalle": {
+          "requests": 181,
+          "tokens": 21539
+        }
+      }
+    },
+    {
+      "date": "2026-08-08",
+      "requests": 2827,
+      "users": 439,
+      "models": {
+        "gemini": {
+          "requests": 1222,
+          "tokens": 295724
+        },
+        "gpt4o": {
+          "requests": 722,
+          "tokens": 294576
+        },
+        "claude": {
+          "requests": 445,
+          "tokens": 224280
+        },
+        "midjourney": {
+          "requests": 309,
+          "tokens": 43878
+        },
+        "dalle": {
+          "requests": 129,
+          "tokens": 33153
+        }
+      }
+    },
+    {
+      "date": "2026-08-09",
+      "requests": 2922,
+      "users": 402,
+      "models": {
+        "gemini": {
+          "requests": 1097,
+          "tokens": 254504
+        },
+        "gpt4o": {
+          "requests": 881,
+          "tokens": 272229
+        },
+        "claude": {
+          "requests": 440,
+          "tokens": 190080
+        },
+        "midjourney": {
+          "requests": 345,
+          "tokens": 47955
+        },
+        "dalle": {
+          "requests": 159,
+          "tokens": 31641
+        }
+      }
+    },
+    {
+      "date": "2026-08-10",
+      "requests": 4018,
+      "users": 481,
+      "models": {
+        "gemini": {
+          "requests": 1689,
+          "tokens": 344556
+        },
+        "gpt4o": {
+          "requests": 1111,
+          "tokens": 244420
+        },
+        "claude": {
+          "requests": 603,
+          "tokens": 279189
+        },
+        "midjourney": {
+          "requests": 384,
+          "tokens": 45312
+        },
+        "dalle": {
+          "requests": 231,
+          "tokens": 45738
+        }
+      }
+    },
+    {
+      "date": "2026-08-11",
+      "requests": 3783,
+      "users": 549,
+      "models": {
+        "gemini": {
+          "requests": 1469,
+          "tokens": 295269
+        },
+        "gpt4o": {
+          "requests": 1095,
+          "tokens": 363540
+        },
+        "claude": {
+          "requests": 614,
+          "tokens": 262178
+        },
+        "midjourney": {
+          "requests": 405,
+          "tokens": 47790
+        },
+        "dalle": {
+          "requests": 200,
+          "tokens": 50600
+        }
+      }
+    },
+    {
+      "date": "2026-08-12",
+      "requests": 4285,
+      "users": 521,
+      "models": {
+        "gemini": {
+          "requests": 1544,
+          "tokens": 443128
+        },
+        "gpt4o": {
+          "requests": 1226,
+          "tokens": 527180
+        },
+        "claude": {
+          "requests": 780,
+          "tokens": 313560
+        },
+        "midjourney": {
+          "requests": 502,
+          "tokens": 75802
+        },
+        "dalle": {
+          "requests": 233,
+          "tokens": 25630
+        }
+      }
+    },
+    {
+      "date": "2026-08-13",
+      "requests": 4244,
+      "users": 527,
+      "models": {
+        "gemini": {
+          "requests": 1862,
+          "tokens": 385434
+        },
+        "gpt4o": {
+          "requests": 1084,
+          "tokens": 419508
+        },
+        "claude": {
+          "requests": 724,
+          "tokens": 340280
+        },
+        "midjourney": {
+          "requests": 396,
+          "tokens": 90684
+        },
+        "dalle": {
+          "requests": 178,
+          "tokens": 26166
+        }
+      }
+    },
+    {
+      "date": "2026-08-14",
+      "requests": 3967,
+      "users": 538,
+      "models": {
+        "gemini": {
+          "requests": 1628,
+          "tokens": 560032
+        },
+        "gpt4o": {
+          "requests": 1195,
+          "tokens": 437370
+        },
+        "claude": {
+          "requests": 611,
+          "tokens": 171080
+        },
+        "midjourney": {
+          "requests": 323,
+          "tokens": 64600
+        },
+        "dalle": {
+          "requests": 210,
+          "tokens": 48720
+        }
+      }
+    },
+    {
+      "date": "2026-08-15",
+      "requests": 3284,
+      "users": 455,
+      "models": {
+        "gemini": {
+          "requests": 1168,
+          "tokens": 355072
+        },
+        "gpt4o": {
+          "requests": 1055,
+          "tokens": 416725
+        },
+        "claude": {
+          "requests": 542,
+          "tokens": 208670
+        },
+        "midjourney": {
+          "requests": 330,
+          "tokens": 75900
+        },
+        "dalle": {
+          "requests": 189,
+          "tokens": 20979
+        }
+      }
+    },
+    {
+      "date": "2026-08-16",
+      "requests": 2938,
+      "users": 457,
+      "models": {
+        "gemini": {
+          "requests": 1222,
+          "tokens": 452140
+        },
+        "gpt4o": {
+          "requests": 785,
+          "tokens": 247275
+        },
+        "claude": {
+          "requests": 499,
+          "tokens": 227045
+        },
+        "midjourney": {
+          "requests": 305,
+          "tokens": 38735
+        },
+        "dalle": {
+          "requests": 127,
+          "tokens": 24257
+        }
+      }
+    },
+    {
+      "date": "2026-08-17",
+      "requests": 4160,
+      "users": 528,
+      "models": {
+        "gemini": {
+          "requests": 1783,
+          "tokens": 570560
+        },
+        "gpt4o": {
+          "requests": 1180,
+          "tokens": 318600
+        },
+        "claude": {
+          "requests": 590,
+          "tokens": 191750
+        },
+        "midjourney": {
+          "requests": 412,
+          "tokens": 51500
+        },
+        "dalle": {
+          "requests": 195,
+          "tokens": 27495
+        }
+      }
+    },
+    {
+      "date": "2026-08-18",
+      "requests": 4324,
+      "users": 571,
+      "models": {
+        "gemini": {
+          "requests": 1637,
+          "tokens": 422346
+        },
+        "gpt4o": {
+          "requests": 1298,
+          "tokens": 504922
+        },
+        "claude": {
+          "requests": 779,
+          "tokens": 391058
+        },
+        "midjourney": {
+          "requests": 393,
+          "tokens": 69954
+        },
+        "dalle": {
+          "requests": 217,
+          "tokens": 55986
+        }
+      }
+    },
+    {
+      "date": "2026-08-19",
+      "requests": 4180,
+      "users": 586,
+      "models": {
+        "gemini": {
+          "requests": 1665,
+          "tokens": 596070
+        },
+        "gpt4o": {
+          "requests": 1225,
+          "tokens": 323400
+        },
+        "claude": {
+          "requests": 694,
+          "tokens": 306748
+        },
+        "midjourney": {
+          "requests": 393,
+          "tokens": 42837
+        },
+        "dalle": {
+          "requests": 203,
+          "tokens": 21721
+        }
+      }
+    },
+    {
+      "date": "2026-08-20",
+      "requests": 3626,
+      "users": 550,
+      "models": {
+        "gemini": {
+          "requests": 1526,
+          "tokens": 512736
+        },
+        "gpt4o": {
+          "requests": 977,
+          "tokens": 380053
+        },
+        "claude": {
+          "requests": 571,
+          "tokens": 268370
+        },
+        "midjourney": {
+          "requests": 387,
+          "tokens": 80109
+        },
+        "dalle": {
+          "requests": 165,
+          "tokens": 32835
+        }
+      }
+    },
+    {
+      "date": "2026-08-21",
+      "requests": 4259,
+      "users": 539,
+      "models": {
+        "gemini": {
+          "requests": 1893,
+          "tokens": 484608
+        },
+        "gpt4o": {
+          "requests": 1026,
+          "tokens": 294462
+        },
+        "claude": {
+          "requests": 759,
+          "tokens": 261096
+        },
+        "midjourney": {
+          "requests": 380,
+          "tokens": 60420
+        },
+        "dalle": {
+          "requests": 201,
+          "tokens": 41406
+        }
+      }
+    },
+    {
+      "date": "2026-08-22",
+      "requests": 2830,
+      "users": 470,
+      "models": {
+        "gemini": {
+          "requests": 1185,
+          "tokens": 316395
+        },
+        "gpt4o": {
+          "requests": 751,
+          "tokens": 286131
+        },
+        "claude": {
+          "requests": 510,
+          "tokens": 187170
+        },
+        "midjourney": {
+          "requests": 260,
+          "tokens": 28080
+        },
+        "dalle": {
+          "requests": 124,
+          "tokens": 28024
+        }
+      }
+    },
+    {
+      "date": "2026-08-23",
+      "requests": 3043,
+      "users": 442,
+      "models": {
+        "gemini": {
+          "requests": 1290,
+          "tokens": 331530
+        },
+        "gpt4o": {
+          "requests": 895,
+          "tokens": 339205
+        },
+        "claude": {
+          "requests": 437,
+          "tokens": 226366
+        },
+        "midjourney": {
+          "requests": 288,
+          "tokens": 45792
+        },
+        "dalle": {
+          "requests": 133,
+          "tokens": 23541
+        }
+      }
+    },
+    {
+      "date": "2026-08-24",
+      "requests": 3742,
+      "users": 605,
+      "models": {
+        "gemini": {
+          "requests": 1463,
+          "tokens": 273581
+        },
+        "gpt4o": {
+          "requests": 1134,
+          "tokens": 416178
+        },
+        "claude": {
+          "requests": 575,
+          "tokens": 194925
+        },
+        "midjourney": {
+          "requests": 365,
+          "tokens": 73000
+        },
+        "dalle": {
+          "requests": 205,
+          "tokens": 44280
+        }
+      }
+    },
+    {
+      "date": "2026-08-25",
+      "requests": 4080,
+      "users": 531,
+      "models": {
+        "gemini": {
+          "requests": 1505,
+          "tokens": 299495
+        },
+        "gpt4o": {
+          "requests": 1321,
+          "tokens": 585203
+        },
+        "claude": {
+          "requests": 627,
+          "tokens": 158004
+        },
+        "midjourney": {
+          "requests": 414,
+          "tokens": 57546
+        },
+        "dalle": {
+          "requests": 213,
+          "tokens": 36423
+        }
+      }
+    },
+    {
+      "date": "2026-08-26",
+      "requests": 3966,
+      "users": 547,
+      "models": {
+        "gemini": {
+          "requests": 1540,
+          "tokens": 357280
+        },
+        "gpt4o": {
+          "requests": 1163,
+          "tokens": 293076
+        },
+        "claude": {
+          "requests": 686,
+          "tokens": 211974
+        },
+        "midjourney": {
+          "requests": 404,
+          "tokens": 77164
+        },
+        "dalle": {
+          "requests": 173,
+          "tokens": 20414
+        }
+      }
+    },
+    {
+      "date": "2026-08-27",
+      "requests": 4658,
+      "users": 543,
+      "models": {
+        "gemini": {
+          "requests": 1928,
+          "tokens": 534056
+        },
+        "gpt4o": {
+          "requests": 1232,
+          "tokens": 283360
+        },
+        "claude": {
+          "requests": 794,
+          "tokens": 362858
+        },
+        "midjourney": {
+          "requests": 464,
+          "tokens": 103008
+        },
+        "dalle": {
+          "requests": 240,
+          "tokens": 39840
+        }
+      }
+    },
+    {
+      "date": "2026-08-28",
+      "requests": 4077,
+      "users": 539,
+      "models": {
+        "gemini": {
+          "requests": 1796,
+          "tokens": 610640
+        },
+        "gpt4o": {
+          "requests": 1087,
+          "tokens": 464149
+        },
+        "claude": {
+          "requests": 588,
+          "tokens": 213444
+        },
+        "midjourney": {
+          "requests": 391,
+          "tokens": 37927
+        },
+        "dalle": {
+          "requests": 215,
+          "tokens": 48590
+        }
+      }
+    },
+    {
+      "date": "2026-08-29",
+      "requests": 3184,
+      "users": 452,
+      "models": {
+        "gemini": {
+          "requests": 1291,
+          "tokens": 250454
+        },
+        "gpt4o": {
+          "requests": 860,
+          "tokens": 220160
+        },
+        "claude": {
+          "requests": 570,
+          "tokens": 150480
+        },
+        "midjourney": {
+          "requests": 328,
+          "tokens": 32144
+        },
+        "dalle": {
+          "requests": 135,
+          "tokens": 15660
+        }
+      }
+    },
+    {
+      "date": "2026-08-30",
+      "requests": 3106,
+      "users": 495,
+      "models": {
+        "gemini": {
+          "requests": 1171,
+          "tokens": 372378
+        },
+        "gpt4o": {
+          "requests": 904,
+          "tokens": 391432
+        },
+        "claude": {
+          "requests": 477,
+          "tokens": 188415
+        },
+        "midjourney": {
+          "requests": 361,
+          "tokens": 82308
+        },
+        "dalle": {
+          "requests": 193,
+          "tokens": 34933
+        }
+      }
+    },
+    {
+      "date": "2026-08-31",
+      "requests": 4833,
+      "users": 616,
+      "models": {
+        "gemini": {
+          "requests": 1889,
+          "tokens": 610147
+        },
+        "gpt4o": {
+          "requests": 1364,
+          "tokens": 567424
+        },
+        "claude": {
+          "requests": 839,
+          "tokens": 384262
+        },
+        "midjourney": {
+          "requests": 515,
+          "tokens": 57165
+        },
+        "dalle": {
+          "requests": 226,
+          "tokens": 43618
+        }
+      }
+    },
+    {
+      "date": "2026-09-01",
+      "requests": 3923,
+      "users": 577,
+      "models": {
+        "gemini": {
+          "requests": 1725,
+          "tokens": 572700
+        },
+        "gpt4o": {
+          "requests": 966,
+          "tokens": 290766
+        },
+        "claude": {
+          "requests": 631,
+          "tokens": 213278
+        },
+        "midjourney": {
+          "requests": 416,
+          "tokens": 79456
+        },
+        "dalle": {
+          "requests": 185,
+          "tokens": 34225
+        }
+      }
+    },
+    {
+      "date": "2026-09-02",
+      "requests": 4810,
+      "users": 547,
+      "models": {
+        "gemini": {
+          "requests": 1960,
+          "tokens": 395920
+        },
+        "gpt4o": {
+          "requests": 1335,
+          "tokens": 578055
+        },
+        "claude": {
+          "requests": 768,
+          "tokens": 330240
+        },
+        "midjourney": {
+          "requests": 491,
+          "tokens": 46154
+        },
+        "dalle": {
+          "requests": 256,
+          "tokens": 66048
+        }
+      }
+    },
+    {
+      "date": "2026-09-03",
+      "requests": 4146,
+      "users": 594,
+      "models": {
+        "gemini": {
+          "requests": 1723,
+          "tokens": 416966
+        },
+        "gpt4o": {
+          "requests": 1062,
+          "tokens": 353646
+        },
+        "claude": {
+          "requests": 733,
+          "tokens": 307860
+        },
+        "midjourney": {
+          "requests": 432,
+          "tokens": 53568
+        },
+        "dalle": {
+          "requests": 196,
+          "tokens": 44884
+        }
+      }
+    },
+    {
+      "date": "2026-09-04",
+      "requests": 4363,
+      "users": 622,
+      "models": {
+        "gemini": {
+          "requests": 1616,
+          "tokens": 492880
+        },
+        "gpt4o": {
+          "requests": 1291,
+          "tokens": 326623
+        },
+        "claude": {
+          "requests": 822,
+          "tokens": 208788
+        },
+        "midjourney": {
+          "requests": 423,
+          "tokens": 67257
+        },
+        "dalle": {
+          "requests": 211,
+          "tokens": 40723
+        }
+      }
+    },
+    {
+      "date": "2026-09-05",
+      "requests": 3517,
+      "users": 490,
+      "models": {
+        "gemini": {
+          "requests": 1435,
+          "tokens": 295610
+        },
+        "gpt4o": {
+          "requests": 938,
+          "tokens": 393960
+        },
+        "claude": {
+          "requests": 597,
+          "tokens": 218502
+        },
+        "midjourney": {
+          "requests": 350,
+          "tokens": 35000
+        },
+        "dalle": {
+          "requests": 197,
+          "tokens": 34672
+        }
+      }
+    },
+    {
+      "date": "2026-09-06",
+      "requests": 3159,
+      "users": 474,
+      "models": {
+        "gemini": {
+          "requests": 1391,
+          "tokens": 463203
+        },
+        "gpt4o": {
+          "requests": 841,
+          "tokens": 312011
+        },
+        "claude": {
+          "requests": 508,
+          "tokens": 130048
+        },
+        "midjourney": {
+          "requests": 264,
+          "tokens": 27192
+        },
+        "dalle": {
+          "requests": 155,
+          "tokens": 23250
+        }
+      }
+    },
+    {
+      "date": "2026-09-07",
+      "requests": 4312,
+      "users": 565,
+      "models": {
+        "gemini": {
+          "requests": 1783,
+          "tokens": 433269
+        },
+        "gpt4o": {
+          "requests": 1287,
+          "tokens": 427284
+        },
+        "claude": {
+          "requests": 609,
+          "tokens": 232029
+        },
+        "midjourney": {
+          "requests": 430,
+          "tokens": 94170
+        },
+        "dalle": {
+          "requests": 203,
+          "tokens": 26593
+        }
+      }
+    },
+    {
+      "date": "2026-09-08",
+      "requests": 4777,
+      "users": 577,
+      "models": {
+        "gemini": {
+          "requests": 1904,
+          "tokens": 348432
+        },
+        "gpt4o": {
+          "requests": 1355,
+          "tokens": 361785
+        },
+        "claude": {
+          "requests": 731,
+          "tokens": 363307
+        },
+        "midjourney": {
+          "requests": 540,
+          "tokens": 63720
+        },
+        "dalle": {
+          "requests": 247,
+          "tokens": 56563
+        }
+      }
+    },
+    {
+      "date": "2026-09-09",
+      "requests": 5052,
+      "users": 628,
+      "models": {
+        "gemini": {
+          "requests": 1865,
+          "tokens": 473710
+        },
+        "gpt4o": {
+          "requests": 1387,
+          "tokens": 545091
+        },
+        "claude": {
+          "requests": 990,
+          "tokens": 248490
+        },
+        "midjourney": {
+          "requests": 544,
+          "tokens": 81600
+        },
+        "dalle": {
+          "requests": 266,
+          "tokens": 66766
+        }
+      }
+    },
+    {
+      "date": "2026-09-10",
+      "requests": 4152,
+      "users": 617,
+      "models": {
+        "gemini": {
+          "requests": 1831,
+          "tokens": 595075
+        },
+        "gpt4o": {
+          "requests": 1090,
+          "tokens": 310650
+        },
+        "claude": {
+          "requests": 582,
+          "tokens": 149574
+        },
+        "midjourney": {
+          "requests": 431,
+          "tokens": 48703
+        },
+        "dalle": {
+          "requests": 218,
+          "tokens": 31392
+        }
+      }
+    },
+    {
+      "date": "2026-09-11",
+      "requests": 4788,
+      "users": 575,
+      "models": {
+        "gemini": {
+          "requests": 2068,
+          "tokens": 639012
+        },
+        "gpt4o": {
+          "requests": 1304,
+          "tokens": 559416
+        },
+        "claude": {
+          "requests": 740,
+          "tokens": 339660
+        },
+        "midjourney": {
+          "requests": 409,
+          "tokens": 70348
+        },
+        "dalle": {
+          "requests": 267,
+          "tokens": 60075
+        }
+      }
+    },
+    {
+      "date": "2026-09-12",
+      "requests": 3465,
+      "users": 473,
+      "models": {
+        "gemini": {
+          "requests": 1288,
+          "tokens": 454664
+        },
+        "gpt4o": {
+          "requests": 1062,
+          "tokens": 396126
+        },
+        "claude": {
+          "requests": 526,
+          "tokens": 259318
+        },
+        "midjourney": {
+          "requests": 389,
+          "tokens": 42790
+        },
+        "dalle": {
+          "requests": 200,
+          "tokens": 30200
+        }
+      }
+    },
+    {
+      "date": "2026-09-13",
+      "requests": 3719,
+      "users": 473,
+      "models": {
+        "gemini": {
+          "requests": 1338,
+          "tokens": 367950
+        },
+        "gpt4o": {
+          "requests": 1259,
+          "tokens": 397844
+        },
+        "claude": {
+          "requests": 554,
+          "tokens": 257610
+        },
+        "midjourney": {
+          "requests": 352,
+          "tokens": 61600
+        },
+        "dalle": {
+          "requests": 216,
+          "tokens": 24408
+        }
+      }
+    },
+    {
+      "date": "2026-09-14",
+      "requests": 4900,
+      "users": 679,
+      "models": {
+        "gemini": {
+          "requests": 1874,
+          "tokens": 691506
+        },
+        "gpt4o": {
+          "requests": 1453,
+          "tokens": 448977
+        },
+        "claude": {
+          "requests": 813,
+          "tokens": 322761
+        },
+        "midjourney": {
+          "requests": 493,
+          "tokens": 110925
+        },
+        "dalle": {
+          "requests": 267,
+          "tokens": 39516
+        }
+      }
+    },
+    {
+      "date": "2026-09-15",
+      "requests": 5173,
+      "users": 606,
+      "models": {
+        "gemini": {
+          "requests": 2093,
+          "tokens": 385112
+        },
+        "gpt4o": {
+          "requests": 1545,
+          "tokens": 675165
+        },
+        "claude": {
+          "requests": 861,
+          "tokens": 392616
+        },
+        "midjourney": {
+          "requests": 437,
+          "tokens": 72105
+        },
+        "dalle": {
+          "requests": 237,
+          "tokens": 31521
+        }
+      }
+    },
+    {
+      "date": "2026-09-16",
+      "requests": 4842,
+      "users": 600,
+      "models": {
+        "gemini": {
+          "requests": 1911,
+          "tokens": 590499
+        },
+        "gpt4o": {
+          "requests": 1394,
+          "tokens": 391714
+        },
+        "claude": {
+          "requests": 830,
+          "tokens": 393420
+        },
+        "midjourney": {
+          "requests": 508,
+          "tokens": 110744
+        },
+        "dalle": {
+          "requests": 199,
+          "tokens": 48357
+        }
+      }
+    },
+    {
+      "date": "2026-09-17",
+      "requests": 4645,
+      "users": 677,
+      "models": {
+        "gemini": {
+          "requests": 1814,
+          "tokens": 435360
+        },
+        "gpt4o": {
+          "requests": 1331,
+          "tokens": 294151
+        },
+        "claude": {
+          "requests": 807,
+          "tokens": 260661
+        },
+        "midjourney": {
+          "requests": 491,
+          "tokens": 90835
+        },
+        "dalle": {
+          "requests": 202,
+          "tokens": 48480
+        }
+      }
+    },
+    {
+      "date": "2026-09-18",
+      "requests": 5224,
+      "users": 592,
+      "models": {
+        "gemini": {
+          "requests": 2109,
+          "tokens": 569430
+        },
+        "gpt4o": {
+          "requests": 1524,
+          "tokens": 655320
+        },
+        "claude": {
+          "requests": 780,
+          "tokens": 324480
+        },
+        "midjourney": {
+          "requests": 545,
+          "tokens": 70850
+        },
+        "dalle": {
+          "requests": 266,
+          "tokens": 50806
+        }
+      }
+    },
+    {
+      "date": "2026-09-19",
+      "requests": 3507,
+      "users": 542,
+      "models": {
+        "gemini": {
+          "requests": 1407,
+          "tokens": 529032
+        },
+        "gpt4o": {
+          "requests": 1074,
+          "tokens": 328644
+        },
+        "claude": {
+          "requests": 477,
+          "tokens": 217035
+        },
+        "midjourney": {
+          "requests": 354,
+          "tokens": 56994
+        },
+        "dalle": {
+          "requests": 195,
+          "tokens": 22230
+        }
+      }
+    },
+    {
+      "date": "2026-09-20",
+      "requests": 3348,
+      "users": 558,
+      "models": {
+        "gemini": {
+          "requests": 1346,
+          "tokens": 324386
+        },
+        "gpt4o": {
+          "requests": 1013,
+          "tokens": 336316
+        },
+        "claude": {
+          "requests": 461,
+          "tokens": 196847
+        },
+        "midjourney": {
+          "requests": 369,
+          "tokens": 35055
+        },
+        "dalle": {
+          "requests": 159,
+          "tokens": 20988
+        }
+      }
+    },
+    {
+      "date": "2026-09-21",
+      "requests": 5397,
+      "users": 658,
+      "models": {
+        "gemini": {
+          "requests": 2485,
+          "tokens": 688345
+        },
+        "gpt4o": {
+          "requests": 1372,
+          "tokens": 423948
+        },
+        "claude": {
+          "requests": 768,
+          "tokens": 265728
+        },
+        "midjourney": {
+          "requests": 475,
+          "tokens": 82650
+        },
+        "dalle": {
+          "requests": 297,
+          "tokens": 54351
+        }
+      }
+    },
+    {
+      "date": "2026-09-22",
+      "requests": 4794,
+      "users": 692,
+      "models": {
+        "gemini": {
+          "requests": 2032,
+          "tokens": 404368
+        },
+        "gpt4o": {
+          "requests": 1376,
+          "tokens": 496736
+        },
+        "claude": {
+          "requests": 688,
+          "tokens": 354320
+        },
+        "midjourney": {
+          "requests": 509,
+          "tokens": 50391
+        },
+        "dalle": {
+          "requests": 189,
+          "tokens": 21924
+        }
+      }
+    },
+    {
+      "date": "2026-09-23",
+      "requests": 4999,
+      "users": 626,
+      "models": {
+        "gemini": {
+          "requests": 1965,
+          "tokens": 365490
+        },
+        "gpt4o": {
+          "requests": 1399,
+          "tokens": 594575
+        },
+        "claude": {
+          "requests": 902,
+          "tokens": 239932
+        },
+        "midjourney": {
+          "requests": 475,
+          "tokens": 105450
+        },
+        "dalle": {
+          "requests": 258,
+          "tokens": 39474
+        }
+      }
+    },
+    {
+      "date": "2026-09-24",
+      "requests": 4743,
+      "users": 626,
+      "models": {
+        "gemini": {
+          "requests": 1605,
+          "tokens": 521625
+        },
+        "gpt4o": {
+          "requests": 1571,
+          "tokens": 661391
+        },
+        "claude": {
+          "requests": 861,
+          "tokens": 240219
+        },
+        "midjourney": {
+          "requests": 495,
+          "tokens": 98505
+        },
+        "dalle": {
+          "requests": 211,
+          "tokens": 36081
+        }
+      }
+    },
+    {
+      "date": "2026-09-25",
+      "requests": 5445,
+      "users": 666,
+      "models": {
+        "gemini": {
+          "requests": 2169,
+          "tokens": 756981
+        },
+        "gpt4o": {
+          "requests": 1466,
+          "tokens": 552682
+        },
+        "claude": {
+          "requests": 921,
+          "tokens": 340770
+        },
+        "midjourney": {
+          "requests": 561,
+          "tokens": 120054
+        },
+        "dalle": {
+          "requests": 328,
+          "tokens": 65600
+        }
+      }
+    },
+    {
+      "date": "2026-09-26",
+      "requests": 3923,
+      "users": 576,
+      "models": {
+        "gemini": {
+          "requests": 1537,
+          "tokens": 290493
+        },
+        "gpt4o": {
+          "requests": 1090,
+          "tokens": 271410
+        },
+        "claude": {
+          "requests": 650,
+          "tokens": 286000
+        },
+        "midjourney": {
+          "requests": 446,
+          "tokens": 96336
+        },
+        "dalle": {
+          "requests": 200,
+          "tokens": 32600
+        }
+      }
+    },
+    {
+      "date": "2026-09-27",
+      "requests": 4193,
+      "users": 523,
+      "models": {
+        "gemini": {
+          "requests": 1784,
+          "tokens": 485248
+        },
+        "gpt4o": {
+          "requests": 1140,
+          "tokens": 449160
+        },
+        "claude": {
+          "requests": 731,
+          "tokens": 222224
+        },
+        "midjourney": {
+          "requests": 341,
+          "tokens": 57629
+        },
+        "dalle": {
+          "requests": 197,
+          "tokens": 23246
+        }
+      }
+    },
+    {
+      "date": "2026-09-28",
+      "requests": 4998,
+      "users": 715,
+      "models": {
+        "gemini": {
+          "requests": 1978,
+          "tokens": 403512
+        },
+        "gpt4o": {
+          "requests": 1526,
+          "tokens": 642446
+        },
+        "claude": {
+          "requests": 791,
+          "tokens": 377307
+        },
+        "midjourney": {
+          "requests": 505,
+          "tokens": 90900
+        },
+        "dalle": {
+          "requests": 198,
+          "tokens": 51282
+        }
+      }
+    },
+    {
+      "date": "2026-09-29",
+      "requests": 5463,
+      "users": 666,
+      "models": {
+        "gemini": {
+          "requests": 2103,
+          "tokens": 574119
+        },
+        "gpt4o": {
+          "requests": 1704,
+          "tokens": 584472
+        },
+        "claude": {
+          "requests": 921,
+          "tokens": 261564
+        },
+        "midjourney": {
+          "requests": 485,
+          "tokens": 106215
+        },
+        "dalle": {
+          "requests": 250,
+          "tokens": 25500
+        }
+      }
+    },
+    {
+      "date": "2026-09-30",
+      "requests": 5359,
+      "users": 648,
+      "models": {
+        "gemini": {
+          "requests": 2146,
+          "tokens": 781144
+        },
+        "gpt4o": {
+          "requests": 1640,
+          "tokens": 629760
+        },
+        "claude": {
+          "requests": 792,
+          "tokens": 367488
+        },
+        "midjourney": {
+          "requests": 509,
+          "tokens": 48355
+        },
+        "dalle": {
+          "requests": 272,
+          "tokens": 30464
+        }
+      }
+    },
+    {
+      "date": "2026-10-01",
+      "requests": 5368,
+      "users": 662,
+      "models": {
+        "gemini": {
+          "requests": 2049,
+          "tokens": 432339
+        },
+        "gpt4o": {
+          "requests": 1549,
+          "tokens": 577777
+        },
+        "claude": {
+          "requests": 903,
+          "tokens": 294378
+        },
+        "midjourney": {
+          "requests": 597,
+          "tokens": 82386
+        },
+        "dalle": {
+          "requests": 270,
+          "tokens": 32130
+        }
+      }
+    },
+    {
+      "date": "2026-10-02",
+      "requests": 5279,
+      "users": 686,
+      "models": {
+        "gemini": {
+          "requests": 1995,
+          "tokens": 404985
+        },
+        "gpt4o": {
+          "requests": 1436,
+          "tokens": 554296
+        },
+        "claude": {
+          "requests": 1014,
+          "tokens": 512070
+        },
+        "midjourney": {
+          "requests": 536,
+          "tokens": 91656
+        },
+        "dalle": {
+          "requests": 298,
+          "tokens": 50362
+        }
+      }
+    },
+    {
+      "date": "2026-10-03",
+      "requests": 4074,
+      "users": 576,
+      "models": {
+        "gemini": {
+          "requests": 1443,
+          "tokens": 453102
+        },
+        "gpt4o": {
+          "requests": 1398,
+          "tokens": 345306
+        },
+        "claude": {
+          "requests": 645,
+          "tokens": 288960
+        },
+        "midjourney": {
+          "requests": 376,
+          "tokens": 83472
+        },
+        "dalle": {
+          "requests": 212,
+          "tokens": 37312
+        }
+      }
+    },
+    {
+      "date": "2026-10-04",
+      "requests": 3644,
+      "users": 588,
+      "models": {
+        "gemini": {
+          "requests": 1329,
+          "tokens": 478440
+        },
+        "gpt4o": {
+          "requests": 1163,
+          "tokens": 454733
+        },
+        "claude": {
+          "requests": 573,
+          "tokens": 179922
+        },
+        "midjourney": {
+          "requests": 374,
+          "tokens": 78914
+        },
+        "dalle": {
+          "requests": 205,
+          "tokens": 28085
+        }
+      }
+    },
+    {
+      "date": "2026-10-05",
+      "requests": 5071,
+      "users": 703,
+      "models": {
+        "gemini": {
+          "requests": 2028,
+          "tokens": 421824
+        },
+        "gpt4o": {
+          "requests": 1480,
+          "tokens": 596440
+        },
+        "claude": {
+          "requests": 777,
+          "tokens": 308469
+        },
+        "midjourney": {
+          "requests": 555,
+          "tokens": 125985
+        },
+        "dalle": {
+          "requests": 231,
+          "tokens": 39732
+        }
+      }
+    },
+    {
+      "date": "2026-10-06",
+      "requests": 5348,
+      "users": 682,
+      "models": {
+        "gemini": {
+          "requests": 2050,
+          "tokens": 489950
+        },
+        "gpt4o": {
+          "requests": 1572,
+          "tokens": 556488
+        },
+        "claude": {
+          "requests": 931,
+          "tokens": 482258
+        },
+        "midjourney": {
+          "requests": 515,
+          "tokens": 117935
+        },
+        "dalle": {
+          "requests": 280,
+          "tokens": 30240
+        }
+      }
+    },
+    {
+      "date": "2026-10-07",
+      "requests": 5655,
+      "users": 679,
+      "models": {
+        "gemini": {
+          "requests": 2106,
+          "tokens": 682344
+        },
+        "gpt4o": {
+          "requests": 1847,
+          "tokens": 757270
+        },
+        "claude": {
+          "requests": 798,
+          "tokens": 240198
+        },
+        "midjourney": {
+          "requests": 597,
+          "tokens": 96117
+        },
+        "dalle": {
+          "requests": 307,
+          "tokens": 40524
+        }
+      }
+    },
+    {
+      "date": "2026-10-08",
+      "requests": 5493,
+      "users": 696,
+      "models": {
+        "gemini": {
+          "requests": 2097,
+          "tokens": 761211
+        },
+        "gpt4o": {
+          "requests": 1596,
+          "tokens": 437304
+        },
+        "claude": {
+          "requests": 1034,
+          "tokens": 421872
+        },
+        "midjourney": {
+          "requests": 522,
+          "tokens": 75690
+        },
+        "dalle": {
+          "requests": 244,
+          "tokens": 49776
+        }
+      }
+    },
+    {
+      "date": "2026-10-09",
+      "requests": 5066,
+      "users": 710,
+      "models": {
+        "gemini": {
+          "requests": 2040,
+          "tokens": 714000
+        },
+        "gpt4o": {
+          "requests": 1530,
+          "tokens": 590580
+        },
+        "claude": {
+          "requests": 858,
+          "tokens": 416988
+        },
+        "midjourney": {
+          "requests": 428,
+          "tokens": 63772
+        },
+        "dalle": {
+          "requests": 210,
+          "tokens": 26040
+        }
+      }
+    },
+    {
+      "date": "2026-10-10",
+      "requests": 3734,
+      "users": 530,
+      "models": {
+        "gemini": {
+          "requests": 1452,
+          "tokens": 409464
+        },
+        "gpt4o": {
+          "requests": 1163,
+          "tokens": 352389
+        },
+        "claude": {
+          "requests": 521,
+          "tokens": 225072
+        },
+        "midjourney": {
+          "requests": 422,
+          "tokens": 64988
+        },
+        "dalle": {
+          "requests": 176,
+          "tokens": 45760
+        }
+      }
+    },
+    {
+      "date": "2026-10-11",
+      "requests": 4644,
+      "users": 592,
+      "models": {
+        "gemini": {
+          "requests": 1906,
+          "tokens": 678536
+        },
+        "gpt4o": {
+          "requests": 1384,
+          "tokens": 308632
+        },
+        "claude": {
+          "requests": 710,
+          "tokens": 302460
+        },
+        "midjourney": {
+          "requests": 407,
+          "tokens": 59015
+        },
+        "dalle": {
+          "requests": 237,
+          "tokens": 60198
+        }
+      }
+    },
+    {
+      "date": "2026-10-12",
+      "requests": 5328,
+      "users": 686,
+      "models": {
+        "gemini": {
+          "requests": 2110,
+          "tokens": 664650
+        },
+        "gpt4o": {
+          "requests": 1723,
+          "tokens": 673693
+        },
+        "claude": {
+          "requests": 731,
+          "tokens": 208335
+        },
+        "midjourney": {
+          "requests": 464,
+          "tokens": 67744
+        },
+        "dalle": {
+          "requests": 300,
+          "tokens": 60000
+        }
+      }
+    },
+    {
+      "date": "2026-10-13",
+      "requests": 5152,
+      "users": 686,
+      "models": {
+        "gemini": {
+          "requests": 2101,
+          "tokens": 632401
+        },
+        "gpt4o": {
+          "requests": 1327,
+          "tokens": 323788
+        },
+        "claude": {
+          "requests": 910,
+          "tokens": 420420
+        },
+        "midjourney": {
+          "requests": 574,
+          "tokens": 59122
+        },
+        "dalle": {
+          "requests": 240,
+          "tokens": 38400
+        }
+      }
+    },
+    {
+      "date": "2026-10-14",
+      "requests": 5519,
+      "users": 719,
+      "models": {
+        "gemini": {
+          "requests": 2313,
+          "tokens": 610632
+        },
+        "gpt4o": {
+          "requests": 1401,
+          "tokens": 535182
+        },
+        "claude": {
+          "requests": 936,
+          "tokens": 405288
+        },
+        "midjourney": {
+          "requests": 592,
+          "tokens": 101232
+        },
+        "dalle": {
+          "requests": 277,
+          "tokens": 64818
+        }
+      }
+    },
+    {
+      "date": "2026-10-15",
+      "requests": 5607,
+      "users": 712,
+      "models": {
+        "gemini": {
+          "requests": 2473,
+          "tokens": 830928
+        },
+        "gpt4o": {
+          "requests": 1431,
+          "tokens": 384939
+        },
+        "claude": {
+          "requests": 868,
+          "tokens": 449624
+        },
+        "midjourney": {
+          "requests": 602,
+          "tokens": 119196
+        },
+        "dalle": {
+          "requests": 233,
+          "tokens": 46833
+        }
+      }
+    },
+    {
+      "date": "2026-10-16",
+      "requests": 5763,
+      "users": 629,
+      "models": {
+        "gemini": {
+          "requests": 2117,
+          "tokens": 474208
+        },
+        "gpt4o": {
+          "requests": 1773,
+          "tokens": 434385
+        },
+        "claude": {
+          "requests": 1010,
+          "tokens": 524190
+        },
+        "midjourney": {
+          "requests": 583,
+          "tokens": 86867
+        },
+        "dalle": {
+          "requests": 280,
+          "tokens": 65800
+        }
+      }
+    },
+    {
+      "date": "2026-10-17",
+      "requests": 3868,
+      "users": 574,
+      "models": {
+        "gemini": {
+          "requests": 1470,
+          "tokens": 463050
+        },
+        "gpt4o": {
+          "requests": 1123,
+          "tokens": 396419
+        },
+        "claude": {
+          "requests": 666,
+          "tokens": 278388
+        },
+        "midjourney": {
+          "requests": 393,
+          "tokens": 53055
+        },
+        "dalle": {
+          "requests": 216,
+          "tokens": 47952
+        }
+      }
+    },
+    {
+      "date": "2026-10-18",
+      "requests": 4336,
+      "users": 546,
+      "models": {
+        "gemini": {
+          "requests": 1851,
+          "tokens": 590469
+        },
+        "gpt4o": {
+          "requests": 1089,
+          "tokens": 459558
+        },
+        "claude": {
+          "requests": 724,
+          "tokens": 223716
+        },
+        "midjourney": {
+          "requests": 464,
+          "tokens": 67744
+        },
+        "dalle": {
+          "requests": 208,
+          "tokens": 23712
+        }
+      }
+    },
+    {
+      "date": "2026-10-19",
+      "requests": 6199,
+      "users": 751,
+      "models": {
+        "gemini": {
+          "requests": 2386,
+          "tokens": 591728
+        },
+        "gpt4o": {
+          "requests": 1931,
+          "tokens": 778193
+        },
+        "claude": {
+          "requests": 1062,
+          "tokens": 280368
+        },
+        "midjourney": {
+          "requests": 526,
+          "tokens": 94154
+        },
+        "dalle": {
+          "requests": 294,
+          "tokens": 39690
+        }
+      }
+    },
+    {
+      "date": "2026-10-20",
+      "requests": 5644,
+      "users": 707,
+      "models": {
+        "gemini": {
+          "requests": 2321,
+          "tokens": 710226
+        },
+        "gpt4o": {
+          "requests": 1669,
+          "tokens": 400560
+        },
+        "claude": {
+          "requests": 941,
+          "tokens": 305825
+        },
+        "midjourney": {
+          "requests": 484,
+          "tokens": 47432
+        },
+        "dalle": {
+          "requests": 229,
+          "tokens": 41678
+        }
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "requests": 6254,
+      "users": 696,
+      "models": {
+        "gemini": {
+          "requests": 2550,
+          "tokens": 663000
+        },
+        "gpt4o": {
+          "requests": 1754,
+          "tokens": 671782
+        },
+        "claude": {
+          "requests": 1118,
+          "tokens": 412542
+        },
+        "midjourney": {
+          "requests": 530,
+          "tokens": 112890
+        },
+        "dalle": {
+          "requests": 302,
+          "tokens": 61004
+        }
+      }
+    },
+    {
+      "date": "2026-10-22",
+      "requests": 5803,
+      "users": 718,
+      "models": {
+        "gemini": {
+          "requests": 2362,
+          "tokens": 562156
+        },
+        "gpt4o": {
+          "requests": 1660,
+          "tokens": 464800
+        },
+        "claude": {
+          "requests": 995,
+          "tokens": 249745
+        },
+        "midjourney": {
+          "requests": 478,
+          "tokens": 109462
+        },
+        "dalle": {
+          "requests": 308,
+          "tokens": 40964
+        }
+      }
+    },
+    {
+      "date": "2026-10-23",
+      "requests": 5245,
+      "users": 701,
+      "models": {
+        "gemini": {
+          "requests": 1960,
+          "tokens": 556640
+        },
+        "gpt4o": {
+          "requests": 1681,
+          "tokens": 401759
+        },
+        "claude": {
+          "requests": 861,
+          "tokens": 390894
+        },
+        "midjourney": {
+          "requests": 488,
+          "tokens": 69296
+        },
+        "dalle": {
+          "requests": 255,
+          "tokens": 45645
+        }
+      }
+    },
+    {
+      "date": "2026-10-24",
+      "requests": 4224,
+      "users": 585,
+      "models": {
+        "gemini": {
+          "requests": 1724,
+          "tokens": 648224
+        },
+        "gpt4o": {
+          "requests": 1304,
+          "tokens": 306440
+        },
+        "claude": {
+          "requests": 630,
+          "tokens": 185220
+        },
+        "midjourney": {
+          "requests": 355,
+          "tokens": 62480
+        },
+        "dalle": {
+          "requests": 211,
+          "tokens": 48741
+        }
+      }
+    },
+    {
+      "date": "2026-10-25",
+      "requests": 4398,
+      "users": 567,
+      "models": {
+        "gemini": {
+          "requests": 1693,
+          "tokens": 335214
+        },
+        "gpt4o": {
+          "requests": 1371,
+          "tokens": 588159
+        },
+        "claude": {
+          "requests": 627,
+          "tokens": 287793
+        },
+        "midjourney": {
+          "requests": 464,
+          "tokens": 84912
+        },
+        "dalle": {
+          "requests": 243,
+          "tokens": 33048
+        }
+      }
+    },
+    {
+      "date": "2026-10-26",
+      "requests": 5447,
+      "users": 644,
+      "models": {
+        "gemini": {
+          "requests": 2106,
+          "tokens": 383292
+        },
+        "gpt4o": {
+          "requests": 1590,
+          "tokens": 688470
+        },
+        "claude": {
+          "requests": 848,
+          "tokens": 385840
+        },
+        "midjourney": {
+          "requests": 598,
+          "tokens": 107640
+        },
+        "dalle": {
+          "requests": 305,
+          "tokens": 56120
+        }
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "requests": 5912,
+      "users": 675,
+      "models": {
+        "gemini": {
+          "requests": 2208,
+          "tokens": 410688
+        },
+        "gpt4o": {
+          "requests": 1979,
+          "tokens": 449233
+        },
+        "claude": {
+          "requests": 895,
+          "tokens": 449290
+        },
+        "midjourney": {
+          "requests": 559,
+          "tokens": 110123
+        },
+        "dalle": {
+          "requests": 271,
+          "tokens": 56097
+        }
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "requests": 5364,
+      "users": 684,
+      "models": {
+        "gemini": {
+          "requests": 2260,
+          "tokens": 528840
+        },
+        "gpt4o": {
+          "requests": 1450,
+          "tokens": 332050
+        },
+        "claude": {
+          "requests": 842,
+          "tokens": 425210
+        },
+        "midjourney": {
+          "requests": 560,
+          "tokens": 127680
+        },
+        "dalle": {
+          "requests": 252,
+          "tokens": 34272
+        }
+      }
+    },
+    {
+      "date": "2026-10-29",
+      "requests": 5317,
+      "users": 699,
+      "models": {
+        "gemini": {
+          "requests": 2157,
+          "tokens": 765735
+        },
+        "gpt4o": {
+          "requests": 1411,
+          "tokens": 475507
+        },
+        "claude": {
+          "requests": 982,
+          "tokens": 458594
+        },
+        "midjourney": {
+          "requests": 527,
+          "tokens": 59024
+        },
+        "dalle": {
+          "requests": 240,
+          "tokens": 40560
+        }
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "requests": 5484,
+      "users": 675,
+      "models": {
+        "gemini": {
+          "requests": 2182,
+          "tokens": 722242
+        },
+        "gpt4o": {
+          "requests": 1589,
+          "tokens": 692804
+        },
+        "claude": {
+          "requests": 961,
+          "tokens": 369024
+        },
+        "midjourney": {
+          "requests": 458,
+          "tokens": 72822
+        },
+        "dalle": {
+          "requests": 294,
+          "tokens": 38514
+        }
+      }
+    },
+    {
+      "date": "2026-10-31",
+      "requests": 4700,
+      "users": 598,
+      "models": {
+        "gemini": {
+          "requests": 1783,
+          "tokens": 536683
+        },
+        "gpt4o": {
+          "requests": 1495,
+          "tokens": 412620
+        },
+        "claude": {
+          "requests": 730,
+          "tokens": 241630
+        },
+        "midjourney": {
+          "requests": 477,
+          "tokens": 55809
+        },
+        "dalle": {
+          "requests": 215,
+          "tokens": 52890
+        }
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "requests": 4621,
+      "users": 539,
+      "models": {
+        "gemini": {
+          "requests": 2012,
+          "tokens": 474832
+        },
+        "gpt4o": {
+          "requests": 1189,
+          "tokens": 344810
+        },
+        "claude": {
+          "requests": 723,
+          "tokens": 302214
+        },
+        "midjourney": {
+          "requests": 497,
+          "tokens": 60634
+        },
+        "dalle": {
+          "requests": 200,
+          "tokens": 27200
+        }
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "requests": 6281,
+      "users": 749,
+      "models": {
+        "gemini": {
+          "requests": 2454,
+          "tokens": 468714
+        },
+        "gpt4o": {
+          "requests": 2012,
+          "tokens": 834980
+        },
+        "claude": {
+          "requests": 923,
+          "tokens": 325819
+        },
+        "midjourney": {
+          "requests": 628,
+          "tokens": 121204
+        },
+        "dalle": {
+          "requests": 264,
+          "tokens": 61248
+        }
+      }
+    },
+    {
+      "date": "2026-11-03",
+      "requests": 6400,
+      "users": 747,
+      "models": {
+        "gemini": {
+          "requests": 2414,
+          "tokens": 465902
+        },
+        "gpt4o": {
+          "requests": 1797,
+          "tokens": 637935
+        },
+        "claude": {
+          "requests": 1003,
+          "tokens": 381140
+        },
+        "midjourney": {
+          "requests": 804,
+          "tokens": 180900
+        },
+        "dalle": {
+          "requests": 382,
+          "tokens": 87860
+        }
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "requests": 6441,
+      "users": 745,
+      "models": {
+        "gemini": {
+          "requests": 2787,
+          "tokens": 504447
+        },
+        "gpt4o": {
+          "requests": 1701,
+          "tokens": 656586
+        },
+        "claude": {
+          "requests": 992,
+          "tokens": 284704
+        },
+        "midjourney": {
+          "requests": 666,
+          "tokens": 137862
+        },
+        "dalle": {
+          "requests": 295,
+          "tokens": 57820
+        }
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "requests": 5571,
+      "users": 696,
+      "models": {
+        "gemini": {
+          "requests": 2054,
+          "tokens": 692198
+        },
+        "gpt4o": {
+          "requests": 1788,
+          "tokens": 683016
+        },
+        "claude": {
+          "requests": 828,
+          "tokens": 278208
+        },
+        "midjourney": {
+          "requests": 647,
+          "tokens": 128106
+        },
+        "dalle": {
+          "requests": 254,
+          "tokens": 44704
+        }
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "requests": 6072,
+      "users": 689,
+      "models": {
+        "gemini": {
+          "requests": 2628,
+          "tokens": 659628
+        },
+        "gpt4o": {
+          "requests": 1579,
+          "tokens": 702655
+        },
+        "claude": {
+          "requests": 918,
+          "tokens": 234090
+        },
+        "midjourney": {
+          "requests": 651,
+          "tokens": 62496
+        },
+        "dalle": {
+          "requests": 296,
+          "tokens": 37888
+        }
+      }
+    },
+    {
+      "date": "2026-11-07",
+      "requests": 4526,
+      "users": 658,
+      "models": {
+        "gemini": {
+          "requests": 1841,
+          "tokens": 445522
+        },
+        "gpt4o": {
+          "requests": 1258,
+          "tokens": 345950
+        },
+        "claude": {
+          "requests": 793,
+          "tokens": 226798
+        },
+        "midjourney": {
+          "requests": 401,
+          "tokens": 67769
+        },
+        "dalle": {
+          "requests": 233,
+          "tokens": 27028
+        }
+      }
+    },
+    {
+      "date": "2026-11-08",
+      "requests": 4682,
+      "users": 649,
+      "models": {
+        "gemini": {
+          "requests": 2086,
+          "tokens": 667520
+        },
+        "gpt4o": {
+          "requests": 1287,
+          "tokens": 534105
+        },
+        "claude": {
+          "requests": 658,
+          "tokens": 307286
+        },
+        "midjourney": {
+          "requests": 422,
+          "tokens": 46420
+        },
+        "dalle": {
+          "requests": 229,
+          "tokens": 47632
+        }
+      }
+    },
+    {
+      "date": "2026-11-09",
+      "requests": 6532,
+      "users": 774,
+      "models": {
+        "gemini": {
+          "requests": 2453,
+          "tokens": 733447
+        },
+        "gpt4o": {
+          "requests": 1973,
+          "tokens": 876012
+        },
+        "claude": {
+          "requests": 1133,
+          "tokens": 337634
+        },
+        "midjourney": {
+          "requests": 666,
+          "tokens": 94572
+        },
+        "dalle": {
+          "requests": 307,
+          "tokens": 69382
+        }
+      }
+    },
+    {
+      "date": "2026-11-10",
+      "requests": 5532,
+      "users": 707,
+      "models": {
+        "gemini": {
+          "requests": 2130,
+          "tokens": 585750
+        },
+        "gpt4o": {
+          "requests": 1478,
+          "tokens": 444878
+        },
+        "claude": {
+          "requests": 1009,
+          "tokens": 345078
+        },
+        "midjourney": {
+          "requests": 610,
+          "tokens": 105530
+        },
+        "dalle": {
+          "requests": 305,
+          "tokens": 48190
+        }
+      }
+    },
+    {
+      "date": "2026-11-11",
+      "requests": 5751,
+      "users": 780,
+      "models": {
+        "gemini": {
+          "requests": 2190,
+          "tokens": 720510
+        },
+        "gpt4o": {
+          "requests": 1858,
+          "tokens": 460784
+        },
+        "claude": {
+          "requests": 848,
+          "tokens": 290016
+        },
+        "midjourney": {
+          "requests": 550,
+          "tokens": 59400
+        },
+        "dalle": {
+          "requests": 305,
+          "tokens": 33550
+        }
+      }
+    },
+    {
+      "date": "2026-11-12",
+      "requests": 6003,
+      "users": 737,
+      "models": {
+        "gemini": {
+          "requests": 2267,
+          "tokens": 757178
+        },
+        "gpt4o": {
+          "requests": 1815,
+          "tokens": 451935
+        },
+        "claude": {
+          "requests": 962,
+          "tokens": 359788
+        },
+        "midjourney": {
+          "requests": 672,
+          "tokens": 135072
+        },
+        "dalle": {
+          "requests": 287,
+          "tokens": 54530
+        }
+      }
+    },
+    {
+      "date": "2026-11-13",
+      "requests": 5583,
+      "users": 725,
+      "models": {
+        "gemini": {
+          "requests": 2046,
+          "tokens": 401016
+        },
+        "gpt4o": {
+          "requests": 1830,
+          "tokens": 642330
+        },
+        "claude": {
+          "requests": 872,
+          "tokens": 276424
+        },
+        "midjourney": {
+          "requests": 595,
+          "tokens": 67830
+        },
+        "dalle": {
+          "requests": 240,
+          "tokens": 26880
+        }
+      }
+    },
+    {
+      "date": "2026-11-14",
+      "requests": 4580,
+      "users": 631,
+      "models": {
+        "gemini": {
+          "requests": 1633,
+          "tokens": 303738
+        },
+        "gpt4o": {
+          "requests": 1399,
+          "tokens": 464468
+        },
+        "claude": {
+          "requests": 864,
+          "tokens": 320544
+        },
+        "midjourney": {
+          "requests": 475,
+          "tokens": 95000
+        },
+        "dalle": {
+          "requests": 209,
+          "tokens": 29051
+        }
+      }
+    },
+    {
+      "date": "2026-11-15",
+      "requests": 5202,
+      "users": 593,
+      "models": {
+        "gemini": {
+          "requests": 1962,
+          "tokens": 529740
+        },
+        "gpt4o": {
+          "requests": 1508,
+          "tokens": 399620
+        },
+        "claude": {
+          "requests": 910,
+          "tokens": 437710
+        },
+        "midjourney": {
+          "requests": 551,
+          "tokens": 76589
+        },
+        "dalle": {
+          "requests": 271,
+          "tokens": 33604
+        }
+      }
+    },
+    {
+      "date": "2026-11-16",
+      "requests": 6307,
+      "users": 786,
+      "models": {
+        "gemini": {
+          "requests": 2421,
+          "tokens": 634302
+        },
+        "gpt4o": {
+          "requests": 1758,
+          "tokens": 645186
+        },
+        "claude": {
+          "requests": 1035,
+          "tokens": 264960
+        },
+        "midjourney": {
+          "requests": 759,
+          "tokens": 166221
+        },
+        "dalle": {
+          "requests": 334,
+          "tokens": 49432
+        }
+      }
+    },
+    {
+      "date": "2026-11-17",
+      "requests": 5760,
+      "users": 726,
+      "models": {
+        "gemini": {
+          "requests": 2632,
+          "tokens": 705376
+        },
+        "gpt4o": {
+          "requests": 1451,
+          "tokens": 491889
+        },
+        "claude": {
+          "requests": 864,
+          "tokens": 242784
+        },
+        "midjourney": {
+          "requests": 537,
+          "tokens": 49404
+        },
+        "dalle": {
+          "requests": 276,
+          "tokens": 52440
+        }
+      }
+    },
+    {
+      "date": "2026-11-18",
+      "requests": 6365,
+      "users": 712,
+      "models": {
+        "gemini": {
+          "requests": 2731,
+          "tokens": 756487
+        },
+        "gpt4o": {
+          "requests": 1941,
+          "tokens": 582300
+        },
+        "claude": {
+          "requests": 920,
+          "tokens": 462760
+        },
+        "midjourney": {
+          "requests": 517,
+          "tokens": 102366
+        },
+        "dalle": {
+          "requests": 256,
+          "tokens": 36352
+        }
+      }
+    },
+    {
+      "date": "2026-11-19",
+      "requests": 6392,
+      "users": 787,
+      "models": {
+        "gemini": {
+          "requests": 2593,
+          "tokens": 479705
+        },
+        "gpt4o": {
+          "requests": 1831,
+          "tokens": 521835
+        },
+        "claude": {
+          "requests": 1013,
+          "tokens": 483201
+        },
+        "midjourney": {
+          "requests": 614,
+          "tokens": 111748
+        },
+        "dalle": {
+          "requests": 341,
+          "tokens": 38874
+        }
+      }
+    },
+    {
+      "date": "2026-11-20",
+      "requests": 5724,
+      "users": 683,
+      "models": {
+        "gemini": {
+          "requests": 2320,
+          "tokens": 480240
+        },
+        "gpt4o": {
+          "requests": 1724,
+          "tokens": 786144
+        },
+        "claude": {
+          "requests": 883,
+          "tokens": 412361
+        },
+        "midjourney": {
+          "requests": 536,
+          "tokens": 66464
+        },
+        "dalle": {
+          "requests": 261,
+          "tokens": 34452
+        }
+      }
+    },
+    {
+      "date": "2026-11-21",
+      "requests": 5227,
+      "users": 684,
+      "models": {
+        "gemini": {
+          "requests": 2340,
+          "tokens": 423540
+        },
+        "gpt4o": {
+          "requests": 1332,
+          "tokens": 354312
+        },
+        "claude": {
+          "requests": 781,
+          "tokens": 259292
+        },
+        "midjourney": {
+          "requests": 531,
+          "tokens": 96642
+        },
+        "dalle": {
+          "requests": 243,
+          "tokens": 45927
+        }
+      }
+    },
+    {
+      "date": "2026-11-22",
+      "requests": 4446,
+      "users": 591,
+      "models": {
+        "gemini": {
+          "requests": 1922,
+          "tokens": 653480
+        },
+        "gpt4o": {
+          "requests": 1212,
+          "tokens": 386628
+        },
+        "claude": {
+          "requests": 694,
+          "tokens": 179052
+        },
+        "midjourney": {
+          "requests": 440,
+          "tokens": 58520
+        },
+        "dalle": {
+          "requests": 178,
+          "tokens": 37558
+        }
+      }
+    },
+    {
+      "date": "2026-11-23",
+      "requests": 6728,
+      "users": 692,
+      "models": {
+        "gemini": {
+          "requests": 2716,
+          "tokens": 548632
+        },
+        "gpt4o": {
+          "requests": 2053,
+          "tokens": 734974
+        },
+        "claude": {
+          "requests": 1054,
+          "tokens": 466922
+        },
+        "midjourney": {
+          "requests": 560,
+          "tokens": 105840
+        },
+        "dalle": {
+          "requests": 345,
+          "tokens": 50715
+        }
+      }
+    },
+    {
+      "date": "2026-11-24",
+      "requests": 6246,
+      "users": 786,
+      "models": {
+        "gemini": {
+          "requests": 2649,
+          "tokens": 569535
+        },
+        "gpt4o": {
+          "requests": 1838,
+          "tokens": 816072
+        },
+        "claude": {
+          "requests": 808,
+          "tokens": 394304
+        },
+        "midjourney": {
+          "requests": 633,
+          "tokens": 136095
+        },
+        "dalle": {
+          "requests": 318,
+          "tokens": 44838
+        }
+      }
+    },
+    {
+      "date": "2026-11-25",
+      "requests": 6403,
+      "users": 691,
+      "models": {
+        "gemini": {
+          "requests": 2900,
+          "tokens": 814900
+        },
+        "gpt4o": {
+          "requests": 1596,
+          "tokens": 424536
+        },
+        "claude": {
+          "requests": 1029,
+          "tokens": 509355
+        },
+        "midjourney": {
+          "requests": 600,
+          "tokens": 72600
+        },
+        "dalle": {
+          "requests": 278,
+          "tokens": 48928
+        }
+      }
+    },
+    {
+      "date": "2026-11-26",
+      "requests": 6330,
+      "users": 745,
+      "models": {
+        "gemini": {
+          "requests": 2657,
+          "tokens": 911351
+        },
+        "gpt4o": {
+          "requests": 1651,
+          "tokens": 457327
+        },
+        "claude": {
+          "requests": 1130,
+          "tokens": 452000
+        },
+        "midjourney": {
+          "requests": 580,
+          "tokens": 67280
+        },
+        "dalle": {
+          "requests": 312,
+          "tokens": 63648
+        }
+      }
+    },
+    {
+      "date": "2026-11-27",
+      "requests": 5958,
+      "users": 800,
+      "models": {
+        "gemini": {
+          "requests": 2221,
+          "tokens": 621880
+        },
+        "gpt4o": {
+          "requests": 1746,
+          "tokens": 488880
+        },
+        "claude": {
+          "requests": 977,
+          "tokens": 378099
+        },
+        "midjourney": {
+          "requests": 723,
+          "tokens": 80976
+        },
+        "dalle": {
+          "requests": 291,
+          "tokens": 41031
+        }
+      }
+    },
+    {
+      "date": "2026-11-28",
+      "requests": 4999,
+      "users": 599,
+      "models": {
+        "gemini": {
+          "requests": 1882,
+          "tokens": 525078
+        },
+        "gpt4o": {
+          "requests": 1486,
+          "tokens": 463632
+        },
+        "claude": {
+          "requests": 831,
+          "tokens": 231849
+        },
+        "midjourney": {
+          "requests": 551,
+          "tokens": 82099
+        },
+        "dalle": {
+          "requests": 249,
+          "tokens": 47559
+        }
+      }
+    },
+    {
+      "date": "2026-11-29",
+      "requests": 5130,
+      "users": 667,
+      "models": {
+        "gemini": {
+          "requests": 1830,
+          "tokens": 666120
+        },
+        "gpt4o": {
+          "requests": 1651,
+          "tokens": 686816
+        },
+        "claude": {
+          "requests": 769,
+          "tokens": 254539
+        },
+        "midjourney": {
+          "requests": 619,
+          "tokens": 86041
+        },
+        "dalle": {
+          "requests": 261,
+          "tokens": 67860
+        }
+      }
+    },
+    {
+      "date": "2026-11-30",
+      "requests": 6060,
+      "users": 710,
+      "models": {
+        "gemini": {
+          "requests": 2529,
+          "tokens": 513387
+        },
+        "gpt4o": {
+          "requests": 1738,
+          "tokens": 703890
+        },
+        "claude": {
+          "requests": 802,
+          "tokens": 269472
+        },
+        "midjourney": {
+          "requests": 654,
+          "tokens": 110526
+        },
+        "dalle": {
+          "requests": 337,
+          "tokens": 33700
+        }
+      }
+    },
+    {
+      "date": "2026-12-01",
+      "requests": 6466,
+      "users": 732,
+      "models": {
+        "gemini": {
+          "requests": 2342,
+          "tokens": 461374
+        },
+        "gpt4o": {
+          "requests": 2205,
+          "tokens": 987840
+        },
+        "claude": {
+          "requests": 939,
+          "tokens": 275127
+        },
+        "midjourney": {
+          "requests": 597,
+          "tokens": 88356
+        },
+        "dalle": {
+          "requests": 383,
+          "tokens": 51705
+        }
+      }
+    },
+    {
+      "date": "2026-12-02",
+      "requests": 6212,
+      "users": 765,
+      "models": {
+        "gemini": {
+          "requests": 2362,
+          "tokens": 753478
+        },
+        "gpt4o": {
+          "requests": 1801,
+          "tokens": 504280
+        },
+        "claude": {
+          "requests": 1135,
+          "tokens": 288290
+        },
+        "midjourney": {
+          "requests": 583,
+          "tokens": 97361
+        },
+        "dalle": {
+          "requests": 331,
+          "tokens": 73151
+        }
+      }
+    },
+    {
+      "date": "2026-12-03",
+      "requests": 6573,
+      "users": 751,
+      "models": {
+        "gemini": {
+          "requests": 3022,
+          "tokens": 825006
+        },
+        "gpt4o": {
+          "requests": 1669,
+          "tokens": 422257
+        },
+        "claude": {
+          "requests": 966,
+          "tokens": 286902
+        },
+        "midjourney": {
+          "requests": 624,
+          "tokens": 141648
+        },
+        "dalle": {
+          "requests": 292,
+          "tokens": 60736
+        }
+      }
+    },
+    {
+      "date": "2026-12-04",
+      "requests": 6051,
+      "users": 743,
+      "models": {
+        "gemini": {
+          "requests": 2694,
+          "tokens": 848610
+        },
+        "gpt4o": {
+          "requests": 1533,
+          "tokens": 663789
+        },
+        "claude": {
+          "requests": 870,
+          "tokens": 307980
+        },
+        "midjourney": {
+          "requests": 681,
+          "tokens": 125985
+        },
+        "dalle": {
+          "requests": 273,
+          "tokens": 39585
+        }
+      }
+    },
+    {
+      "date": "2026-12-05",
+      "requests": 4726,
+      "users": 638,
+      "models": {
+        "gemini": {
+          "requests": 1759,
+          "tokens": 571675
+        },
+        "gpt4o": {
+          "requests": 1466,
+          "tokens": 391422
+        },
+        "claude": {
+          "requests": 706,
+          "tokens": 214624
+        },
+        "midjourney": {
+          "requests": 543,
+          "tokens": 121632
+        },
+        "dalle": {
+          "requests": 252,
+          "tokens": 60984
+        }
+      }
+    },
+    {
+      "date": "2026-12-06",
+      "requests": 5144,
+      "users": 613,
+      "models": {
+        "gemini": {
+          "requests": 2147,
+          "tokens": 577543
+        },
+        "gpt4o": {
+          "requests": 1303,
+          "tokens": 415657
+        },
+        "claude": {
+          "requests": 902,
+          "tokens": 338250
+        },
+        "midjourney": {
+          "requests": 547,
+          "tokens": 51965
+        },
+        "dalle": {
+          "requests": 245,
+          "tokens": 52920
+        }
+      }
+    },
+    {
+      "date": "2026-12-07",
+      "requests": 6290,
+      "users": 723,
+      "models": {
+        "gemini": {
+          "requests": 2625,
+          "tokens": 679875
+        },
+        "gpt4o": {
+          "requests": 1814,
+          "tokens": 536944
+        },
+        "claude": {
+          "requests": 1043,
+          "tokens": 304556
+        },
+        "midjourney": {
+          "requests": 508,
+          "tokens": 48768
+        },
+        "dalle": {
+          "requests": 300,
+          "tokens": 36000
+        }
+      }
+    },
+    {
+      "date": "2026-12-08",
+      "requests": 6736,
+      "users": 796,
+      "models": {
+        "gemini": {
+          "requests": 2646,
+          "tokens": 891702
+        },
+        "gpt4o": {
+          "requests": 2017,
+          "tokens": 673678
+        },
+        "claude": {
+          "requests": 1067,
+          "tokens": 393723
+        },
+        "midjourney": {
+          "requests": 696,
+          "tokens": 154512
+        },
+        "dalle": {
+          "requests": 310,
+          "tokens": 72850
+        }
+      }
+    },
+    {
+      "date": "2026-12-09",
+      "requests": 6009,
+      "users": 718,
+      "models": {
+        "gemini": {
+          "requests": 2224,
+          "tokens": 556000
+        },
+        "gpt4o": {
+          "requests": 1879,
+          "tokens": 719657
+        },
+        "claude": {
+          "requests": 916,
+          "tokens": 383804
+        },
+        "midjourney": {
+          "requests": 688,
+          "tokens": 66048
+        },
+        "dalle": {
+          "requests": 302,
+          "tokens": 48622
+        }
+      }
+    },
+    {
+      "date": "2026-12-10",
+      "requests": 6308,
+      "users": 757,
+      "models": {
+        "gemini": {
+          "requests": 2718,
+          "tokens": 684936
+        },
+        "gpt4o": {
+          "requests": 1667,
+          "tokens": 411749
+        },
+        "claude": {
+          "requests": 973,
+          "tokens": 423255
+        },
+        "midjourney": {
+          "requests": 651,
+          "tokens": 149079
+        },
+        "dalle": {
+          "requests": 299,
+          "tokens": 39767
+        }
+      }
+    },
+    {
+      "date": "2026-12-11",
+      "requests": 6426,
+      "users": 836,
+      "models": {
+        "gemini": {
+          "requests": 2703,
+          "tokens": 929832
+        },
+        "gpt4o": {
+          "requests": 1720,
+          "tokens": 471280
+        },
+        "claude": {
+          "requests": 1015,
+          "tokens": 477050
+        },
+        "midjourney": {
+          "requests": 658,
+          "tokens": 93436
+        },
+        "dalle": {
+          "requests": 330,
+          "tokens": 73590
+        }
+      }
+    },
+    {
+      "date": "2026-12-12",
+      "requests": 4817,
+      "users": 683,
+      "models": {
+        "gemini": {
+          "requests": 1885,
+          "tokens": 573040
+        },
+        "gpt4o": {
+          "requests": 1382,
+          "tokens": 529306
+        },
+        "claude": {
+          "requests": 709,
+          "tokens": 181504
+        },
+        "midjourney": {
+          "requests": 571,
+          "tokens": 63381
+        },
+        "dalle": {
+          "requests": 270,
+          "tokens": 35910
+        }
+      }
+    },
+    {
+      "date": "2026-12-13",
+      "requests": 5197,
+      "users": 601,
+      "models": {
+        "gemini": {
+          "requests": 2021,
+          "tokens": 668951
+        },
+        "gpt4o": {
+          "requests": 1467,
+          "tokens": 644013
+        },
+        "claude": {
+          "requests": 875,
+          "tokens": 272125
+        },
+        "midjourney": {
+          "requests": 538,
+          "tokens": 51110
+        },
+        "dalle": {
+          "requests": 296,
+          "tokens": 55648
+        }
+      }
+    },
+    {
+      "date": "2026-12-14",
+      "requests": 6598,
+      "users": 824,
+      "models": {
+        "gemini": {
+          "requests": 2411,
+          "tokens": 855905
+        },
+        "gpt4o": {
+          "requests": 1909,
+          "tokens": 458160
+        },
+        "claude": {
+          "requests": 1245,
+          "tokens": 501735
+        },
+        "midjourney": {
+          "requests": 635,
+          "tokens": 66675
+        },
+        "dalle": {
+          "requests": 398,
+          "tokens": 95520
+        }
+      }
+    },
+    {
+      "date": "2026-12-15",
+      "requests": 7114,
+      "users": 791,
+      "models": {
+        "gemini": {
+          "requests": 2754,
+          "tokens": 589356
+        },
+        "gpt4o": {
+          "requests": 2083,
+          "tokens": 860279
+        },
+        "claude": {
+          "requests": 1159,
+          "tokens": 426512
+        },
+        "midjourney": {
+          "requests": 753,
+          "tokens": 79818
+        },
+        "dalle": {
+          "requests": 365,
+          "tokens": 87600
+        }
+      }
+    },
+    {
+      "date": "2026-12-16",
+      "requests": 6648,
+      "users": 729,
+      "models": {
+        "gemini": {
+          "requests": 2467,
+          "tokens": 757369
+        },
+        "gpt4o": {
+          "requests": 1874,
+          "tokens": 818938
+        },
+        "claude": {
+          "requests": 1160,
+          "tokens": 571880
+        },
+        "midjourney": {
+          "requests": 743,
+          "tokens": 96590
+        },
+        "dalle": {
+          "requests": 404,
+          "tokens": 103828
+        }
+      }
+    },
+    {
+      "date": "2026-12-17",
+      "requests": 6124,
+      "users": 793,
+      "models": {
+        "gemini": {
+          "requests": 2257,
+          "tokens": 424316
+        },
+        "gpt4o": {
+          "requests": 1785,
+          "tokens": 805035
+        },
+        "claude": {
+          "requests": 1183,
+          "tokens": 490945
+        },
+        "midjourney": {
+          "requests": 607,
+          "tokens": 60700
+        },
+        "dalle": {
+          "requests": 292,
+          "tokens": 34164
+        }
+      }
+    },
+    {
+      "date": "2026-12-18",
+      "requests": 6930,
+      "users": 777,
+      "models": {
+        "gemini": {
+          "requests": 2704,
+          "tokens": 794976
+        },
+        "gpt4o": {
+          "requests": 2263,
+          "tokens": 878044
+        },
+        "claude": {
+          "requests": 1039,
+          "tokens": 508071
+        },
+        "midjourney": {
+          "requests": 597,
+          "tokens": 76416
+        },
+        "dalle": {
+          "requests": 327,
+          "tokens": 53955
+        }
+      }
+    },
+    {
+      "date": "2026-12-19",
+      "requests": 4951,
+      "users": 719,
+      "models": {
+        "gemini": {
+          "requests": 1928,
+          "tokens": 684440
+        },
+        "gpt4o": {
+          "requests": 1516,
+          "tokens": 573048
+        },
+        "claude": {
+          "requests": 800,
+          "tokens": 272000
+        },
+        "midjourney": {
+          "requests": 470,
+          "tokens": 66740
+        },
+        "dalle": {
+          "requests": 237,
+          "tokens": 46215
+        }
+      }
+    },
+    {
+      "date": "2026-12-20",
+      "requests": 5643,
+      "users": 728,
+      "models": {
+        "gemini": {
+          "requests": 2304,
+          "tokens": 546048
+        },
+        "gpt4o": {
+          "requests": 1633,
+          "tokens": 594412
+        },
+        "claude": {
+          "requests": 776,
+          "tokens": 334456
+        },
+        "midjourney": {
+          "requests": 646,
+          "tokens": 60078
+        },
+        "dalle": {
+          "requests": 284,
+          "tokens": 72136
+        }
+      }
+    },
+    {
+      "date": "2026-12-21",
+      "requests": 7093,
+      "users": 810,
+      "models": {
+        "gemini": {
+          "requests": 2718,
+          "tokens": 578934
+        },
+        "gpt4o": {
+          "requests": 1988,
+          "tokens": 817068
+        },
+        "claude": {
+          "requests": 1250,
+          "tokens": 346250
+        },
+        "midjourney": {
+          "requests": 684,
+          "tokens": 95076
+        },
+        "dalle": {
+          "requests": 453,
+          "tokens": 75651
+        }
+      }
+    },
+    {
+      "date": "2026-12-22",
+      "requests": 6251,
+      "users": 775,
+      "models": {
+        "gemini": {
+          "requests": 2569,
+          "tokens": 883736
+        },
+        "gpt4o": {
+          "requests": 1681,
+          "tokens": 534558
+        },
+        "claude": {
+          "requests": 1035,
+          "tokens": 308430
+        },
+        "midjourney": {
+          "requests": 639,
+          "tokens": 84348
+        },
+        "dalle": {
+          "requests": 327,
+          "tokens": 61149
+        }
+      }
+    },
+    {
+      "date": "2026-12-23",
+      "requests": 6933,
+      "users": 778,
+      "models": {
+        "gemini": {
+          "requests": 2919,
+          "tokens": 612990
+        },
+        "gpt4o": {
+          "requests": 2013,
+          "tokens": 527406
+        },
+        "claude": {
+          "requests": 955,
+          "tokens": 372450
+        },
+        "midjourney": {
+          "requests": 744,
+          "tokens": 164424
+        },
+        "dalle": {
+          "requests": 302,
+          "tokens": 32314
+        }
+      }
+    },
+    {
+      "date": "2026-12-24",
+      "requests": 6812,
+      "users": 853,
+      "models": {
+        "gemini": {
+          "requests": 2474,
+          "tokens": 462638
+        },
+        "gpt4o": {
+          "requests": 1976,
+          "tokens": 592800
+        },
+        "claude": {
+          "requests": 1304,
+          "tokens": 671560
+        },
+        "midjourney": {
+          "requests": 704,
+          "tokens": 93632
+        },
+        "dalle": {
+          "requests": 354,
+          "tokens": 35400
+        }
+      }
+    },
+    {
+      "date": "2026-12-25",
+      "requests": 6879,
+      "users": 771,
+      "models": {
+        "gemini": {
+          "requests": 2765,
+          "tokens": 616595
+        },
+        "gpt4o": {
+          "requests": 2028,
+          "tokens": 604344
+        },
+        "claude": {
+          "requests": 1139,
+          "tokens": 382704
+        },
+        "midjourney": {
+          "requests": 663,
+          "tokens": 72930
+        },
+        "dalle": {
+          "requests": 284,
+          "tokens": 53676
+        }
+      }
+    },
+    {
+      "date": "2026-12-26",
+      "requests": 5581,
+      "users": 709,
+      "models": {
+        "gemini": {
+          "requests": 2335,
+          "tokens": 730855
+        },
+        "gpt4o": {
+          "requests": 1540,
+          "tokens": 592900
+        },
+        "claude": {
+          "requests": 902,
+          "tokens": 412214
+        },
+        "midjourney": {
+          "requests": 556,
+          "tokens": 60604
+        },
+        "dalle": {
+          "requests": 248,
+          "tokens": 37696
+        }
+      }
+    },
+    {
+      "date": "2026-12-27",
+      "requests": 5971,
+      "users": 649,
+      "models": {
+        "gemini": {
+          "requests": 2467,
+          "tokens": 809176
+        },
+        "gpt4o": {
+          "requests": 1756,
+          "tokens": 551384
+        },
+        "claude": {
+          "requests": 943,
+          "tokens": 293273
+        },
+        "midjourney": {
+          "requests": 570,
+          "tokens": 83790
+        },
+        "dalle": {
+          "requests": 235,
+          "tokens": 40185
+        }
+      }
+    },
+    {
+      "date": "2026-12-28",
+      "requests": 7217,
+      "users": 774,
+      "models": {
+        "gemini": {
+          "requests": 2895,
+          "tokens": 622425
+        },
+        "gpt4o": {
+          "requests": 2173,
+          "tokens": 558461
+        },
+        "claude": {
+          "requests": 1036,
+          "tokens": 390572
+        },
+        "midjourney": {
+          "requests": 742,
+          "tokens": 109074
+        },
+        "dalle": {
+          "requests": 371,
+          "tokens": 77168
+        }
+      }
+    },
+    {
+      "date": "2026-12-29",
+      "requests": 6517,
+      "users": 830,
+      "models": {
+        "gemini": {
+          "requests": 2576,
+          "tokens": 587328
+        },
+        "gpt4o": {
+          "requests": 1935,
+          "tokens": 762390
+        },
+        "claude": {
+          "requests": 1105,
+          "tokens": 344760
+        },
+        "midjourney": {
+          "requests": 581,
+          "tokens": 56357
+        },
+        "dalle": {
+          "requests": 320,
+          "tokens": 74880
+        }
+      }
+    },
+    {
+      "date": "2026-12-30",
+      "requests": 6822,
+      "users": 823,
+      "models": {
+        "gemini": {
+          "requests": 2817,
+          "tokens": 625374
+        },
+        "gpt4o": {
+          "requests": 1940,
+          "tokens": 865240
+        },
+        "claude": {
+          "requests": 1068,
+          "tokens": 516912
+        },
+        "midjourney": {
+          "requests": 696,
+          "tokens": 160080
+        },
+        "dalle": {
+          "requests": 301,
+          "tokens": 44849
+        }
+      }
+    },
+    {
+      "date": "2026-12-31",
+      "requests": 7233,
+      "users": 856,
+      "models": {
+        "gemini": {
+          "requests": 3038,
+          "tokens": 747348
+        },
+        "gpt4o": {
+          "requests": 1862,
+          "tokens": 752248
+        },
+        "claude": {
+          "requests": 1268,
+          "tokens": 355040
+        },
+        "midjourney": {
+          "requests": 773,
+          "tokens": 129864
+        },
+        "dalle": {
+          "requests": 292,
+          "tokens": 43216
+        }
+      }
+    }
+  ]
+}

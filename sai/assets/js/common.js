@@ -273,6 +273,42 @@ class MenuButton {
 
 
 /* *********************************
+ * Tab
+ * ********************************* */
+
+class Tab {
+    constructor() {
+        this.bindEvents();
+    }
+
+    bindEvents() {
+        document.addEventListener('click', (e) => {
+            const button = e.target.closest('.sai-tab__button');
+
+            if (!button) return;
+
+            const tab = button.closest('.js-tab');
+            if (!tab) return;
+
+            const buttons = tab.querySelectorAll('.sai-tab__button');
+            const panels = tab.querySelectorAll('.sai-tab__panel');
+
+            buttons.forEach((item) => {
+                const active = item === button;
+
+                item.classList.toggle('is-active', active);
+                item.setAttribute('aria-selected', String(active));
+                item.tabIndex = active ? 0 : -1;
+            });
+
+            panels.forEach((panel) => {
+                panel.hidden = panel.id !== button.getAttribute('aria-controls');
+            });
+        });
+    }
+}
+
+/* *********************************
  * 필요한 스크립트 실행부
  * ********************************* */
 
@@ -280,3 +316,4 @@ new Theme();
 new ActiveToggle();
 new AsideNavigation();
 new MenuButton();
+new Tab();
