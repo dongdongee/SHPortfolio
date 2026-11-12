@@ -24,16 +24,14 @@
 <div id="wrap">
     <div class="sai-layout">
         <div class="sai-aside" data-include="./includes/aside.html"></div>
-
         <main class="sai-content">
             <section class="sai-content__title">
                 <h1 class="sai-title__main">OVERVIEW</h1>
-                <p class="sai-title__desc">SAI workspace의 전반적인 상태를 요약했어요.</p>
+                <p class="sai-title__desc">SAI Worksapce의 최근 7일간의 사용 통계를 요약했어요.</p>
             </section>
-
-            <div class="sai-content__body">
+            <div class="sai-content__panel">
                 <section class="sai-content-grid sai-content-grid--kpi">
-                    <article class="kpi-card" id="kpiUsers">
+                    <article class="kpi-card" data-component="kpi" data-source="users.daily" data-metric="total" data-chart="mini" data-range="7d" data-color="purple">
                         <div class="kpi-card__body">
                             <div class="kpi-card__mark">
                                 <span class="sai-mark sai-mark--lg sai-mark--purple sai-mark--square">
@@ -44,20 +42,22 @@
                                     </span>
                                 </span>
                             </div>
-                            <div class="kpi-card__content">
-                                <span class="kpi-card__label">Total Users</span>
-                                <strong class="kpi-card__value"></strong>
-                            </div>
-                            <div class="kpi-card__meta">
-                                <span class="kpi-card__change"></span>
-                                <span class="kpi-card__compare">vs last 7 days</span>
-                            </div>
-                            <div class="kpi-card__chart">
-                                <canvas></canvas>
+                            <div class="kpi-card__box">
+                                <div class="kpi-card__content">
+                                    <span class="kpi-card__label">Total Users</span>
+                                    <strong class="kpi-card__value"></strong>
+                                    <div class="kpi-card__meta">
+                                        <span class="kpi-card__change"></span>
+                                        <span class="kpi-card__compare">vs last 7 days</span>
+                                    </div>
+                                </div>
+                                <div class="kpi-card__chart">
+                                    <canvas></canvas>
+                                </div>
                             </div>
                         </div>
                     </article>
-                    <article class="kpi-card" id="kpiRequests">
+                    <article class="kpi-card" data-chart="mini" data-source="usage" data-metric="requests" data-color="blue">
                         <div class="kpi-card__body">
                             <div class="kpi-card__mark">
                                 <span class="sai-mark sai-mark--lg sai-mark--blue sai-mark--square">
@@ -68,23 +68,22 @@
                                     </span>
                                 </span>
                             </div>
-
-                            <div class="kpi-card__content">
-                                <span class="kpi-card__label">Ai Requests</span>
-                                <strong class="kpi-card__value"></strong>
-                            </div>
-
-                            <div class="kpi-card__meta">
-                                <span class="kpi-card__change"></span>
-                                <span class="kpi-card__compare">vs last 7 days</span>
-                            </div>
-
-                            <div class="kpi-card__chart">
-                                <canvas></canvas>
+                            <div class="kpi-card__box">
+                                <div class="kpi-card__content">
+                                    <span class="kpi-card__label">Total Requests</span>
+                                    <strong class="kpi-card__value"></strong>
+                                    <div class="kpi-card__meta">
+                                        <span class="kpi-card__change"></span>
+                                        <span class="kpi-card__compare">vs last 7 days</span>
+                                    </div>
+                                </div>
+                                <div class="kpi-card__chart">
+                                    <canvas></canvas>
+                                </div>
                             </div>
                         </div>
                     </article>
-                    <article class="kpi-card" id="kpiProjects">
+                    <article class="kpi-card" data-chart="mini" data-source="usage" data-metric="projects" data-color="orange">
                         <div class="kpi-card__body">
                             <div class="kpi-card__mark">
                                 <span class="sai-mark sai-mark--lg sai-mark--orange sai-mark--square">
@@ -95,23 +94,22 @@
                                     </span>
                                 </span>
                             </div>
-
-                            <div class="kpi-card__content">
-                                <span class="kpi-card__label">Projects</span>
-                                <strong class="kpi-card__value"></strong>
-                            </div>
-
-                            <div class="kpi-card__meta">
-                                <span class="kpi-card__change"></span>
-                                <span class="kpi-card__compare">vs last 7 days</span>
-                            </div>
-
-                            <div class="kpi-card__chart">
-                                <canvas></canvas>
+                            <div class="kpi-card__box">
+                                <div class="kpi-card__content">
+                                    <span class="kpi-card__label">Total Projects</span>
+                                    <strong class="kpi-card__value"></strong>
+                                    <div class="kpi-card__meta">
+                                        <span class="kpi-card__change"></span>
+                                        <span class="kpi-card__compare">vs last 7 days</span>
+                                    </div>
+                                </div>
+                                <div class="kpi-card__chart">
+                                    <canvas></canvas>
+                                </div>
                             </div>
                         </div>
                     </article>
-                    <article class="kpi-card" id="kpiStatus">
+                    <article class="kpi-card" data-chart="mini" data-source="usage" data-metric="status" data-color="green">
                         <div class="kpi-card__body">
                             <div class="kpi-card__mark">
                                 <span class="sai-mark sai-mark--lg sai-mark--green sai-mark--square">
@@ -122,24 +120,23 @@
                                     </span>
                                 </span>
                             </div>
-
-                            <div class="kpi-card__content">
-                                <span class="kpi-card__label">System Status</span>
-                                <strong class="kpi-card__value"></strong>
-                            </div>
-
-                            <div class="kpi-card__meta">
-                                <span class="kpi-card__change"></span>
-                                <span class="kpi-card__compare">vs last 7 days</span>
-                            </div>
-
-                            <div class="kpi-card__chart">
-                                <canvas></canvas>
+                            <div class="kpi-card__box">
+                                <div class="kpi-card__content">
+                                    <span class="kpi-card__label">System Status</span>
+                                    <strong class="kpi-card__value"></strong>
+                                    <div class="kpi-card__meta">
+                                        <span class="kpi-card__change"></span>
+                                        <span class="kpi-card__compare">vs last 7 days</span>
+                                    </div>
+                                </div>
+                                <div class="kpi-card__chart">
+                                    <canvas></canvas>
+                                </div>
                             </div>
                         </div>
                     </article>
                 </section>
-                <section class="sai-content-grid ">
+                <section class="sai-content-grid sai-content-grid--6-4 ">
                     <article class="sai-content-card">
                         <div class="sai-content__body">
                             <div class="swiper js-project-swiper">
@@ -161,51 +158,50 @@
                             </div>
                         </div>
                     </article>
-                    <article
-                        class="sai-content-card js-ai-usage-overview" data-token-quota="">
+                    
+                    <article class="sai-content-card js-ai-usage-overview" data-token-quota="13000000">
                         <div class="sai-content__body sai-content__body--padding sai-content__body--progress">
                             <div class="sai-card__title">
-                                <h2 class="sai-card__title-main">Ai Usage Overview</h2>
+                                <h2 class="sai-card__title-main">AI Usage Overview</h2>
                             </div>
+                            <a href="#" role="button" class="sai-button sai-button__absolute">
+                                <div>
+                                    <span class="sai-button__txt">
+                                        View Details
+                                        <span class="sai-nav-ico sai-nav-ico-20">
+                                            <svg class="sai-icon" aria-hidden="true">
+                                                <use href="/sai/assets/images/svg_ico.svg#ico_line_arrow_right"></use>
+                                            </svg>
+                                        </span>
+                                    </span>
+                                </div>
+                            </a>
                             <div class="sai-card__content">
                                 <div class="sai-card__content--top">
                                     <div class="sai-card__title">
                                         <p class="sai-card__title-sub">Token usage</p>
                                     </div>
+
                                     <div class="sai-card__value">
-                                        <span class="sai-card__value--current">0</span>
+                                        <span class="sai-card__value--current">—</span>
                                         <span class="sai-card__value--slash">/</span>
-                                        <span class="sai-card__value--total">0</span>
+                                        <span class="sai-card__value--total">—</span>
                                     </div>
+
                                     <div class="sai-progress__main">
                                         <div class="sai-progress__track">
-                                            <div
-                                                class="sai-progress__bar sai-progress__bar--total"
-                                                style="--progress: 0%;"
-                                            ></div>
+                                            <div class="sai-progress__bar sai-progress__bar--total"
+                                                style="--progress: 0%;"></div>
                                         </div>
                                         <div class="sai-progress__per">
-                                            <span class="sai-progress__text">0.0%</span>
+                                            <span class="sai-progress__text">—</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="sai-card__content--bottom">
 
+                                <div class="sai-card__content--bottom">
                                     <div class="sai-card__title sai-card__title--flex">
                                         <p class="sai-card__title-sub">Model usage</p>
-
-                                        <a href="#" role="button" class="sai-button">
-                                            <div>
-                                                <span class="sai-button__txt">
-                                                    View Details
-                                                    <span class="sai-nav-ico sai-nav-ico-20">
-                                                        <svg class="sai-icon" aria-hidden="true">
-                                                            <use href="/sai/assets/images/svg_ico.svg#ico_line_arrow_right"></use>
-                                                        </svg>
-                                                    </span>
-                                                </span>
-                                            </div>
-                                        </a>
                                     </div>
                                     <div class="sai-progress__sub" data-model="gpt4o">
                                         <div class="sai-progress__sub--box">
@@ -220,13 +216,13 @@
                                                 <span>Chat GPT</span>
                                             </div>
                                             <div class="sai-progress__track">
-                                                <div
-                                                    class="sai-progress__bar sai-progress__bar--total"
-                                                    style="--progress: 0%;"
-                                                ></div>
+                                                <div class="sai-progress__bar sai-progress__bar--total"
+                                                    style="--progress: 0%;"></div>
                                             </div>
+                                            <span class="sai-progress__model-percent">—</span>
                                         </div>
                                     </div>
+
                                     <div class="sai-progress__sub" data-model="claude">
                                         <div class="sai-progress__sub--box">
                                             <span class="sai-mark sai-mark--orange sai-mark--square">
@@ -236,21 +232,17 @@
                                                     </svg>
                                                 </span>
                                             </span>
-
                                             <div class="sai-progress__model">
                                                 <span>Claude</span>
                                             </div>
-
                                             <div class="sai-progress__track">
-                                                <div
-                                                    class="sai-progress__bar sai-progress__bar--total"
-                                                    style="--progress: 0%;"
-                                                ></div>
+                                                <div class="sai-progress__bar sai-progress__bar--total"
+                                                    style="--progress: 0%;"></div>
                                             </div>
+                                            <span class="sai-progress__model-percent">—</span>
                                         </div>
                                     </div>
 
-                                    <!-- Gemini -->
                                     <div class="sai-progress__sub" data-model="gemini">
                                         <div class="sai-progress__sub--box">
                                             <span class="sai-mark sai-mark--yellow sai-mark--square">
@@ -260,21 +252,17 @@
                                                     </svg>
                                                 </span>
                                             </span>
-
                                             <div class="sai-progress__model">
                                                 <span>Gemini</span>
                                             </div>
-
                                             <div class="sai-progress__track">
-                                                <div
-                                                    class="sai-progress__bar sai-progress__bar--total"
-                                                    style="--progress: 0%;"
-                                                ></div>
+                                                <div class="sai-progress__bar sai-progress__bar--total"
+                                                    style="--progress: 0%;"></div>
                                             </div>
+                                            <span class="sai-progress__model-percent">—</span>
                                         </div>
                                     </div>
 
-                                    <!-- Midjourney -->
                                     <div class="sai-progress__sub" data-model="midjourney">
                                         <div class="sai-progress__sub--box">
                                             <span class="sai-mark sai-mark--pink sai-mark--square">
@@ -284,81 +272,94 @@
                                                     </svg>
                                                 </span>
                                             </span>
-
                                             <div class="sai-progress__model">
                                                 <span>Midjourney</span>
                                             </div>
-
                                             <div class="sai-progress__track">
-                                                <div
-                                                    class="sai-progress__bar sai-progress__bar--total"
-                                                    style="--progress: 0%;"
-                                                ></div>
+                                                <div class="sai-progress__bar sai-progress__bar--total"
+                                                    style="--progress: 0%;"></div>
                                             </div>
+                                            <span class="sai-progress__model-percent">—</span>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </article>
                 </section>
-
-                <!-- *********************************
-                     Recent Projects / Quick Actions
-                     ********************************* -->
-                <section class="sai-content-grid">
-
-                    <!-- Recent Projects -->
+                <section class="sai-content-grid sai-content-grid--full">
                     <article class="sai-content-card">
                         <div class="sai-content__body sai-content__body--padding">
                             <div class="sai-card__title">
                                 <h2 class="sai-card__title-main">Recent Projects</h2>
                             </div>
-
                             <ul class="sai-content-card__list">
-
-                                <li class="sai-content-card__item">
-                                    <span class="sai-mark sai-mark--orange">
-                                        <span class="sai-button__ico sai-nav-ico">
-                                            <svg class="sai-icon" aria-hidden="true">
-                                                <use href="/sai/assets/images/svg_ico.svg#ico_project"></use>
-                                            </svg>
+                                <li class="sai-content-list__item sai-content-list__item--title">
+                                    <span class="sai-content-list__number">#</span>
+                                    <span class="sai-content-list__project">Project</span>
+                                    <span class="sai-content-list__members">Members</span>
+                                    <span class="sai-content-list__updated">Updated</span>
+                                    <span class="sai-content-list__status">Status</span>
+                                </li>
+                                <li class="sai-content-list__item">
+                                    <span class="sai-content-list__number">1</span>
+                                    <span class="sai-content-list__project">
+                                        <span class="sai-mark sai-mark--orange">
+                                            <span class="sai-button__ico sai-nav-ico">
+                                                <svg class="sai-icon" aria-hidden="true">
+                                                    <use href="/sai/assets/images/svg_ico.svg#ico_project"></use>
+                                                </svg>
+                                            </span>
                                         </span>
+                                        <div class="sai-content-list__project-info">
+                                            <p class="sai-content-card-title">SAI Marketing Website</p>
+                                            <p class="sai-content-card-category">Web Project</p>
+                                        </div>
                                     </span>
-                                    <div class="sai-content-card__info">
-                                        <p class="sai-content-card-title">SAI Marketing Website</p>
-                                        <p class="sai-content-card-category">Web Project</p>
-                                    </div>
-                                    <div class="sai-content-card__members">
+                                    <span class="sai-content-list__members">
                                         <div class="sai-mark sai-mark--md sai-mark--purple">
                                             <span>S</span>
                                         </div>
-                                    </div>
-                                    <div class="sai-content-card__date">2H ago</div>
-                                </li>
-
-                                <li class="sai-content-card__item">
-                                    <span class="sai-mark sai-mark--red">
-                                        <span class="sai-button__ico sai-nav-ico">
-                                            <svg class="sai-icon" aria-hidden="true">
-                                                <use href="/sai/assets/images/svg_ico.svg#ico_prompt"></use>
-                                            </svg>
+                                    </span>
+                                    <span class="sai-content-list__updated">2H ago</span>
+                                    <span class="sai-content-list__status">
+                                        <span class="sai-badge sai-badge-active">
+                                            Active
                                         </span>
                                     </span>
-                                    <div class="sai-content-card__info">
+                                </li>
+
+                                <li class="sai-content-list__item">
+                                    <span class="sai-content-list__number">2</span>
+                                    <span class="sai-content-list__project">
+                                        <span class="sai-mark sai-mark--red">
+                                            <span class="sai-button__ico sai-nav-ico">
+                                                <svg class="sai-icon" aria-hidden="true">
+                                                    <use href="/sai/assets/images/svg_ico.svg#ico_prompt"></use>
+                                                </svg>
+                                            </span>
+                                        </span>
+                                        <div class="sai-content-list__project-info">
                                         <p class="sai-content-card-title">AI prompt test</p>
                                         <p class="sai-content-card-category">Prompt Studio</p>
-                                    </div>
-                                    <div class="sai-content-card__members">
+                                        </div>
+                                    </span>
+                                    <span class="sai-content-list__members">
                                         <div class="sai-mark sai-mark--md sai-mark--purple"><span>S</span></div>
                                         <div class="sai-mark sai-mark--md sai-mark--blue"><span>Y</span></div>
                                         <div class="sai-mark sai-mark--md sai-mark--gray"><span>+3</span></div>
-                                    </div>
-                                    <div class="sai-content-card__date">5H ago</div>
+                                    </span>
+                                    <span class="sai-content-list__updated">5H ago</span>
+                                    <span class="sai-content-list__status">
+                                        <span class="sai-badge sai-badge-in-progress">
+                                            In Progress
+                                        </span>
+                                    </span>
                                 </li>
 
-                                <li class="sai-content-card__item">
+                                <li class="sai-content-list__item">
+                                    <span class="sai-content-list__number">3</span>
+                                    <span class="sai-content-list__project">
                                     <span class="sai-mark sai-mark--blue">
                                         <span class="sai-button__ico sai-nav-ico">
                                             <svg class="sai-icon" aria-hidden="true">
@@ -366,187 +367,198 @@
                                             </svg>
                                         </span>
                                     </span>
-                                    <div class="sai-content-card__info">
+                                        <div class="sai-content-list__project-info">
                                         <p class="sai-content-card-title">Making UI Components</p>
                                         <p class="sai-content-card-category">UI Components</p>
-                                    </div>
-                                    <div class="sai-content-card__members">
+                                        </div>
+                                    </span>
+                                    <span class="sai-content-list__members">
                                         <div class="sai-mark sai-mark--md sai-mark--purple"><span>S</span></div>
                                         <div class="sai-mark sai-mark--md sai-mark--red"><span>H</span></div>
                                         <div class="sai-mark sai-mark--md sai-mark--green"><span>J</span></div>
-                                    </div>
-                                    <div class="sai-content-card__date">2H ago</div>
-                                </li>
-
-                                <li class="sai-content-card__item">
-                                    <span class="sai-mark sai-mark--green">
-                                        <span class="sai-button__ico sai-nav-ico">
-                                            <svg class="sai-icon" aria-hidden="true">
-                                                <use href="/sai/assets/images/svg_ico.svg#ico_project"></use>
-                                            </svg>
+                                    </span>
+                                    <span class="sai-content-list__updated">2H agoo</span>
+                                    <span class="sai-content-list__status">
+                                        <span class="sai-badge sai-badge-in-progress">
+                                            In Progress
                                         </span>
                                     </span>
-                                    <div class="sai-content-card__info">
+                                </li>
+
+                                <li class="sai-content-list__item">
+                                    <span class="sai-content-list__number">4</span>
+                                    <span class="sai-content-list__project">
+                                        <span class="sai-mark sai-mark--green">
+                                            <span class="sai-button__ico sai-nav-ico">
+                                                <svg class="sai-icon" aria-hidden="true">
+                                                    <use href="/sai/assets/images/svg_ico.svg#ico_project"></use>
+                                                </svg>
+                                            </span>
+                                        </span>
+                                        <div class="sai-content-list__project-info">
                                         <p class="sai-content-card-title">SAI Workspace Redesign</p>
                                         <p class="sai-content-card-category">Web Project</p>
-                                    </div>
-                                    <div class="sai-content-card__members">
+                                        </div>
+                                    </span>
+                                    <span class="sai-content-list__members">
                                         <div class="sai-mark sai-mark--md sai-mark--purple"><span>S</span></div>
                                         <div class="sai-mark sai-mark--md sai-mark--blue"><span>Y</span></div>
-                                    </div>
-                                    <div class="sai-content-card__date">5H ago</div>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </article>
-
-                    <!-- Quick Actions -->
-                    <article class="sai-content-card">
-                        <div class="sai-content__body sai-content__body--padding">
-                            <div class="sai-card__title">
-                                <h2 class="sai-card__title-main">Quick Actions</h2>
-                            </div>
-
-                            <ul class="sai-content-card__grid">
-
-                                <!-- New Project -->
-                                <li class="sai-content-card__item">
-                                    <div class="sai-mark sai-mark--lg sai-mark--yellow sai-mark--square">
-                                        <span class="sai-button__ico sai-nav-ico">
-                                            <svg class="sai-icon" aria-hidden="true">
-                                                <use href="/sai/assets/images/svg_ico.svg#ico_project"></use>
-                                            </svg>
+                                    </span>
+                                    <span class="sai-content-list__updated">2H agoo</span>
+                                    <span class="sai-content-list__status">
+                                        <span class="sai-badge sai-badge-active">
+                                            Active
                                         </span>
-                                    </div>
-                                    <div class="sai-content-card__info">
-                                        <p class="sai-content-card-title">New Project</p>
-                                        <p class="sai-content-card-category">Create project</p>
-                                    </div>
-                                    <div class="sai-content-card__arrow">
-                                        <span class="sai-nav-ico">
-                                            <svg class="sai-icon" aria-hidden="true">
-                                                <use href="/sai/assets/images/svg_ico.svg#ico_arrow_right"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                </li>
-
-                                <!-- AI Chat -->
-                                <li class="sai-content-card__item">
-                                    <div class="sai-mark sai-mark--lg sai-mark--pink sai-mark--square">
-                                        <span class="sai-button__ico sai-nav-ico">
-                                            <svg class="sai-icon" aria-hidden="true">
-                                                <use href="/sai/assets/images/svg_ico.svg#ico_aiChat"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                    <div class="sai-content-card__info">
-                                        <p class="sai-content-card-title">AI Chat</p>
-                                        <p class="sai-content-card-category">Start chatting</p>
-                                    </div>
-                                    <div class="sai-content-card__arrow">
-                                        <span class="sai-nav-ico">
-                                            <svg class="sai-icon" aria-hidden="true">
-                                                <use href="/sai/assets/images/svg_ico.svg#ico_arrow_right"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                </li>
-
-                                <!-- Generate -->
-                                <li class="sai-content-card__item">
-                                    <div class="sai-mark sai-mark--lg sai-mark--red sai-mark--square">
-                                        <span class="sai-button__ico sai-nav-ico">
-                                            <svg class="sai-icon" aria-hidden="true">
-                                                <use href="/sai/assets/images/svg_ico.svg#ico_generate"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                    <div class="sai-content-card__info">
-                                        <p class="sai-content-card-title">Generate</p>
-                                        <p class="sai-content-card-category">Create images</p>
-                                    </div>
-                                    <div class="sai-content-card__arrow">
-                                        <span class="sai-nav-ico">
-                                            <svg class="sai-icon" aria-hidden="true">
-                                                <use href="/sai/assets/images/svg_ico.svg#ico_arrow_right"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                </li>
-
-                                <!-- Playground -->
-                                <li class="sai-content-card__item">
-                                    <div class="sai-mark sai-mark--lg sai-mark--blue sai-mark--square">
-                                        <span class="sai-button__ico sai-nav-ico">
-                                            <svg class="sai-icon" aria-hidden="true">
-                                                <use href="/sai/assets/images/svg_ico.svg#ico_playground"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                    <div class="sai-content-card__info">
-                                        <p class="sai-content-card-title">Playground</p>
-                                        <p class="sai-content-card-category">Try AI tools</p>
-                                    </div>
-                                    <div class="sai-content-card__arrow">
-                                        <span class="sai-nav-ico">
-                                            <svg class="sai-icon" aria-hidden="true">
-                                                <use href="/sai/assets/images/svg_ico.svg#ico_arrow_right"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                </li>
-
-                                <!-- Documents -->
-                                <li class="sai-content-card__item">
-                                    <div class="sai-mark sai-mark--lg sai-mark--gray sai-mark--square">
-                                        <span class="sai-button__ico sai-nav-ico">
-                                            <svg class="sai-icon" aria-hidden="true">
-                                                <use href="/sai/assets/images/svg_ico.svg#ico_documents"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                    <div class="sai-content-card__info">
-                                        <p class="sai-content-card-title">Documnets</p>
-                                        <p class="sai-content-card-category">Manage files</p>
-                                    </div>
-                                    <div class="sai-content-card__arrow">
-                                        <span class="sai-nav-ico">
-                                            <svg class="sai-icon" aria-hidden="true">
-                                                <use href="/sai/assets/images/svg_ico.svg#ico_arrow_right"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                </li>
-
-                                <!-- Users -->
-                                <li class="sai-content-card__item">
-                                    <div class="sai-mark sai-mark--lg sai-mark--purple sai-mark--square">
-                                        <span class="sai-button__ico sai-nav-ico">
-                                            <svg class="sai-icon" aria-hidden="true">
-                                                <use href="/sai/assets/images/svg_ico.svg#ico_manage"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
-                                    <div class="sai-content-card__info">
-                                        <p class="sai-content-card-title">Users</p>
-                                        <p class="sai-content-card-category">Manage users</p>
-                                    </div>
-                                    <div class="sai-content-card__arrow">
-                                        <span class="sai-nav-ico">
-                                            <svg class="sai-icon" aria-hidden="true">
-                                                <use href="/sai/assets/images/svg_ico.svg#ico_arrow_right"></use>
-                                            </svg>
-                                        </span>
-                                    </div>
+                                    </span>
                                 </li>
 
                             </ul>
                         </div>
                     </article>
                 </section>
-
+                <section class="sai-content-grid sai-content-grid--full">
+                    <article class="sai-content-card">
+                        <div class="sai-content__body sai-content__body--padding">
+                            <div class="sai-card__title">
+                                <h2 class="sai-card__title-main">Quick Actions</h2>
+                            </div>
+                            <ul class="sai-content-card__grid">
+                                <li class="sai-content-list__item">
+                                    <a class="sai-item__link" href="javascript:;">
+                                        <div class="sai-mark sai-mark--lg sai-mark--yellow sai-mark--square">
+                                            <span class="sai-button__ico sai-nav-ico">
+                                                <svg class="sai-icon" aria-hidden="true">
+                                                    <use href="/sai/assets/images/svg_ico.svg#ico_project"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="sai-content-card__info">
+                                            <p class="sai-content-card-title">New Project</p>
+                                            <p class="sai-content-card-category">Create project</p>
+                                        </div>
+                                        <div class="sai-content-card__arrow">
+                                            <span class="sai-nav-ico">
+                                                <svg class="sai-icon" aria-hidden="true">
+                                                    <use href="/sai/assets/images/svg_ico.svg#ico_arrow_right"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="sai-content-list__item">
+                                    <a class="sai-item__link" href="javascript:;">
+                                        <div class="sai-mark sai-mark--lg sai-mark--pink sai-mark--square">
+                                            <span class="sai-button__ico sai-nav-ico">
+                                                <svg class="sai-icon" aria-hidden="true">
+                                                    <use href="/sai/assets/images/svg_ico.svg#ico_aiChat"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="sai-content-card__info">
+                                            <p class="sai-content-card-title">AI Chat</p>
+                                            <p class="sai-content-card-category">Start chatting</p>
+                                        </div>
+                                        <div class="sai-content-card__arrow">
+                                            <span class="sai-nav-ico">
+                                                <svg class="sai-icon" aria-hidden="true">
+                                                    <use href="/sai/assets/images/svg_ico.svg#ico_arrow_right"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="sai-content-list__item">
+                                    <a class="sai-item__link" href="javascript:;">
+                                        <div class="sai-mark sai-mark--lg sai-mark--red sai-mark--square">
+                                            <span class="sai-button__ico sai-nav-ico">
+                                                <svg class="sai-icon" aria-hidden="true">
+                                                    <use href="/sai/assets/images/svg_ico.svg#ico_generate"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="sai-content-card__info">
+                                            <p class="sai-content-card-title">Generate</p>
+                                            <p class="sai-content-card-category">Create images</p>
+                                        </div>
+                                        <div class="sai-content-card__arrow">
+                                            <span class="sai-nav-ico">
+                                                <svg class="sai-icon" aria-hidden="true">
+                                                    <use href="/sai/assets/images/svg_ico.svg#ico_arrow_right"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="sai-content-list__item">
+                                    <a class="sai-item__link" href="javascript:;">
+                                        <div class="sai-mark sai-mark--lg sai-mark--blue sai-mark--square">
+                                            <span class="sai-button__ico sai-nav-ico">
+                                                <svg class="sai-icon" aria-hidden="true">
+                                                    <use href="/sai/assets/images/svg_ico.svg#ico_playground"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="sai-content-card__info">
+                                            <p class="sai-content-card-title">Playground</p>
+                                            <p class="sai-content-card-category">Try AI tools</p>
+                                        </div>
+                                        <div class="sai-content-card__arrow">
+                                            <span class="sai-nav-ico">
+                                                <svg class="sai-icon" aria-hidden="true">
+                                                    <use href="/sai/assets/images/svg_ico.svg#ico_arrow_right"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="sai-content-list__item">
+                                    <a class="sai-item__link" href="javascript:;">
+                                        <div class="sai-mark sai-mark--lg sai-mark--gray sai-mark--square">
+                                            <span class="sai-button__ico sai-nav-ico">
+                                                <svg class="sai-icon" aria-hidden="true">
+                                                    <use href="/sai/assets/images/svg_ico.svg#ico_documents"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="sai-content-card__info">
+                                            <p class="sai-content-card-title">Documnets</p>
+                                            <p class="sai-content-card-category">Manage files</p>
+                                        </div>
+                                        <div class="sai-content-card__arrow">
+                                            <span class="sai-nav-ico">
+                                                <svg class="sai-icon" aria-hidden="true">
+                                                    <use href="/sai/assets/images/svg_ico.svg#ico_arrow_right"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="sai-content-list__item">
+                                    <a class="sai-item__link" href="javascript:;">
+                                        <div class="sai-mark sai-mark--lg sai-mark--purple sai-mark--square">
+                                            <span class="sai-button__ico sai-nav-ico">
+                                                <svg class="sai-icon" aria-hidden="true">
+                                                    <use href="/sai/assets/images/svg_ico.svg#ico_manage"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="sai-content-card__info">
+                                            <p class="sai-content-card-title">Users</p>
+                                            <p class="sai-content-card-category">Manage users</p>
+                                        </div>
+                                        <div class="sai-content-card__arrow">
+                                            <span class="sai-nav-ico">
+                                                <svg class="sai-icon" aria-hidden="true">
+                                                    <use href="/sai/assets/images/svg_ico.svg#ico_arrow_right"></use>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+                </section>
             </div>
         </main>
     </div>
@@ -557,7 +569,7 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 <script defer src="/assets/js/include.js"></script>
 <script defer src="/sai/assets/js/common.js"></script>
-<script defer src="/sai/assets/js/chart.js"></script>
+<!-- <script defer src="/sai/assets/js/chart.js"></script> -->
 <script defer src="/sai/assets/js/overview.js"></script>
 
 </body>

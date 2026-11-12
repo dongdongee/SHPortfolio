@@ -36,6 +36,9 @@
    --color-text-secondary: #636363;
    --color-text-tertiary: #9699a2;
    --color-text-disabled: #b9bbc2;
+   --color-text-status-up: #10b981;
+   --color-text-status-down: #ef4444;
+   --color-text-status-flat: #60a5fa;
 
 
     /* ========================

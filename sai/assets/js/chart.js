@@ -822,7 +822,12 @@ class ModelUsageChart {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                cutout: '72%',
+                cutout: '70%',
+                layout: {
+                    padding: {
+                        top: 10,
+                    },
+                },
                 plugins: {
                     legend: {
                         display: false
