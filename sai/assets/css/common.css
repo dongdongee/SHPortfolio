@@ -1,11 +1,6 @@
 /* ========================================
    Common Default
 ======================================== */
-html,
-body {
-    height: 100%;
-}
-
 body { 
     font-family: var(--sai-font-family); 
     color: var(--color-text-primary); 
@@ -70,15 +65,10 @@ html[data-theme="dark"] {
 #wrap {
     display: flex;
     flex-direction: column;
-    width: min(calc(100% - (10 * var(--space))), 1640px);
-    height: calc(100dvh - (40 * var(--space)));
     min-height: 0;
-    margin: calc(20 * var(--space)) auto;
     background: var(--color-bg-page);
     border: 1px solid var(--color-border);
     border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 8px 32px rgba(16, 24, 40, .06);
     .sai-layout {
         display: flex;
         flex: 1;
@@ -658,24 +648,40 @@ html[data-theme="dark"] {
     min-width: 0;
     min-height: 0;
     width: 100%;
-    padding: calc(10*var(--space));
+    padding: calc(4*var(--space));
     overflow-x: hidden;
     overflow-y: auto;
     flex-direction: column;
     flex: 1;
     .sai-content__title{
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         flex-shrink: 0;
-        row-gap: calc(2*var(--space));
-        padding-bottom: calc(4*var(--space));
+        padding: calc(4*var(--space));
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        background-color: var(--color-bg-active);
+        .sai-nav-ico {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+        }
+        .sai-nav-ico .sai-icon {
+            width: 40px;
+            height: 40px;
+        }
         .sai-title__main{
             font-size: var(--font-size-3xl);
-            padding-bottom: calc(2*var(--space));
+            font-weight: var(--font-weight-semibold);
             line-height: 1;
+            font-family: var(--sai-font-family);
+            padding-bottom: calc(2*var(--space));
         }
         .sai-title__desc{
-            font-size: var(--font-size-xl);
+            font-size: var(--font-size-lg);
             font-weight: var(--font-weight-medium);
             color: var(--color-text-secondary);
             line-height: 1;

@@ -52,18 +52,18 @@ Playground	Playground	Experiment with features in a sandbox.
             <div class="sai-aside" data-include="./includes/aside.html"></div>
                 <main class="sai-content">
                     <section class="sai-content__title">
-                        <h1 class="sai-title__main">OVERVIEW</h1>
+                        <h1 class="sai-title__main">Overviw</h1>
                         <p class="sai-title__desc">SAI Workspace의 기간별 통계를 확인할 수 있어요.</p>
+                        <div class="sai-datepicker">
+                            <span id="sai-datepicker__label" for="analytics-date-trigger">Selected Day</span>
+                                <button type="button" id="analytics-date-trigger" class="js-analytics-date-trigger" aria-labelledby="sai-datepicker__label analytics-date-text" >
+                                    <span id="analytics-date-text" class="js-analytics-date-text" ></span>
+                                </button>
+                            <p class="js-analytics-period" aria-live="polite"></p>
+                            <p>선택한 날짜를 포함한 최근 7일간의 데이터입니다.</p>
+                            <input type="date" id="analytics-date" class="js-analytics-date" tabindex="-1" aria-hidden="true" >
+                        </div>
                     </section>
-                    <div class="sai-datepicker">
-                        <span id="sai-datepicker__label" for="analytics-date-trigger">Selected Day</span>
-                            <button type="button" id="analytics-date-trigger" class="js-analytics-date-trigger" aria-labelledby="sai-datepicker__label analytics-date-text" >
-                                <span id="analytics-date-text" class="js-analytics-date-text" ></span>
-                            </button>
-                        <p class="js-analytics-period" aria-live="polite"></p>
-                        <p>선택한 날짜를 포함한 최근 7일간의 데이터입니다.</p>
-                        <input type="date" id="analytics-date" class="js-analytics-date" tabindex="-1" aria-hidden="true" >
-                    </div>
                     <div class="sai-content__panel">
                         <section class="sai-content-grid sai-content-grid--kpi">
                             <article class="kpi-card" data-component="kpi" data-source="users.daily" data-metric="total" data-chart="mini" data-range="7d" data-color="purple">
