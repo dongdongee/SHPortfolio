@@ -1,201 +1,227 @@
 
-    .sai-content-grid {
-        display: grid;
-        gap: calc(4*var(--space));
-        grid-template-columns: 5fr 5fr;
-        gap: calc(6*var(--space));
-        margin: calc(6 * var(--space)) auto 0;
-        &.sai-content-grid--full{
-            grid-template-columns: 1fr;
-        }
-        &.sai-content-grid--7-3{
-            grid-template-columns: 7fr 3fr;
-        }
-        &.sai-content-grid--6-4{
-            grid-template-columns: 6fr 4fr;
-        }
-        &.sai-content-grid--4-6{
-            grid-template-columns: 4fr 6fr;
-        }
-        &.sai-content-grid--kpi{
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            .kpi-card{
-                .kpi-card__body{
-                    display: flex;
-                    flex-direction: row;
-                    padding: calc(4 * var(--space));
-                    min-width: 0;
-                    background: var(--color-bg-surface);
-                    border: 1px solid var(--color-border);
-                    border-radius: var(--radius-md);
-                    .kpi-card__box{
-                        display: flex;
-                        flex-wrap: wrap;
-                        min-width: 0;
-                        flex: 1;
-                    }
-                    .kpi-card__mark{
-                        width: 50px;
-                        margin-right: calc(2*var(--space));
-                    }
-                    .kpi-card__content{
-                        display: flex;
-                        flex-direction: column;
-                        align-items: flex-start;
-                        justify-content: center;
-                        gap: calc(1 * var(--space));
-                        .kpi-card__label{
-                            display: block;
-                            font-size: var(--font-size-md);
-                            font-weight: var(--font-weight-medium);
-                            color: var(--color-text-secondary);
-                        }
-                        .kpi-card__value{
-                            display: block;
-                            font-size: var(--font-size-2xl);
-                            font-weight: var(--font-weight-bold);
-                            color: var(--color-text-primary);
-                            line-height: 1;
-                        }
-                    }
-                    .kpi-card__meta{
-                        display: flex;
-                        flex-direction: column;
-                        min-width: 100px;
-                        justify-content: flex-end;
-                        align-items: flex-start ;
-                        line-height: 1;
-                        gap: var(--space);
-                        font-size: var(--font-size-sm);
-                        font-weight: var(--font-weight-medium);
-                        padding-top: calc(3 * var(--space));
-                    }
-                    .kpi-card__chart{
-                        min-width: calc(100% - (120px + 2 * var(--space)));
-                        min-height: 70px;
-                        height: 70px;
-                        margin-top: auto;
-                        margin-left: auto;
-                        canvas{
-                            display: block;
-                            width: 100% !important;
-                            height: 100% !important;
-                        }
-                    }
-                }
-            grid-template-columns: repeat(4, 1fr);
-                .kpi-card__chart{
-                    max-width: 60px;
-                }
-            }
-        }
-        .sai-content-card {
-            position: relative;
-            display: flex;
-            flex: 1;
-            flex-direction: column;
-            justify-content: space-around;
-            min-width: 0;
-            background: var(--color-bg-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-lg);
-            .sai-content__head{
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-            }
-            .sai-content__body{
-                display: flex;
-                flex-direction: column;
-                gap: calc(2 * var(--space));  
-                flex: 1;
-                min-width: 0; /* 추가 */
-                min-height: 0; /* 추가 */
-                &.sai-content__body--padding{
-                    padding: calc(4 * var(--space)) calc(6 * var(--space));
-                }
-                .sai-card__title{
-                    &.sai-card__title--flex{
+
+
+    
+
+
+
+
+.analytics-date-picker {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sai-datepicker__trigger {
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* 실제 날짜 input은 화면에서 보이지 않게 배치 */
+.sai-datepicker__date {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.sai-content {
+    & .sai-content__panel {
+        .sai-content-grid {
+            &.sai-content-grid--kpi{
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                .kpi-card{
+                    .kpi-card__body{
                         display: flex;
                         flex-direction: row;
-                        align-items: center;
-                        justify-content: space-between;
-                    }
-                    .sai-card__title-main{
-                        font-size: var(--font-size-xl);
-                        font-weight: var(--font-weight-bold);
-                        color: var(--color-text-primary);
-                    }
-                    .sai-card__title-sub{
-                        font-size: var(--font-size-lg);
-                        font-weight: var(--font-weight-semibold);
-                        color: var(--color-text-secondary);
-                    }
-                }
-                .js-project-swiper{
-                    width: 100%;
-                    height: 100%;
-                    .swiper-wrapper{
-                        .swiper-slide{
-                            width: 100%;
-                            height: 100%;
-                            overflow: hidden;
-                            border-radius: var(--radius-lg);
-                            img {
+                        padding: calc(4 * var(--space));
+                        min-width: 0;
+                        background: var(--color-bg-surface);
+                        border: 1px solid var(--color-border);
+                        border-radius: var(--radius-sm);
+                        .kpi-card__box{
+                            display: flex;
+                            flex-wrap: wrap;
+                            min-width: 0;
+                            flex: 1;
+                        }
+                        .kpi-card__mark{
+                            width: 50px;
+                            margin-right: calc(2*var(--space));
+                        }
+                        .kpi-card__content{
+                            display: flex;
+                            flex-direction: column;
+                            align-items: flex-start;
+                            justify-content: center;
+                            gap: calc(1 * var(--space));
+                            .kpi-card__label{
                                 display: block;
-                                width: 100%;
-                                height: 100%;
-                                object-fit: cover;
+                                font-size: var(--font-size-md);
+                                font-weight: var(--font-weight-medium);
+                                color: var(--color-text-secondary);
+                            }
+                            .kpi-card__value{
+                                display: block;
+                                font-size: var(--font-size-2xl);
+                                font-weight: var(--font-weight-bold);
+                                color: var(--color-text-primary);
+                                line-height: 1;
+                            }
+                        }
+                        .kpi-card__meta{
+                            display: flex;
+                            flex-direction: column;
+                            min-width: 100px;
+                            justify-content: flex-end;
+                            align-items: flex-start ;
+                            line-height: 1;
+                            gap: var(--space);
+                            font-size: var(--font-size-sm);
+                            font-weight: var(--font-weight-medium);
+                            padding-top: calc(3 * var(--space));
+                        }
+                        .kpi-card__chart{
+                            max-width: 75px;
+                            min-height: 70px;
+                            height: 70px;
+                            margin-top: auto;
+                            margin-left: auto;
+                            canvas{
+                                display: block;
+                                width: 100% !important;
+                                height: 100% !important;
                             }
                         }
                     }
-                    .swiper-pagination{
-                        .swiper-pagination-bullet{
-                            width: 30px;
-                            height: 6px;
-                            border-radius: var(--radius-full);
+                }
+            }
+            .js-project-swiper{
+                width: 100%;
+                height: 100%;
+                .swiper-wrapper{
+                    .swiper-slide{
+                        width: 100%;
+                        height: 100%;
+                        overflow: hidden;
+                        border-radius: var(--radius-sm);
+                        img {
+                            display: block;
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
                         }
                     }
                 }
-                &.sai-content__body--progress{
-                    .sai-card__content{
-                        .sai-card__content--top{
-                            border-bottom: 1px solid var(--color-border);
-                            padding: 0 calc(2 * var(--space)) calc(3 * var(--space));
-                            margin-bottom: calc(3 * var(--space));
-                            .sai-progress__main{
+                .swiper-pagination{
+                    .swiper-pagination-bullet{
+                        width: 30px;
+                        height: 6px;
+                        border-radius: var(--radius-full);
+                    }
+                }
+            }
+            .sai-content__body--progress{
+                .sai-card__content{
+                    .sai-card__content--top{
+                        border-bottom: 1px solid var(--color-border);
+                        padding: 0 calc(2 * var(--space)) calc(3 * var(--space));
+                        margin-bottom: calc(3 * var(--space));
+                        .sai-progress__main{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: space-between;
+                            gap: calc(5 * var(--space));
+                        }
+                        .sai-card__value{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: flex-end;
+                            line-height: 1;
+                            gap: calc(2 * var(--space));
+                            padding: calc(2 * var(--space)) 0;
+                            .sai-card__value--current{
+                                font-size: var(--font-size-2xl);
+                                font-weight: var(--font-weight-bold);
+                                color: var(--color-text-primary);
+                            }
+                            .sai-card__value--slash{
+                                font-size: var(--font-size-md);
+                                font-weight: var(--font-weight-regular);
+                                color: var(--color-text-secondary);
+                                padding-bottom: calc(0.5 * var(--space));
+                            }
+                            .sai-card__value--total{
+                                font-size: var(--font-size-lg);
+                                font-weight: var(--font-weight-regular);
+                                color: var(--color-text-secondary);
+                            }
+                        }
+                        
+                        .sai-progress__track{
+                            display: block;
+                            width: 100%;
+                            height: 16px;
+                            background: var(--color-bg-subtle);
+                            border-radius: 100px;
+                            .sai-progress__bar{
+                                width: var(--progress, 0%);
+                                height: 100%;
+                                background: var(--color-primary);
+                                border-radius: inherit;
+                                transition: width 0.3s ease;
+                            }
+                        }
+                        .sai-progress__per{
+                            font-size: var(--font-size-md);
+                            font-weight: var(--font-weight-bold);
+                            color: var(--color-text-primary);
+                        }
+                    }
+                    .sai-card__content--bottom{
+                        padding: 0 calc(2 * var(--space)) 0;
+                        .sai-progress__sub{
+                            display: flex;
+                            flex-direction: column;
+                            gap: calc(5 * var(--space));
+                            padding-top: calc(2 * var(--space));
+                            .sai-progress__sub--box{
+                                flex: 1;
                                 display: flex;
                                 flex-direction: row;
                                 align-items: center;
-                                justify-content: space-between;
-                                gap: calc(5 * var(--space));
-                            }
-                            .sai-card__value{
-                                display: flex;
-                                flex-direction: row;
-                                align-items: flex-end;
-                                line-height: 1;
                                 gap: calc(2 * var(--space));
-                                padding: calc(2 * var(--space)) 0;
-                                .sai-card__value--current{
-                                    font-size: var(--font-size-2xl);
-                                    font-weight: var(--font-weight-bold);
-                                    color: var(--color-text-primary);
+                                --model-color: var(--color-primary-muted)!important;
+                                &:has(.sai-mark--gray) {
+                                    --model-color: #94a3b8!important;
                                 }
-                                .sai-card__value--slash{
-                                    font-size: var(--font-size-md);
-                                    font-weight: var(--font-weight-regular);
-                                    color: var(--color-text-secondary);
-                                    padding-bottom: calc(0.5 * var(--space));
+
+                                &:has(.sai-mark--orange) {
+                                    --model-color: #ffa451!important;
                                 }
-                                .sai-card__value--total{
-                                    font-size: var(--font-size-lg);
-                                    font-weight: var(--font-weight-regular);
-                                    color: var(--color-text-secondary);
+
+                                &:has(.sai-mark--yellow) {
+                                    --model-color: #facc15!important;
+                                }
+
+                                &:has(.sai-mark--pink) {
+                                    --model-color: #ec4899!important;
+                                }
+
+                                .sai-progress__bar {
+                                    background: var(--model-color)!important;
+                                }
+                                .sai-progress__model{
+                                    font-size: var(--font-size-sm);
+                                    font-weight: var(--font-weight-medium);
+                                    min-width: 80px;
                                 }
                             }
-                            
                             .sai-progress__track{
                                 display: block;
                                 width: 100%;
@@ -205,54 +231,23 @@
                                 .sai-progress__bar{
                                     width: var(--progress, 0%);
                                     height: 100%;
-                                    background: var(--color-primary);
+                                    background: var(--color-primary-muted);
                                     border-radius: inherit;
                                     transition: width 0.3s ease;
-                                }
-                            }
-                            .sai-progress__per{
-                                font-size: var(--font-size-md);
-                                font-weight: var(--font-weight-bold);
-                                color: var(--color-text-primary);
-                            }
-                        }
-                        .sai-card__content--bottom{
-                            padding: 0 calc(2 * var(--space)) 0;
-                            .sai-progress__sub{
-                                display: flex;
-                                flex-direction: column;
-                                gap: calc(5 * var(--space));
-                                padding-top: calc(2 * var(--space));
-                                .sai-progress__sub--box{
-                                    flex: 1;
-                                    display: flex;
-                                    flex-direction: row;
-                                    align-items: center;
-                                    gap: calc(2 * var(--space));
-                                    .sai-progress__model{
-                                        font-size: var(--font-size-sm);
-                                    font-weight: var(--font-weight-medium);
-                                        min-width: 80px;
-                                    }
-                                }
-                                .sai-progress__track{
-                                    display: block;
-                                    width: 100%;
-                                    height: 16px;
-                                    background: var(--color-bg-subtle);
-                                    border-radius: 100px;
-                                    .sai-progress__bar{
-                                        width: var(--progress, 0%);
-                                        height: 100%;
-                                        background: var(--color-primary-muted);
-                                        border-radius: inherit;
-                                        transition: width 0.3s ease;
-                                    }
                                 }
                             }
                         }
                     }
                 }
+            }
+        }
+    }
+}
+            
+        
+
+
+        
                 .sai-content-card__list{
                     display: grid;
                     min-height: 0;
@@ -273,7 +268,7 @@
                             color: var(--color-text-secondary);
                             border-bottom: none;
                             background-color: var(--color-bg-subtle);
-                            border-radius: var(--radius-md);
+                            border-radius: var(--radius-sm);
                             padding: calc(2 * var(--space)) 0;
                         }
                         .sai-content-list__number{
@@ -350,7 +345,7 @@
                         padding: calc(4 * var(--space)) calc(6 * var(--space));
                         gap: calc(2*var(--space));
                         border: 1px solid var(--color-border);
-                        border-radius: var(--radius-md);
+                        border-radius: var(--radius-sm);
                         > .sai-item__link{
                             display: flex;
                             flex: 1;
@@ -374,290 +369,3 @@
                         }
                     }
                 }
-                .sai-usage-chart{
-                    height: 100%;
-                }
-                
-            }
-        }
-        @media (max-width: 1280px) {
-            gap: calc(4*var(--space));
-            margin: calc(4 * var(--space)) auto 0;   
-        }
-        @media screen and (max-width: 960px) {
-            grid-template-columns: 2fr;
-            &.sai-content-grid--6-4 {
-                grid-template-columns: 1fr;
-            }&.sai-content-grid--4-6 {
-                grid-template-columns: 1fr;
-            }
-            &.sai-content-grid--kpi{
-                overflow-x: auto;
-                .kpi-card{
-                    min-width: 240px;
-                    .kpi-card__body{
-                        .kpi-card__meta{
-                            .kpi-card__change{
-                                &.is-up{
-                                    color: var(--color-status-green);
-                                }
-                            }
-                            .kpi-card__change.is-down{
-                                color: var(--color-status-red);
-                            }
-                        }
-                    }
-                }
-            }
-            .sai-content-card {
-                .sai-content__body{
-                    .js-project-swiper{
-                        aspect-ratio: 16/7;
-                    }
-                    .sai-content-card__list{
-                        .sai-content-list__item{
-                            column-gap: calc(4 * var(--space));
-                            &:last-child{
-                                border-bottom: none;
-                            }
-                            .sai-content-card__info{
-                                .sai-content-card-title{
-                                    width: 240px;
-                                }
-                            }
-                        }
-                    }
-                    .sai-content-card__grid{
-                        grid-template-columns: repeat(3, 2fr);
-                    }
-                }
-            }
-        }
-        @media screen and (max-width: 768px) {
-            padding: 0;
-            &.sai-content-grid--kpi{
-                .kpi-card{
-                    min-width: 200px;
-                    .kpi-card__body{
-                        display: flex;
-                        padding: calc(2 * var(--space));
-                        .kpi-card__mark{
-                            width: 50px;
-                            margin-right: calc(2*var(--space));
-                        }
-                        .kpi-card__content{
-                            display: flex;
-                            flex-direction: column;
-                            align-items: flex-start;
-                            justify-content: center;
-                            min-width: calc(100% - (50px + 2 * var(--space)));
-                            .kpi-card__label{
-                                display: block;
-                                font-size: var(--font-size-md);
-                                font-weight: var(--font-weight-medium);
-                                color: var(--color-text-secondary);
-                            }
-                            .kpi-card__value{
-                                display: block;
-                                font-size: var(--font-size-2xl);
-                                font-weight: var(--font-weight-bold);
-                                color: var(--color-text-primary);
-                                line-height: 1;
-                            }
-                        }
-                        .kpi-card__meta{
-                            display: flex;
-                            flex-direction: column;
-                            min-width: 100px;
-                            justify-content: flex-end;
-                            align-items: flex-start ;
-                            line-height: 1;
-                            gap: var(--space);
-                            font-size: var(--font-size-sm);
-                            font-weight: var(--font-weight-medium);
-                            padding-top: calc(3 * var(--space));
-                            .kpi-card__change{
-                                &.is-up{
-                                    color: var(--color-status-green);
-                                }
-                            }
-                            .kpi-card__change.is-down{
-                                color: var(--color-status-red);
-                            }
-                        }
-                        .kpi-card__chart{
-                            min-width: calc(100% - (120px + 2 * var(--space)));
-                            margin-left: auto;
-                        }
-                    }
-                grid-template-columns: repeat(4, 1fr);
-                    .kpi-card__chart{
-                        max-width: 60px;
-                    }
-                }
-            }
-            .sai-content-card {
-                position: relative;
-                display: flex;
-                flex: 1;
-                flex-direction: column;
-                justify-content: space-around;
-                min-width: 0;
-                background: var(--color-bg-surface);
-                border: 1px solid var(--color-border);
-                border-radius: var(--radius-lg);
-                .sai-content__body{
-                    display: flex;
-                    flex-direction: column;
-                    gap: calc(2 * var(--space));  
-                    flex: 1;
-                    &.sai-content__body--padding{
-                        padding: calc(4 * var(--space));
-                    }
-                    .js-project-swiper{
-                        aspect-ratio: 16/9;
-                    }
-                    &.sai-content__body--progress{
-                        .sai-card__content{
-                            .sai-card__content--top{
-                                .sai-progress__track{
-                                    height: 12px;
-                                }
-                            }
-                            .sai-card__content--bottom{
-                                padding: 0 calc(2 * var(--space)) 0;
-                                .sai-progress__sub{
-                                    .sai-progress__track{
-                                        height: 12px;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .sai-content-card__list{
-                        .sai-content-list__item{
-                            padding: calc(2 * var(--space));
-                        }
-                    }
-                    .sai-content-card__grid{
-                        display: grid;
-                        grid-template-columns: repeat(2, 2fr);
-                        gap: calc(2*var(--space));
-                        .sai-content-list__item{              
-                            display: grid;
-                            padding: calc(2 * var(--space));              
-                            grid-template-columns: 1fr auto;
-                            grid-template-areas:
-                                "mark arrow"
-                                "info arrow";
-                            gap: calc(2 * var(--space));
-
-                            .sai-mark {
-                                grid-area: mark;
-                            }
-
-                            .sai-content-card__info {
-                                grid-area: info;
-                                min-width: 0;
-                            }
-
-                            .sai-content-card__arrow {
-                                grid-area: arrow;
-                                align-self: center;
-                                justify-self: end;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-
-
-
-    .model-usage {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    min-width: 0;
-}
-
-.model-usage__chart {
-    position: relative;
-    flex: 0 0 220px;
-    width: 100%;
-    height: 220px;
-    min-width: 0;
-    min-height: 0;
-}
-
-.model-usage__chart canvas {
-    display: block;
-    width: 100% !important;
-    height: 100% !important;
-}
-
-.model-usage__legend {
-    flex: 1;
-    min-width: 0;
-}
-
-.model-usage__color {
-    display: inline-block;
-    flex: 0 0 8px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-
-
-.sai-progress__sub--box {
-    --model-color: var(--color-primary-muted)!important;
-
-    &:has(.sai-mark--gray) {
-        --model-color: #94a3b8!important;
-    }
-
-    &:has(.sai-mark--orange) {
-        --model-color: #ffa451!important;
-    }
-
-    &:has(.sai-mark--yellow) {
-        --model-color: #facc15!important;
-    }
-
-    &:has(.sai-mark--pink) {
-        --model-color: #ec4899!important;
-    }
-
-    .sai-progress__bar {
-        background: var(--model-color)!important;
-    }
-}
-
-
-
-.analytics-date-picker {
-    position: relative;
-    display: inline-flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.js-analytics-date-trigger {
-    cursor: pointer;
-    user-select: none;
-    -webkit-user-select: none;
-}
-
-/* 실제 날짜 input은 화면에서 보이지 않게 배치 */
-.js-analytics-date {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    pointer-events: none;
-}

@@ -1,9 +1,15 @@
+
+/* *********************************
+ * Overview Common
+ * ********************************* */
+
 /** Overview 데이터 경로 */
 const OVERVIEW_DATA_URL = '/sai/assets/data/dataList.json';
 
 /**
  * 서울 기준 오늘 날짜를 반환한다.
- * 데이터의 날짜와 문자열로 비교할 수 있도록 sv-SE 로케일로 형식을 맞춘다.
+ * 데이터의 날짜와 문자열로 비교할 수 있도록
+ * sv-SE 로케일로 형식을 맞춘다.
  *
  * @returns {string} YYYY-MM-DD 형식의 날짜
  */
@@ -16,15 +22,13 @@ function getToday() {
     }).format(new Date());
 }
 
-
 /**
- * 기준 날짜에서 지정한 일수만큼 이동한 날짜를 반환함
- * @param {string} date - 기준 날짜 문자열 (YYYY-MM-DD)
- * @param {number} days - 이동할 일수 (양수: 이후, 음수: 이전)
- * @returns {string} 이동한 날짜 문자열 (YYYY-MM-DD)
+ * 기준 날짜에서 지정한 일수만큼 이동한다.
+ *
+ * @param {string} date - 기준 날짜 (YYYY-MM-DD)
+ * @param {number} days - 이동할 일수
+ * @returns {string} 이동한 날짜 (YYYY-MM-DD)
  */
-
-
 function shiftDate(date, days) {
     const result = new Date(`${date}T00:00:00Z`);
 
@@ -34,271 +38,377 @@ function shiftDate(date, days) {
 }
 
 
+/* *********************************
+ * Overview KPI
+ * ********************************* */
+
 /**
- * Overview KPI 카드의 최신 값, 7일 전 대비 증감, 최근 7일 미니차트를 표시한다.
- *
- * @param {HTMLElement} section - KPI 카드를 포함하는 영역
+ * Overview KPI 클래스
  *
  * @description
- * - render(daily): 날짜 오름차순으로 정렬된 일별 데이터를 받아 카드를 갱신한다.
- * - renderChange(): 일반 지표는 변화율(%), 가동률은 차이(%p)를 표시한다.
- * - renderChart(): 최신 데이터 날짜를 포함한 최근 7일 값을 막대차트로 표시한다.
+ * - 오늘의 KPI 값 표시
+ * - 7일 전 대비 증감률 계산
+ * - 최근 7일 미니차트 렌더링
+ * - 공통 SaiMiniChart 클래스 사용
  */
-
 class OverviewKpi {
+    /**
+     * @param {HTMLElement} section - KPI 카드 영역
+     */
     constructor(section) {
         this.section = section;
     }
 
+    /**
+     * KPI 데이터 계산 및 렌더링
+     *
+     * @param {Array<Object>} daily - 일별 데이터
+     * @returns {void}
+     */
     render(daily) {
-        const latestDay = daily[daily.length - 1];
-        if (!latestDay) return;
+        const today = getToday();
 
+        // 오늘 포함 최근 7일 날짜 생성
         const dates = Array.from({ length: 7 }, (_, index) =>
-            shiftDate(latestDay.date, index - 6)
+            shiftDate(today, index - 6)
         );
 
-        const daysByDate = new Map(daily.map((day) => [day.date, day]));
-        const previousDate = shiftDate(latestDay.date, -7);
-        const previousDay = daysByDate.get(previousDate);
+        // 날짜를 키로 사용하는 Map 생성
+        const daysByDate = new Map(
+            daily.map((day) => [day.date, day])
+        );
 
+        // 오늘 데이터
+        const todayDay = daysByDate.get(today);
+
+        // 정확히 7일 전 데이터
+        const previousDay = daysByDate.get(
+            shiftDate(today, -7)
+        );
+
+        // 오늘 데이터가 없으면 종료
+        if (!todayDay) return;
+
+        // KPI별 데이터 추출 방법
         const getMetric = {
             total: (day) => day.users.total,
+
             requests: (day) => day.requests.total,
 
             projects: (day) => Object.values(day.projects)
                 .filter((project) => project.requests > 0).length,
 
-            status: (day) => day.status.uptime,
+            status: (day) => day.status.uptime
         };
 
+        // KPI 카드 조회
         const cards = this.section.querySelectorAll('.kpi-card');
 
         for (const card of cards) {
             const metric = card.dataset.metric;
             const readValue = getMetric[metric];
 
+            // 정의되지 않은 지표는 건너뛰기
             if (typeof readValue !== 'function') continue;
 
             const isStatus = metric === 'status';
-            const latest = readValue(latestDay);
-            const previous = previousDay ? readValue(previousDay) : null;
 
+            // 오늘과 7일 전의 KPI 값
+            const current = readValue(todayDay);
+
+            const previous = previousDay
+                ? readValue(previousDay)
+                : null;
+
+            // KPI 대표값 표시
             const valueEl = card.querySelector('.kpi-card__value');
+
             if (valueEl) {
-                const unit = isStatus ? '%' : '';
-                valueEl.textContent = `${latest.toLocaleString('ko-KR')}${unit}`;
+                valueEl.textContent =
+                    `${current.toLocaleString('ko-KR')}${isStatus ? '%' : ''}`;
             }
 
-            this.renderChange(card, latest, previous, isStatus);
+            // 증감률 렌더링
+            this.renderChange(
+                card,
+                current,
+                previous,
+                isStatus
+            );
 
+            // 최근 7일 차트 데이터 생성
             const values = dates.map((date) => {
                 const day = daysByDate.get(date);
+
                 return day ? readValue(day) : null;
             });
 
-            this.renderChart(card, dates, values);
+            // 공통 미니차트 클래스 호출
+            const canvas = card.querySelector(
+                '.kpi-card__chart canvas'
+            );
+
+            if (canvas) {
+                new SaiMiniChart(canvas).renderMini(values);
+            }
         }
     }
 
-    renderChange(card, latest, previous, isStatus) {
+    /**
+     * 7일 전 대비 KPI 증감률 표시
+     *
+     * @param {HTMLElement} card - KPI 카드
+     * @param {number} current - 오늘 값
+     * @param {number|null} previous - 7일 전 값
+     * @param {boolean} isStatus - 가동률 지표 여부
+     * @returns {void}
+     */
+    renderChange(card, current, previous, isStatus) {
         const changeEl = card.querySelector('.kpi-card__change');
+
         if (!changeEl) return;
 
-        changeEl.classList.remove('is-up', 'is-down', 'is-flat');
+        // 기존 증감 상태 클래스 제거
+        changeEl.classList.remove(
+            'is-up',
+            'is-down',
+            'is-flat'
+        );
 
-        if (previous === null || (!isStatus && previous === 0)) {
+        // 비교 데이터가 없거나 분모가 0인 경우
+        if (
+            previous === null ||
+            (!isStatus && previous === 0)
+        ) {
             changeEl.textContent = '—';
             return;
         }
 
-        const difference = latest - previous;
-        const change = isStatus ? difference : (difference / previous) * 100;
+        // 오늘과 7일 전의 차이
+        const difference = current - previous;
 
-        const rounded = Number(change.toFixed(isStatus ? 3 : 2));
+        // 일반 지표는 변화율(%)
+        // 가동률은 차이(%p)
+        const change = isStatus
+            ? difference
+            : (difference / previous) * 100;
+
+        // 소수점 자리 처리
+        const rounded = Number(
+            change.toFixed(isStatus ? 3 : 2)
+        );
+
+        // 증감률 텍스트
         const sign = rounded > 0 ? '+' : '';
         const unit = isStatus ? '%p' : '%';
 
         changeEl.textContent = `${sign}${rounded}${unit}`;
 
-        let trend = 'is-flat';
-        if (rounded > 0) trend = 'is-up';
-        if (rounded < 0) trend = 'is-down';
+        // 증감 상태 클래스
+        const trend = rounded > 0
+            ? 'is-up'
+            : rounded < 0
+                ? 'is-down'
+                : 'is-flat';
 
         changeEl.classList.add(trend);
-    }
-
-    renderChart(card, dates, values) {
-        const canvas = card.querySelector('.kpi-card__chart canvas');
-        if (!canvas || typeof Chart === 'undefined') return;
-
-        const colors = {
-            purple: '124, 58, 237',
-            blue: '37, 99, 235',
-            orange: '234, 88, 12',
-            green: '22, 163, 74',
-        };
-
-        const rgb = colors[card.dataset.color] ?? colors.purple;
-
-        const numbers = values.filter(Number.isFinite);
-        const min = Math.min(...numbers);
-        const max = Math.max(...numbers);
-
-        const backgroundColors = values.map((value) => {
-            if (!Number.isFinite(value)) return 'transparent';
-
-            const ratio = min === max ? 1 : (value - min) / (max - min);
-            const opacity = 0.25 + ratio * 0.75;
-
-            return `rgba(${rgb}, ${opacity})`;
-        });
-
-        Chart.getChart(canvas)?.destroy();
-
-        new Chart(canvas, {
-            type: 'bar',
-            data: {
-                labels: dates.map((date) => date.slice(5)),
-                datasets: [{
-                    data: values,
-                    backgroundColor: backgroundColors,
-                    borderRadius: 3,
-                    maxBarThickness: 12,
-                }],
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    x: { display: false },
-                    y: { display: false, beginAtZero: true },
-                },
-                plugins: {
-                    legend: { display: false },
-                },
-            },
-        });
     }
 }
 
 
+
+
+/* *********************************
+ * Overview AI Usage
+ * ********************************* */
+
 /**
- * 최근 7일간의 AI 사용량을 집계해 토큰 사용량, 한도 대비 사용률,
- * 모델별 요청 비중을 표시한다.
- *
- * @param {HTMLElement} section - AI 사용량 카드와 진행 막대를 포함하는 영역
+ * AI Usage Overview 클래스
  *
  * @description
- * - render(days): 최근 7일로 필터링된 일별 데이터를 받아 토큰과 요청 수를 합산한다.
- * - renderProgress(container, textSelector, percent): 대상 영역의 막대와
- *   비율 텍스트를 갱신한다. 100%를 넘으면 막대 너비만 100%로 제한하며,
- *   비율을 계산할 수 없으면 텍스트에 '—'를 표시한다.
- * - 두 메서드는 화면을 갱신하며 반환값은 없다.
+ * - 최근 7일 토큰 사용량 합산
+ * - 전체 토큰 한도 대비 사용률 계산
+ * - 모델별 요청 비중 계산
+ * - 공통 SaiProgress 클래스 호출
  */
-
 class AiUsageOverview {
+    /**
+     * @param {HTMLElement} section - AI Usage 영역
+     */
     constructor(section) {
         this.section = section;
     }
 
+    /**
+     * AI Usage 데이터 계산 및 렌더링
+     *
+     * @param {Array<Object>} days - 최근 7일 데이터
+     * @returns {void}
+     */
     render(days) {
         if (!days.length) return;
 
         let totalTokens = 0;
         let totalRequests = 0;
+
         const requestsByModel = new Map();
 
+        // 최근 7일 데이터 합산
         for (const day of days) {
-
             totalTokens += day.tokens.total;
             totalRequests += day.requests.total;
 
+            // 모델별 요청 수 합산
             for (const [modelId, usage] of Object.entries(day.models)) {
                 const previous = requestsByModel.get(modelId) ?? 0;
-                requestsByModel.set(modelId, previous + usage.requests);
+
+                requestsByModel.set(
+                    modelId,
+                    previous + usage.requests
+                );
             }
         }
 
+        // HTML의 토큰 한도 읽기
         const quota = Number(this.section.dataset.tokenQuota);
+
         const hasQuota = Number.isFinite(quota) && quota > 0;
 
-        this.section.querySelector('.sai-card__value--current').textContent =
-            totalTokens.toLocaleString('ko-KR');
-
-        this.section.querySelector('.sai-card__value--total').textContent =
-            hasQuota ? quota.toLocaleString('ko-KR') : '—';
-
-        const tokenPercent = hasQuota ? (totalTokens / quota) * 100 : null;
-
-        this.renderProgress(
-            this.section.querySelector('.sai-progress__main'),
-            '.sai-progress__text',
-            tokenPercent
+        // 전체 토큰 사용량 표시
+        const currentEl = this.section.querySelector(
+            '.sai-card__value--current'
         );
 
-        const modelRows = this.section.querySelectorAll('.sai-progress__sub[data-model]');
+        const totalEl = this.section.querySelector(
+            '.sai-card__value--total'
+        );
+
+        if (currentEl) {
+            currentEl.textContent = totalTokens.toLocaleString('ko-KR');
+        }
+
+        if (totalEl) {
+            totalEl.textContent = hasQuota
+                ? quota.toLocaleString('ko-KR')
+                : '—';
+        }
+
+        // 전체 토큰 사용률 계산
+        const tokenPercent = hasQuota
+            ? (totalTokens / quota) * 100
+            : null;
+
+        // 공통 Progress Bar 호출
+        const mainProgress = this.section.querySelector(
+            '.sai-progress__main'
+        );
+
+        new SaiProgress(
+            mainProgress,
+            '.sai-progress__text'
+        ).render(tokenPercent);
+
+        // 모델별 사용 비중 계산
+        const modelRows = this.section.querySelectorAll(
+            '.sai-progress__sub[data-model]'
+        );
 
         for (const row of modelRows) {
-            const modelRequests = requestsByModel.get(row.dataset.model) ?? 0;
+            const modelId = row.dataset.model;
+
+            const modelRequests = requestsByModel.get(modelId) ?? 0;
+
             const percent = totalRequests > 0
                 ? (modelRequests / totalRequests) * 100
                 : null;
 
-            this.renderProgress(row, '.sai-progress__model-percent', percent);
+            // 공통 Progress Bar 호출
+            new SaiProgress(
+                row,
+                '.sai-progress__model-percent'
+            ).render(percent);
         }
-    }
-
-    renderProgress(container, textSelector, percent) {
-        const bar = container.querySelector('.sai-progress__bar');
-        const text = container.querySelector(textSelector);
-
-        const width = Math.min(percent ?? 0, 100);
-        bar.style.setProperty('--progress', `${width}%`);
-
-        text.textContent = percent === null
-            ? '—'
-            : `${percent.toLocaleString('ko-KR', { maximumFractionDigits: 1 })}%`;
     }
 }
 
 
-/* ==================================================
- * Overview 실행
- * ================================================== */
 
-async function initOverview() {
-    const kpiSection = document.querySelector('.sai-content-grid--kpi');
-    const usageSection = document.querySelector('.js-ai-usage-overview');
+/* *********************************
+ * Overview KPI Initialize
+ * ********************************* */
 
-    if (!kpiSection && !usageSection) return;
+/**
+ * Overview KPI 초기화
+ *
+ * @description
+ * - KPI 영역 확인
+ * - JSON 데이터 불러오기
+ * - OverviewKpi 클래스 실행
+ *
+ * @returns {Promise<void>}
+ */
+async function initKpi() {
+    const section = document.querySelector('.sai-content-grid--kpi');
+
+    if (!section) return;
 
     const response = await fetch(OVERVIEW_DATA_URL);
+
     if (!response.ok) {
-        throw new Error(`Overview 데이터 요청 실패 (${response.status})`);
+        throw new Error(
+            `KPI 데이터 요청 실패 (${response.status})`
+        );
     }
 
     const { daily } = await response.json();
-    const today = getToday();
-
-    // console.log(`오늘은 ${today}`);
-
-    const availableDays = daily.filter((day) => day.date <= today);
-
-    if (kpiSection) {
-        const sortedDays = [...availableDays].sort((a, b) =>
-            a.date.localeCompare(b.date)
-        );
-        new OverviewKpi(kpiSection).render(sortedDays);
-    }
-
-    if (usageSection) {
-        const start = shiftDate(today, -6);
-        const recentDays = availableDays.filter((day) => day.date >= start);
-
-        new AiUsageOverview(usageSection).render(recentDays);
-    }
+    new OverviewKpi(section).render(daily);
 }
 
-initOverview().catch((error) => console.error(error));
 
+/* *********************************
+ * Overview AI Usage Initialize
+ * ********************************* */
+
+/**
+ * AI Usage 초기화
+ *
+ * @description
+ * - JSON 데이터 불러오기
+ * - 오늘 포함 최근 7일 데이터 추출
+ * - AiUsageOverview 클래스 실행
+ *
+ * @returns {Promise<void>}
+ */
+async function initAiUsage() {
+    const section = document.querySelector('.js-ai-usage-overview');
+
+    if (!section) return;
+
+    const response = await fetch(OVERVIEW_DATA_URL);
+
+    if (!response.ok) {
+        throw new Error(
+            `AI Usage 데이터 요청 실패 (${response.status})`
+        );
+    }
+
+    const { daily } = await response.json();
+
+    // 오늘 포함 최근 7일
+    const today = getToday();
+    const start = shiftDate(today, -6);
+
+    const recentDays = daily.filter((day) =>
+        day.date >= start && day.date <= today
+    );
+
+    // AI Usage 렌더링
+    new AiUsageOverview(section).render(recentDays);
+}
+
+
+
+
+// KPI 초기화 실행
+initKpi().catch(console.error);
+initAiUsage().catch(console.error);

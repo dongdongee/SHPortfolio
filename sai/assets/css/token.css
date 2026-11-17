@@ -24,7 +24,9 @@
    ======================== */
    --color-bg-page: #f8f8fb;
    --color-bg-surface: #ffffff;
-   --color-bg-subtle: #e9e9ef;
+   --color-bg-subtle: #f5f5f8;
+   --color-primary-soft-bg: #f2f1f7;
+   --color-primary-hover-strong: #5b21b6;
    --color-bg-hover: #eeeef2;
    --color-bg-active: #f1edff;
 
@@ -141,6 +143,8 @@
    --color-bg-page: #0b0f1a;
    --color-bg-surface: #131827;
    --color-bg-subtle: #353a49;
+   --color-primary-soft-bg: #242333;
+   --color-primary-hover-strong: #c4b5fd;
    --color-bg-hover: #202738;
    --color-bg-active: #302747;
 

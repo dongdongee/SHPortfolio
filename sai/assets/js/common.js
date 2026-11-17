@@ -272,6 +272,8 @@ class MenuButton {
 }
 
 
+
+
 /* *********************************
  * Tab
  * ********************************* */
@@ -308,72 +310,6 @@ class Tab {
     }
 }
 
-/**
- * DatePicker
- * --------------------------------------------------
- * 네이티브 캘린더와 날짜 표시 버튼을 연결하는 공통 클래스
- *
- * 주요 기능
- * 1. 날짜 버튼 클릭 시 캘린더 열기
- * 2. 날짜 변경 시 표시 텍스트 갱신
- * 3. 초기 날짜 표시
- */
-class DatePicker {
-    constructor(selector) {
-        this.container = document.querySelector(selector);
-
-        if (!this.container) return;
-
-        this.dateInput = this.container.querySelector('.js-analytics-date');
-        this.dateTrigger = this.container.querySelector('.js-analytics-date-trigger');
-        this.dateText = this.container.querySelector('.js-analytics-date-text');
-
-        this.init();
-    }
-
-    /**
-     * DatePicker 초기화
-     */
-    init() {
-        if (!this.dateInput || !this.dateTrigger || !this.dateText) return;
-
-        this.bindEvents();
-        this.updateDateText();
-    }
-
-    /**
-     * 이벤트 등록
-     */
-    bindEvents() {
-        // 날짜 표시 버튼 클릭 시 캘린더 열기
-        this.dateTrigger.addEventListener('click', () => {
-            this.openCalendar();
-        });
-
-        // 날짜 변경 시 텍스트 갱신
-        this.dateInput.addEventListener('change', () => {
-            this.updateDateText();
-        });
-    }
-
-    /**
-     * 네이티브 캘린더 열기
-     */
-    openCalendar() {
-        if (typeof this.dateInput.showPicker === 'function') {
-            this.dateInput.showPicker();
-        } else {
-            this.dateInput.focus();
-        }
-    }
-
-    /**
-     * 선택 날짜를 버튼에 표시
-     */
-    updateDateText() {
-        this.dateText.textContent = this.dateInput.value || '날짜 선택';
-    }
-}
 
 /* *********************************
  * 필요한 스크립트 실행부
@@ -384,4 +320,3 @@ new ActiveToggle();
 new AsideNavigation();
 new MenuButton();
 new Tab();
-new DatePicker('.sai-datepicker');

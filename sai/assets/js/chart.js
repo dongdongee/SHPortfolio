@@ -1,841 +1,369 @@
+
 /* *********************************
  * Chart Defaults
  * ********************************* */
 
-Chart.defaults.font.family = 'Poppins, Pretendard, sans-serif';
-Chart.defaults.font.size = 12;
-Chart.defaults.font.weight = '600';
-Chart.defaults.color = '#9699a2';
+// Chart.js 공통 기본 설정
+if (typeof Chart !== 'undefined') {
+    Chart.defaults.font.family = 'Poppins, Pretendard, sans-serif';
+    Chart.defaults.font.size = 12;
+    Chart.defaults.font.weight = '600';
+    Chart.defaults.color = '#9699a2';
+}
 
 
 /* *********************************
- * KPI Chart
+ * SAI Common Mini Chart
  * ********************************* */
-const kpiColors = [
-    [119, 61, 249],  // Purple
-    [89, 152, 255],  // Blue
-    [255, 164, 81],  // Orange
-    [66, 214, 195]   // Mint
-];
-class KpiChart {
-    constructor(selector, options = {}) {
-        this.el = document.querySelector(selector);
-        if (!this.el) return;
 
-        this.data = options.data || [];
-        this.compareText = options.compareText || 'vs last 7 days';
-
-        this.init();
+/**
+ * KPI 미니차트 공통 클래스
+ *
+ * @description
+ * - 데이터 계산은 각 페이지 JS에서 담당한다.
+ * - 전달받은 데이터로 미니 막대차트를 생성한다.
+ * - HTML의 data-color 속성으로 색상을 결정한다.
+ * - 재렌더링 시 기존 Chart.js 인스턴스를 제거한다.
+ */
+class SaiMiniChart {
+    /**
+     * @param {HTMLCanvasElement} canvas - 차트를 표시할 canvas 요소
+     */
+    constructor(canvas) {
+        this.canvas = canvas;
     }
 
-    init() {
-        if (!this.data.length) return;
+    /**
+     * KPI 미니 막대차트 렌더링
+     *
+     * @param {Array<number|null>} values - 날짜별 KPI 값
+     * @returns {void}
+     */
+    renderMini(values) {
+        // Canvas 또는 Chart.js가 없으면 종료
+        if (!this.canvas || typeof Chart === 'undefined') return;
 
-        this.setData();
-        this.renderChart();
-    }
+        // 기존 차트 제거 (날짜 변경 시 중복 생성 방지)
+        Chart.getChart(this.canvas)?.destroy();
 
-    setData() {
-        const first = this.data[0];
-        const last = this.data[this.data.length - 1];
+        // 배열이 아니거나 데이터가 비어 있으면 종료
+        if (!Array.isArray(values) || !values.length) return;
 
-        this.value = last;
+        // null을 제외하고 실제 숫자만 추출
+        const numbers = values.filter(Number.isFinite);
 
-        this.changeRate = first !== 0
-            ? ((last - first) / first) * 100
-            : 0;
+        // 표시할 숫자가 없으면 종료
+        if (!numbers.length) return;
 
-        this.trend = this.changeRate > 0
-            ? 'up'
-            : this.changeRate < 0
-                ? 'down'
-                : 'same';
+        // KPI 카드의 data-color 속성 읽기
+        const card = this.canvas.closest('.kpi-card');
+        const color = card?.dataset.color ?? 'purple';
 
-        this.renderInfo();
-    }
+        // 차트 색상 정의
+        const colors = {
+            purple: [119, 61, 249],
+            blue: [89, 152, 255],
+            orange: [255, 164, 81],
+            green: [66, 214, 195]
+        };
 
-    renderInfo() {
-        const valueEl = this.el.querySelector('.kpi-card__value');
-        const changeEl = this.el.querySelector('.kpi-card__change');
-        const compareEl = this.el.querySelector('.kpi-card__compare');
+        // 선택한 색상의 RGB 값 추출
+        const [r, g, b] = colors[color] ?? colors.purple;
 
-        if (valueEl) {
-            valueEl.textContent = this.value.toLocaleString();
-        }
+        // 유효한 숫자를 기준으로 최소·최댓값 계산
+        const min = Math.min(...numbers);
+        const max = Math.max(...numbers);
 
-        if (changeEl) {
-            const arrow = this.trend === 'up'
-                ? '↑'
-                : this.trend === 'down'
-                    ? '↓'
-                    : '–';
+        // 값의 크기에 따라 막대 투명도 계산
+        const backgroundColors = values.map((value) => {
+            // 데이터가 없는 날짜는 투명 처리
+            if (!Number.isFinite(value)) return 'transparent';
 
-            changeEl.textContent =
-                `${arrow} ${Math.abs(this.changeRate).toFixed(1)}%`;
+            const ratio = min === max
+                ? 1
+                : (value - min) / (max - min);
 
-            changeEl.classList.remove('is-up', 'is-down', 'is-same');
-            changeEl.classList.add(`is-${this.trend}`);
-        }
+            const opacity = 0.25 + ratio * 0.75;
 
-        if (compareEl) {
-            compareEl.textContent = this.compareText;
-        }
-    }
+            return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+        });
 
-    renderChart() {
-        const canvas = this.el.querySelector('.kpi-card__chart canvas');
-        if (!canvas) return;
-
-        const min = Math.min(...this.data);
-        const max = Math.max(...this.data);
-
-        const index = [...document.querySelectorAll('.kpi-card')]
-    .indexOf(this.el);
-
-const [r, g, b] = kpiColors[index % kpiColors.length];
-
-const colors = this.data.map(value => {
-    const ratio = max === min
-        ? 1
-        : (value - min) / (max - min);
-
-    return `rgba(${r}, ${g}, ${b}, ${0.25 + ratio * 0.75})`;
-});
-
-        new Chart(canvas, {
+        // 미니 막대차트 생성
+        new Chart(this.canvas, {
             type: 'bar',
+
             data: {
-                labels: this.data.map((_, index) => index + 1),
+                labels: values.map((_, index) => index + 1),
+
                 datasets: [{
-                    data: this.data,
+                    data: values,
                     borderWidth: 0,
-                    borderRadius: 2,
-                    backgroundColor: colors
+                    borderRadius: 3,
+                    maxBarThickness: 12,
+                    backgroundColor: backgroundColors
                 }]
             },
+
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false },
-                    tooltip: { enabled: false }
-                },
-                scales: {
-                    x: { display: false },
-                    y: {
-                        display: false,
-                        beginAtZero: true,
-                        max
-                    }
-                }
-            }
-        });
-    }
-}
 
-
-/* *********************************
- * KPI Data
- * ********************************* */
-
-const kpiData = [
-    {
-        selector: '#kpiUsers',
-        data: [400, 242, 367, 800, 820, 898, 923]
-    },
-    {
-        selector: '#kpiRequests',
-        data: [20, 50, 54, 82, 88, 92, 98]
-    },
-    {
-        selector: '#kpiProjects',
-        data: [2, 2, 5, 8, 14, 4, 6]
-    },
-    {
-        selector: '#kpiStatus',
-        data: [89.2, 99.4, 79.3, 99.6, 99.7, 79.8, 99.9]
-    }
-];
-
-
-/* *********************************
- * Usage Chart
- * ********************************* */
-
-class UsageChart {
-    constructor(selector, options = {}) {
-        this.el = document.querySelector(selector);
-        if (!this.el) return;
-
-        this.dataUrl = options.dataUrl;
-        this.data = [];
-        this.filteredData = [];
-
-        this.period = 'day';
-        this.selectedDate = this.parseDate(new Date());
-
-        this.minDate = null;
-        this.maxDate = this.formatDate(new Date());
-
-        this.chart = null;
-        this.ready = this.init();
-    }
-
-    async init() {
-        await this.loadData();
-
-        if (!this.data.length) return;
-
-        this.setInitialDate();
-        this.filterData();
-        this.renderChart();
-        this.bindEvents();
-    }
-
-    async loadData() {
-        try {
-            const response = await fetch(this.dataUrl);
-
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}`);
-            }
-
-            const json = await response.json();
-            const rows = Array.isArray(json) ? json : json.daily;
-
-            if (!Array.isArray(rows)) {
-                throw new Error('Invalid usage data format');
-            }
-
-            this.data = rows
-                .filter(item =>
-                    typeof item.date === 'string' &&
-                    Number.isFinite(item.requests) &&
-                    Number.isFinite(item.users)
-                )
-                .sort((a, b) => a.date.localeCompare(b.date));
-
-            if (!this.data.length) return;
-
-            this.minDate = this.data[0].date;
-            this.maxDate = this.data[this.data.length - 1].date;
-
-        } catch (error) {
-            console.error('Usage data load failed:', error);
-            this.data = [];
-        }
-    }
-
-    setInitialDate() {
-        const today = this.formatDate(new Date());
-
-        const selectedDate = today > this.maxDate
-            ? this.maxDate
-            : today < this.minDate
-                ? this.minDate
-                : today;
-
-        this.selectedDate = this.parseDate(selectedDate);
-    }
-
-    bindEvents() {
-        const buttons = this.el.querySelectorAll('[data-period]');
-
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                const period = button.dataset.period;
-
-                if (this.period === period) return;
-
-                this.setPeriod(period);
-
-                buttons.forEach(item => {
-                    const isActive = item === button;
-
-                    item.classList.toggle('is-active', isActive);
-                    item.setAttribute(
-                        'aria-pressed',
-                        String(isActive)
-                    );
-                });
-            });
-        });
-    }
-
-    setPeriod(period) {
-        if (!['day', 'week', 'month'].includes(period)) return;
-
-        this.period = period;
-        this.filterData();
-        this.updateChart();
-    }
-
-    setDate(date) {
-        const selectedDate = this.parseDate(date);
-        if (!selectedDate) return;
-
-        this.selectedDate = selectedDate;
-        this.filterData();
-        this.updateChart();
-    }
-
-    filterData() {
-        if (this.period === 'day') {
-            this.filteredData = this.getDailyData();
-        } else if (this.period === 'week') {
-            this.filteredData = this.getWeeklyData();
-        } else {
-            this.filteredData = this.getMonthlyData();
-        }
-    }
-
-    getDailyData() {
-        const endDate = new Date(this.selectedDate);
-        const startDate = new Date(endDate);
-
-        startDate.setDate(startDate.getDate() - 6);
-
-        return this.getDataByRange(startDate, endDate);
-    }
-
-    getWeeklyData() {
-        const result = [];
-
-        for (let i = 4; i >= 0; i--) {
-            const endDate = new Date(this.selectedDate);
-            endDate.setDate(endDate.getDate() - i * 7);
-
-            const startDate = new Date(endDate);
-            startDate.setDate(startDate.getDate() - 6);
-
-            const rows = this.getDataByRange(startDate, endDate);
-            if (!rows.length) continue;
-
-            result.push({
-                date: this.formatDate(startDate),
-                requests: this.sumRequests(rows),
-                users: this.averageUsers(rows)
-            });
-        }
-
-        return result;
-    }
-
-    getMonthlyData() {
-        const result = [];
-
-        for (let i = 2; i >= 0; i--) {
-            const year = this.selectedDate.getFullYear();
-            const month = this.selectedDate.getMonth() - i;
-
-            const startDate = new Date(year, month, 1);
-            const endDate = new Date(year, month + 1, 0);
-
-            if (i === 0) {
-                endDate.setTime(this.selectedDate.getTime());
-            }
-
-            const rows = this.getDataByRange(startDate, endDate);
-            if (!rows.length) continue;
-
-            result.push({
-                date: this.formatMonth(startDate),
-                requests: this.sumRequests(rows),
-                users: this.averageUsers(rows)
-            });
-        }
-
-        return result;
-    }
-
-    getDataByRange(startDate, endDate) {
-        const start = this.formatDate(startDate);
-        const end = this.formatDate(endDate);
-
-        return this.data.filter(item =>
-            item.date >= start && item.date <= end
-        );
-    }
-
-    sumRequests(rows) {
-        return rows.reduce(
-            (total, item) => total + item.requests,
-            0
-        );
-    }
-
-    averageUsers(rows) {
-        const total = rows.reduce(
-            (sum, item) => sum + item.users,
-            0
-        );
-
-        return rows.length
-            ? Math.round(total / rows.length)
-            : 0;
-    }
-
-    parseDate(value) {
-        if (value instanceof Date) {
-            return Number.isNaN(value.getTime())
-                ? null
-                : new Date(
-                    value.getFullYear(),
-                    value.getMonth(),
-                    value.getDate()
-                );
-        }
-
-        if (typeof value !== 'string') return null;
-
-        const [year, month, day] = value.split('-').map(Number);
-        const date = new Date(year, month - 1, day);
-
-        if (
-            date.getFullYear() !== year ||
-            date.getMonth() !== month - 1 ||
-            date.getDate() !== day
-        ) {
-            return null;
-        }
-
-        return date;
-    }
-
-    formatDate(date) {
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2, '0');
-
-        return `${year}-${month}-${day}`;
-    }
-
-    formatMonth(date) {
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-
-        return `${year}-${month}`;
-    }
-
-    renderChart() {
-        const canvas = this.el.querySelector('canvas');
-        if (!canvas) return;
-
-        const labels = this.filteredData.map(item => item.date);
-        const requests = this.filteredData.map(item => item.requests);
-        const users = this.filteredData.map(item => item.users);
-
-        this.chart = new Chart(canvas, {
-            type: 'line',
-            data: {
-                labels,
-                datasets: [
-                    {
-                        label: 'Requests',
-                        data: requests,
-                        borderColor: '#773df9',
-                        borderWidth: 2,
-                        tension: 0.4,
-                        backgroundColor: 'rgba(119, 61, 249, 0.08)',
-                        fill: true,
-                        pointRadius: 4,
-                        pointHoverRadius: 6,
-                        pointBackgroundColor: '#773df9',
-                        pointBorderWidth: 2,
-                        pointHoverBackgroundColor: '#773df9',
-                        yAxisID: 'y'
-                    },
-                    {
-                        label: 'Users',
-                        data: users,
-                        borderColor: '#b8a0fa',
-                        borderWidth: 2,
-                        tension: 0.4,
-                        backgroundColor: 'rgba(184, 160, 250, 0.08)',
-                        fill: false,
-                        pointRadius: 4,
-                        pointHoverRadius: 6,
-                        pointBackgroundColor: '#b8a0fa',
-                        pointBorderWidth: 2,
-                        pointHoverBackgroundColor: '#b8a0fa',
-                        yAxisID: 'y1'
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                interaction: {
-                    mode: 'index',
-                    intersect: false
-                },
-                plugins: {
-                    legend: {
-                        position: 'top',
-                        align: 'end',
-                        labels: {
-                            usePointStyle: true,
-                            pointStyle: 'circle',
-                            boxWidth: 7,
-                            boxHeight: 7,
-                            padding: 16,
-                            color: '#636363',
-                            font: {
-                                size: 11,
-                                weight: '500'
-                            }
-                        }
-                    },
-                    tooltip: {
-                        enabled: true
-                    }
-                },
-                scales: {
-                    x: {
-                        grid: { display: false },
-                        ticks: { maxTicksLimit: 8 }
-                    },
-                    y: {
-                        type: 'linear',
-                        position: 'left',
-                        beginAtZero: true
-                    },
-                    y1: {
-                        type: 'linear',
-                        position: 'right',
-                        beginAtZero: true,
-                        grid: {
-                            drawOnChartArea: false
-                        }
-                    }
-                }
-            }
-        });
-    }
-
-    updateChart() {
-        if (!this.chart) return;
-
-        this.chart.data.labels =
-            this.filteredData.map(item => item.date);
-
-        this.chart.data.datasets[0].data =
-            this.filteredData.map(item => item.requests);
-
-        this.chart.data.datasets[1].data =
-            this.filteredData.map(item => item.users);
-
-        this.chart.update();
-    }
-}
-
-
-/* *********************************
- * Date Picker
- * ********************************* */
-
-class DatePicker {
-    constructor(selector, options = {}) {
-        this.el = document.querySelector(selector);
-        if (!this.el) return;
-
-        this.input = this.el.querySelector('input[type="date"]');
-        if (!this.input) return;
-
-        this.selectedDate = new Date();
-        this.minDate = null;
-        this.maxDate = new Date();
-
-        this.onChange = options.onChange || null;
-
-        this.init();
-    }
-
-    init() {
-        this.updateInput();
-        this.bindEvents();
-    }
-
-    bindEvents() {
-        this.input.addEventListener('change', () => {
-            if (!this.input.value) return;
-
-            this.setDate(this.input.value);
-        });
-    }
-
-    setRange(minDate, maxDate) {
-        const min = this.parseDate(minDate);
-        const max = this.parseDate(maxDate);
-
-        if (!min || !max || min > max) return;
-
-        const today = this.parseDate(new Date());
-        const allowedMax = max < today ? max : today;
-
-        if (min > allowedMax) return;
-
-        this.minDate = min;
-        this.maxDate = allowedMax;
-        this.selectedDate = new Date(this.maxDate);
-
-        this.updateInput();
-        this.notifyChange();
-    }
-
-    setDate(date) {
-        const selectedDate = this.parseDate(date);
-
-        if (
-            !selectedDate ||
-            (this.minDate && selectedDate < this.minDate) ||
-            selectedDate > this.maxDate
-        ) {
-            this.updateInput();
-            return;
-        }
-
-        this.selectedDate = selectedDate;
-        this.updateInput();
-        this.notifyChange();
-    }
-
-    changeDate(direction) {
-        const date = new Date(this.selectedDate);
-        date.setDate(date.getDate() + direction);
-
-        this.setDate(date);
-    }
-
-    notifyChange() {
-        if (typeof this.onChange === 'function') {
-            this.onChange(new Date(this.selectedDate));
-        }
-    }
-
-    parseDate(value) {
-        if (value instanceof Date) {
-            return Number.isNaN(value.getTime())
-                ? null
-                : new Date(
-                    value.getFullYear(),
-                    value.getMonth(),
-                    value.getDate()
-                );
-        }
-
-        if (typeof value !== 'string') return null;
-
-        const [year, month, day] = value.split('-').map(Number);
-        const date = new Date(year, month - 1, day);
-
-        if (
-            date.getFullYear() !== year ||
-            date.getMonth() !== month - 1 ||
-            date.getDate() !== day
-        ) {
-            return null;
-        }
-
-        return date;
-    }
-
-    formatDate(date) {
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2, '0');
-
-        return `${year}-${month}-${day}`;
-    }
-
-    updateInput() {
-        if (!this.input) return;
-
-        this.input.min = this.minDate
-            ? this.formatDate(this.minDate)
-            : '';
-
-        this.input.max = this.formatDate(this.maxDate);
-        this.input.value = this.formatDate(this.selectedDate);
-    }
-}
-
-
-/* *********************************
- * Model Usage Chart
- * ********************************* */
-
-class ModelUsageChart {
-    constructor(selector, options = {}) {
-        this.el = document.querySelector(selector);
-        if (!this.el) return;
-
-        this.canvas = this.el.querySelector('canvas');
-        this.legend = this.el.querySelector('.model-usage__legend');
-        this.totalEl = this.el.querySelector('.js-model-usage-total');
-        this.labelEl = this.el.querySelector('.js-model-usage-label');
-        this.select = this.el.querySelector('.js-model-usage-type');
-
-        if (!this.canvas) {
-            console.warn('ModelUsageChart: canvas not found');
-            return;
-        }
-
-        this.dataUrl = options.dataUrl;
-        this.data = [];
-        this.rows = [];
-        this.type = 'requests';
-        this.selectedDate = null;
-        this.chart = null;
-
-        this.models = [
-            {
-                key: 'gemini',
-                name: 'Gemini',
-                color: '#773df9'
-            },
-            {
-                key: 'gpt4o',
-                name: 'GPT-4o',
-                color: '#5998ff'
-            },
-            {
-                key: 'claude',
-                name: 'Claude',
-                color: '#ffa451'
-            },
-            {
-                key: 'midjourney',
-                name: 'Midjourney',
-                color: '#42d6c3'
-            },
-            {
-                key: 'dalle',
-                name: 'DALL·E',
-                color: '#b8a0fa'
-            }
-        ];
-
-        this.renderChart();
-        this.bindEvents();
-        this.ready = this.loadData();
-    }
-
-    async loadData() {
-        try {
-            const response = await fetch(this.dataUrl);
-
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}`);
-            }
-
-            const json = await response.json();
-            const rows = Array.isArray(json) ? json : json.daily;
-
-            if (!Array.isArray(rows)) {
-                throw new Error('Invalid model usage data format');
-            }
-
-            this.data = rows
-                .filter(item => typeof item.date === 'string')
-                .sort((a, b) => a.date.localeCompare(b.date));
-
-            if (!this.data.length) {
-                console.warn('ModelUsageChart: no data');
-                return;
-            }
-
-            const today = this.formatDate(new Date());
-            const latestDate = this.data[this.data.length - 1].date;
-
-            this.setDate(
-                this.selectedDate ||
-                (today < latestDate ? today : latestDate)
-            );
-
-        } catch (error) {
-            console.error('Model usage data load failed:', error);
-        }
-    }
-
-    bindEvents() {
-        if (!this.select) return;
-
-        this.select.addEventListener('change', () => {
-            if (!['requests', 'tokens'].includes(this.select.value)) {
-                return;
-            }
-
-            this.type = this.select.value;
-            this.update();
-        });
-    }
-
-    formatDate(date) {
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2, '0');
-
-        return `${year}-${month}-${day}`;
-    }
-
-    setDate(date) {
-        if (!date) return;
-
-        const selectedDate = date instanceof Date
-            ? this.formatDate(date)
-            : date;
-
-        this.selectedDate = selectedDate;
-
-        this.rows = this.data.filter(item =>
-            item.date === selectedDate
-        );
-
-        this.update();
-    }
-
-    getValues() {
-        return this.models.map(model => {
-            return this.rows.reduce((sum, row) => {
-                const value = row.models?.[model.key]?.[this.type];
-
-                return sum + (
-                    Number.isFinite(value) ? value : 0
-                );
-            }, 0);
-        });
-    }
-
-    renderChart() {
-        this.chart = new Chart(this.canvas, {
-            type: 'doughnut',
-            data: {
-                labels: this.models.map(model => model.name),
-                datasets: [{
-                    data: this.models.map(() => 0),
-                    backgroundColor: this.models.map(model => model.color),
-                    borderWidth: 0,
-                    hoverOffset: 5
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                cutout: '70%',
-                layout: {
-                    padding: {
-                        top: 10,
-                    },
-                },
                 plugins: {
                     legend: {
                         display: false
                     },
                     tooltip: {
+                        enabled: false
+                    }
+                },
+
+                scales: {
+                    x: {
+                        display: false
+                    },
+                    y: {
+                        display: false,
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+}
+
+
+/* *********************************
+ * SAI Common Progress
+ * ********************************* */
+
+/**
+ * 프로그레스 바 공통 클래스
+ *
+ * @description
+ * - 전달받은 비율을 CSS 변수에 적용한다.
+ * - 비율을 텍스트로 표시한다.
+ * - 100%를 초과하더라도 막대 너비는 100%로 제한한다.
+ */
+class SaiProgress {
+    /**
+     * @param {HTMLElement} container - 프로그레스 영역
+     * @param {string} textSelector - 비율 텍스트 선택자
+     */
+    constructor(container, textSelector) {
+        this.container = container;
+        this.textSelector = textSelector;
+    }
+
+    /**
+     * 프로그레스 바 렌더링
+     *
+     * @param {number|null} percent - 사용 비율
+     * @returns {void}
+     */
+    render(percent) {
+        if (!this.container) return;
+
+        const bar = this.container.querySelector('.sai-progress__bar');
+        const text = this.container.querySelector(this.textSelector);
+
+        const isValid = Number.isFinite(percent);
+
+        const width = isValid ? Math.max(0, Math.min(percent, 100)) : 0;
+
+        bar?.style.setProperty('--progress', `${width}%`);
+
+        if (text) {
+            text.textContent = isValid ? `${percent.toLocaleString('ko-KR', { maximumFractionDigits: 1 })}%` : '—'; }
+    }
+}
+
+
+
+
+/* *********************************
+ * Common Line Chart
+ * ********************************* */
+
+/**
+ * 공통 이중 Y축 꺾은선 차트
+ *
+ * @description
+ * - Chart.js 기반 Line Chart
+ * - 왼쪽 / 오른쪽 Y축 개별 사용
+ * - 여러 데이터셋 렌더링
+ * - 기존 차트 제거 후 재생성
+ * - 날짜 변경 시 차트 갱신
+ */
+class SaiLineChart {
+    /**
+     * @param {HTMLCanvasElement} canvas - 차트 canvas
+     */
+    constructor(canvas) {
+        this.canvas = canvas;
+    }
+
+    /**
+     * 이중 Y축 차트 렌더링
+     *
+     * @param {Array<string>} labels - X축 날짜
+     * @param {Array<Object>} datasets - 차트 데이터
+     * @returns {void}
+     */
+    render(labels, datasets) {
+        if (!this.canvas) return;
+
+        // 기존 차트 제거
+        Chart.getChart(this.canvas)?.destroy();
+
+        new Chart(this.canvas, {
+            type: 'line',
+
+            data: {
+                labels,
+                datasets: datasets.map((dataset, index) => ({
+                    label: dataset.label,
+                    data: dataset.data,
+
+                    // 첫 번째는 왼쪽, 두 번째는 오른쪽 Y축
+                    yAxisID: index === 0 ? 'y' : 'y1',
+
+                    // 꺾은선 색상
+                    borderColor: dataset.color,
+
+                    // 선 아래 그라데이션 배경
+                    backgroundColor(context) {
+                        const { chart } = context;
+                        const { ctx, chartArea } = chart;
+
+                        // 차트 영역이 계산되기 전에는 기본색 사용
+                        if (!chartArea) return dataset.color;
+
+                        const gradient = ctx.createLinearGradient(
+                            0,
+                            chartArea.top,
+                            0,
+                            chartArea.bottom
+                        );
+
+                        // 위쪽은 선 색상에 가까운 반투명 배경
+                        gradient.addColorStop(
+                            0,
+                            index === 0
+                                ? 'rgba(124, 58, 237, 0.18)'
+                                : 'rgba(59, 130, 246, 0.12)'
+                        );
+
+                        // 아래쪽으로 갈수록 투명해짐
+                        gradient.addColorStop(
+                            1,
+                            index === 0
+                                ? 'rgba(124, 58, 237, 0)'
+                                : 'rgba(59, 130, 246, 0)'
+                        );
+
+                        return gradient;
+                    },
+
+                    borderWidth: 2,
+                    tension: 0.35,
+
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    pointBackgroundColor: dataset.color,
+
+                    // 선 아래 영역 채우기
+                    fill: 'origin'
+                }))
+
+            },
+
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+
+                interaction: {
+                    mode: 'index',
+                    intersect: false
+                },
+
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        align: 'end',
+
+                        labels: {
+                            usePointStyle: true,
+                            pointStyle: 'circle',
+                            boxWidth: 8,
+                            boxHeight: 8
+                        }
+                    },
+
+                    tooltip: {
                         callbacks: {
-                            label: context => {
-                                return `${context.label}: ${context.parsed.toLocaleString()}`;
+                            label(context) {
+                                const value = context.parsed.y;
+
+                                return `${context.dataset.label}: ${value.toLocaleString('ko-KR')}`;
+                            }
+                        }
+                    }
+                },
+
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    },
+
+                    // 왼쪽 Y축: Requests
+                    y: {
+                        type: 'linear',
+                        position: 'left',
+                        beginAtZero: true,
+
+                        title: {
+                            display: true,
+                            text: 'Requests'
+                        },
+
+                        ticks: {
+                            callback(value) {
+                                return Number(value).toLocaleString('ko-KR');
+                            }
+                        }
+                    },
+
+                    // 오른쪽 Y축: Tokens
+                    y1: {
+                        type: 'linear',
+                        position: 'right',
+                        beginAtZero: true,
+
+                        title: {
+                            display: true,
+                            text: 'Tokens'
+                        },
+
+                        grid: {
+                            drawOnChartArea: false
+                        },
+
+                        ticks: {
+                            callback(value) {
+                                const number = Number(value);
+
+                                if (number >= 1000000) {
+                                    return `${number / 1000000}M`;
+                                }
+
+                                if (number >= 1000) {
+                                    return `${number / 1000}K`;
+                                }
+
+                                return number;
                             }
                         }
                     }
@@ -843,382 +371,94 @@ class ModelUsageChart {
             }
         });
     }
-
-    update() {
-        const values = this.getValues();
-
-        const total = values.reduce(
-            (sum, value) => sum + value,
-            0
-        );
-
-        if (this.chart) {
-            this.chart.data.datasets[0].data = values;
-            this.chart.update();
-        }
-
-        if (this.totalEl) {
-            this.totalEl.textContent = total.toLocaleString();
-        }
-
-        if (this.labelEl) {
-            this.labelEl.textContent = this.type === 'requests'
-                ? 'Total Requests'
-                : 'Total Tokens';
-        }
-
-        if (!this.legend) return;
-
-        this.legend.replaceChildren();
-
-        const labels = this.chart.data.labels;
-
-        this.models.forEach((model, index) => {
-            const item = document.createElement('li');
-            item.className = 'model-usage__item';
-
-            const name = document.createElement('span');
-            name.className = 'model-usage__name';
-
-            const swatch = document.createElement('i');
-            swatch.className = 'model-usage__color';
-            swatch.style.backgroundColor = model.color;
-
-            name.append(
-                swatch,
-                document.createTextNode(labels[index])
-            );
-
-            const value = document.createElement('strong');
-            value.className = 'model-usage__value';
-            value.textContent = values[index].toLocaleString();
-
-            const percent = document.createElement('span');
-            percent.className = 'model-usage__percent';
-
-            percent.textContent = total
-                ? `${(values[index] / total * 100).toFixed(1)}%`
-                : '0.0%';
-
-            item.append(name, value, percent);
-            this.legend.append(item);
-        });
-    }
-}
-
-/* *********************************
- * Weekly Token Budget
- * ********************************* */
-
-function calculateWeeklyTokenBudget(data, latest, weeks = 8) {
-    const [year, month, day] = latest.split('-').map(Number);
-
-    const latestDate = new Date(year, month - 1, day);
-
-    const weeklyTotals = [];
-
-    // 현재 주간을 제외한 직전 8주
-    for (let i = 1; i <= weeks; i++) {
-        const endDate = new Date(latestDate);
-        endDate.setDate(endDate.getDate() - (i * 7));
-
-        const startDate = new Date(endDate);
-        startDate.setDate(startDate.getDate() - 6);
-
-        const formatDate = date => {
-            const year = date.getFullYear();
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const day = String(date.getDate()).padStart(2, '0');
-
-            return `${year}-${month}-${day}`;
-        };
-
-        const start = formatDate(startDate);
-        const end = formatDate(endDate);
-
-        const rows = data.filter(row =>
-            row.date >= start && row.date <= end
-        );
-
-        // 7일치 데이터가 모두 있는 주간만 사용
-        if (rows.length !== 7) continue;
-
-        const total = rows.reduce((sum, row) => {
-            const tokens = Object.values(row.models || {})
-                .reduce((modelSum, model) => {
-                    return modelSum + (Number(model?.tokens) || 0);
-                }, 0);
-
-            return sum + tokens;
-        }, 0);
-
-        weeklyTotals.push(total);
-    }
-
-    if (!weeklyTotals.length) return 0;
-
-    // 과거 8주 중 최대 사용량
-    const maxWeeklyTokens = Math.max(...weeklyTotals);
-
-    // 최대 사용량에 20% 여유 추가
-    const budget = maxWeeklyTokens * 1.2;
-
-    // 100만 단위 올림
-    return Math.ceil(budget / 1_000_000) * 1_000_000;
 }
 
 
+
+
+
+
+
 /* *********************************
- * Overview
+ * Common Doughnut Chart
  * ********************************* */
 
-async function initOverview() {
-    const root = document.querySelector('.js-ai-usage-overview');
+/**
+ * 공통 도넛 차트 클래스
+ *
+ * @description
+ * - Chart.js 기반 Doughnut Chart
+ * - 모델별 비율 표시
+ * - 데이터에 따라 색상 적용
+ * - 기존 차트 제거 후 재생성
+ */
+class SaiDoughnutChart {
+    /**
+     * @param {HTMLCanvasElement} canvas - 차트 canvas
+     */
+    constructor(canvas) {
+        this.canvas = canvas;
+    }
 
-    const hasKpi = document.querySelector(
-        '#kpiUsers, #kpiRequests'
-    );
+    /**
+     * 도넛 차트 렌더링
+     *
+     * @param {Array<string>} labels - 항목 이름
+     * @param {Array<number>} values - 항목별 값
+     * @param {Array<string>} colors - 항목별 색상
+     * @returns {void}
+     */
+    render(labels, values, colors) {
+        if (!this.canvas) return;
 
-    if (!root && !hasKpi) return;
+        // 기존 차트 제거
+        Chart.getChart(this.canvas)?.destroy();
 
-    try {
-        const response = await fetch(
-            '/sai/assets/data/usage.json'
-        );
+        new Chart(this.canvas, {
+            type: 'doughnut',
 
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-        }
+            data: {
+                labels,
 
-        const json = await response.json();
-
-        const rows = Array.isArray(json)
-            ? json
-            : json.daily;
-
-        if (!Array.isArray(rows)) {
-            throw new Error('Invalid usage data format');
-        }
-
-        const data = rows
-            .filter(row => typeof row.date === 'string')
-            .sort((a, b) => a.date.localeCompare(b.date));
-
-        if (!data.length) return;
-
-        // JSON에 기록된 최신 날짜
-        const latest = data[data.length - 1].date;
-
-        // 최신 날짜 포함 최근 7일
-        const [year, month, day] = latest
-            .split('-')
-            .map(Number);
-
-        const fromDate = new Date(
-            year,
-            month - 1,
-            day - 6
-        );
-
-        const from = [
-            fromDate.getFullYear(),
-            String(fromDate.getMonth() + 1).padStart(2, '0'),
-            String(fromDate.getDate()).padStart(2, '0')
-        ].join('-');
-
-        const week = data.filter(row =>
-            row.date >= from &&
-            row.date <= latest
-        );
-
-
-        /* *********************************
-         * Overview KPI
-         * ********************************* */
-
-        const overviewKpis = [
-            {
-                selector: '#kpiUsers',
-                key: 'users'
-            },
-            {
-                selector: '#kpiRequests',
-                key: 'requests'
-            }
-        ];
-
-        overviewKpis.forEach(item => {
-            const values = week.map(row => row[item.key]);
-
-            if (
-                values.length &&
-                values.every(Number.isFinite)
-            ) {
-                new KpiChart(item.selector, {
+                datasets: [{
                     data: values,
-                    compareText: 'vs 7 days ago'
-                });
-            }
-        });
+                    backgroundColor: colors,
+                    borderWidth: 0,
+                    hoverOffset: 6
+                }]
+            },
 
-        if (!root) return;
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
 
+                // 도넛 중앙 구멍 크기
+                cutout: '72%',
 
-        /* *********************************
-         * Weekly Token Data
-         * ********************************* */
+                plugins: {
+                    legend: {
+                        display: false
+                    },
 
-        const keys = [
-            'gpt4o',
-            'claude',
-            'gemini',
-            'midjourney'
-        ];
+                    tooltip: {
+                        callbacks: {
+                            label(context) {
+                                const value = context.parsed;
+                                const total = context.dataset.data.reduce(
+                                    (sum, item) => sum + item,
+                                    0
+                                );
 
-        const totals = Object.fromEntries(
-            keys.map(key => [key, 0])
-        );
+                                const percent = total > 0
+                                    ? value / total * 100
+                                    : 0;
 
-        let tokenTotal = 0;
-
-        // 최신 날짜를 포함한 최근 7일 토큰 합산
-        week.forEach(row => {
-            Object.entries(row.models || {}).forEach(
-                ([key, model]) => {
-                    const tokens = Number(model?.tokens) || 0;
-
-                    tokenTotal += tokens;
-
-                    if (Object.prototype.hasOwnProperty.call(totals, key)) {
-                        totals[key] += tokens;
+                                return `${context.label}: ${percent.toFixed(1)}%`;
+                            }
+                        }
                     }
                 }
-            );
+            }
         });
-
-
-        /* *********************************
-         * Token Usage
-         * ********************************* */
-
-        // HTML의 data-token-quota 값을 사용
-        // 주간 예산은 별도로 산정한 뒤 HTML에서 설정
-        const quota = calculateWeeklyTokenBudget(data, latest);
-
-        const percentage = quota > 0
-            ? (tokenTotal / quota) * 100
-            : 0;
-
-        const currentEl = root.querySelector(
-            '.sai-card__value--current'
-        );
-
-        const quotaEl = root.querySelector(
-            '.sai-card__value--total'
-        );
-
-        const progressEl = root.querySelector(
-            '.sai-progress__main .sai-progress__bar'
-        );
-
-        const percentEl = root.querySelector(
-            '.sai-progress__text'
-        );
-
-        if (currentEl) {
-            currentEl.textContent = tokenTotal.toLocaleString();
-        }
-
-        if (quotaEl) {
-            quotaEl.textContent = quota.toLocaleString();
-        }
-
-        if (progressEl) {
-            progressEl.style.setProperty(
-                '--progress',
-                `${Math.min(percentage, 100).toFixed(1)}%`
-            );
-        }
-
-        if (percentEl) {
-            percentEl.textContent = `${percentage.toFixed(1)}%`;
-        }
-
-
-        /* *********************************
-         * Model Usage
-         * ********************************* */
-
-        Object.entries(totals).forEach(([key, tokens]) => {
-            const bar = root.querySelector(
-                `[data-model="${key}"] .sai-progress__bar`
-            );
-
-            if (!bar) return;
-
-            const percent = tokenTotal
-                ? (tokens / tokenTotal) * 100
-                : 0;
-
-            bar.style.setProperty(
-                '--progress',
-                `${percent.toFixed(1)}%`
-            );
-        });
-
-    } catch (error) {
-        console.error(
-            'Overview usage data load failed:',
-            error
-        );
     }
 }
-
-
-/* *********************************
- * Init
- * ********************************* */
-
-// Projects / Status는 기존 예시 데이터 사용
-kpiData
-    .filter(item =>
-        ['#kpiProjects', '#kpiStatus'].includes(item.selector)
-    )
-    .forEach(item => {
-        new KpiChart(item.selector, {
-            data: item.data
-        });
-    });
-
-// Overview 데이터 로드
-initOverview();
-
-// Analytics Usage Chart
-const usageChart = new UsageChart('#usageChart', {
-    dataUrl: '/sai/assets/data/usage.json'
-});
-
-// Analytics Model Usage Chart
-const modelUsageChart = new ModelUsageChart('#modelUsageChart', {
-    dataUrl: '/sai/assets/data/usage.json'
-});
-
-// Analytics Date Picker
-const datePicker = new DatePicker('.js-date-picker', {
-    onChange: date => {
-        usageChart?.setDate(date);
-        modelUsageChart?.setDate(date);
-    }
-});
-
-// 데이터 로드 후 날짜 범위 설정
-usageChart?.ready?.then(() => {
-    if (!usageChart.data.length || !datePicker?.input) {
-        return;
-    }
-
-    datePicker.setRange(
-        usageChart.minDate,
-        usageChart.maxDate
-    );
-});

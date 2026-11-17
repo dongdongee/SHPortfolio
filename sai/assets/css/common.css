@@ -244,7 +244,7 @@ html[data-theme="dark"] {
                                     color: var(--color-text-secondary)
                                 }
                             }
-                            .sai-nav-ico{
+                            .sai-nav__ico{
                                 transform: rotate(-90deg);
                                 margin-left: auto;
                                 color: var(--color-text-secondary)
@@ -538,11 +538,6 @@ html[data-theme="dark"] {
  * 각종 버튼
 ======================================== */
 .sai-button {
-    &.sai-button__absolute{
-        position: absolute;
-        top: calc(4 * var(--space));
-        right: calc(6 * var(--space)) ;
-    }
     div{
         display: flex;
         flex-direction: row;
@@ -610,7 +605,7 @@ html[data-theme="dark"] {
 /* ========================================
  * SVG ICO
 ======================================== */
-.sai-nav-ico{
+.sai-nav__ico{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -623,7 +618,7 @@ html[data-theme="dark"] {
         width: 24px;
         height: 24px;
     }
-    &.sai-nav-ico-20{
+    &.sai-nav__ico-20{
         svg,
         img {
             display: block;
@@ -647,69 +642,114 @@ html[data-theme="dark"] {
     display: flex;
     min-width: 0;
     min-height: 0;
+    max-height: 100vh;
     width: 100%;
     padding: calc(4*var(--space));
     overflow-x: hidden;
     overflow-y: auto;
     flex-direction: column;
     flex: 1;
-    .sai-content__title{
-        display: flex;
-        flex-direction: row;
-        flex-shrink: 0;
-        padding: calc(4*var(--space));
-        border: 1px solid var(--color-border);
-        border-radius: var(--radius-md);
-        background-color: var(--color-bg-active);
-        .sai-nav-ico {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            flex-shrink: 0;
-        }
-        .sai-nav-ico .sai-icon {
-            width: 40px;
-            height: 40px;
-        }
-        .sai-title__main{
-            font-size: var(--font-size-3xl);
-            font-weight: var(--font-weight-semibold);
-            line-height: 1;
-            font-family: var(--sai-font-family);
-            padding-bottom: calc(2*var(--space));
-        }
-        .sai-title__desc{
-            font-size: var(--font-size-lg);
-            font-weight: var(--font-weight-medium);
-            color: var(--color-text-secondary);
-            line-height: 1;
-        }
-    }
     .sai-content__panel {
-        flex: 1;
+        max-width: 1280px;
         min-width: 0;
         min-height: 0;
-        overflow-x: hidden;
-        overflow-y: auto;
+        width: 100%;
+        margin: 0 auto;
         padding-inline-end: calc(5*var(--space));
         scrollbar-width: thin;
         scrollbar-color: #9d99ae transparent;
-    }
-    @media (max-width: 1280px) {
-        padding: calc(20*var(--space)) calc(4*var(--space)) calc(6*var(--space));
-        .sai-content__title{
-            row-gap: calc(2*var(--space));
-            padding-bottom: calc(2*var(--space));
-            .sai-title__main{
-                font-size: var(--font-size-3xl);
-                line-height: 1;
+        .sai-breadcrumb{
+            display: flex;
+            flex-direction: row;
+            color: var(--color-text-secondary);
+            .sai-breadcrumb__arrow{
+                margin: 0 calc(var(--space));
+                svg,img{
+                    width: 20px;
+                }
             }
-            .sai-title__desc{
-                font-size: var(--font-size-xl);
-                font-weight: var(--font-weight-medium);
-                line-height: 1;
+            .sai-breadcrumb__text{
+                font-size: var(--font-size-lg);
+            }
+        }
+        .sai-content-grid {
+            display: grid;
+            gap: calc(4*var(--space));
+            grid-template-columns: 5fr 5fr;
+            gap: calc(4*var(--space));
+            margin: calc(4 * var(--space)) auto 0;
+            &.sai-content-grid--full{
+                grid-template-columns: 1fr;
+            }
+            &.sai-content-grid--7-3{
+                grid-template-columns: 7fr 3fr;
+            }
+            &.sai-content-grid--6-4{
+                grid-template-columns: 6fr 4fr;
+            }
+            &.sai-content-grid--4-6{
+                grid-template-columns: 4fr 6fr;
+            }
+            &
+            .sai-content-card {
+                position: relative;
+                display: flex;
+                flex: 1;
+                flex-direction: column;
+                justify-content: space-around;
+                min-width: 0;
+                background: var(--color-bg-surface);
+                border: 1px solid var(--color-border);
+                border-radius: var(--radius-sm);
+                .sai-content__head{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                }
+                .sai-content__body{
+                    display: flex;
+                    flex-direction: column;
+                    gap: calc(2 * var(--space));  
+                    flex: 1;
+                    min-width: 0;
+                    min-height: 0;
+                    &.sai-content__body--padding{
+                        padding: calc(3 * var(--space));
+                    }
+                    .sai-card__title{
+                        line-height: 1;
+                        padding: calc(2 * var(--space)) calc(3 * var(--space));
+                        background: linear-gradient( 90deg, #f1edff 0%, #f8f6ff 55%, #ffffff 100% );
+                        border-radius: var(--radius-sm);
+                        &.sai-card__title--flex{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            gap: calc(2*var(--space));
+                            .sai-button{
+                                margin-left: auto;
+                            }
+                        }
+                        .sai-ico__title {
+                            color: var(--color-mark-purple);
+                        }
+                        .sai-card__title-text{
+                            font-size: var(--font-size-lg);
+                            font-weight: var(--font-weight-medium);
+                            color: var(--color-text-primary);
+                            line-height: 1;
+                        }
+                    }
+                    .sai-card__title-sub{
+                        .sai-card__title-text{
+                            font-size: var(--font-size-lg);
+                            font-weight: var(--font-weight-medium);
+                            color: var(--color-text-primary);
+                            line-height: 1;
+                        }
+                    }
+                    
+                }
             }
         }
     }
@@ -726,24 +766,170 @@ html[data-theme="dark"] {
 .sai-datepicker {
     position: relative;
     display: flex;
+    align-items: center;
     flex-direction: row;
+    gap: calc(2 * var(--space));
+    padding: calc(2 * var(--space)) calc(4 * var(--space));
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    padding: calc(2*var(--space)) calc(4*var(--space));
-    gap: 20px;
-    .sai-nav-ico{
-        position: absolute;
-        z-index: 1;
-        top: calc(1.5*var(--space));
-        left: calc(2*var(--space));
+    background: var(--color-primary-soft-bg);
+    .sai-datepicker__box{
+        position: relative;
+        display: flex;
+        flex-direction: row;        
+        align-items: center;
+        column-gap: calc(2*var(--space));
+        padding-right: calc(4*var(--space));
+        .sai-datepicker__label{
+            color: var(--color-text-primary);
+            font-weight: var(--font-weight-medium);
+        }
+    }
+    .sai-datepicker__trigger{
+        position: relative;
+        width: 120px;
     }
     input[type="date"] {
-        position: relative;
-        cursor: pointer;
-        padding: calc(1 * var(--space)) calc(2 * var(--space)) calc(1 * var(--space)) calc(8 * var(--space));
-        background: var(--color-bg-surface);
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        border: 0;
+        opacity: 0;
+        pointer-events: none;
+        left:0;
+        bottom: 0;
+    }
+    .sai-datepicker__period{
+        width: 250px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 36px;
+        padding: 0 calc(3 * var(--space));
         border: 1px solid var(--color-border);
-        border-radius: 8px;
+        border-radius: var(--radius-sm);
+        background: var(--color-bg-surface);
+        color: var(--color-text-primary);
+        cursor: pointer;
+    }
+    .sai-datepicker__trigger {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 36px;
+        padding: 0 calc(3 * var(--space));
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-sm);
+        background: var(--color-bg-surface);
+        color: var(--color-text-primary);
+        cursor: pointer;
+    }
+    .sai-datepicker__info{
+        font-size: var(--font-size-sm);
+    }
+}
+
+
+
+.flatpickr-calendar {
+    .flatpickr-months {
+        align-items: center;
+
+        .flatpickr-month {
+            height: 40px;
+            background: transparent;
+            color: var(--color-text-primary);
+            fill: currentColor;
+        }
+
+        .flatpickr-prev-month,
+        .flatpickr-next-month {
+            padding: 10px;
+            color: var(--color-text-secondary);
+            fill: currentColor;
+
+            &:hover {
+                color: var(--color-primary);
+                fill: currentColor;
+            }
+
+            svg {
+                width: 14px;
+                height: 14px;
+            }
+        }
+    }
+
+    .flatpickr-current-month {
+        padding-top: 6px;
+        font-size: var(--font-size-md);
+        font-weight: var(--font-weight-semibold);
+
+        .flatpickr-monthDropdown-months,
+        input.cur-year {
+            color: var(--color-text-primary);
+            font-weight: var(--font-weight-semibold);
+        }
+    }
+
+    .flatpickr-weekdays {
+        background: transparent;
+    }
+
+    span.flatpickr-weekday {
+        background: transparent;
+        color: var(--color-text-tertiary);
+        font-size: var(--font-size-xs);
+    }
+
+    .flatpickr-innerContainer,
+    .flatpickr-rContainer,
+    .flatpickr-days {
+        width: 100%;
+    }
+
+    .dayContainer {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+    }
+
+    .flatpickr-day {
+        max-width: none;
+        height: 36px;
+        line-height: 36px;
+        border-radius: var(--radius-sm);
+        color: var(--color-text-primary);
+        font-size: var(--font-size-xs);
+
+        &:hover,
+        &:focus {
+            background: var(--color-primary-soft);
+            border-color: transparent;
+            color: var(--color-primary);
+        }
+
+        &.selected,
+        &.selected:hover,
+        &.selected:focus {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+            color: #fff;
+        }
+
+        &.today {
+            border-color: var(--color-primary-muted);
+        }
+
+        &.prevMonthDay,
+        &.nextMonthDay {
+            color: var(--color-text-tertiary);
+        }
+
+        &.flatpickr-disabled {
+            color: var(--color-text-disabled);
+        }
     }
 }
 
@@ -752,3 +938,95 @@ html[data-theme="dark"] {
 ======================================== */
 
 
+
+
+
+/* ========================================
+ * 공통 페이지 탭 메뉴
+======================================== */
+
+.sai-tab {
+    display: block;
+    margin: calc(4 * var(--space)) 0;
+
+    .sai-tab__wrap {
+        display: flex;
+        flex-direction: row;
+        column-gap: var(--space);
+        width: fit-content;
+        max-width: 100%;
+        padding: 4px;
+        background: var(--color-primary-soft-bg);
+        border-radius: 12px;
+        overflow-x: auto;
+
+        li {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-shrink: 0;
+            padding: 0;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            background: transparent;
+            color: #667085;
+            font-weight: 500;
+            cursor: pointer;
+            transition:
+                background-color .2s ease,
+                color .2s ease,
+                border-color .2s ease;
+
+            a {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 36px;
+                padding: 0 18px;
+                color: inherit;
+                text-decoration: none;
+                white-space: nowrap;
+
+                &:focus-visible {
+                    outline: 2px solid var(--color-bg-active);
+                    outline-offset: 2px;
+                    border-radius: 6px;
+                }
+            }
+
+            &:hover:not(.is-active):not(.is-disabled) {
+                background: #e9e3fa;
+                color: var(--color-primary-hover-strong);
+            }
+
+            &:active:not(.is-active):not(.is-disabled) {
+                background: #e1d8fb;
+                color: var(--color-primary-hover-strong);
+            }
+
+            &.is-active {
+                background: #fff;
+                border-color: #e9e5f3;
+                color: #7c3aed;
+                font-weight: 600;
+                box-shadow: 0 1px 3px rgba(30, 20, 70, .05);
+            }
+
+            &.is-disabled {
+                background: transparent;
+                border-color: transparent;
+                color: #a0a6b4;
+                cursor: not-allowed;
+
+                a {
+                    pointer-events: none;
+                }
+            }
+        }
+    }
+}
+
+/* ========================================
+ * // 공통 페이지 탭 메뉴
+======================================== */
